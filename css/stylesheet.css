@@ -1,0 +1,25 @@
+.background{
+-fx-background-color: #00DDDD;
+}
+
+.button{
+-fx-color: #FFFFFF ;
+-fx-font: normal bold 15px 'sans-serif' ;
+-fx-padding: 5 22 5 22 ;
+-fx-border-color: #00DDDD ;
+}
+
+.text-field{
+-fx-border-color: #00DDDD;
+-fx-stroke: #00dddd;
+-fx-background-color: #FFFFFF;
+}
+
+.label{
+-fx-font: normal 20px 'sans-serif' 
+}
+
+.labelIIITD{
+-fx-font: normal bold 50px 'serif' 
+}
+
