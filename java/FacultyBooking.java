@@ -15,8 +15,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane.*;
 import javafx.geometry.Pos;
-
-public class StudentRequest extends Application
+public class FacultyBooking extends Application
 {
 	public static void main(String[] args)
 	{
@@ -27,11 +26,11 @@ public class StudentRequest extends Application
 	{
 		ScrollPane sp;
 		GridPane Table;
-		Scene RequestScene;
+		Scene BookingScene;
 		primaryStage.setTitle("Classroom Booking System");
 
 		//Title
-		Label Title = new Label("Your Requests");
+		Label Title = new Label("Your Bookings");
 
 		//Table
 		Table = new GridPane();
@@ -42,7 +41,8 @@ public class StudentRequest extends Application
 		TextField T2 = new TextField("Date");
 		TextField T3 = new TextField("Time");
 		TextField T4 = new TextField("Duration");
-		TextField T6 = new TextField("Purpose");
+		//TextField T5 = new TextField("Name");
+		//TextField T6 = new TextField("Purpose");
 		TextField T7 = new TextField("Room");
 		TextField T8 = new TextField("Capacity");
 		TextField T9 = new TextField("Cancel");
@@ -51,34 +51,37 @@ public class StudentRequest extends Application
 		Table.add(T3, 2, 0, 1, 1);
 		Table.add(T4, 3, 0, 1, 1);
 		//Table.add(T5, 4, 0, 1, 1);
-		Table.add(T6, 4, 0, 1, 1);
-		Table.add(T7, 5, 0, 1, 1);
-		Table.add(T8, 6, 0, 1, 1);
-		Table.add(T9, 7, 0, 1, 1);
+		//Table.add(T6, 5, 0, 1, 1);
+		Table.add(T7, 4, 0, 1, 1);
+		Table.add(T8, 5, 0, 1, 1);
+		Table.add(T9, 6, 0, 1, 1);
 
-		//example
+		//Example
 		TextField t1 = new TextField("1");
-		TextField t2 = new TextField("02/11/2017");
-		TextField t3 = new TextField("17:00");
-		TextField t4 = new TextField("120");
-		TextField t6 = new TextField("Byld Session");
-		TextField t7 = new TextField("C01");
-		TextField t8 = new TextField("170");
+		TextField t2 = new TextField("01/11/2017");
+		TextField t3 = new TextField("11:00");
+		TextField t4 = new TextField("90");
+		//TextField T5 = new TextField("Name");
+		//TextField T6 = new TextField("Purpose");
+		TextField t7 = new TextField("C21");
+		TextField t8 = new TextField("150");
 		TextField t9 = new TextField("Cancel");
 		Table.add(t1, 0, 1, 1, 1);
 		Table.add(t2, 1, 1, 1, 1);
 		Table.add(t3, 2, 1, 1, 1);
 		Table.add(t4, 3, 1, 1, 1);
-		//Table.add(t5, 4, 0, 1, 1);
-		Table.add(t6, 4, 1, 1, 1);
-		Table.add(t7, 5, 1, 1, 1);
-		Table.add(t8, 6, 1, 1, 1);
+		//Table.add(T5, 4, 0, 1, 1);
+		//Table.add(T6, 5, 0, 1, 1);
+		Table.add(t7, 4, 1, 1, 1);
+		Table.add(t8, 5, 1, 1, 1);
 		//Table.add(t9, 6, 1, 1, 1);
 
+
+		//ChoiceBox
 		CheckBox Approval = new CheckBox("Select");
 		//Approval.getItems().addAll("Pending", "Approve", "Cancel");
 		//Approval.setValue("Pending");
-		Table.add(Approval, 7, 1, 1, 1);
+		Table.add(Approval, 6, 1, 1, 1);
 		Table.setAlignment(Pos.CENTER);
 
 		sp = new ScrollPane();
@@ -91,8 +94,8 @@ public class StudentRequest extends Application
 		Button Home = new Button("Home");
 		x.getChildren().addAll(Home, Cancel);
 		elements.getChildren().addAll(Title, Table, x);
-		RequestScene = new Scene(elements, 700, 500);
-		primaryStage.setScene(RequestScene);
+		BookingScene = new Scene(elements, 1000, 600);
+		primaryStage.setScene(BookingScene);
 		primaryStage.show();
 
 
