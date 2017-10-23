@@ -251,6 +251,7 @@ public class personalised_Time_Table extends Application
 		x.setSpacing(580);
 		
 		Button btn6 = new Button("Back");
+		btn6.setOnAction(e -> {new student_Page().start(primaryStage);});
 		HBox x2 = new HBox();
 		x2.setSpacing(300);
 		x2.getChildren().addAll(btn6);
