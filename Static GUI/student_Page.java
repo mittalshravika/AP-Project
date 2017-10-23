@@ -26,6 +26,7 @@ public class student_Page extends Application
 		Button btn5 = new Button("Show Request");
 		Button btn6 = new Button("Search Course");
 		Button btn7 = new Button("Request Room");
+		Button btn10 = new Button("Time Table");
 		Label l1 = new Label("Name:");
 		Label l2 = new Label("Type:");
 		Label l3 = new Label("Courses:");
@@ -54,6 +55,8 @@ public class student_Page extends Application
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}});
+		
+		btn10.setOnAction(e -> {new personalised_Time_Table().start(primaryStage);});
 		
 		btn.setPrefHeight(80);
 		btn.setPrefWidth(200);
@@ -87,7 +90,7 @@ public class student_Page extends Application
 		root.add(btn, 2, 3, 1, 1);
 		root.add(btn7, 2, 4, 1, 1);
 		root.add(btn5, 2, 5, 1, 1);
-		//root.add(btn3, 2, 6, 1, 1);
+		root.add(btn10, 2, 6, 1, 1);
 		root.add(btn6, 2, 7, 1, 1);
 		root.add(l3, 0, 8, 1, 1);
 		
