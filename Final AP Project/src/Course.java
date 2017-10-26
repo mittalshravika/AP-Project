@@ -25,7 +25,7 @@ public class Course implements Serializable{
 
 	void show()
 	{
-		
+		return;
 	}
 	
 	boolean search(String keywords)
