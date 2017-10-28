@@ -5,27 +5,54 @@ import java.lang.*;
 
 public class User implements Serializable
 {
+	private String name;
 	private String type_of_user;
 	private String email_id;
 	private String password;
 	private user_Page page;
 	
-	public User(String A, String B, String C)
+	public User(String A, String B, String C, String D)
 	{
-		this.type_of_user = new String(A);
-		this.email_id = new String(B);
-		this.password = new String(C);
+		this.name = new String(A);
+		this.type_of_user = new String(B);
+		this.email_id = new String(C);
+		this.password = new String(D);
 		this.page = null;
 	}
 	
 	static boolean Sign_Up(String Name, String Email, String Type, String Pass1, String Pass2)
 	{
-		return false;
+		boolean check = true;
+		if(Name == null || Name.equals("") );
+		{
+			System.out.println("Enter a valid name");
+			check = false;
+			
+		}
+		if(Email == null || Email.equals(""))
+		{
+			System.out.println("Enter a valid Email ID");
+			check = false;
+			
+		}
+		else
+		{
+			check = enter_Email_Id(Email);
+			
+		}
+		if(Pass1 == null || Pass1.equals(""))
+		{
+			System.out.println("Enter the password");
+			check = false;
+		}
+		return check = check_Password(Pass1, Pass2);
+		
+		
 		
 	}
  
 
-	boolean enter_Email_Id(String A)
+	static boolean enter_Email_Id(String A)
 	{
 		int size = A.length();
 		boolean flag = true;
@@ -46,6 +73,7 @@ public class User implements Serializable
 		{
 			return true;
 		}
+		System.out.println("Passwords don't match");
 		
 		return false;
 		
@@ -76,8 +104,9 @@ public class User implements Serializable
 		return true;
 	}
 
-	boolean add_User(/*User List*/)
+	static boolean add_User(List<User> A, User B)
 	{
+		A.add(B);
 		return true;
 	}
 

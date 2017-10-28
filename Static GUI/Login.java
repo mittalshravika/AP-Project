@@ -109,6 +109,9 @@ public class Login extends Application
                 try 
                 {
 					App.deserialize("UserList");
+					input();
+					App.serialize("UserList");
+					
 				} catch (ClassNotFoundException | IOException e) 
                 {
 					
@@ -116,42 +119,26 @@ public class Login extends Application
 				}
                 
             }
-            public void input()
+            public input()
             {
             		String Name, Email, Type, Pass1, Pass2 ;
-            		boolean check = true;
-            		if(Name_input.getText()!= null && !Name_input.getText().isEmpty())
-            		{
-            			Name = new String(Name_input.getText());
-            		}
-            		else
-            		{
-            			System.out.println("Enter a name");
-            			check = false;
-            		}
-            		
-            		if(User_Email_input.getText()!= null && !User_Email_input.getText().isEmpty())
-            		{
-            			Email = new String(Name_input.getText());
-            		}
-            		else
-            		{
-            			System.out.println("Enter Email ID");
-            			check = false;
-            		}
-            		
-            		if(User_Password_input.getText()!= null && !User_Password_input.getText().isEmpty())
-            		{
-            			Pass1 = new String(Name_input.getText());
-            		}
-            		else
-            		{
-            			System.out.println("Enter password");
-            			check = false;
-            		}
+            		Name = Name_input.getText();
+            		Email = User_Email_input.getText();
+            		Pass1 = User_Password_input.getText();
+            		Pass2 = User_Password_input_2.getText();
             		Type = new String((User_Type).getValue());
             		
-            		
+            		if(User.Sign_Up(Name, Email, Type, Pass1, Pass2))
+            		{
+            			User.add_User(App.getUser_List(), new User(Name, Type, Email, Pass1));
+            		}
+            		else
+            		{
+            			Name_input.setText("");
+            			User_Email_input.setText("");
+            			User_Password_input.setText("");
+            			User_Password_input.setText("");
+            		}
             			
             }
 });
