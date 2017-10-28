@@ -11,6 +11,14 @@ public class App {
 	static List<User> user_List = new ArrayList<>();
 	static List<Course> course_List = new ArrayList<>();
 	
+	public static List<User> getUser_List() {
+		return user_List;
+	}
+
+	public static List<Course> getCourse_List() {
+		return course_List;
+	}
+
 	public static void deserialize(String A) 
 	throws IOException, ClassNotFoundException
 	{
