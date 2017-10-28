@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,7 @@ public class Course implements Serializable{
 	private String type_Of_Course;
 	private List<Lecture> timings;  */
 
+	private static final long serialVersionUID = 1L;
 	/* Database variables */
 	private String coursetype;
 	private String coursename;
@@ -42,11 +44,11 @@ public class Course implements Serializable{
 		this.postconditions = postconditions;
 	}
 	
+	
+
 	@Override
 	public String toString() {
-		return "Course [coursetype=" + coursetype + ", coursename=" + coursename + ", coursecode=" + coursecode
-				+ ", instructorname=" + instructorname + ", credits=" + credits + ", mon=" + mon + ", tue=" + tue
-				+ ", wed=" + wed + ", thurs=" + thurs + ", fri=" + fri + ", postconditions=" + postconditions + "]";
+		return "Course [coursetype=" + coursetype + ", coursename=" + coursename + ", coursecode=" + coursecode + ", instructorname=" + instructorname + ", credits=" + credits + ", acronym=" + acronym + ", mon=" + mon + ", tue=" + tue + ", wed=" + wed + ", thurs=" + thurs + ", fri=" + fri + ", postconditions=" + postconditions + "]";
 	}
 
 	void show()
@@ -59,19 +61,25 @@ public class Course implements Serializable{
 		return false;
 	}
 	
-	void add_Course(List<Course> global_Course_List)
+	static void add_Course(List<Course> global_Course_List, Course obj)
 	{
-		
+		global_Course_List.add(obj);
 	}	
 	
-	 public static void main(String args[]) throws FileNotFoundException
+	static void print_Course(List<Course> global_Course_List)
+	{
+		for(int i = 0 ; i<global_Course_List.size() ; i++)
+		{
+			System.out.println(global_Course_List.get(i).toString());
+		}
+	}
+	
+	 public static void main(String args[]) throws IOException
 	    {
 	        BufferedReader br = null;
 	        try
 	        {
 	            br = new BufferedReader(new FileReader("C:\\Users\\sm_06\\Desktop\\Database.csv"));
-	            
-	            List<Course> courselist = new ArrayList<Course>();
 	            
 	            String line = "";
 	            br.readLine();
@@ -82,8 +90,7 @@ public class Course implements Serializable{
 	                if(courseDetails.length > 0 )
 	                {
 	                    Course newcourse = new Course(courseDetails[1], courseDetails[2], courseDetails[3], courseDetails[4], courseDetails[5], courseDetails[6], courseDetails[7], courseDetails[8], courseDetails[9], courseDetails[10], courseDetails[11], courseDetails[12]);
-	                    courselist.add(newcourse);
-	                    System.out.println(newcourse.toString());
+	                    add_Course(App.course_List, newcourse);
 	                }
 	            }
 	        }
@@ -91,5 +98,7 @@ public class Course implements Serializable{
 	        {
 	            ee.printStackTrace();
 	        }
+	        
+	        App.serialize("courselist", "course");
 	    }
 }

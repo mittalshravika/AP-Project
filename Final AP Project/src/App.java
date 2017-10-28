@@ -9,6 +9,7 @@ import java.util.List;
 
 public class App {
 	static List<User> user_List = new ArrayList<>();
+	static List<Course> course_List = new ArrayList<>();
 	
 	public static void deserialize(String A) 
 	throws IOException, ClassNotFoundException
@@ -38,18 +39,31 @@ public class App {
 		}
 	}	
 	
-	public static void serialize(String A)
+	public static void serialize(String A, String B)
 	throws IOException
 	{
 		User Output;
+		Course Output2;
 		ObjectOutputStream out = null;
 		try
 		{
-			out = new ObjectOutputStream(new FileOutputStream("./" + A + ".ser"));
-			for(int i = 0; i < user_List.size(); i++)
+			if(B.equals("user"))
 			{
-				Output = user_List.get(i);
-				out.writeObject(Output);
+				out = new ObjectOutputStream(new FileOutputStream("./" + A + ".ser"));
+				for(int i = 0; i < user_List.size(); i++)
+				{
+					Output = user_List.get(i);
+					out.writeObject(Output);
+				}
+			}
+			else if(B.equals("course"))
+			{
+				out = new ObjectOutputStream(new FileOutputStream("./" + A + ".ser"));
+				for(int i = 0; i < course_List.size(); i++)
+				{
+					Output2 = course_List.get(i);
+					out.writeObject(Output2);
+				}
 			}
 		}
 		finally
