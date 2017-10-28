@@ -9,7 +9,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class personalised_Time_Table extends Application
+public class personal_Time_Table extends Application
 {
 	public static void main(String[] args)	
 	{	

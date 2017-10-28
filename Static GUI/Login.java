@@ -1,4 +1,7 @@
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 //import javafx.scene.layout.StackPane;
 import javafx.scene.control.*;
@@ -9,9 +12,15 @@ import javafx.scene.layout.VBox;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 
+import java.io.IOException;
+import java.util.*;
+
+
 
 public class Login extends Application
 {
+	
+	
 	
 	public static void main(String[] args)
 	{
@@ -24,6 +33,7 @@ public class Login extends Application
 		Scene LoginScene, SignUpScene;
 		GridPane grid1, grid2;		
 		primaryStage.setTitle("Classroom Booking System");
+		//
 		
 		//Sign Up
 		grid2 = new GridPane();
@@ -91,15 +101,67 @@ public class Login extends Application
 		//Sign Up Button
 		Button SignUpButton = new Button("Sign Up");
 		SignUpButton.setStyle("-fx-color: #FFFFFF ; -fx-font: normal bold 15px 'sans-serif' ; -fx-padding: 5 22 5 22 ; -fx-border-color: #00DDDD ; ");
-		
-		
 		GridPane.setConstraints(SignUpButton, 1, 4);
+		SignUpButton.setOnAction(new EventHandler<ActionEvent>() 
+		{
+            @Override
+            public void handle(ActionEvent event) {
+                try 
+                {
+					App.deserialize("UserList");
+				} catch (ClassNotFoundException | IOException e) 
+                {
+					
+					e.printStackTrace();
+				}
+                
+            }
+            public void input()
+            {
+            		String Name, Email, Type, Pass1, Pass2 ;
+            		boolean check = true;
+            		if(Name_input.getText()!= null && !Name_input.getText().isEmpty())
+            		{
+            			Name = new String(Name_input.getText());
+            		}
+            		else
+            		{
+            			System.out.println("Enter a name");
+            			check = false;
+            		}
+            		
+            		if(User_Email_input.getText()!= null && !User_Email_input.getText().isEmpty())
+            		{
+            			Email = new String(Name_input.getText());
+            		}
+            		else
+            		{
+            			System.out.println("Enter Email ID");
+            			check = false;
+            		}
+            		
+            		if(User_Password_input.getText()!= null && !User_Password_input.getText().isEmpty())
+            		{
+            			Pass1 = new String(Name_input.getText());
+            		}
+            		else
+            		{
+            			System.out.println("Enter password");
+            			check = false;
+            		}
+            		Type = new String((User_Type).getValue());
+            		
+            		
+            			
+            }
+});
 
 		//Login Button
 		Label LoginPage = new Label("Already a User?");
 		LoginPage.setStyle("-fx-font: normal 20px 'sans-serif' ");
 		GridPane.setConstraints(LoginPage, 0, 5);
 		Button LoginPageButton = new Button("Login");
+		//LoginPage.setOnAction
 		LoginPageButton.setStyle("-fx-color: #FFFFFF ; -fx-font: normal bold 15px 'sans-serif' ; -fx-padding: 5 22 5 22 ; -fx-border-color: #00DDDD ; ");
 		//LoginPageButton.setOnAction(e -> primaryStage.setScene(LoginScene));
 		GridPane.setConstraints(LoginPageButton, 1, 5);
@@ -140,9 +202,17 @@ public class Login extends Application
 
 		//Login button
 		Button LoginButton = new Button("Log In");
+		
 		LoginButton.setStyle("-fx-color: #FFFFFF ; -fx-font: normal bold 15px 'sans-serif' ; -fx-padding: 5 22 5 22 ; -fx-border-color: #00DDDD ; ");
 		GridPane.setConstraints(LoginButton, 1, 3);
-
+		LoginButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("Hello World!");
+            }
+});
+		
+		
 		//SignUp button
 		Label SignUpPage = new Label("Not Registered yet? Sign Up for free!");
 		SignUpPage.setStyle("-fx-font: normal 20px 'sans-serif' ");
@@ -167,4 +237,6 @@ public class Login extends Application
 		primaryStage.show();
 
 	}
+	
+	
 } 
