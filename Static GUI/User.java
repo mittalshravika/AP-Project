@@ -70,7 +70,10 @@ public class User implements Serializable
 		{
 			
 			if(A.charAt(size-12 + i) != check.charAt(i))
+			{
+				System.out.println("Enter a valid Email ID (@iiitd.ac.in)");
 				return false;
+			}
 		}
 		return true;
 	} 
@@ -92,9 +95,43 @@ public class User implements Serializable
 		return true;
 	} 
 
-	boolean user_Login()
+	static boolean Login(String Email, String Pass)
 	{
-		return true;
+		boolean check = true;
+		if(Email == null || Email.equals(""))
+		{
+			System.out.println("Enter a valid Email ID");
+			check = false;
+			
+		}
+		else if(check)
+		{
+			check = enter_Email_Id(Email);
+			
+		}
+		if(check)
+		{
+			
+			check = false;
+			for(int i = 0; i < App.getUser_List().size(); i++)
+			{
+
+				
+				if(App.getUser_List().get(i).getEmail_Id().equals(Email))
+				{
+					//System.out.println("YOLO");
+					if(App.getUser_List().get(i).getPassword().equals(Pass))
+					{
+						//System.out.println("YO");
+						check = true;
+						return check;
+					}
+				}
+			}
+		}
+		
+			
+		return check;
 	}
 
 	boolean user_Logout()
@@ -116,6 +153,14 @@ public class User implements Serializable
 	{
 		A.add(B);
 		return true;
+	}
+	String getEmail_Id()
+	{
+		return this.email_id;
+	}
+	String getPassword()
+	{
+		return this.password;
 	}
 
 }

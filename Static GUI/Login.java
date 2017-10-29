@@ -117,7 +117,7 @@ public class Login extends Application
 							if(User.Sign_Up(Name, Email, Type, Pass1, Pass2))
 							{
 								
-								System.out.println("Success");
+								System.out.println("Successful Sign Up");
 								User.add_User(App.getUser_List(), new User(Name, Type, Email, Pass1));
 								System.out.println(App.getUser_List().size());
 								
@@ -146,7 +146,7 @@ public class Login extends Application
 					
 				} catch (ClassNotFoundException | IOException e) 
                 {
-					System.out.println("LOL");
+					//System.out.println("LOL");
 					e.printStackTrace();
 					
 				}
@@ -204,10 +204,49 @@ public class Login extends Application
 		
 		LoginButton.setStyle("-fx-color: #FFFFFF ; -fx-font: normal bold 15px 'sans-serif' ; -fx-padding: 5 22 5 22 ; -fx-border-color: #00DDDD ; ");
 		GridPane.setConstraints(LoginButton, 1, 3);
-		LoginButton.setOnAction(new EventHandler<ActionEvent>() {
+		LoginButton.setOnAction(new EventHandler<ActionEvent>() 
+		{
+			public void input()
+			{
+				String Email, Password;
+				Email = new String(Email_input.getText());
+				Password = new String(Password_input.getText());
+				
+				if(User.Login(Email, Password))
+				{
+					
+					System.out.println("Successful Login");
+					//
+					
+				}
+				else
+				{
+					System.out.println("Fail");
+				}
+				
+				{
+					
+					Email_input.setText("");
+					Password_input.setText("");
+				
+				}
+			}
             @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
+            public void handle(ActionEvent event) 
+            {
+            		try 
+            		{
+            			App.deserialize("UserList");
+            			input();
+					App.serialize("UserList", "user");
+					
+				} 
+            		catch (ClassNotFoundException | IOException e) 
+                {
+					//System.out.println("LOL");
+					e.printStackTrace();
+					
+				}
             }
 });
 		
