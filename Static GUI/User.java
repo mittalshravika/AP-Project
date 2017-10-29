@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.io.Serializable;
 
 import java.util.*;
@@ -20,11 +21,14 @@ public class User implements Serializable
 		this.page = null;
 	}
 	
-	static boolean Sign_Up(String Name, String Email, String Type, String Pass1, String Pass2)
+	static boolean Sign_Up(String Name, String Email, String Type, String Pass1, String Pass2) 
 	{
+		
+		
 		boolean check = true;
-		if(Name == null || Name.equals("") );
+		if(Name == null || Name.equals(""))
 		{
+			
 			System.out.println("Enter a valid name");
 			check = false;
 			
@@ -45,7 +49,10 @@ public class User implements Serializable
 			System.out.println("Enter the password");
 			check = false;
 		}
-		return check = check_Password(Pass1, Pass2);
+		if(check)
+			check = check_Password(Pass1, Pass2);
+		
+		return check;
 		
 		
 		
@@ -61,7 +68,8 @@ public class User implements Serializable
 			return false;
 		for(int i = 0; i < 12; i++)
 		{
-			if(A.charAt(size-13 + i) != check.charAt(i))
+			
+			if(A.charAt(size-12 + i) != check.charAt(i))
 				return false;
 		}
 		return true;

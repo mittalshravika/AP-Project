@@ -105,27 +105,37 @@ public class Login extends Application
 		SignUpButton.setOnAction(new EventHandler<ActionEvent>() 
 		{
 			 public void input()
-	            {
-	            		String Name, Email, Type, Pass1, Pass2 ;
-	            		Name = Name_input.getText();
-	            		Email = User_Email_input.getText();
-	            		Pass1 = User_Password_input.getText();
-	            		Pass2 = User_Password_input_2.getText();
-	            		Type = new String((User_Type).getValue());
-	            		
-	            		if(User.Sign_Up(Name, Email, Type, Pass1, Pass2))
-	            		{
-	            			User.add_User(App.getUser_List(), new User(Name, Type, Email, Pass1));
-	            		}
-	            		else
-	            		{
-	            			Name_input.setText("");
-	            			User_Email_input.setText("");
-	            			User_Password_input.setText("");
-	            			User_Password_input.setText("");
-	            		}
-	            			
-	            }
+			 {
+	            
+							String Name, Email, Type, Pass1, Pass2 ;
+							Name = new String(Name_input.getText());
+							Email = new String(User_Email_input.getText());
+							Pass1 = new String(User_Password_input.getText());
+							Pass2 = new String(User_Password_input_2.getText());
+							Type = new String((User_Type).getValue());
+							
+							if(User.Sign_Up(Name, Email, Type, Pass1, Pass2))
+							{
+								
+								System.out.println("Success");
+								User.add_User(App.getUser_List(), new User(Name, Type, Email, Pass1));
+								System.out.println(App.getUser_List().size());
+								
+							}
+							else
+							{
+								System.out.println("Fail");
+							}
+							
+							{
+								Name_input.setText("");
+								User_Email_input.setText("");
+								User_Password_input.setText("");
+								User_Password_input_2.setText("");
+							}
+			 }
+								
+				
             @Override
             public void handle(ActionEvent event) {
                 try 
