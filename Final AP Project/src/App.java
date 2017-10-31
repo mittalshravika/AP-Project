@@ -26,18 +26,38 @@ public class App {
 		ObjectInputStream in = null;
 		try
 		{
-			user_List = new ArrayList<>();
-			in = new ObjectInputStream(new FileInputStream("./"+ A + ".ser"));
-			//System.out.println("Check2");
-			while(true)
-			{	try
-				{	
-					User Input = (User)in.readObject();
-					user_List.add(Input);
+			if(A.equals("UserList"))
+			{
+				user_List = new ArrayList<>();
+				in = new ObjectInputStream(new FileInputStream("./"+ A + ".ser"));
+				//System.out.println("Check2");
+				while(true)
+				{	try
+					{	
+						User Input = (User)in.readObject();
+						user_List.add(Input);
+					}
+					catch (Exception e)
+					{
+						break;
+					}
 				}
-				catch (Exception e)
-				{
-					break;
+			}
+			else if(A.equals("courselist"))
+			{
+				course_List = new ArrayList<>();
+				in = new ObjectInputStream(new FileInputStream("./"+ A + ".ser"));
+				//System.out.println("Check2");
+				while(true)
+				{	try
+					{	
+						Course Input = (Course)in.readObject();
+						course_List.add(Input);
+					}
+					catch (Exception e)
+					{
+						break;
+					}
 				}
 			}
 		}
