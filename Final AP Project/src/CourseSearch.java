@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -52,6 +54,18 @@ public class CourseSearch extends Application
 			@Override
 			public void handle(ActionEvent event) {
 				
+				try 
+				{
+					App.deserialize("courselist");
+					String str = Search.getText();
+					search_Course obj = new search_Course(str, App.course_List);
+					App.serialize("courselist", "course");
+				} catch (ClassNotFoundException | IOException e)
+				{
+					e.printStackTrace();
+				}
+				
+				
 			}
 			
 		});
@@ -79,7 +93,7 @@ public class CourseSearch extends Application
 		
 		y.setStyle("-fx-background-color: #00DDDD");
 		CourseSearchScene = new Scene(y, 1000, 600);
-		CourseSearchScene.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());
+		//CourseSearchScene.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());
 
 		primaryStage.setScene(CourseSearchScene);	
 		primaryStage.show();

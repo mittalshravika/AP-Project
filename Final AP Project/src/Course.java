@@ -26,7 +26,7 @@ public class Course implements Serializable{
 	private String wed;
 	private String thurs;
 	private String fri;
-	private String postconditions;
+	String postconditions;
 	
 	public Course(String coursetype, String coursename, String coursecode, String instructorname, String credits, String acronym, String mon, String tue, String wed, String thurs, String fri, String postconditions) 
 	{
@@ -85,11 +85,20 @@ public class Course implements Serializable{
 	            br.readLine();
 	            while ((line = br.readLine()) != null) 
 	            {
+	                int a = line.indexOf("\"");
+	                if(a>0)
+	                {
+	                	String str = line.substring(a, line.length());
+	                	String str2 = str.replace(",", "|");
+	                	line = line.substring(0, a) + str2;
+	                }
+	                
 	                String[] courseDetails = line.split(",");
 	                
 	                if(courseDetails.length > 0 )
 	                {
-	                    Course newcourse = new Course(courseDetails[1], courseDetails[2], courseDetails[3], courseDetails[4], courseDetails[5], courseDetails[6], courseDetails[7], courseDetails[8], courseDetails[9], courseDetails[10], courseDetails[11], courseDetails[12]);
+	                	String str = courseDetails[12].replace("|", ",");
+	                    Course newcourse = new Course(courseDetails[1], courseDetails[2], courseDetails[3], courseDetails[4], courseDetails[5], courseDetails[6], courseDetails[7], courseDetails[8], courseDetails[9], courseDetails[10], courseDetails[11], str);
 	                    add_Course(App.course_List, newcourse);
 	                }
 	            }
@@ -98,7 +107,6 @@ public class Course implements Serializable{
 	        {
 	            ee.printStackTrace();
 	        }
-	        
 	        App.serialize("courselist", "course");
 	    }
 }
