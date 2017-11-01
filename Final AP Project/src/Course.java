@@ -16,7 +16,7 @@ public class Course implements Serializable{
 	private static final long serialVersionUID = 1L;
 	/* Database variables */
 	private String coursetype;
-	private String coursename;
+	String coursename;
 	private String coursecode;
 	private String instructorname;
 	private String credits;

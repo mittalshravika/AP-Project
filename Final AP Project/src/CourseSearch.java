@@ -6,7 +6,6 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 //import javafx.scene.layout.StackPane;
 import javafx.scene.control.*;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.layout.GridPane;
@@ -60,6 +59,7 @@ public class CourseSearch extends Application
 					String str = Search.getText();
 					search_Course obj = new search_Course(str, App.course_List);
 					App.serialize("courselist", "course");
+					Search.setText("");
 				} catch (ClassNotFoundException | IOException e)
 				{
 					e.printStackTrace();
