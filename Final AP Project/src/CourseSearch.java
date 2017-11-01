@@ -93,7 +93,7 @@ public class CourseSearch extends Application
 		
 		y.setStyle("-fx-background-color: #00DDDD");
 		CourseSearchScene = new Scene(y, 1000, 600);
-		//CourseSearchScene.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());
+		CourseSearchScene.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());
 
 		primaryStage.setScene(CourseSearchScene);	
 		primaryStage.show();

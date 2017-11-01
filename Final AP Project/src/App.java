@@ -6,10 +6,10 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class App {
 	static List<User> user_List = new ArrayList<>();
 	static List<Course> course_List = new ArrayList<>();
+	static List<Course> core_Course_List = new ArrayList<>();
 	
 	public static List<User> getUser_List() {
 		return user_List;
@@ -90,6 +90,15 @@ public class App {
 				for(int i = 0; i < course_List.size(); i++)
 				{
 					Output2 = course_List.get(i);
+					out.writeObject(Output2);
+				}
+			}
+			else if(B.equals("corecourse"))
+			{
+				out = new ObjectOutputStream(new FileOutputStream("./" + A + ".ser"));
+				for(int i = 0; i < core_Course_List.size(); i++)
+				{
+					Output2 = core_Course_List.get(i);
 					out.writeObject(Output2);
 				}
 			}
