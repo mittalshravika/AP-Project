@@ -120,17 +120,16 @@ public class CoursePage extends Application
 		GridPane.setConstraints(Timings_D, 1, 5);
 
 		Button Back = new Button("Back");
-
-		//GridPane.setConstraints(SignUpPage, 0, 4);
-		//GridPane.setConstraints(SignUpPageButton, 1, 4);
+		Button Register = new Button("Register Course");
 
 		Label l = new Label("IIIT-D");
 		l.setAlignment(Pos.TOP_LEFT);
 		l.getStyleClass().add("labelIIITD");
 		
 		HBox x1 = new HBox();
-		x1.getChildren().add(Back);
-		x1.setAlignment(Pos.BOTTOM_RIGHT);
+		x1.getChildren().addAll(Register, Back);
+		x1.setAlignment(Pos.BOTTOM_LEFT);
+		x1.setSpacing(710);
 		
 		Course.getChildren().addAll(Name, Name_D, Number, Number_D, Instructor, Instructor_D, Type, Type_D, PCond, PCond_D, Timings, Timings_D);
 		y.getChildren().addAll(l, x, Course, x1); 
