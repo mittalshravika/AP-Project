@@ -12,11 +12,10 @@ public class Course implements Serializable{
 	private User faculty; 
 	private String type_Of_Course;
 	private List<Lecture> timings;  */
-
-	private static final long serialVersionUID = 1L;
+	
 	/* Database variables */
 	private String coursetype;
-	String coursename;
+	private String coursename;
 	private String coursecode;
 	private String instructorname;
 	private String credits;
@@ -26,7 +25,61 @@ public class Course implements Serializable{
 	private String wed;
 	private String thurs;
 	private String fri;
-	String postconditions;
+	private String postconditions;
+
+	private static final long serialVersionUID = 1L;
+	
+	public String getCoursetype() {
+		return coursetype;
+	}
+
+	public String getCoursename() {
+		return coursename;
+	}
+
+	public String getCoursecode() {
+		return coursecode;
+	}
+
+	public String getInstructorname() {
+		return instructorname;
+	}
+
+	public String getCredits() {
+		return credits;
+	}
+
+	public String getAcronym() {
+		return acronym;
+	}
+
+	public String getMon() {
+		return mon;
+	}
+
+	public String getTue() {
+		return tue;
+	}
+
+	public String getWed() {
+		return wed;
+	}
+
+	public String getThurs() {
+		return thurs;
+	}
+
+	public String getFri() {
+		return fri;
+	}
+
+	public String getPostconditions() {
+		return postconditions;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 	
 	public Course(String coursetype, String coursename, String coursecode, String instructorname, String credits, String acronym, String mon, String tue, String wed, String thurs, String fri, String postconditions) 
 	{

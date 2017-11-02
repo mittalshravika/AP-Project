@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javafx.application.Application;
@@ -18,9 +19,12 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.ComboBoxListCell;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.geometry.Pos;
@@ -62,8 +66,48 @@ public class CourseList extends Application
 		data.clear();
 		for(int i = 0 ; i<search_Course.course_Search_List.size() ; i++)
 		{
-			data.add(search_Course.course_Search_List.get(i).coursename);
+			data.add(search_Course.course_Search_List.get(i).getCoursename());
 		}
+		
+		list.setOnMouseClicked(new EventHandler<MouseEvent>(){
+
+			public Course get_Course(String str)
+			{
+				Course obj = null;
+				for(int i = 0 ; i<App.course_List.size() ; i++)
+				{
+					if(str.equals(App.course_List.get(i).getCoursename()))
+					{
+						obj = App.course_List.get(i);
+					}
+				}
+				return obj;
+			}
+			
+			@Override
+			public void handle(MouseEvent event) {
+				
+				String str = list.getSelectionModel().getSelectedItem();
+				
+				Submit.setOnAction(new EventHandler<ActionEvent>(){
+
+					@Override
+					public void handle(ActionEvent event) {
+						Course object = get_Course(str);
+						try 
+						{
+							new CoursePage(object).start(primaryStage);
+						} 
+						catch (Exception e) 
+						{
+							e.printStackTrace();
+						}
+					}
+				});
+				
+			}
+		});
+
 		ScrollPane pane = new ScrollPane();
 		pane.setContent(list);
 		pane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);

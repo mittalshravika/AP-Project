@@ -41,7 +41,7 @@ public class search_Course {
 			{
 				boolean flag = true;
 				Course object = all_Courses.get(i);
-				String[] arrpost = object.postconditions.split(";");
+				String[] arrpost = object.getPostconditions().split(";");
 				for(int k = 0 ; k<arrpost.length ; k++)
 				{
 					String post1 = arrpost[k];
@@ -62,7 +62,7 @@ public class search_Course {
 						{
 							for(int p = 0 ; p<App.course_List.size() ; p++)
 							{
-								if(App.course_List.get(p).coursename.equals(object.coursename) && (h.get(object)==0))
+								if(App.course_List.get(p).getCoursename().equals(object.getCoursename()) && (h.get(object)==0))
 								{
 									add_Course(App.course_List.get(p));
 									h.put(object, 1);
