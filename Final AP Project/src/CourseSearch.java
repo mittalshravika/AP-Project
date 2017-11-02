@@ -99,5 +99,4 @@ public class CourseSearch extends Application
 		primaryStage.setScene(CourseSearchScene);	
 		primaryStage.show();
 	}
-
 }
