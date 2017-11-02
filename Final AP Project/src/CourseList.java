@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -57,6 +59,11 @@ public class CourseList extends Application
 		ListView<String> list = new ListView<String>();
 		ObservableList<String> data = FXCollections.observableArrayList("Advanced Programing", "Discrete Maths", "DSA", "Introduction to Programing", "Linear Algebra", "Probability and Statistics", "Computer Organistation", "Operating Systems", "System Management", "Digital Circuits", "Basic Electronics", "Real Analysis", "Calculus", "Differential Equations", "Advanced Design of Algorithms", "Number Theory", "DBMS", "Signals and Systems", "Circuit Theory and Devices");
 		list.setItems(data);
+		data.clear();
+		for(int i = 0 ; i<search_Course.course_Search_List.size() ; i++)
+		{
+			data.add(search_Course.course_Search_List.get(i).coursename);
+		}
 		ScrollPane pane = new ScrollPane();
 		pane.setContent(list);
 		pane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);

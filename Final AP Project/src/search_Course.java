@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class search_Course {
@@ -5,8 +6,14 @@ public class search_Course {
 	private String search_Keywords;
 	private String add_Course;
 	private List<Course> all_Courses;
+	static List<Course> course_Search_List = new ArrayList<Course>();
 	private User s;
 	
+	public List<Course> getCourse_Search_List()
+	{
+		return course_Search_List;
+	}
+
 	public search_Course(String search_Keywords, List<Course> all_Courses) {
 		
 		this.search_Keywords = search_Keywords;
@@ -42,7 +49,14 @@ public class search_Course {
 						word = word.replace(")", "");
 						if(word.equalsIgnoreCase(arr[j]))
 						{
-							System.out.println(object.coursename);
+							for(int p = 0 ; p<App.course_List.size() ; p++)
+							{
+								if(App.course_List.get(p).coursename.equals(object.coursename))
+								{
+									add_Course(App.course_List.get(p));
+									break;
+								}
+							}
 							flag = false;
 							break;
 						}
@@ -57,9 +71,9 @@ public class search_Course {
 		return false;
 	}
 	
-	void add_Course()
+	void add_Course(Course c)
 	{
-		
+		course_Search_List.add(c);	
 	}
 	
 	void deserialise()

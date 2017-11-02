@@ -60,6 +60,7 @@ public class CourseSearch extends Application
 					search_Course obj = new search_Course(str, App.course_List);
 					App.serialize("courselist", "course");
 					Search.setText("");
+					new CourseList().start(primaryStage);
 				} catch (ClassNotFoundException | IOException e)
 				{
 					e.printStackTrace();
