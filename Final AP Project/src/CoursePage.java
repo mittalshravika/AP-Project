@@ -120,6 +120,16 @@ public class CoursePage extends Application
 		GridPane.setConstraints(Timings_D, 1, 5);
 
 		Button Back = new Button("Back");
+		Back.setOnAction(new EventHandler<ActionEvent>(){
+
+			@Override
+			public void handle(ActionEvent event) {
+				
+				new CourseList().start(primaryStage);
+				
+			}
+			
+		});
 		Button Register = new Button("Register Course");
 
 		Label l = new Label("IIIT-D");
