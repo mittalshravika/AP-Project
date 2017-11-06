@@ -60,6 +60,23 @@ public class App {
 					}
 				}
 			}
+			else if(A.equals("corecourselist"))
+			{
+				core_Course_List = new ArrayList<>();
+				in = new ObjectInputStream(new FileInputStream("./"+ A + ".ser"));
+				//System.out.println("Check2");
+				while(true)
+				{	try
+					{	
+						Course Input = (Course)in.readObject();
+						core_Course_List.add(Input);
+					}
+					catch (Exception e)
+					{
+						break;
+					}
+				}
+			}
 		}
 		finally
 		{

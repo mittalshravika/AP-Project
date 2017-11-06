@@ -3,7 +3,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
 
-public class coure_Courses {
+public class core_Courses {
 	
 	static void add_Course(List<Course> global_Course_List, Course obj)
 	{
