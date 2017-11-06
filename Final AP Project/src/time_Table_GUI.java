@@ -146,9 +146,6 @@ public class time_Table_GUI extends Application
 					endtime = endtime + " AM";
 				}
 				
-				System.out.println(starttime);
-				System.out.println(endtime);
-				
 				DateTimeFormatter format = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
 		        LocalTime time1 = LocalTime.parse(starttime, format);
 		        LocalTime time2 = LocalTime.parse(endtime, format);
@@ -193,9 +190,6 @@ public class time_Table_GUI extends Application
 				{
 					endtime = endtime + " AM";
 				}
-				
-				System.out.println(starttime);
-				System.out.println(endtime);
 				
 				DateTimeFormatter format = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
 		        LocalTime time1 = LocalTime.parse(starttime, format);
@@ -242,9 +236,6 @@ public class time_Table_GUI extends Application
 					endtime = endtime + " AM";
 				}
 				
-				System.out.println(starttime);
-				System.out.println(endtime);
-				
 				DateTimeFormatter format = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
 		        LocalTime time1 = LocalTime.parse(starttime, format);
 		        LocalTime time2 = LocalTime.parse(endtime, format);
@@ -290,9 +281,6 @@ public class time_Table_GUI extends Application
 					endtime = endtime + " AM";
 				}
 				
-				System.out.println(starttime);
-				System.out.println(endtime);
-				
 				DateTimeFormatter format = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
 		        LocalTime time1 = LocalTime.parse(starttime, format);
 		        LocalTime time2 = LocalTime.parse(endtime, format);
@@ -337,9 +325,6 @@ public class time_Table_GUI extends Application
 				{
 					endtime = endtime + " AM";
 				}
-				
-				System.out.println(starttime);
-				System.out.println(endtime);
 				
 				DateTimeFormatter format = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
 		        LocalTime time1 = LocalTime.parse(starttime, format);
