@@ -1,3 +1,8 @@
+import java.io.IOException;
+import java.time.Duration;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,8 +16,11 @@ public class search_Course {
 	private HashMap<Course, Integer> h = new HashMap<Course, Integer>();
 	private User s;
 
-	public search_Course(String search_Keywords, List<Course> all_Courses) {
+	public search_Course(String search_Keywords, List<Course> all_Courses) throws ClassNotFoundException, IOException {
 		
+		s = new User();
+		s.obj = new time_Table();
+		s.obj.core_Courses();
 		this.search_Keywords = search_Keywords;
 		this.all_Courses = all_Courses;
 		search_Post_Condition(search_Keywords, all_Courses);
@@ -78,14 +86,285 @@ public class search_Course {
 		}
 	}
 	
-	boolean check_Course()
+	boolean check_Course(Course c, ArrayList<ArrayList<Boolean>> student_Time_Table)
 	{
-		return false;
+		
+		ArrayList<String> h = new ArrayList<String>();
+		h.add("8:00");
+		h.add("8:30");
+		h.add("9:00");
+		h.add("9:30");
+		h.add("10:00");
+		h.add("10:30");
+		h.add("11:00");
+		h.add("11:30");
+		h.add("12:00");
+		h.add("12:30");
+		h.add("1:00");
+		h.add("1:30");
+		h.add("2:00");
+		h.add("2:30");
+		h.add("3:00");
+		h.add("3:30");
+		h.add("4:00");
+		h.add("4:30");
+		h.add("5:00");
+		h.add("5:30");
+		
+		if(!(c.getMon().equals("-")))
+		{
+			String str = c.getMon();
+			String[] timevenue = str.split(";");
+			String duration = timevenue[0];
+			String room = timevenue[1];
+			String[] time = duration.split("-");
+			String starttime = time[0];
+			String endtime = time[1];
+			String[] start = starttime.split(":");
+			String[] end = endtime.split(":");
+			
+			if(Integer.parseInt(start[0])!=8 && Integer.parseInt(start[0])!=9 && Integer.parseInt(start[0])!=10 && Integer.parseInt(start[0])!=11)
+			{
+				starttime = starttime + " PM";
+			}
+			else
+			{
+				starttime = starttime + " AM";
+			}
+			
+			if(Integer.parseInt(end[0])!=8 && Integer.parseInt(end[0])!=9 && Integer.parseInt(end[0])!=10 && Integer.parseInt(end[0])!=11)
+			{
+				endtime = endtime + " PM";
+			}
+			else
+			{
+				endtime = endtime + " AM";
+			}
+			
+			DateTimeFormatter format = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
+	        LocalTime time1 = LocalTime.parse(starttime, format);
+	        LocalTime time2 = LocalTime.parse(endtime, format);
+	        Duration duration1 = Duration.between(time1, time2);
+	        int slots = (int) Math.abs(duration1.getSeconds() / 60);
+	        
+	        int s = h.indexOf(time[0]);
+	        int limit = s + (slots/30);
+	        
+	        for(int j = s ; j<limit ; j++)
+	        {
+	        	if(student_Time_Table.get(0).get(j) == true)
+	        	{
+	        		return false;
+	        	}
+	        }
+		
+		}
+		
+		if(!(c.getTue().equals("-")))
+		{
+			String str = c.getTue();
+			String[] timevenue = str.split(";");
+			String duration = timevenue[0];
+			String room = timevenue[1];
+			String[] time = duration.split("-");
+			String starttime = time[0];
+			String endtime = time[1];
+			String[] start = starttime.split(":");
+			String[] end = endtime.split(":");
+			
+			if(Integer.parseInt(start[0])!=8 && Integer.parseInt(start[0])!=9 && Integer.parseInt(start[0])!=10 && Integer.parseInt(start[0])!=11)
+			{
+				starttime = starttime + " PM";
+			}
+			else
+			{
+				starttime = starttime + " AM";
+			}
+			
+			if(Integer.parseInt(end[0])!=8 && Integer.parseInt(end[0])!=9 && Integer.parseInt(end[0])!=10 && Integer.parseInt(end[0])!=11)
+			{
+				endtime = endtime + " PM";
+			}
+			else
+			{
+				endtime = endtime + " AM";
+			}
+			
+			DateTimeFormatter format = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
+	        LocalTime time1 = LocalTime.parse(starttime, format);
+	        LocalTime time2 = LocalTime.parse(endtime, format);
+	        Duration duration1 = Duration.between(time1, time2);
+	        int slots = (int) Math.abs(duration1.getSeconds() / 60);
+	        
+	        int s = h.indexOf(time[0]);
+	        int limit = s + (slots/30);
+	        
+	        for(int j = s ; j<limit ; j++)
+	        {
+	        	if(student_Time_Table.get(1).get(j) == true)
+	        	{
+	        		return false;
+	        	}
+	        }
+		
+		}
+		
+		if(!(c.getWed().equals("-")))
+		{
+			String str = c.getWed();
+			String[] timevenue = str.split(";");
+			String duration = timevenue[0];
+			String room = timevenue[1];
+			String[] time = duration.split("-");
+			String starttime = time[0];
+			String endtime = time[1];
+			String[] start = starttime.split(":");
+			String[] end = endtime.split(":");
+			
+			if(Integer.parseInt(start[0])!=8 && Integer.parseInt(start[0])!=9 && Integer.parseInt(start[0])!=10 && Integer.parseInt(start[0])!=11)
+			{
+				starttime = starttime + " PM";
+			}
+			else
+			{
+				starttime = starttime + " AM";
+			}
+			
+			if(Integer.parseInt(end[0])!=8 && Integer.parseInt(end[0])!=9 && Integer.parseInt(end[0])!=10 && Integer.parseInt(end[0])!=11)
+			{
+				endtime = endtime + " PM";
+			}
+			else
+			{
+				endtime = endtime + " AM";
+			}
+			
+			DateTimeFormatter format = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
+	        LocalTime time1 = LocalTime.parse(starttime, format);
+	        LocalTime time2 = LocalTime.parse(endtime, format);
+	        Duration duration1 = Duration.between(time1, time2);
+	        int slots = (int) Math.abs(duration1.getSeconds() / 60);
+	        
+	        int s = h.indexOf(time[0]);
+	        int limit = s + (slots/30);
+	        
+	        for(int j = s ; j<limit ; j++)
+	        {
+	        	if(student_Time_Table.get(2).get(j) == true)
+	        	{
+	        		return false;
+	        	}
+	        }
+		
+		}
+		
+		if(!(c.getThurs().equals("-")))
+		{
+			String str = c.getThurs();
+			String[] timevenue = str.split(";");
+			String duration = timevenue[0];
+			String room = timevenue[1];
+			String[] time = duration.split("-");
+			String starttime = time[0];
+			String endtime = time[1];
+			String[] start = starttime.split(":");
+			String[] end = endtime.split(":");
+			
+			if(Integer.parseInt(start[0])!=8 && Integer.parseInt(start[0])!=9 && Integer.parseInt(start[0])!=10 && Integer.parseInt(start[0])!=11)
+			{
+				starttime = starttime + " PM";
+			}
+			else
+			{
+				starttime = starttime + " AM";
+			}
+			
+			if(Integer.parseInt(end[0])!=8 && Integer.parseInt(end[0])!=9 && Integer.parseInt(end[0])!=10 && Integer.parseInt(end[0])!=11)
+			{
+				endtime = endtime + " PM";
+			}
+			else
+			{
+				endtime = endtime + " AM";
+			}
+			
+			DateTimeFormatter format = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
+	        LocalTime time1 = LocalTime.parse(starttime, format);
+	        LocalTime time2 = LocalTime.parse(endtime, format);
+	        Duration duration1 = Duration.between(time1, time2);
+	        int slots = (int) Math.abs(duration1.getSeconds() / 60);
+	        
+	        int s = h.indexOf(time[0]);
+	        int limit = s + (slots/30);
+	        
+	        for(int j = s ; j<limit ; j++)
+	        {
+	        	if(student_Time_Table.get(3).get(j) == true)
+	        	{
+	        		return false;
+	        	}
+	        }
+		
+		}
+		
+		if(!(c.getFri().equals("-")))
+		{
+			String str = c.getFri();
+			String[] timevenue = str.split(";");
+			String duration = timevenue[0];
+			String room = timevenue[1];
+			String[] time = duration.split("-");
+			String starttime = time[0];
+			String endtime = time[1];
+			String[] start = starttime.split(":");
+			String[] end = endtime.split(":");
+			
+			if(Integer.parseInt(start[0])!=8 && Integer.parseInt(start[0])!=9 && Integer.parseInt(start[0])!=10 && Integer.parseInt(start[0])!=11)
+			{
+				starttime = starttime + " PM";
+			}
+			else
+			{
+				starttime = starttime + " AM";
+			}
+			
+			if(Integer.parseInt(end[0])!=8 && Integer.parseInt(end[0])!=9 && Integer.parseInt(end[0])!=10 && Integer.parseInt(end[0])!=11)
+			{
+				endtime = endtime + " PM";
+			}
+			else
+			{
+				endtime = endtime + " AM";
+			}
+			
+			DateTimeFormatter format = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
+	        LocalTime time1 = LocalTime.parse(starttime, format);
+	        LocalTime time2 = LocalTime.parse(endtime, format);
+	        Duration duration1 = Duration.between(time1, time2);
+	        int slots = (int) Math.abs(duration1.getSeconds() / 60);
+	        
+	        int s = h.indexOf(time[0]);
+	        int limit = s + (slots/30);
+	        
+	        for(int j = s ; j<limit ; j++)
+	        {
+	        	if(student_Time_Table.get(4).get(j) == true)
+	        	{
+	        		return false;
+	        	}
+	        }
+		
+		}
+	
+		return true;
 	}
 	
 	void add_Course(Course c)
 	{
-		course_Search_List.add(c);	
+		if(check_Course(c, s.obj.student_Time_Table))
+		{
+			course_Search_List.add(c);	
+		}
 	}
 	
 	void deserialise()

@@ -9,6 +9,7 @@ public class User implements Serializable
 	private String email_id;
 	private String password;
 	private user_Page page;
+	time_Table obj;
 	
 	public User(String A, String B, String C)
 	{
@@ -18,6 +19,10 @@ public class User implements Serializable
 		this.page = null;
 	}
 	
+	public User() {
+		// TODO Auto-generated constructor stub
+	}
+
 	static boolean Sign_Up(String Name, String Email, String Type, String Pass1, String Pass2)
 	{
 		return false;
