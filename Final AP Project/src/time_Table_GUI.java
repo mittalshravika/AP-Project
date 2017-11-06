@@ -103,14 +103,19 @@ public class time_Table_GUI extends Application
 		t31.setDisable(true);
 		
 		TextField t1 = new TextField("Mon");
+		t1.setDisable(true);
 		
 		TextField ta = new TextField("Tue");
+		ta.setDisable(true);
 		
 		TextField w1 = new TextField("Wed");
+		w1.setDisable(true);
 		
 		TextField th1 = new TextField("Thurs");
+		th1.setDisable(true);
 		
 		TextField f1 = new TextField("Fri");
+		f1.setDisable(true);
 		
 		App.deserialize("corecourselist");
 		
