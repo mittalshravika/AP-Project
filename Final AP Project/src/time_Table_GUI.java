@@ -157,8 +157,25 @@ public class time_Table_GUI extends Application
 		        Duration duration1 = Duration.between(time1, time2);
 		        int slots = (int) Math.abs(duration1.getSeconds() / 60);
 		        
-		        TextField a = new TextField(App.core_Course_List.get(i).getAcronym()+" "+room);
-		        a.setDisable(true);
+		        TextField a = null;
+		        
+		        String[] name = App.core_Course_List.get(i).getCoursename().split(";");
+		        
+		        if(name[0].equals("TUT"))
+		        {
+			        a = new TextField("TUT"+" "+App.core_Course_List.get(i).getAcronym()+" "+room);
+			        a.setDisable(true);
+		        }
+		        else if(name[0].equals("LAB"))
+		        {
+		        	a = new TextField("LAB"+" "+App.core_Course_List.get(i).getAcronym()+" "+room);
+			        a.setDisable(true);
+		        }
+		        else
+		        {
+		        	a = new TextField(App.core_Course_List.get(i).getAcronym()+" "+room);
+			        a.setDisable(true);
+		        }
 		        
 		        int s = h.indexOf(time[0]);
 		        
@@ -202,8 +219,25 @@ public class time_Table_GUI extends Application
 		        Duration duration1 = Duration.between(time1, time2);
 		        int slots = (int) Math.abs(duration1.getSeconds() / 60);
 		        
-		        TextField a = new TextField(App.core_Course_List.get(i).getAcronym()+" "+room);
-		        a.setDisable(true);
+		        TextField a = null;
+		        
+		        String[] name = App.core_Course_List.get(i).getCoursename().split(";");
+		        
+		        if(name[0].equals("TUT"))
+		        {
+			        a = new TextField("TUT"+" "+App.core_Course_List.get(i).getAcronym()+" "+room);
+			        a.setDisable(true);
+		        }
+		        else if(name[0].equals("LAB"))
+		        {
+		        	a = new TextField("LAB"+" "+App.core_Course_List.get(i).getAcronym()+" "+room);
+			        a.setDisable(true);
+		        }
+		        else
+		        {
+		        	a = new TextField(App.core_Course_List.get(i).getAcronym()+" "+room);
+			        a.setDisable(true);
+		        }
 		        
 		        int s = h.indexOf(time[0]);
 		        
@@ -247,8 +281,25 @@ public class time_Table_GUI extends Application
 		        Duration duration1 = Duration.between(time1, time2);
 		        int slots = (int) Math.abs(duration1.getSeconds() / 60);
 		        
-		        TextField a = new TextField(App.core_Course_List.get(i).getAcronym()+" "+room);
-		        a.setDisable(true);
+		        TextField a = null;
+		        
+		        String[] name = App.core_Course_List.get(i).getCoursename().split(";");
+		        
+		        if(name[0].equals("TUT"))
+		        {
+			        a = new TextField("TUT"+" "+App.core_Course_List.get(i).getAcronym()+" "+room);
+			        a.setDisable(true);
+		        }
+		        else if(name[0].equals("LAB"))
+		        {
+		        	a = new TextField("LAB"+" "+App.core_Course_List.get(i).getAcronym()+" "+room);
+			        a.setDisable(true);
+		        }
+		        else
+		        {
+		        	a = new TextField(App.core_Course_List.get(i).getAcronym()+" "+room);
+			        a.setDisable(true);
+		        }
 		        
 		        int s = h.indexOf(time[0]);
 		        
@@ -292,8 +343,25 @@ public class time_Table_GUI extends Application
 		        Duration duration1 = Duration.between(time1, time2);
 		        int slots = (int) Math.abs(duration1.getSeconds() / 60);
 		        
-		        TextField a = new TextField(App.core_Course_List.get(i).getAcronym()+" "+room);
-		        a.setDisable(true);
+		        TextField a = null;
+		        
+		        String[] name = App.core_Course_List.get(i).getCoursename().split(";");
+		        
+		        if(name[0].equals("TUT"))
+		        {
+			        a = new TextField("TUT"+" "+App.core_Course_List.get(i).getAcronym()+" "+room);
+			        a.setDisable(true);
+		        }
+		        else if(name[0].equals("LAB"))
+		        {
+		        	a = new TextField("LAB"+" "+App.core_Course_List.get(i).getAcronym()+" "+room);
+			        a.setDisable(true);
+		        }
+		        else
+		        {
+		        	a = new TextField(App.core_Course_List.get(i).getAcronym()+" "+room);
+			        a.setDisable(true);
+		        }
 		        
 		        int s = h.indexOf(time[0]);
 		        
@@ -337,8 +405,25 @@ public class time_Table_GUI extends Application
 		        Duration duration1 = Duration.between(time1, time2);
 		        int slots = (int) Math.abs(duration1.getSeconds() / 60);
 		        
-		        TextField a = new TextField(App.core_Course_List.get(i).getAcronym()+" "+room);
-		        a.setDisable(true);
+		        TextField a = null;
+		        
+		        String[] name = App.core_Course_List.get(i).getCoursename().split(";");
+		        
+		        if(name[0].equals("TUT"))
+		        {
+			        a = new TextField("TUT"+" "+App.core_Course_List.get(i).getAcronym()+" "+room);
+			        a.setDisable(true);
+		        }
+		        else if(name[0].equals("LAB"))
+		        {
+		        	a = new TextField("LAB"+" "+App.core_Course_List.get(i).getAcronym()+" "+room);
+			        a.setDisable(true);
+		        }
+		        else
+		        {
+		        	a = new TextField(App.core_Course_List.get(i).getAcronym()+" "+room);
+			        a.setDisable(true);
+		        }
 		        
 		        int s = h.indexOf(time[0]);
 		        
