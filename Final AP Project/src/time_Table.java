@@ -7,8 +7,6 @@ import java.time.format.FormatStyle;
 import java.util.ArrayList;
 import java.util.List;
 
-import javafx.scene.control.TextField;
-
 public class time_Table implements Serializable{
 	
 	private List<Course> courses;
