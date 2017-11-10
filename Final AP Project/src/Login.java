@@ -85,7 +85,7 @@ public class Login extends Application
 		Label User_Password = new Label("Password:");
 		User_Password.setStyle("-fx-font: normal 20px 'sans-serif' ");
 		GridPane.setConstraints(User_Password, 0, 2);
-		TextField User_Password_input = new TextField();
+		PasswordField User_Password_input = new PasswordField();
 		User_Password_input.setStyle("-fx-border-color: #00DDDD ");
 		GridPane.setConstraints(User_Password_input, 1, 2);
 		
@@ -93,7 +93,7 @@ public class Login extends Application
 		Label User_Password_2 = new Label("Retype Password:");
 		User_Password_2.setStyle("-fx-font: normal 20px 'sans-serif' ");
 		GridPane.setConstraints(User_Password_2, 0, 3);
-		TextField User_Password_input_2 = new TextField();
+		PasswordField User_Password_input_2 = new PasswordField();
 		User_Password_input_2.setStyle("-fx-border-color: #00DDDD ");
 		GridPane.setConstraints(User_Password_input_2, 1, 3);
 
