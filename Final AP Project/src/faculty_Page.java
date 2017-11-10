@@ -38,9 +38,9 @@ public	class faculty_Page extends Application
 		Label l2 = new Label("Type:");
 		Label l3 = new Label("Courses:");
 		
-		btn.setOnAction(e -> {new book_Room(1).start(primaryStage);});
-		btn2.setOnAction(e -> {new book_Room(1).start(primaryStage);});
-		btn3.setOnAction(e -> {new FacultyBooking(1).start(primaryStage);});
+		btn.setOnAction(e -> {new book_Room(1, faculty_User).start(primaryStage);});
+		btn2.setOnAction(e -> {new book_Room(1, faculty_User).start(primaryStage);});
+		btn3.setOnAction(e -> {new FacultyBooking(1, faculty_User).start(primaryStage);});
 		btn4.setOnAction(e -> {try {
 			new Login().start(primaryStage);
 		} catch (Exception e1) {

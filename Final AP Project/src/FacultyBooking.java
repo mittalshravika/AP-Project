@@ -18,9 +18,12 @@ import javafx.geometry.Pos;
 public class FacultyBooking extends Application
 {
 	int type;
-	public FacultyBooking(int a)
+	User current_User;
+	
+	public FacultyBooking(int a, User obj)
 	{
 		type = a;
+		current_User = obj;
 	}
 	
 	public static void main(String[] args)
@@ -124,11 +127,11 @@ public class FacultyBooking extends Application
 		
 		if(type == 1)
 		{
-			Home.setOnAction(e -> {new faculty_Page().start(primaryStage);});
+			Home.setOnAction(e -> {new faculty_Page(current_User).start(primaryStage);});
 		}
 		else if(type == 2)
 		{
-			Home.setOnAction(e -> {new admin_Page().start(primaryStage);});
+			Home.setOnAction(e -> {new admin_Page(current_User).start(primaryStage);});
 		}
 		
 		x.getChildren().addAll(Home, Cancel);

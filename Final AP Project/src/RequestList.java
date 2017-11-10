@@ -14,6 +14,12 @@ import javafx.stage.Stage;
 
 public class RequestList extends Application
 {
+	User current_User;
+	
+	public RequestList(User current_User) 
+	{
+		this.current_User = current_User;
+	}
 	public static void main(String[] args)
 	{
 		launch(args);
@@ -105,7 +111,7 @@ public class RequestList extends Application
 		Button btn2 = new Button("Submit Room Bookings");
 		Button btn3 = new Button("Back");
 		
-		btn3.setOnAction(e -> {new admin_Page().start(primaryStage);});
+		btn3.setOnAction(e -> {new admin_Page(current_User).start(primaryStage);});
 		
 		HBox x2 = new HBox();
 		x2.setSpacing(300);

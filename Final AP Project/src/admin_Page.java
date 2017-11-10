@@ -35,16 +35,16 @@ public class admin_Page extends Application
 		Label l1 = new Label("Name:");
 		Label l2 = new Label("Type:");
 		
-		btn.setOnAction(e -> {new book_Room(2).start(primaryStage);});
-		btn2.setOnAction(e -> {new book_Room(2).start(primaryStage);});
+		btn.setOnAction(e -> {new book_Room(2, admin_User).start(primaryStage);});
+		btn2.setOnAction(e -> {new book_Room(2, admin_User).start(primaryStage);});
 		btn4.setOnAction(e -> {try {
 			new Login().start(primaryStage);
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}});
-		btn3.setOnAction(e -> {new FacultyBooking(2).start(primaryStage);});
-		btn5.setOnAction(e -> {new RequestList().start(primaryStage);});
+		btn3.setOnAction(e -> {new FacultyBooking(2, admin_User).start(primaryStage);});
+		btn5.setOnAction(e -> {new RequestList(admin_User).start(primaryStage);});
 		
 		btn.setPrefHeight(80);
 		btn.setPrefWidth(200);

@@ -17,6 +17,13 @@ import javafx.stage.Stage;
 public class ViewRoomStudent extends Application
 {
 	
+	User current_User;
+	
+	public ViewRoomStudent(User current_User) 
+	{
+		this.current_User = current_User;
+	}
+	
 	public static void main(String[] args)	
 	{	
 		launch(args);	
@@ -30,7 +37,7 @@ public class ViewRoomStudent extends Application
 		Button btn2 = new Button("Submit Room Bookings");
 		Button btn3 = new Button("Back");
 		
-		btn3.setOnAction(e -> {new student_Page().start(primaryStage);});
+		btn3.setOnAction(e -> {new student_Page(current_User).start(primaryStage);});
 		
 		Label Date = new Label("Date:");
 		DatePicker cal = new DatePicker();

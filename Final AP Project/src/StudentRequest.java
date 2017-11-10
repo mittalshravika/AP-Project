@@ -18,6 +18,14 @@ import javafx.geometry.Pos;
 
 public class StudentRequest extends Application
 {
+	
+	User current_User;
+	
+	public StudentRequest(User current_User) 
+	{
+		this.current_User = current_User;
+	}
+	
 	public static void main(String[] args)
 	{
 		launch(args);
@@ -116,7 +124,7 @@ public class StudentRequest extends Application
 		x.getChildren().addAll(Home, Cancel);
 		x.setSpacing(760);
 		
-		Home.setOnAction(e -> {new student_Page().start(primaryStage);});
+		Home.setOnAction(e -> {new student_Page(current_User).start(primaryStage);});
 		
 		elements.getChildren().addAll(l, Title, Table, x);
 		RequestScene = new Scene(elements, 1000, 600);

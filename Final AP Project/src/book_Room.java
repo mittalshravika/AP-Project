@@ -17,10 +17,12 @@ import javafx.stage.Stage;
 public class book_Room extends Application
 {
 	static int type;
-	
-	public book_Room(int a)
+	User current_User;
+
+	public book_Room(int a, User obj)
 	{
 		type = a;
+		current_User = obj;
 	}
 	
 	public static void main(String[] args)	
@@ -38,11 +40,11 @@ public class book_Room extends Application
 		
 		if(type == 1)
 		{
-			btn3.setOnAction(e -> {new faculty_Page().start(primaryStage);});
+			btn3.setOnAction(e -> {new faculty_Page(current_User).start(primaryStage);});
 		}
 		else if(type == 2)
 		{
-			btn3.setOnAction(e -> {new admin_Page().start(primaryStage);});
+			btn3.setOnAction(e -> {new admin_Page(current_User).start(primaryStage);});
 		}
 		
 		Label Date = new Label("Date:");

@@ -13,6 +13,14 @@ import javafx.stage.Stage;
 
 public class personalised_Time_Table extends Application
 {
+	
+	User current_User;
+	
+	public personalised_Time_Table(User current_User) 
+	{
+		this.current_User = current_User;
+	}
+	
 	public static void main(String[] args)	
 	{	
 		launch(args);	
@@ -251,7 +259,7 @@ public class personalised_Time_Table extends Application
 		x.setSpacing(580);
 		
 		Button btn6 = new Button("Back");
-		btn6.setOnAction(e -> {new student_Page().start(primaryStage);});
+		btn6.setOnAction(e -> {new student_Page(current_User).start(primaryStage);});
 		HBox x2 = new HBox();
 		x2.setSpacing(300);
 		x2.getChildren().addAll(btn6);

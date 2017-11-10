@@ -11,6 +11,14 @@ import javafx.geometry.Pos;
 
 public class RequestPage extends Application
 {
+	
+	User current_User;
+	
+	public RequestPage(User current_User) 
+	{
+		this.current_User = current_User;
+	}
+
 	public static void main(String[] args)
 	{
 		launch(args);
@@ -92,7 +100,7 @@ public class RequestPage extends Application
 		Button btn3 = new Button("Back");
 		GridPane.setConstraints(btn3, 0, 30);
 		
-		btn3.setOnAction(e -> {new student_Page().start(primaryStage);});
+		btn3.setOnAction(e -> {new student_Page(current_User).start(primaryStage);});
 
 		grid.getChildren().addAll(Title, Purpose, Purpose_input, Preferred, Preferred_input, Capacity, Capacity_input, Date, Hours, Minutes, M, Duration_input, Time, Duration, Submit, checkInDatePicker, btn3);
 		//GridPane.setC(checkInDatePicker, 1, 5);

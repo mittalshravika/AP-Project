@@ -13,11 +13,11 @@ import javafx.stage.Stage;
 public class student_Page extends Application
 {
 	
-	User student_Page;
+	User student_User;
 	
-	public student_Page(User student_Page)
+	public student_Page(User student_User)
 	{
-		this.student_Page = student_Page;
+		this.student_User = student_User;
 	}
 	
 	public static void main(String[] args)	
@@ -39,9 +39,9 @@ public class student_Page extends Application
 		Label l2 = new Label("Type:");
 		Label l3 = new Label("Courses:");
 		
-		btn.setOnAction(e -> {new ViewRoomStudent().start(primaryStage);});
+		btn.setOnAction(e -> {new ViewRoomStudent(student_User).start(primaryStage);});
 		
-		btn5.setOnAction(e -> {new StudentRequest().start(primaryStage);});
+		btn5.setOnAction(e -> {new StudentRequest(student_User).start(primaryStage);});
 		
 		btn4.setOnAction(e -> {try {
 			new Login().start(primaryStage);
@@ -58,13 +58,13 @@ public class student_Page extends Application
 		}});
 		
 		btn7.setOnAction(e -> {try {
-			new RequestPage().start(primaryStage);
+			new RequestPage(student_User).start(primaryStage);
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}});
 		
-		btn10.setOnAction(e -> {new personalised_Time_Table().start(primaryStage);});
+		btn10.setOnAction(e -> {new personalised_Time_Table(student_User).start(primaryStage);});
 		
 		btn.setPrefHeight(80);
 		btn.setPrefWidth(200);
