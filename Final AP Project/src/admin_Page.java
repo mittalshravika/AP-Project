@@ -12,6 +12,13 @@ import javafx.stage.Stage;
 
 public class admin_Page extends Application
 {
+	User admin_User;
+	
+	public admin_Page(User admin_User) 
+	{
+		this.admin_User = admin_User;
+	}
+	
 	public static void main(String[] args)	
 	{	
 		launch(args);	

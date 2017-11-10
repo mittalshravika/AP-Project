@@ -1,6 +1,5 @@
 import javafx.application.Application;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 //import javafx.scene.layout.StackPane;
@@ -153,7 +152,7 @@ public class Login extends Application
                 
             }
            
-});
+        });
 
 		//Login Button
 		Label LoginPage = new Label("Already a User?");
@@ -214,10 +213,25 @@ public class Login extends Application
 				
 				if(User.Login(Email, Password))
 				{
-					
+					for(int i = 0 ; i<App.user_List.size() ; i++)
+					{
+						if(App.user_List.get(i).getEmail_id().equals(Email))
+						{
+							if(App.user_List.get(i).getType_of_user().equals("Faculty"))
+							{
+								new faculty_Page(App.user_List.get(i)).start(primaryStage);
+							}
+							else if(App.user_List.get(i).getType_of_user().equals("Admin"))
+							{
+								new admin_Page(App.user_List.get(i)).start(primaryStage);
+							}
+							else if(App.user_List.get(i).getType_of_user().equals("Student"))
+							{
+								new student_Page(App.user_List.get(i)).start(primaryStage);
+							}
+						}
+					}
 					System.out.println("Successful Login");
-					//
-					
 				}
 				else
 				{

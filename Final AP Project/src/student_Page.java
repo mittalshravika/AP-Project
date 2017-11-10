@@ -12,6 +12,14 @@ import javafx.stage.Stage;
 
 public class student_Page extends Application
 {
+	
+	User student_Page;
+	
+	public student_Page(User student_Page)
+	{
+		this.student_Page = student_Page;
+	}
+	
 	public static void main(String[] args)	
 	{	
 		launch(args);	

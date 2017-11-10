@@ -12,6 +12,13 @@ import javafx.stage.Stage;
 
 public	class faculty_Page extends Application	
 {	
+	User faculty_User;
+	
+	public faculty_Page(User faculty_User) 
+	{
+		this.faculty_User = faculty_User;
+	}
+	
 	public static void main(String[] args)	
 	{	
 		launch(args);	

@@ -13,6 +13,22 @@ public class User implements Serializable
 	private user_Page page;
 	public time_Table obj;
 	
+	public String getName() {
+		return name;
+	}
+
+	public String getType_of_user() {
+		return type_of_user;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public String getEmail_id() {
+		return email_id;
+	}
+	
 	public User(String A, String B, String C, String D)
 	{
 		this.name = new String(A);
@@ -122,7 +138,7 @@ public class User implements Serializable
 			{
 
 				
-				if(App.getUser_List().get(i).getEmail_Id().equals(Email))
+				if(App.getUser_List().get(i).getEmail_id().equals(Email))
 				{
 					//System.out.println("YOLO");
 					if(App.getUser_List().get(i).getPassword().equals(Pass))
@@ -159,13 +175,4 @@ public class User implements Serializable
 		A.add(B);
 		return true;
 	}
-	String getEmail_Id()
-	{
-		return this.email_id;
-	}
-	String getPassword()
-	{
-		return this.password;
-	}
-
 }
