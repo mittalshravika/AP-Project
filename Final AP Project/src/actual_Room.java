@@ -1,5 +1,6 @@
 import java.io.Serializable;
 import java.lang.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class actual_Room implements Serializable{
@@ -8,6 +9,12 @@ public class actual_Room implements Serializable{
 	private String name;
 	private int capacity;
 	
+	public actual_Room(String name, int capacity)
+	{
+		this.name =new String(name);
+		this.capacity = capacity;
+		list_Of_Weeks = new ArrayList<Week>();
+	}
 	public String get_Name() {
 		return name;
 	}

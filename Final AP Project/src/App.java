@@ -10,6 +10,7 @@ public class App {
 	static List<User> user_List = new ArrayList<>();
 	static List<Course> course_List = new ArrayList<>();
 	static List<Course> core_Course_List = new ArrayList<>();
+	static List<actual_Room> actual_Room_List = new ArrayList<>();
 	
 	public static List<User> getUser_List() {
 		return user_List;
@@ -76,6 +77,10 @@ public class App {
 						break;
 					}
 				}
+			}
+			else if(A.equals("RoomList"))
+			{
+				
 			}
 		}
 		finally
