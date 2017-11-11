@@ -78,6 +78,10 @@ public class App {
 					}
 				}
 			}
+			else if(A.equals("RoomList"))
+			{
+				
+			}
 		}
 		finally
 		{
