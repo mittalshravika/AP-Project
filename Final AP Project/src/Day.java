@@ -78,7 +78,7 @@ public class Day implements Serializable{
 				String str = App.course_List.get(i).getMon();
 				String[] timevenue = str.split(";");
 				String duration = timevenue[0];
-				String room = timevenue[1];
+				String[] room = timevenue[1].split(" ");
 				String[] time = duration.split("-");
 				String starttime = time[0];
 				String endtime = time[1];
@@ -116,25 +116,265 @@ public class Day implements Serializable{
 		        
 		        for(int j = 0 ; j<App.actual_Room_List.size() ; j++)
 		        {
-		        	if(App.actual_Room_List.get(j).get_Name().equals(room))
+		        	for(int m = 0 ; m<room.length ; m++)
 		        	{
-		        		for(int k = 0 ; k<13 ; k++)
-		        		{
-		        			for(int l = s ; l<limit ; l++)
-		    		        {
-		        				App.actual_Room_List.get(j).getList_Of_Weeks().get(k).getWeek_List().get(0).day_List.set(l, true);
-		    		        }
-		        		}
+			        	if(App.actual_Room_List.get(j).get_Name().equals(room[m]))
+			        	{
+			        		for(int k = 0 ; k<13 ; k++)
+			        		{
+			        			for(int l = s ; l<limit ; l++)
+			    		        {
+			        				App.actual_Room_List.get(j).getList_Of_Weeks().get(k).getWeek_List().get(0).day_List.set(l, true);
+			    		        }
+			        		}
+			        	}
 		        	}
 		        }
-		        
 		        App.serialize("roomlist", "room");
-		        
 			}
+			if(!(App.course_List.get(i).getTue().equals("-")))
+			{
+				String str = App.course_List.get(i).getTue();
+				String[] timevenue = str.split(";");
+				String duration = timevenue[0];
+				String[] room = timevenue[1].split(" ");
+				String[] time = duration.split("-");
+				String starttime = time[0];
+				String endtime = time[1];
+				String[] start = starttime.split(":");
+				String[] end = endtime.split(":");
+				
+				if(Integer.parseInt(start[0])!=8 && Integer.parseInt(start[0])!=9 && Integer.parseInt(start[0])!=10 && Integer.parseInt(start[0])!=11)
+				{
+					starttime = starttime + " PM";
+				}
+				else
+				{
+					starttime = starttime + " AM";
+				}
+				
+				if(Integer.parseInt(end[0])!=8 && Integer.parseInt(end[0])!=9 && Integer.parseInt(end[0])!=10 && Integer.parseInt(end[0])!=11)
+				{
+					endtime = endtime + " PM";
+				}
+				else
+				{
+					endtime = endtime + " AM";
+				}
+				
+				DateTimeFormatter format = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
+		        LocalTime time1 = LocalTime.parse(starttime, format);
+		        LocalTime time2 = LocalTime.parse(endtime, format);
+		        Duration duration1 = Duration.between(time1, time2);
+		        int slots = (int) Math.abs(duration1.getSeconds() / 60);
+		        
+		        int s = h.indexOf(time[0]);
+		        int limit = s + (slots/30);
+
+		        App.deserialize("roomlist");
+		        
+		        for(int j = 0 ; j<App.actual_Room_List.size() ; j++)
+		        {
+		        	for(int m = 0 ; m<room.length ; m++)
+		        	{
+			        	if(App.actual_Room_List.get(j).get_Name().equals(room[m]))
+			        	{
+			        		for(int k = 0 ; k<13 ; k++)
+			        		{
+			        			for(int l = s ; l<limit ; l++)
+			    		        {
+			        				App.actual_Room_List.get(j).getList_Of_Weeks().get(k).getWeek_List().get(1).day_List.set(l, true);
+			    		        }
+			        		}
+			        	}
+		        	}
+		        }
+		        App.serialize("roomlist", "room");
+			}
+
+			if(!(App.course_List.get(i).getWed().equals("-")))
+			{
+				String str = App.course_List.get(i).getWed();
+				String[] timevenue = str.split(";");
+				String duration = timevenue[0];
+				String[] room = timevenue[1].split(" ");
+				String[] time = duration.split("-");
+				String starttime = time[0];
+				String endtime = time[1];
+				String[] start = starttime.split(":");
+				String[] end = endtime.split(":");
+				
+				if(Integer.parseInt(start[0])!=8 && Integer.parseInt(start[0])!=9 && Integer.parseInt(start[0])!=10 && Integer.parseInt(start[0])!=11)
+				{
+					starttime = starttime + " PM";
+				}
+				else
+				{
+					starttime = starttime + " AM";
+				}
+				
+				if(Integer.parseInt(end[0])!=8 && Integer.parseInt(end[0])!=9 && Integer.parseInt(end[0])!=10 && Integer.parseInt(end[0])!=11)
+				{
+					endtime = endtime + " PM";
+				}
+				else
+				{
+					endtime = endtime + " AM";
+				}
+				
+				DateTimeFormatter format = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
+		        LocalTime time1 = LocalTime.parse(starttime, format);
+		        LocalTime time2 = LocalTime.parse(endtime, format);
+		        Duration duration1 = Duration.between(time1, time2);
+		        int slots = (int) Math.abs(duration1.getSeconds() / 60);
+		        
+		        int s = h.indexOf(time[0]);
+		        int limit = s + (slots/30);
+
+		        App.deserialize("roomlist");
+		        
+		        for(int j = 0 ; j<App.actual_Room_List.size() ; j++)
+		        {
+		        	for(int m = 0 ; m<room.length ; m++)
+		        	{
+			        	if(App.actual_Room_List.get(j).get_Name().equals(room[m]))
+			        	{
+			        		for(int k = 0 ; k<13 ; k++)
+			        		{
+			        			for(int l = s ; l<limit ; l++)
+			    		        {
+			        				App.actual_Room_List.get(j).getList_Of_Weeks().get(k).getWeek_List().get(2).day_List.set(l, true);
+			    		        }
+			        		}
+			        	}
+		        	}
+		        }
+		        App.serialize("roomlist", "room");
+			}
+			
+
+			if(!(App.course_List.get(i).getThurs().equals("-")))
+			{
+				String str = App.course_List.get(i).getThurs();
+				String[] timevenue = str.split(";");
+				String duration = timevenue[0];
+				String[] room = timevenue[1].split(" ");
+				String[] time = duration.split("-");
+				String starttime = time[0];
+				String endtime = time[1];
+				String[] start = starttime.split(":");
+				String[] end = endtime.split(":");
+				
+				if(Integer.parseInt(start[0])!=8 && Integer.parseInt(start[0])!=9 && Integer.parseInt(start[0])!=10 && Integer.parseInt(start[0])!=11)
+				{
+					starttime = starttime + " PM";
+				}
+				else
+				{
+					starttime = starttime + " AM";
+				}
+				
+				if(Integer.parseInt(end[0])!=8 && Integer.parseInt(end[0])!=9 && Integer.parseInt(end[0])!=10 && Integer.parseInt(end[0])!=11)
+				{
+					endtime = endtime + " PM";
+				}
+				else
+				{
+					endtime = endtime + " AM";
+				}
+				
+				DateTimeFormatter format = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
+		        LocalTime time1 = LocalTime.parse(starttime, format);
+		        LocalTime time2 = LocalTime.parse(endtime, format);
+		        Duration duration1 = Duration.between(time1, time2);
+		        int slots = (int) Math.abs(duration1.getSeconds() / 60);
+		        
+		        int s = h.indexOf(time[0]);
+		        int limit = s + (slots/30);
+
+		        App.deserialize("roomlist");
+		        
+		        for(int j = 0 ; j<App.actual_Room_List.size() ; j++)
+		        {
+		        	for(int m = 0 ; m<room.length ; m++)
+		        	{
+			        	if(App.actual_Room_List.get(j).get_Name().equals(room[m]))
+			        	{
+			        		for(int k = 0 ; k<13 ; k++)
+			        		{
+			        			for(int l = s ; l<limit ; l++)
+			    		        {
+			        				App.actual_Room_List.get(j).getList_Of_Weeks().get(k).getWeek_List().get(3).day_List.set(l, true);
+			    		        }
+			        		}
+			        	}
+		        	}
+		        }
+		        App.serialize("roomlist", "room");
+			}
+			
+
+			if(!(App.course_List.get(i).getFri().equals("-")))
+			{
+				String str = App.course_List.get(i).getFri();
+				String[] timevenue = str.split(";");
+				String duration = timevenue[0];
+				String[] room = timevenue[1].split(" ");
+				String[] time = duration.split("-");
+				String starttime = time[0];
+				String endtime = time[1];
+				String[] start = starttime.split(":");
+				String[] end = endtime.split(":");
+				
+				if(Integer.parseInt(start[0])!=8 && Integer.parseInt(start[0])!=9 && Integer.parseInt(start[0])!=10 && Integer.parseInt(start[0])!=11)
+				{
+					starttime = starttime + " PM";
+				}
+				else
+				{
+					starttime = starttime + " AM";
+				}
+				
+				if(Integer.parseInt(end[0])!=8 && Integer.parseInt(end[0])!=9 && Integer.parseInt(end[0])!=10 && Integer.parseInt(end[0])!=11)
+				{
+					endtime = endtime + " PM";
+				}
+				else
+				{
+					endtime = endtime + " AM";
+				}
+				
+				DateTimeFormatter format = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
+		        LocalTime time1 = LocalTime.parse(starttime, format);
+		        LocalTime time2 = LocalTime.parse(endtime, format);
+		        Duration duration1 = Duration.between(time1, time2);
+		        int slots = (int) Math.abs(duration1.getSeconds() / 60);
+		        
+		        int s = h.indexOf(time[0]);
+		        int limit = s + (slots/30);
+
+		        App.deserialize("roomlist");
+		        
+		        for(int j = 0 ; j<App.actual_Room_List.size() ; j++)
+		        {
+		        	for(int m = 0 ; m<room.length ; m++)
+		        	{
+			        	if(App.actual_Room_List.get(j).get_Name().equals(room[m]))
+			        	{
+			        		for(int k = 0 ; k<13 ; k++)
+			        		{
+			        			for(int l = s ; l<limit ; l++)
+			    		        {
+			        				App.actual_Room_List.get(j).getList_Of_Weeks().get(k).getWeek_List().get(4).day_List.set(l, true);
+			    		        }
+			        		}
+			        	}
+		        	}
+		        }
+		        App.serialize("roomlist", "room");
+			}
+			
 		}
-        
-        
-		
 	}
 
 	String get_Name()

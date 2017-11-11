@@ -18,7 +18,6 @@ public class actual_Room_List {
             br = new BufferedReader(new FileReader("C:\\Users\\sm_06\\Desktop\\RoomNames.csv"));
             
             String line = "";
-            br.readLine();
             while ((line = br.readLine()) != null) 
             {
                 String[] roomDetails = line.split(",");
