@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Day implements Serializable{
 	
-	private List<Boolean> day_List;
+	private List<Boolean> day_List = new ArrayList<Boolean>();
 	private String name;
 	
 	public Day(String name) 
@@ -24,6 +24,10 @@ public class Day implements Serializable{
 	}
 	
 	public Day() {
+		for(int i = 0 ; i<20 ; i++)
+		{
+			this.day_List.add(false);
+		}
 	}
 
 	void time_Convertr(String duration)
@@ -118,24 +122,7 @@ public class Day implements Serializable{
 		        		{
 		        			for(int l = s ; l<limit ; l++)
 		    		        {
-		        				Week obj = App.actual_Room_List.get(j).getList_Of_Weeks().get(k);
 		        				App.actual_Room_List.get(j).getList_Of_Weeks().get(k).getWeek_List().get(0).day_List.set(l, true);
-		    		        }
-		        		}
-		        	}
-		        }
-		        
-		        for(int j = 0 ; j<App.actual_Room_List.size() ; j++)
-		        {
-		        	System.out.println(j);
-		        	System.out.println(App.actual_Room_List.get(j).get_Name());
-		        	if(App.actual_Room_List.get(j).get_Name().equals("C11"))
-		        	{
-		        		for(int k = 0 ; k<1 ; k++)
-		        		{
-		        			for(int l = 0 ; l<20 ; l++)
-		    		        {
-		        				System.out.println(App.actual_Room_List.get(j).getList_Of_Weeks().get(k).getWeek_List().get(0).day_List.get(l));
 		    		        }
 		        		}
 		        	}

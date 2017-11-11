@@ -19,6 +19,7 @@ public class actual_Room implements Serializable{
 		this.capacity = capacity;
 		for(int i = 0 ; i<13 ; i++)
 		{
+			System.out.println("A");
 			this.list_Of_Weeks.add(new Week());
 		}
 	}

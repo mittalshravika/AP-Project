@@ -15,7 +15,7 @@ public class Week implements Serializable{
 	
 	public Week() 
 	{
-		for(int i = 0 ; i<this.week_List.size() ; i++)
+		for(int i = 0 ; i<7 ; i++)
 		{
 			this.week_List.add(new Day());
 		}
