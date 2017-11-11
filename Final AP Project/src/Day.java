@@ -17,6 +17,12 @@ public class Day implements Serializable{
 		this.name = name;
 	}
 	
+	public Day(List<Boolean> day_List, String name)
+	{
+		this.day_List = day_List;
+		this.name = name;
+	}
+	
 	public Day() {
 	}
 
@@ -60,6 +66,7 @@ public class Day implements Serializable{
 		}
 		
 		App.deserialize("courselist");
+        App.deserialize("roomlist");
 		
 		for(int i = 0 ; i<App.course_List.size() ; i++)
 		{
@@ -74,8 +81,6 @@ public class Day implements Serializable{
 				String endtime = time[1];
 				String[] start = starttime.split(":");
 				String[] end = endtime.split(":");
-				
-				//System.out.println(App.course_List.get(i).getCoursename());
 				
 				if(Integer.parseInt(start[0])!=8 && Integer.parseInt(start[0])!=9 && Integer.parseInt(start[0])!=10 && Integer.parseInt(start[0])!=11)
 				{
@@ -104,7 +109,7 @@ public class Day implements Serializable{
 		        int s = h.indexOf(time[0]);
 		        int limit = s + (slots/30);
 		        
-		        App.deserialize("roomlist");
+		        System.out.println(App.actual_Room_List.size());
 		        
 		        for(int j = 0 ; j<App.actual_Room_List.size() ; j++)
 		        {
@@ -114,13 +119,33 @@ public class Day implements Serializable{
 		        		{
 		        			for(int l = s ; l<limit ; l++)
 		    		        {
+		        				App.actual_Room_List.get(j).getList_Of_Weeks().get(k).getWeek_List().get(0).day_List = new ArrayList<Boolean>();
 		        				App.actual_Room_List.get(j).getList_Of_Weeks().get(k).getWeek_List().get(0).day_List.set(l, true);
+		    		        }
+		        		}
+		        	}
+		        }
+		        
+		        for(int j = 0 ; j<App.actual_Room_List.size() ; j++)
+		        {
+		        	System.out.println(j);
+		        	System.out.println(App.actual_Room_List.get(j).get_Name());
+		        	if(App.actual_Room_List.get(j).get_Name().equals("C11"))
+		        	{
+		        		for(int k = 0 ; k<1 ; k++)
+		        		{
+		        			for(int l = 0 ; l<20 ; l++)
+		    		        {
+		        				System.out.println(App.actual_Room_List.get(j).getList_Of_Weeks().get(k).getWeek_List().get(0).day_List.get(l));
 		    		        }
 		        		}
 		        	}
 		        }
 			}
 		}
+        
+        
+		
 	}
 
 	String get_Name()

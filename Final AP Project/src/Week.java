@@ -5,12 +5,22 @@ import java.util.List;
 public class Week implements Serializable{
 
 	private List<Day> week_List = new ArrayList<Day>(7);
+	private String name;
 	
+	public Week(List<Day> week_List, String name) 
+	{
+		this.week_List = week_List;
+		this.name = name;
+	}
+	
+	public Week() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public List<Day> getWeek_List() {
 		return week_List;
 	}
 
-	private String name;
 	
 	String get_Name()
 	{
@@ -22,4 +32,12 @@ public class Week implements Serializable{
 		
 	}
 	
+	public static void main(String[] args)
+	{
+		Week obj = new Week();
+		for(int i = 0 ; i<obj.week_List.size() ; i++)
+		{
+			obj.week_List.add(new Day());
+		}
+	}
 }

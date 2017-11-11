@@ -19,6 +19,10 @@ public class actual_Room implements Serializable{
 		this.capacity = capacity;
 	}
 	
+	public actual_Room() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String get_Name() {
 		return name;
 	}
@@ -36,5 +40,14 @@ public class actual_Room implements Serializable{
 	public void add_Room(List<actual_Room> global_Room_List)
 	{
 		
+	}
+	
+	public static void main(String[] args)
+	{
+		actual_Room obj = new actual_Room();
+		for(int i = 0 ; i<obj.list_Of_Weeks.size() ; i++)
+		{
+			obj.list_Of_Weeks.add(new Week());
+		}
 	}
 }
