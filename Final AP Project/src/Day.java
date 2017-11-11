@@ -29,6 +29,11 @@ public class Day implements Serializable{
 			this.day_List.add(false);
 		}
 	}
+	
+	public List<Boolean> getday_List()
+	{
+		return day_List;
+	}
 
 	void time_Convertr(String duration)
 	{

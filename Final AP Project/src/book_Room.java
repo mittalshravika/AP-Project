@@ -1,3 +1,10 @@
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.temporal.WeekFields;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -33,6 +40,15 @@ public class book_Room extends Application
 	public void start(Stage	primaryStage)	
 	{	
 		primaryStage.setTitle("Classroom Booking System");
+		
+		Map<String, Integer> DayOfWeek = new HashMap<>();
+		DayOfWeek.put("MONDAY", 1);
+		DayOfWeek.put("TUESDAY", 2);
+		DayOfWeek.put("WEDNESDAY", 3);
+		DayOfWeek.put("THURSDAY", 4);
+		DayOfWeek.put("FRIDAY", 5);
+		DayOfWeek.put("SATURDAY", 6);
+		DayOfWeek.put("SUNDAY", 7);
 		
 		Button btn = new Button("Submit details");
 		Button btn2 = new Button("Submit Room Bookings");
@@ -197,11 +213,13 @@ public class book_Room extends Application
 			}
 		}
 		
+		/*
 		for (Node node : root.getChildren()) {
 	        if ((GridPane.getColumnIndex(node)%2==0 && GridPane.getColumnIndex(node)>0) && (GridPane.getRowIndex(node)%2==0 && GridPane.getRowIndex(node)>0)) {
 	            node.setDisable(true);
 	        }
 	    }
+	    */
 			
 		ScrollPane sp = new ScrollPane();
 		sp.setContent(root);
@@ -214,6 +232,31 @@ public class book_Room extends Application
 			sp.setVisible(true);
 			btn2.setVisible(true);
 			btn3.setVisible(true);
+			LocalDate date = cal.getValue(); // input from your date picker
+			Locale locale = Locale.US;
+			int weekOfYear = date.get(WeekFields.of(locale).weekOfWeekBasedYear());
+			int Day = DayOfWeek.get(new String(date.getDayOfWeek().toString()));
+			try {
+				App.deserialize("roomlist");
+			} catch (ClassNotFoundException | IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			for(int i = 0; i < App.actual_Room_List.size(); i++)
+			{
+				for(int j = 0 ; j<20 ; j++)
+				{
+					if(!App.actual_Room_List.get(i).getList_Of_Weeks().get(weekOfYear).getWeek_List().get(Day).getday_List().get(j))
+					{
+						for (Node node : root.getChildren()) {
+					        if ((GridPane.getColumnIndex(node)==j && GridPane.getColumnIndex(node)>0) && (GridPane.getRowIndex(node)==i && GridPane.getRowIndex(node)>0)) {
+					            node.setDisable(true);
+					        }
+					    }
+					}
+				}
+			}
 		});	
 		
 		VBox y = new VBox();
