@@ -78,9 +78,22 @@ public class App {
 					}
 				}
 			}
-			else if(A.equals("RoomList"))
+			else if(A.equals("roomlist"))
 			{
-				
+				actual_Room_List = new ArrayList<>();
+				in = new ObjectInputStream(new FileInputStream("./"+ A + ".ser"));
+				//System.out.println("Check2");
+				while(true)
+				{	try
+					{	
+						actual_Room Input = (actual_Room)in.readObject();
+						actual_Room_List.add(Input);
+					}
+					catch (Exception e)
+					{
+						break;
+					}
+				}
 			}
 		}
 		finally
@@ -94,6 +107,7 @@ public class App {
 	{
 		User Output;
 		Course Output2;
+		actual_Room Output3;
 		ObjectOutputStream out = null;
 		try
 		{
@@ -122,6 +136,15 @@ public class App {
 				{
 					Output2 = core_Course_List.get(i);
 					out.writeObject(Output2);
+				}
+			}
+			else if(B.equals("room"))
+			{
+				out = new ObjectOutputStream(new FileOutputStream("./" + A + ".ser"));
+				for(int i = 0; i < actual_Room_List.size(); i++)
+				{
+					Output3 = actual_Room_List.get(i);
+					out.writeObject(Output3);
 				}
 			}
 		}
