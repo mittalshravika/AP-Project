@@ -13,8 +13,12 @@ public class Week implements Serializable{
 		this.name = name;
 	}
 	
-	public Week() {
-		// TODO Auto-generated constructor stub
+	public Week() 
+	{
+		for(int i = 0 ; i<this.week_List.size() ; i++)
+		{
+			this.week_List.add(new Day());
+		}
 	}
 
 	public List<Day> getWeek_List() {
@@ -35,9 +39,5 @@ public class Week implements Serializable{
 	public static void main(String[] args)
 	{
 		Week obj = new Week();
-		for(int i = 0 ; i<obj.week_List.size() ; i++)
-		{
-			obj.week_List.add(new Day());
-		}
 	}
 }

@@ -17,10 +17,18 @@ public class actual_Room implements Serializable{
 	{
 		this.name = name;
 		this.capacity = capacity;
+		for(int i = 0 ; i<13 ; i++)
+		{
+			this.list_Of_Weeks.add(new Week());
+		}
 	}
 	
-	public actual_Room() {
-		// TODO Auto-generated constructor stub
+	public actual_Room() 
+	{
+		for(int i = 0 ; i<this.list_Of_Weeks.size() ; i++)
+		{
+			this.list_Of_Weeks.add(new Week());
+		}
 	}
 
 	public String get_Name() {
@@ -45,9 +53,5 @@ public class actual_Room implements Serializable{
 	public static void main(String[] args)
 	{
 		actual_Room obj = new actual_Room();
-		for(int i = 0 ; i<obj.list_Of_Weeks.size() ; i++)
-		{
-			obj.list_Of_Weeks.add(new Week());
-		}
 	}
 }

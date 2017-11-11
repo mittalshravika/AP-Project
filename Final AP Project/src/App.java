@@ -80,6 +80,7 @@ public class App {
 			}
 			else if(A.equals("roomlist"))
 			{
+				System.out.println("A");
 				actual_Room_List = new ArrayList<>();
 				in = new ObjectInputStream(new FileInputStream("./"+ A + ".ser"));
 				//System.out.println("Check2");

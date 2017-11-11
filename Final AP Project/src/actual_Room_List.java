@@ -34,6 +34,9 @@ public class actual_Room_List {
         {
             ee.printStackTrace();
         }
+        
+        System.out.println(App.actual_Room_List.size());
+        
         App.serialize("roomlist", "room");
     }
 
