@@ -235,22 +235,26 @@ public class book_Room extends Application
 			LocalDate date = cal.getValue(); // input from your date picker
 			Locale locale = Locale.US;
 			int weekOfYear = date.get(WeekFields.of(locale).weekOfWeekBasedYear());
-			int Day = DayOfWeek.get(new String(date.getDayOfWeek().toString()));
+			int day = DayOfWeek.get(new String(date.getDayOfWeek().toString()));
 			try {
 				App.deserialize("roomlist");
+				Day obj = new Day();
+				obj.book_Slots();
 			} catch (ClassNotFoundException | IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			
+			System.out.println();
+			
 			for(int i = 0; i < App.actual_Room_List.size(); i++)
 			{
 				for(int j = 0 ; j<20 ; j++)
 				{
-					if(!App.actual_Room_List.get(i).getList_Of_Weeks().get(weekOfYear).getWeek_List().get(Day).getday_List().get(j))
+					if(App.actual_Room_List.get(i).getList_Of_Weeks().get(0).getWeek_List().get(0).getday_List().get(j))
 					{
 						for (Node node : root.getChildren()) {
-					        if ((GridPane.getColumnIndex(node)==j && GridPane.getColumnIndex(node)>0) && (GridPane.getRowIndex(node)==i && GridPane.getRowIndex(node)>0)) {
+					        if ((GridPane.getColumnIndex(node)==(j+1) && GridPane.getColumnIndex(node)>0) && (GridPane.getRowIndex(node)==(i+1) && GridPane.getRowIndex(node)>0)) {
 					            node.setDisable(true);
 					        }
 					    }

@@ -76,6 +76,9 @@ public class Day implements Serializable{
 		
 		App.deserialize("courselist");
 		
+		actual_Room.main(null);
+		Week.main(null);
+		
 		for(int i = 0 ; i<App.course_List.size() ; i++)
 		{
 			if(!(App.course_List.get(i).getMon().equals("-")))
@@ -378,7 +381,7 @@ public class Day implements Serializable{
 		        }
 		        App.serialize("roomlist", "room");
 			}
-			
+
 		}
 	}
 
@@ -396,6 +399,10 @@ public class Day implements Serializable{
 	{
 		Day obj = new Day();
 		obj.book_Slots();
+		for(int i = 0 ; i<20 ; i++)
+		{
+			System.out.println(App.actual_Room_List.get(8).getList_Of_Weeks().get(0).getWeek_List().get(0).day_List.get(i));
+		}
 	}
 
 }
