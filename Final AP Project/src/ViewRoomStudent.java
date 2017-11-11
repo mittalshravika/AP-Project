@@ -1,3 +1,7 @@
+import java.time.LocalDate;
+import java.time.temporal.WeekFields;
+import java.util.Locale;
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -41,6 +45,12 @@ public class ViewRoomStudent extends Application
 		
 		Label Date = new Label("Date:");
 		DatePicker cal = new DatePicker();
+		
+		LocalDate date = cal.getValue(); // input from your date picker
+		Locale locale = Locale.US;
+		int weekOfYear = date.get(WeekFields.of(locale).weekOfWeekBasedYear());
+		String Day = new String(date.getDayOfWeek().toString());
+		
 		
 		HBox x = new HBox();
 		x.setSpacing(35);
@@ -209,6 +219,7 @@ public class ViewRoomStudent extends Application
 			sp.setVisible(true);
 			btn2.setVisible(true);
 			btn3.setVisible(true);
+			System.out.println("WEEK: " + weekOfYear + " DAY: " + Day);
 		});	
 		
 		VBox y = new VBox();
