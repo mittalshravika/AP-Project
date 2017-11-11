@@ -78,9 +78,22 @@ public class App {
 					}
 				}
 			}
-			else if(A.equals("RoomList"))
+			else if(A.equals("roomlist"))
 			{
-				
+				actual_Room_List = new ArrayList<>();
+				in = new ObjectInputStream(new FileInputStream("./"+ A + ".ser"));
+				//System.out.println("Check2");
+				while(true)
+				{	try
+					{	
+						actual_Room Input = (actual_Room)in.readObject();
+						actual_Room_List.add(Input);
+					}
+					catch (Exception e)
+					{
+						break;
+					}
+				}
 			}
 		}
 		finally

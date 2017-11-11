@@ -5,9 +5,13 @@ import java.util.List;
 
 public class actual_Room implements Serializable{
 	
-	private List<Week> list_Of_Weeks;
+	private List<Week> list_Of_Weeks = new ArrayList<Week>(13);
 	private String name;
 	private int capacity;
+
+	public List<Week> getList_Of_Weeks() {
+		return list_Of_Weeks;
+	}
 
 	public actual_Room(String name, int capacity) 
 	{
@@ -15,12 +19,6 @@ public class actual_Room implements Serializable{
 		this.capacity = capacity;
 	}
 	
-	public actual_Room(String name, int capacity)
-	{
-		this.name =new String(name);
-		this.capacity = capacity;
-		list_Of_Weeks = new ArrayList<Week>();
-	}
 	public String get_Name() {
 		return name;
 	}

@@ -104,9 +104,20 @@ public class Day implements Serializable{
 		        int s = h.indexOf(time[0]);
 		        int limit = s + (slots/30);
 		        
-		        for(int j = s ; j<limit ; j++)
+		        App.deserialize("roomlist");
+		        
+		        for(int j = 0 ; j<App.actual_Room_List.size() ; j++)
 		        {
-		        	mon.day_List.set(j, true);
+		        	if(App.actual_Room_List.get(j).get_Name().equals(room))
+		        	{
+		        		for(int k = 0 ; k<13 ; k++)
+		        		{
+		        			for(int l = s ; l<limit ; l++)
+		    		        {
+		        				App.actual_Room_List.get(j).getList_Of_Weeks().get(k).getWeek_List().get(0).day_List.set(l, true);
+		    		        }
+		        		}
+		        	}
 		        }
 			}
 		}
