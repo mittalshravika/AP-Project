@@ -60,7 +60,7 @@ public class Login extends Application
 		GridPane.setConstraints(Type, 2, 0);
 		ChoiceBox<String> User_Type = new ChoiceBox<>();
 		User_Type.setStyle("-fx-color: #FFFFFF ; -fx-font: normal bold 15px 'sans-serif' ; -fx-padding: 5 22 5 22 ; -fx-border-color: #00DDDD ; ");
-		User_Type.getItems().addAll("Admin", "Faculty", "Student");
+		User_Type.getItems().addAll("Faculty", "Student");
 		User_Type.setValue("Student");
 		GridPane.setConstraints(User_Type, 3, 0);
 
