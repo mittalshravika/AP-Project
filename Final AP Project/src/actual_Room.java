@@ -7,11 +7,18 @@ public class actual_Room implements Serializable{
 	private List<Week> list_Of_Weeks;
 	private String name;
 	private int capacity;
+
+	public actual_Room(String name, int capacity) 
+	{
+		this.name = name;
+		this.capacity = capacity;
+	}
 	
 	public String get_Name() {
 		return name;
 	}
 	
+
 	public int get_Capacity() {
 		return capacity;
 	}

@@ -10,6 +10,7 @@ public class App {
 	static List<User> user_List = new ArrayList<>();
 	static List<Course> course_List = new ArrayList<>();
 	static List<Course> core_Course_List = new ArrayList<>();
+	static List<actual_Room> actual_Room_List = new ArrayList<>();
 	
 	public static List<User> getUser_List() {
 		return user_List;
@@ -89,6 +90,7 @@ public class App {
 	{
 		User Output;
 		Course Output2;
+		actual_Room Output3;
 		ObjectOutputStream out = null;
 		try
 		{
@@ -117,6 +119,15 @@ public class App {
 				{
 					Output2 = core_Course_List.get(i);
 					out.writeObject(Output2);
+				}
+			}
+			else if(B.equals("room"))
+			{
+				out = new ObjectOutputStream(new FileOutputStream("./" + A + ".ser"));
+				for(int i = 0; i < actual_Room_List.size(); i++)
+				{
+					Output3 = actual_Room_List.get(i);
+					out.writeObject(Output3);
 				}
 			}
 		}

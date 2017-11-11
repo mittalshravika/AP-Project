@@ -34,7 +34,7 @@ public	class faculty_Page extends Application
 		Button btn3 = new Button("Cancel Booking");	
 		btn3.getStyleClass().add("button");
 		Button btn4 = new Button("Logout");
-		Label l1 = new Label("Name:");
+		Label l1 = new Label("Name:" + faculty_User.getName());
 		Label l2 = new Label("Type:");
 		Label l3 = new Label("Courses:");
 		
