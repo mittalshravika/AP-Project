@@ -399,10 +399,6 @@ public class Day implements Serializable{
 	{
 		Day obj = new Day();
 		obj.book_Slots();
-		for(int i = 0 ; i<20 ; i++)
-		{
-			System.out.println(App.actual_Room_List.get(8).getList_Of_Weeks().get(0).getWeek_List().get(0).day_List.get(i));
-		}
 	}
 
 }
