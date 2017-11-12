@@ -12,6 +12,7 @@ public class App {
 	static List<Course> core_Course_List = new ArrayList<>();
 	static List<actual_Room> actual_Room_List = new ArrayList<>();
 	static User obj;
+	static List<Request> admin_List = new ArrayList<>();
 	
 	public static List<User> getUser_List() {
 		return user_List;
@@ -19,6 +20,10 @@ public class App {
 
 	public static List<Course> getCourse_List() {
 		return course_List;
+	}
+	
+	public static List<Request> getAdmin_List(){
+		return admin_List;
 	}
 
 	public static void deserialize(String A) 
@@ -114,6 +119,25 @@ public class App {
 					}
 				}
 			}
+			else if(A.equals("adminrequestlist"))
+			{
+				admin_List = new ArrayList<>();
+				in = new ObjectInputStream(new FileInputStream("./"+ A + ".ser"));
+				//System.out.println("Check2");
+				while(true)
+				{	try
+					{	
+						Request Input = (Request)in.readObject();
+						admin_List.add(Input);
+					}
+					catch (Exception e)
+					{
+						break;
+					}
+				}
+			}
+
+
 		}
 		finally
 		{
@@ -128,6 +152,7 @@ public class App {
 		Course Output2;
 		actual_Room Output3;
 		cancel_Booking Output4;
+		Request Output5;
 		ObjectOutputStream out = null;
 		try
 		{
@@ -175,6 +200,15 @@ public class App {
 				{
 					Output4 = obj.bookings.get(i);
 					out.writeObject(Output4);
+				}
+			}
+			else if(B.equals("adminrequest"))
+			{
+				out = new ObjectOutputStream(new FileOutputStream("./" + A + ".ser"));
+				for(int i = 0; i < admin_List.size(); i++)
+				{
+					Output5 = admin_List.get(i);
+					out.writeObject(Output5);
 				}
 			}
 		}

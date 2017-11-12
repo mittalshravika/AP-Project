@@ -41,11 +41,9 @@
 /core_Courses.class
 /actual_Room_List.class
 /RoomList.class
-/.DS_Store
-/.classpath
-/.gitignore
-/.project
-/UserList.ser
-/corecourselist.ser
-/courselist.ser
-/stylesheet.css
+/cancel_Booking.class
+/help.class
+/date.class
+/a.ser
+/samaresh@iiitd.ac.in.ser
+/vivek@iiitd.ac.in.ser
