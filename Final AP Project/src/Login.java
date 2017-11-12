@@ -220,6 +220,7 @@ public class Login extends Application
 							if(App.user_List.get(i).getType_of_user().equals("Faculty"))
 							{
 								new faculty_Page(App.user_List.get(i)).start(primaryStage);
+								App.obj = App.user_List.get(i);
 							}
 							else if(App.user_List.get(i).getType_of_user().equals("Admin"))
 							{

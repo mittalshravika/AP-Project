@@ -1,7 +1,10 @@
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.WeekFields;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -20,6 +23,21 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
+
+class date
+{
+	int week;
+	int day;
+	String date;
+}
+
+class help
+{
+	CheckBox cb;
+	int i;
+	int j;
+}
 
 public class book_Room extends Application
 {
@@ -42,13 +60,13 @@ public class book_Room extends Application
 		primaryStage.setTitle("Classroom Booking System");
 		
 		Map<String, Integer> DayOfWeek = new HashMap<>();
-		DayOfWeek.put("MONDAY", 1);
-		DayOfWeek.put("TUESDAY", 2);
-		DayOfWeek.put("WEDNESDAY", 3);
-		DayOfWeek.put("THURSDAY", 4);
-		DayOfWeek.put("FRIDAY", 5);
-		DayOfWeek.put("SATURDAY", 6);
-		DayOfWeek.put("SUNDAY", 7);
+		DayOfWeek.put("MONDAY", 0);
+		DayOfWeek.put("TUESDAY", 1);
+		DayOfWeek.put("WEDNESDAY", 2);
+		DayOfWeek.put("THURSDAY", 3);
+		DayOfWeek.put("FRIDAY", 4);
+		DayOfWeek.put("SATURDAY", 5);
+		DayOfWeek.put("SUNDAY", 6);
 		
 		Button btn = new Button("Submit details");
 		Button btn2 = new Button("Submit Room Bookings");
@@ -228,6 +246,8 @@ public class book_Room extends Application
 		btn2.setVisible(false);
 		btn3.setVisible(false);
 		
+		date obj1 = new date();
+		
 		btn.setOnAction(e	->	{	
 			sp.setVisible(true);
 			btn2.setVisible(true);
@@ -236,10 +256,17 @@ public class book_Room extends Application
 			Locale locale = Locale.US;
 			int weekOfYear = date.get(WeekFields.of(locale).weekOfWeekBasedYear());
 			int day = DayOfWeek.get(new String(date.getDayOfWeek().toString()));
+			System.out.println(weekOfYear);
+			obj1.week = weekOfYear;
+			obj1.day = day;
+			
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+			
+			obj1.date = date.format(formatter);
 			try {
 				App.deserialize("roomlist");
 				Day obj = new Day();
-				obj.book_Slots();
+				//obj.book_Slots();
 			} catch (ClassNotFoundException | IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -251,17 +278,108 @@ public class book_Room extends Application
 			{
 				for(int j = 0 ; j<20 ; j++)
 				{
-					if(App.actual_Room_List.get(i).getList_Of_Weeks().get(0).getWeek_List().get(0).getday_List().get(j))
+					if(App.actual_Room_List.get(i).getList_Of_Weeks().get(weekOfYear - 31).getWeek_List().get(day).getday_List().get(j))
 					{
 						for (Node node : root.getChildren()) {
 					        if ((GridPane.getColumnIndex(node)==(j+1) && GridPane.getColumnIndex(node)>0) && (GridPane.getRowIndex(node)==(i+1) && GridPane.getRowIndex(node)>0)) {
-					            node.setDisable(true);
+					        	node.setDisable(true);
 					        }
 					    }
 					}
 				}
 			}
 		});	
+		
+		btn2.setOnAction(e -> {
+			List<CheckBox> check_Box_List = new ArrayList<>();
+			ArrayList<ArrayList<Integer>> h = new ArrayList<ArrayList<Integer>>();
+			
+			ArrayList<String> h1 = new ArrayList<String>();
+			h1.add("8:00");
+			h1.add("8:30");
+			h1.add("9:00");
+			h1.add("9:30");
+			h1.add("10:00");
+			h1.add("10:30");
+			h1.add("11:00");
+			h1.add("11:30");
+			h1.add("12:00");
+			h1.add("12:30");
+			h1.add("1:00");
+			h1.add("1:30");
+			h1.add("2:00");
+			h1.add("2:30");
+			h1.add("3:00");
+			h1.add("3:30");
+			h1.add("4:00");
+			h1.add("4:30");
+			h1.add("5:00");
+			h1.add("5:30");
+			
+			for(int i = 0 ; i<20 ; i++)
+			{
+				h.add(new ArrayList<Integer>());
+			}
+			for(Node node : root.getChildren())
+			{
+				if(node instanceof CheckBox)
+				{
+					check_Box_List.add((CheckBox)node);
+				}
+			}
+			for(int i = 0 ; i<check_Box_List.size() ; i++)
+			{
+				if(check_Box_List.get(i).isSelected())
+				{
+					h.get(GridPane.getRowIndex((Node)check_Box_List.get(i)) - 1).add((GridPane.getColumnIndex((Node)check_Box_List.get(i)) - 1));
+				}
+			}
+			for(int i = 0 ; i<h.size() ; i++)
+			{
+				if(h.get(i).size()>0)
+				{
+					for(int j = 0 ; j<h.get(i).size() ; j++)
+					{
+						try {
+							App.deserialize("roomlist");
+						} catch (ClassNotFoundException | IOException e1) {
+							e1.printStackTrace();
+						}
+						
+						App.actual_Room_List.get(i).getList_Of_Weeks().get(obj1.week - 31).getWeek_List().get(obj1.day).getday_List().set(h.get(i).get(j), true);
+						System.out.println(current_User.getEmail_id());
+						
+						try {
+							if(current_User.bookings.size()>0)
+							{
+								App.deserialize(current_User.getEmail_id());
+								System.out.println("A");
+							}
+						} catch (ClassNotFoundException | IOException e2) {
+							// TODO Auto-generated catch block
+							e2.printStackTrace();
+						}
+						cancel_Booking booking = new cancel_Booking(obj1.date, h1.get(h.get(i).get(j)), 30, App.actual_Room_List.get(i).get_Name(), App.actual_Room_List.get(i).get_Capacity(), obj1.week, obj1.day);
+						current_User.bookings.add(booking);
+						
+						try {
+							App.serialize(current_User.getEmail_id(), "book");
+						} catch (IOException e2) {
+							// TODO Auto-generated catch block
+							e2.printStackTrace();
+						}
+						
+						try {
+							App.serialize("roomlist", "room");
+						} catch (IOException e1) {
+							e1.printStackTrace();
+						}
+						System.out.println("Chal gaya");
+					}
+				}
+			}
+			
+		});
 		
 		VBox y = new VBox();
 		y.setSpacing(30);

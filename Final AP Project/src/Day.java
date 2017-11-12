@@ -128,7 +128,7 @@ public class Day implements Serializable{
 		        	{
 			        	if(App.actual_Room_List.get(j).get_Name().equals(room[m]))
 			        	{
-			        		for(int k = 0 ; k<13 ; k++)
+			        		for(int k = 0 ; k<20 ; k++)
 			        		{
 			        			for(int l = s ; l<limit ; l++)
 			    		        {
@@ -187,7 +187,7 @@ public class Day implements Serializable{
 		        	{
 			        	if(App.actual_Room_List.get(j).get_Name().equals(room[m]))
 			        	{
-			        		for(int k = 0 ; k<13 ; k++)
+			        		for(int k = 0 ; k<20 ; k++)
 			        		{
 			        			for(int l = s ; l<limit ; l++)
 			    		        {
@@ -247,7 +247,7 @@ public class Day implements Serializable{
 		        	{
 			        	if(App.actual_Room_List.get(j).get_Name().equals(room[m]))
 			        	{
-			        		for(int k = 0 ; k<13 ; k++)
+			        		for(int k = 0 ; k<20 ; k++)
 			        		{
 			        			for(int l = s ; l<limit ; l++)
 			    		        {
@@ -308,7 +308,7 @@ public class Day implements Serializable{
 		        	{
 			        	if(App.actual_Room_List.get(j).get_Name().equals(room[m]))
 			        	{
-			        		for(int k = 0 ; k<13 ; k++)
+			        		for(int k = 0 ; k<20 ; k++)
 			        		{
 			        			for(int l = s ; l<limit ; l++)
 			    		        {
@@ -369,7 +369,7 @@ public class Day implements Serializable{
 		        	{
 			        	if(App.actual_Room_List.get(j).get_Name().equals(room[m]))
 			        	{
-			        		for(int k = 0 ; k<13 ; k++)
+			        		for(int k = 0 ; k<20 ; k++)
 			        		{
 			        			for(int l = s ; l<limit ; l++)
 			    		        {

@@ -11,6 +11,7 @@ public class App {
 	static List<Course> course_List = new ArrayList<>();
 	static List<Course> core_Course_List = new ArrayList<>();
 	static List<actual_Room> actual_Room_List = new ArrayList<>();
+	static User obj;
 	
 	public static List<User> getUser_List() {
 		return user_List;
@@ -95,6 +96,24 @@ public class App {
 					}
 				}
 			}
+
+			else if(A.equals(obj.getEmail_id()))
+			{
+				obj.bookings = new ArrayList<>();
+				in = new ObjectInputStream(new FileInputStream("./"+ A + ".ser"));
+				//System.out.println("Check2");
+				while(true)
+				{	try
+					{	
+						cancel_Booking Input = (cancel_Booking)in.readObject();
+						obj.bookings.add(Input);
+					}
+					catch (Exception e)
+					{
+						break;
+					}
+				}
+			}
 		}
 		finally
 		{
@@ -108,6 +127,7 @@ public class App {
 		User Output;
 		Course Output2;
 		actual_Room Output3;
+		cancel_Booking Output4;
 		ObjectOutputStream out = null;
 		try
 		{
@@ -145,6 +165,16 @@ public class App {
 				{
 					Output3 = actual_Room_List.get(i);
 					out.writeObject(Output3);
+				}
+			}
+
+			else if(B.equals("book"))
+			{
+				out = new ObjectOutputStream(new FileOutputStream("./" + A + ".ser"));
+				for(int i = 0; i < obj.bookings.size(); i++)
+				{
+					Output4 = obj.bookings.get(i);
+					out.writeObject(Output4);
 				}
 			}
 		}

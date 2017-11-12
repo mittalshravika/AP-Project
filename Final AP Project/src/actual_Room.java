@@ -5,7 +5,7 @@ import java.util.List;
 
 public class actual_Room implements Serializable{
 	
-	private List<Week> list_Of_Weeks = new ArrayList<Week>(13);
+	private List<Week> list_Of_Weeks = new ArrayList<Week>(20);
 	private String name;
 	private int capacity;
 
@@ -17,7 +17,7 @@ public class actual_Room implements Serializable{
 	{
 		this.name = name;
 		this.capacity = capacity;
-		for(int i = 0 ; i<13 ; i++)
+		for(int i = 0 ; i<20 ; i++)
 		{
 			System.out.println("A");
 			this.list_Of_Weeks.add(new Week());
@@ -26,7 +26,7 @@ public class actual_Room implements Serializable{
 	
 	public actual_Room() 
 	{
-		for(int i = 0 ; i<this.list_Of_Weeks.size() ; i++)
+		for(int i = 0 ; i<20 ; i++)
 		{
 			this.list_Of_Weeks.add(new Week());
 		}

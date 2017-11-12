@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -40,7 +42,15 @@ public	class faculty_Page extends Application
 		
 		btn.setOnAction(e -> {new book_Room(1, faculty_User).start(primaryStage);});
 		btn2.setOnAction(e -> {new book_Room(1, faculty_User).start(primaryStage);});
-		btn3.setOnAction(e -> {new FacultyBooking(1, faculty_User).start(primaryStage);});
+		btn3.setOnAction(e -> {try {
+			new FacultyBooking(1, faculty_User).start(primaryStage);
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}});
 		btn4.setOnAction(e -> {try {
 			new Login().start(primaryStage);
 		} catch (Exception e1) {

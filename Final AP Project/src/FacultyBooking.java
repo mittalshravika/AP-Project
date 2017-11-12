@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -31,9 +33,9 @@ public class FacultyBooking extends Application
 		launch(args);
 	}
 	@Override
-	public void start(Stage primaryStage)
+	public void start(Stage primaryStage) throws ClassNotFoundException, IOException
 	{
-		ScrollPane sp;
+		ScrollPane sp = null;
 		GridPane Table;
 		Scene BookingScene;
 		primaryStage.setTitle("Classroom Booking System");
@@ -71,42 +73,82 @@ public class FacultyBooking extends Application
 		T7.setDisable(true);
 		T8.setDisable(true);
 		T9.setDisable(true);
-
-		//Example
-		TextField t1 = new TextField("1");
-		TextField t2 = new TextField("01/11/2017");
-		TextField t3 = new TextField("11:00");
-		TextField t4 = new TextField("90");
-		//TextField T5 = new TextField("Name");
-		//TextField T6 = new TextField("Purpose");
-		TextField t7 = new TextField("C21");
-		TextField t8 = new TextField("150");
-		TextField t9 = new TextField("Cancel");
-		Table.add(t1, 0, 1, 1, 1);
-		Table.add(t2, 1, 1, 1, 1);
-		Table.add(t3, 2, 1, 1, 1);
-		Table.add(t4, 3, 1, 1, 1);
-		//Table.add(T5, 4, 0, 1, 1);
-		//Table.add(T6, 5, 0, 1, 1);
-		Table.add(t7, 4, 1, 1, 1);
-		Table.add(t8, 5, 1, 1, 1);
-		//Table.add(t9, 6, 1, 1, 1);
 		
-		t1.setDisable(true);
-		t2.setDisable(true);
-		t3.setDisable(true);
-		t4.setDisable(true);
-		t7.setDisable(true);
-		t8.setDisable(true);
-		t9.setDisable(true);
+		System.out.println(current_User.getEmail_id());
+		
+		if(current_User.bookings.size()>0)
+		{
+			App.deserialize(current_User.getEmail_id());
+		}
+		
+		for(int i = 0 ; i<current_User.bookings.size() ; i++)
+		{
+			cancel_Booking obj = current_User.bookings.get(i);
+			TextField t1 = new TextField(Integer.parseInt(i));
+			TextField t2 = new TextField(obj.date);
+			TextField t3 = new TextField(obj.time);
+			TextField t4 = new TextField(Integer.toString(obj.duration));
+			TextField t7 = new TextField(obj.room);
+			TextField t8 = new TextField(Integer.toString(obj.capacity));
+			TextField t9 = new TextField("Cancel");
+			
+			CheckBox Approval = new CheckBox("Select");
+			
+			Table.add(t1, 0, i+1, 1, 1);
+			Table.add(t2, 1, i+1, 1, 1);
+			Table.add(t3, 2, i+1, 1, 1);
+			Table.add(t4, 3, i+1, 1, 1);
+			Table.add(t7, 4, i+1, 1, 1);
+			Table.add(t8, 5, i+1, 1, 1);
+			Table.add(Approval, 6, i+1, 1, 1);
+			
+			t1.setDisable(true);
+			t2.setDisable(true);
+			t3.setDisable(true);
+			t4.setDisable(true);
+			t7.setDisable(true);
+			t8.setDisable(true);
+			t9.setDisable(true);
+			
+		}
+		
+		App.serialize(current_User.getEmail_id(), "book");
 
-
-
-		//ChoiceBox
-		CheckBox Approval = new CheckBox("Select");
-		//Approval.getItems().addAll("Pending", "Approve", "Cancel");
-		//Approval.setValue("Pending");
-		Table.add(Approval, 6, 1, 1, 1);
+//		//Example
+//		TextField t1 = new TextField("1");
+//		TextField t2 = new TextField("01/11/2017");
+//		TextField t3 = new TextField("11:00");
+//		TextField t4 = new TextField("90");
+//		//TextField T5 = new TextField("Name");
+//		//TextField T6 = new TextField("Purpose");
+//		TextField t7 = new TextField("C21");
+//		TextField t8 = new TextField("150");
+//		TextField t9 = new TextField("Cancel");
+//		Table.add(t1, 0, 1, 1, 1);
+//		Table.add(t2, 1, 1, 1, 1);
+//		Table.add(t3, 2, 1, 1, 1);
+//		Table.add(t4, 3, 1, 1, 1);
+//		//Table.add(T5, 4, 0, 1, 1);
+//		//Table.add(T6, 5, 0, 1, 1);
+//		Table.add(t7, 4, 1, 1, 1);
+//		Table.add(t8, 5, 1, 1, 1);
+//		//Table.add(t9, 6, 1, 1, 1);
+//		
+//		t1.setDisable(true);
+//		t2.setDisable(true);
+//		t3.setDisable(true);
+//		t4.setDisable(true);
+//		t7.setDisable(true);
+//		t8.setDisable(true);
+//		t9.setDisable(true);
+//
+//
+//
+//		//ChoiceBox
+//		CheckBox Approval = new CheckBox("Select");
+//		//Approval.getItems().addAll("Pending", "Approve", "Cancel");
+//		//Approval.setValue("Pending");
+//		Table.add(Approval, 6, 1, 1, 1);
 		Table.setAlignment(Pos.CENTER);
 
 		sp = new ScrollPane();

@@ -12,6 +12,7 @@ public class User implements Serializable
 	private String password;
 	private user_Page page;
 	public time_Table obj;
+	ArrayList<cancel_Booking> bookings = new ArrayList<cancel_Booking>();
 	
 	public String getName() {
 		return name;
@@ -174,5 +175,13 @@ public class User implements Serializable
 	{
 		A.add(B);
 		return true;
+	}
+	
+	void check()
+	{
+		for(int i = 0 ; i<bookings.size() ; i++)
+		{
+			System.out.println(bookings.get(i).toString());
+		}
 	}
 }
