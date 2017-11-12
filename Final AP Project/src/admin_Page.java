@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -43,7 +45,15 @@ public class admin_Page extends Application
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}});
-		btn3.setOnAction(e -> {new FacultyBooking(2, admin_User).start(primaryStage);});
+		btn3.setOnAction(e -> {try {
+			new FacultyBooking(2, admin_User).start(primaryStage);
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}});
 		btn5.setOnAction(e -> {new RequestList(admin_User).start(primaryStage);});
 		
 		btn.setPrefHeight(80);

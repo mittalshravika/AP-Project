@@ -84,7 +84,7 @@ public class FacultyBooking extends Application
 		for(int i = 0 ; i<current_User.bookings.size() ; i++)
 		{
 			cancel_Booking obj = current_User.bookings.get(i);
-			TextField t1 = new TextField(Integer.parseInt(i));
+			TextField t1 = new TextField(Integer.toString(i));
 			TextField t2 = new TextField(obj.date);
 			TextField t3 = new TextField(obj.time);
 			TextField t4 = new TextField(Integer.toString(obj.duration));
