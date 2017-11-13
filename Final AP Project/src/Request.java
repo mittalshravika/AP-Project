@@ -9,7 +9,8 @@ public class Request implements Serializable
 	String preferred_Room;
 	int capacity;
 	int duration;
-	boolean approved; 
+	boolean Approved; 
+	boolean Cancel;
 	String date;
 	String time;
 	String currentTime;
@@ -24,18 +25,19 @@ public class Request implements Serializable
 		this.time = new String(t);
 		this.duration = duration;
 		this.currentTime = c_t;
-		this.approved = false;
+		this.Approved = false;
+		this.Cancel = false;
 		
 	}
 
 	void setApproval(Boolean A)
 	{
-		approved = A;
+		Approved = A;
 	}
 	
 	boolean approved_room()
 	{
-		return approved;
+		return Approved;
 
 	}
 }
