@@ -1,7 +1,13 @@
+import java.io.EOFException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -76,10 +82,15 @@ public class FacultyBooking extends Application
 		
 		System.out.println(current_User.getEmail_id());
 		
-		if(current_User.bookings.size()>0)
-		{
+		try{
 			App.deserialize(current_User.getEmail_id());
 		}
+		finally{
+			
+		}
+		System.out.println(current_User.bookings.size());
+		
+		System.out.println(current_User.bookings.size());
 		
 		for(int i = 0 ; i<current_User.bookings.size() ; i++)
 		{
@@ -114,41 +125,6 @@ public class FacultyBooking extends Application
 		
 		App.serialize(current_User.getEmail_id(), "book");
 
-//		//Example
-//		TextField t1 = new TextField("1");
-//		TextField t2 = new TextField("01/11/2017");
-//		TextField t3 = new TextField("11:00");
-//		TextField t4 = new TextField("90");
-//		//TextField T5 = new TextField("Name");
-//		//TextField T6 = new TextField("Purpose");
-//		TextField t7 = new TextField("C21");
-//		TextField t8 = new TextField("150");
-//		TextField t9 = new TextField("Cancel");
-//		Table.add(t1, 0, 1, 1, 1);
-//		Table.add(t2, 1, 1, 1, 1);
-//		Table.add(t3, 2, 1, 1, 1);
-//		Table.add(t4, 3, 1, 1, 1);
-//		//Table.add(T5, 4, 0, 1, 1);
-//		//Table.add(T6, 5, 0, 1, 1);
-//		Table.add(t7, 4, 1, 1, 1);
-//		Table.add(t8, 5, 1, 1, 1);
-//		//Table.add(t9, 6, 1, 1, 1);
-//		
-//		t1.setDisable(true);
-//		t2.setDisable(true);
-//		t3.setDisable(true);
-//		t4.setDisable(true);
-//		t7.setDisable(true);
-//		t8.setDisable(true);
-//		t9.setDisable(true);
-//
-//
-//
-//		//ChoiceBox
-//		CheckBox Approval = new CheckBox("Select");
-//		//Approval.getItems().addAll("Pending", "Approve", "Cancel");
-//		//Approval.setValue("Pending");
-//		Table.add(Approval, 6, 1, 1, 1);
 		Table.setAlignment(Pos.CENTER);
 
 		sp = new ScrollPane();
@@ -161,6 +137,47 @@ public class FacultyBooking extends Application
 		VBox elements = new VBox();
 		HBox x = new HBox();
 		Button Cancel = new Button("Cancel");
+		
+		Cancel.setOnAction(new EventHandler<ActionEvent>(){
+
+			@Override
+			public void handle(ActionEvent arg0) {
+
+				List<CheckBox> check_Box_List = new ArrayList<>();
+				ArrayList<Integer> h = new ArrayList<Integer>();
+
+				for(Node node : Table.getChildren())
+				{
+					if(node instanceof CheckBox)
+					{
+						check_Box_List.add((CheckBox)node);
+					}
+				}
+				for(int i = 0 ; i<check_Box_List.size() ; i++)
+				{
+					if(check_Box_List.get(i).isSelected())
+					{
+						h.add(GridPane.getRowIndex((Node)check_Box_List.get(i)));
+						int index = GridPane.getRowIndex((Node)check_Box_List.get(i));
+						try {
+							App.deserialize(current_User.getEmail_id());
+						} catch (ClassNotFoundException | IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						current_User.bookings.remove(current_User.bookings.get(index - 1));
+						
+						try {
+							App.serialize(current_User.getEmail_id(), "book");
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+				}
+			}
+			
+		});
 		
 		elements.setPadding(new Insets(20));
 		x.setSpacing(350);
