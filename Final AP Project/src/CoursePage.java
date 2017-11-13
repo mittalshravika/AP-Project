@@ -150,14 +150,35 @@ public class CoursePage extends Application
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
+						
+						try {
+							if(current_User.newcourse_List.size()>0)
+							{
+								App.deserialize(current_User.getEmail_id()+"new");
+								System.out.println("A");
+							}
+						} catch (ClassNotFoundException | IOException e2) {
+							// TODO Auto-generated catch block
+							e2.printStackTrace();
+						}
+						
 						for(int i = 0 ; i<App.course_List.size() ; i++)
 						{
 							if(App.course_List.get(i).getCoursename().equals(course_Name))
 							{
 								Course obj = App.course_List.get(i);
 								current_User.newcourse_List.add(obj);
+								System.out.println("A");
 							}
 						}
+						
+						try {
+							App.serialize(current_User.getEmail_id()+"new", "register");
+						} catch (IOException e2) {
+							// TODO Auto-generated catch block
+							e2.printStackTrace();
+						}
+						
 						try {
 							App.serialize("courselist", "course");
 						} catch (IOException e) {
