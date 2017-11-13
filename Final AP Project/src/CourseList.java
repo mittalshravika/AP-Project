@@ -31,7 +31,13 @@ import javafx.geometry.Pos;
 
 public class CourseList extends Application
 {
-	public static void main(String[] args)
+	User current_User;
+	
+	public CourseList(User current_User)
+	{
+		this.current_User = current_User;
+	}
+public static void main(String[] args)
 	{
 		launch(args);
 	}
@@ -51,7 +57,7 @@ public class CourseList extends Application
 		VBox y = new VBox();
 		HBox s = new HBox();
 		Button Submit = new Button("Submit");
-		Button home = new Button("Home");
+		Button home = new Button("Back");
 		s.getChildren().addAll(home, Submit);
 		s.setAlignment(Pos.CENTER_RIGHT);
 		s.setSpacing(770);
@@ -96,7 +102,7 @@ public class CourseList extends Application
 						Course object = get_Course(str);
 						try 
 						{
-							new CoursePage(object).start(primaryStage);
+							new CoursePage(object, current_User).start(primaryStage);
 						} 
 						catch (Exception e) 
 						{
@@ -107,6 +113,13 @@ public class CourseList extends Application
 				
 			}
 		});
+		
+		home.setOnAction( e -> {try {
+			new CourseSearch(current_User).start(primaryStage);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}});
 
 		ScrollPane pane = new ScrollPane();
 		pane.setContent(list);

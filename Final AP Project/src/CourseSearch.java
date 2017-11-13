@@ -17,6 +17,13 @@ import javafx.geometry.HPos;
 
 public class CourseSearch extends Application
 {
+	User current_User;
+	
+	public CourseSearch(User current_User)
+	{
+		this.current_User = current_User;
+	}
+
 	public static void main(String[] args)
 	{
 		launch(args);
@@ -57,10 +64,10 @@ public class CourseSearch extends Application
 				{
 					App.deserialize("courselist");
 					String str = Search.getText();
-					search_Course obj = new search_Course(str, App.course_List);
+					search_Course obj = new search_Course(str, App.course_List, current_User);
 					App.serialize("courselist", "course");
 					Search.setText("");
-					new CourseList().start(primaryStage);
+					new CourseList(current_User).start(primaryStage);
 				} catch (ClassNotFoundException | IOException e)
 				{
 					e.printStackTrace();

@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -51,7 +53,7 @@ public class student_Page extends Application
 		}});
 		
 		btn6.setOnAction(e -> {try {
-			new CourseSearch().start(primaryStage);
+			new CourseSearch(student_User).start(primaryStage);
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

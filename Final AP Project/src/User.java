@@ -14,6 +14,7 @@ public class User implements Serializable
 	public time_Table obj;
 	ArrayList<cancel_Booking> bookings = new ArrayList<cancel_Booking>();
 	ArrayList<Request> MyRequests = new ArrayList<Request>();
+	ArrayList<Course> newcourse_List = new ArrayList<Course>();
 	
 	public String getName() {
 		return name;

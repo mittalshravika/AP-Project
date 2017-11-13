@@ -14,15 +14,16 @@ public class search_Course {
 	private List<Course> all_Courses;
 	static List<Course> course_Search_List = new ArrayList<Course>();
 	private HashMap<Course, Integer> h = new HashMap<Course, Integer>();
-	private User s;
+	private User current_User;
 
-	public search_Course(String search_Keywords, List<Course> all_Courses) throws ClassNotFoundException, IOException {
+	public search_Course(String search_Keywords, List<Course> all_Courses, User student_User) throws ClassNotFoundException, IOException {
 		
-		s = new User();
-		s.obj = new time_Table();
-		s.obj.core_Courses();
+		current_User = student_User;
+		current_User.obj = new time_Table(current_User);
+		current_User.obj.core_Courses();
 		this.search_Keywords = search_Keywords;
 		this.all_Courses = all_Courses;
+		course_Search_List.clear();
 		search_Post_Condition(search_Keywords, all_Courses);
 	}
 	
@@ -361,7 +362,7 @@ public class search_Course {
 	
 	void add_Course(Course c)
 	{
-		if(check_Course(c, s.obj.student_Time_Table))
+		if(check_Course(c, current_User.obj.student_Time_Table))
 		{
 			course_Search_List.add(c);	
 		}

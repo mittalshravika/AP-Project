@@ -1,3 +1,6 @@
+import java.io.IOException;
+import java.util.ArrayList;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -18,10 +21,12 @@ public class CoursePage extends Application
 {
 	
 	private Course object;
-	
-	public CoursePage(Course obj)
+	User current_User;
+
+	public CoursePage(Course obj, User student_User)
 	{
 		object = obj;
+		current_User = student_User;
 	}
 	
 	public static void main(String[] args)
@@ -125,12 +130,43 @@ public class CoursePage extends Application
 			@Override
 			public void handle(ActionEvent event) {
 				
-				new CourseList().start(primaryStage);
+				new CourseList(current_User).start(primaryStage);
 				
 			}
 			
 		});
 		Button Register = new Button("Register Course");
+		
+		Register.setOnAction(new EventHandler<ActionEvent>()
+				{
+
+					@Override
+					public void handle(ActionEvent arg0) {
+						
+						String course_Name = object.getCoursename();
+						try {
+							App.deserialize("courselist");
+						} catch (ClassNotFoundException | IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						for(int i = 0 ; i<App.course_List.size() ; i++)
+						{
+							if(App.course_List.get(i).getCoursename().equals(course_Name))
+							{
+								Course obj = App.course_List.get(i);
+								current_User.newcourse_List.add(obj);
+							}
+						}
+						try {
+							App.serialize("courselist", "course");
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+			
+				});
 
 		Label l = new Label("IIIT-D");
 		l.setAlignment(Pos.TOP_LEFT);
