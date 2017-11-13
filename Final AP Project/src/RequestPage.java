@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.geometry.HPos;
 //import javafx.geometry.Pos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -45,8 +46,8 @@ public class RequestPage extends Application
 
 		//Title 
 		Label Title = new Label("REQUEST");
-		//sGridPane.setHalignment(Title, HPos.RIGHT);
-		//GridPane.setConstraints(Title, 3, 0);
+		GridPane.setHalignment(Title, HPos.RIGHT);
+		GridPane.setConstraints(Title, 3, 0);
 
 		//Purpose
 		Label Purpose = new Label("Purpose:");
@@ -138,9 +139,9 @@ public class RequestPage extends Application
 			}
 			//add to admin List
 			
-			App.getAdmin_List().add(new Request(Purpose1, Room1, Integer.parseInt(Capacity1), Date1, Time1, Integer.parseInt(Duration1), current));
+			App.getAdmin_List().add(new Request(current_User,Purpose1, Room1, Integer.parseInt(Capacity1), Date1, Time1, Integer.parseInt(Duration1), current));
 			//add to user List
-			current_User.getMyRequests().add(new Request(Purpose1, Room1, Integer.parseInt(Capacity1), Date1, Time1, Integer.parseInt(Duration1), current));
+			current_User.getMyRequests().add(new Request(current_User, Purpose1, Room1, Integer.parseInt(Capacity1), Date1, Time1, Integer.parseInt(Duration1), current));
 			
 			try {
 				App.serialize("adminrequestlist", "adminrequest");
