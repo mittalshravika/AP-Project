@@ -85,6 +85,10 @@ public class FacultyBooking extends Application
 		try{
 			App.deserialize(current_User.getEmail_id());
 		}
+		catch(NullPointerException e)
+		{
+			System.out.println("New File");
+		}
 		finally{
 			
 		}

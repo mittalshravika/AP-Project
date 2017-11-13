@@ -138,6 +138,23 @@ public class App {
 					}
 				}
 			}
+			else if(A.equals(obj.getEmail_id()+"new"))
+			{
+				obj.newcourse_List = new ArrayList<>();
+				in = new ObjectInputStream(new FileInputStream("./"+ A + ".ser"));
+				//System.out.println("Check2");
+				while(true)
+				{	try
+					{	
+						Course Input = (Course)in.readObject();
+						obj.newcourse_List.add(Input);
+					}
+					catch (Exception e)
+					{
+						break;
+					}
+				}
+			}
 
 
 		}
@@ -184,6 +201,7 @@ public class App {
 		actual_Room Output3;
 		cancel_Booking Output4;
 		Request Output5;
+		Course Output6;
 		ObjectOutputStream out = null;
 		try
 		{
@@ -240,6 +258,16 @@ public class App {
 				{
 					Output5 = admin_List.get(i);
 					out.writeObject(Output5);
+				}
+			}
+			else if(B.equals("register"))
+			{
+				out = new ObjectOutputStream(new FileOutputStream("./" + A + ".ser"));
+				System.out.print(obj);
+				for(int i = 0; i < obj.newcourse_List.size(); i++)
+				{
+					Output6 = obj.newcourse_List.get(i);
+					out.writeObject(Output6);
 				}
 			}
 		}

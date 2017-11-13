@@ -292,7 +292,11 @@ public class time_Table implements Serializable{
 			
 		}
 		
-		
+		try {
+				App.deserialize(current_User.getEmail_id()+"new");
+		} catch (NullPointerException e) {
+			System.out.println("New File");
+		}
 		
 		for(int i = 0 ; i<current_User.newcourse_List.size() ; i++)
 		{
@@ -523,8 +527,16 @@ public class time_Table implements Serializable{
 			
 		}
 		
-		
-		
+		try {
+			if(current_User.newcourse_List.size()>0)
+			{
+				App.serialize(current_User.getEmail_id()+"new", "register");
+				System.out.println("A");
+			}
+		} catch (IOException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
 		
 		App.serialize("courselist", "course");
 	}

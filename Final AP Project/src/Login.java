@@ -217,6 +217,7 @@ public class Login extends Application
 					{
 						if(App.user_List.get(i).getEmail_id().equals(Email))
 						{
+							App.obj = App.user_List.get(i);
 							if(App.user_List.get(i).getType_of_user().equals("Faculty"))
 							{
 								new faculty_Page(App.user_List.get(i)).start(primaryStage);

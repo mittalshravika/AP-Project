@@ -79,9 +79,10 @@ public class CourseSearch extends Application
 		});
 		
 		Button btn3 = new Button("Back");
+		
 		GridPane.setConstraints(btn3, 0, 30);
 		
-		//btn3.setOnAction(e -> {new student_Page().start(primaryStage);});
+		btn3.setOnAction(e -> {new student_Page(current_User).start(primaryStage);});
 		
 		grid.getChildren().addAll(Title, Search, Search_Button);
 		
