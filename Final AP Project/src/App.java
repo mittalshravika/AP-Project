@@ -1,4 +1,5 @@
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -25,6 +26,7 @@ public class App {
 	public static List<Request> getAdmin_List(){
 		return admin_List;
 	}
+	
 
 	public static void deserialize(String A) 
 	throws IOException, ClassNotFoundException
@@ -144,6 +146,35 @@ public class App {
 			in.close();
 		}
 	}	
+	
+	public static void serializeRequests(User current) throws FileNotFoundException, IOException
+	{
+		current.MyRequests = new ArrayList<>();
+		ObjectInputStream in = new ObjectInputStream(new FileInputStream("./Requests" + current.getEmail_id() +".ser"));
+		while(true)
+		{	try
+			{	
+				Request Input = (Request)in.readObject();
+				current.MyRequests.add(Input);
+			}
+			catch (Exception e)
+			{
+				break;
+			}
+		}
+		
+	}
+	
+	public static void deserializeRequests(User current) throws FileNotFoundException, IOException
+	{
+		Request Output5;
+		ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("./Requests" + current.getEmail_id()  + ".ser"));
+		for(int i = 0; i < current.MyRequests.size(); i++)
+		{
+			Output5 = current.MyRequests.get(i);
+			out.writeObject(Output5);
+		}
+	}
 	
 	public static void serialize(String A, String B)
 	throws IOException

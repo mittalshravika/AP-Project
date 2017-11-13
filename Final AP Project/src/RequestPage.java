@@ -133,6 +133,7 @@ public class RequestPage extends Application
 			
 			try {
 				App.deserialize("adminrequestlist");
+				App.deserializeRequests(current_User);
 			} catch (ClassNotFoundException | IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -142,13 +143,17 @@ public class RequestPage extends Application
 			App.getAdmin_List().add(new Request(current_User,Purpose1, Room1, Integer.parseInt(Capacity1), Date1, Time1, Integer.parseInt(Duration1), current));
 			//add to user List
 			current_User.getMyRequests().add(new Request(current_User, Purpose1, Room1, Integer.parseInt(Capacity1), Date1, Time1, Integer.parseInt(Duration1), current));
-			
+			System.out.println(current_User.MyRequests.size());
+			System.out.println(App.getAdmin_List().size());
 			try {
 				App.serialize("adminrequestlist", "adminrequest");
+				App.serializeRequests(current_User);
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+			
+			
 			
 			
 			
