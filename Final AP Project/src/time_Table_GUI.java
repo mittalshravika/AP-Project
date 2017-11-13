@@ -20,6 +20,14 @@ import javafx.stage.Stage;
 
 public class time_Table_GUI extends Application
 {
+	
+	User current_User;
+	
+	public time_Table_GUI(User current_User) 
+	{
+		this.current_User = current_User;
+	}
+	
 	public static void main(String[] args)	
 	{	
 		launch(args);	
@@ -434,6 +442,342 @@ public class time_Table_GUI extends Application
 			
 		}
 		
+		
+		try {
+			App.deserialize(current_User.getEmail_id()+"new");
+	} catch (NullPointerException e) {
+		System.out.println("New File");
+	}
+		
+		
+		for(int i = 0 ; i<current_User.newcourse_List.size() ; i++)
+		{
+			if(!(current_User.newcourse_List.get(i).getMon().equals("-")))
+			{
+				String str = current_User.newcourse_List.get(i).getMon();
+				String[] timevenue = str.split(";");
+				String duration = timevenue[0];
+				String room = timevenue[1];
+				String[] time = duration.split("-");
+				String starttime = time[0];
+				String endtime = time[1];
+				String[] start = starttime.split(":");
+				String[] end = endtime.split(":");
+				
+				if(Integer.parseInt(start[0])!=8 && Integer.parseInt(start[0])!=9 && Integer.parseInt(start[0])!=10 && Integer.parseInt(start[0])!=11)
+				{
+					starttime = starttime + " PM";
+				}
+				else
+				{
+					starttime = starttime + " AM";
+				}
+				
+				if(Integer.parseInt(end[0])!=8 && Integer.parseInt(end[0])!=9 && Integer.parseInt(end[0])!=10 && Integer.parseInt(end[0])!=11)
+				{
+					endtime = endtime + " PM";
+				}
+				else
+				{
+					endtime = endtime + " AM";
+				}
+				
+				DateTimeFormatter format = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
+		        LocalTime time1 = LocalTime.parse(starttime, format);
+		        LocalTime time2 = LocalTime.parse(endtime, format);
+		        Duration duration1 = Duration.between(time1, time2);
+		        int slots = (int) Math.abs(duration1.getSeconds() / 60);
+		        
+		        TextField a = null;
+		        
+		        String[] name = current_User.newcourse_List.get(i).getCoursename().split(";");
+		        System.out.println(name[0]);
+		        
+		        if(name[0].equals("TUT"))
+		        {
+			        a = new TextField("TUT"+" "+current_User.newcourse_List.get(i).getAcronym()+" "+room);
+			        a.setDisable(true);
+		        }
+		        else if(name[0].equals("LAB"))
+		        {
+		        	a = new TextField("LAB"+" "+current_User.newcourse_List.get(i).getAcronym()+" "+room);
+			        a.setDisable(true);
+		        }
+		        else
+		        {
+		        	a = new TextField(current_User.newcourse_List.get(i).getAcronym()+" "+room);
+			        a.setDisable(true);
+		        }
+		        
+		        int s = h.indexOf(time[0]);
+		        
+		        root.add(a, s+1, 1, slots/30, 1);
+				
+			}
+			
+			if(!(current_User.newcourse_List.get(i).getTue().equals("-")))
+			{
+				String str = current_User.newcourse_List.get(i).getTue();
+				String[] timevenue = str.split(";");
+				String duration = timevenue[0];
+				String room = timevenue[1];
+				String[] time = duration.split("-");
+				String starttime = time[0];
+				String endtime = time[1];
+				String[] start = starttime.split(":");
+				String[] end = endtime.split(":");
+				
+				if(Integer.parseInt(start[0])!=8 && Integer.parseInt(start[0])!=9 && Integer.parseInt(start[0])!=10 && Integer.parseInt(start[0])!=11)
+				{
+					starttime = starttime + " PM";
+				}
+				else
+				{
+					starttime = starttime + " AM";
+				}
+				
+				if(Integer.parseInt(end[0])!=8 && Integer.parseInt(end[0])!=9 && Integer.parseInt(end[0])!=10 && Integer.parseInt(end[0])!=11)
+				{
+					endtime = endtime + " PM";
+				}
+				else
+				{
+					endtime = endtime + " AM";
+				}
+				
+				DateTimeFormatter format = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
+		        LocalTime time1 = LocalTime.parse(starttime, format);
+		        LocalTime time2 = LocalTime.parse(endtime, format);
+		        Duration duration1 = Duration.between(time1, time2);
+		        int slots = (int) Math.abs(duration1.getSeconds() / 60);
+		        
+		        TextField a = null;
+		        
+		        String[] name = current_User.newcourse_List.get(i).getCoursename().split(";");
+		        
+		        if(name[0].equals("TUT"))
+		        {
+			        a = new TextField("TUT"+" "+current_User.newcourse_List.get(i).getAcronym()+" "+room);
+			        a.setDisable(true);
+		        }
+		        else if(name[0].equals("LAB"))
+		        {
+		        	a = new TextField("LAB"+" "+current_User.newcourse_List.get(i).getAcronym()+" "+room);
+			        a.setDisable(true);
+		        }
+		        else
+		        {
+		        	a = new TextField(current_User.newcourse_List.get(i).getAcronym()+" "+room);
+			        a.setDisable(true);
+		        }
+		        
+		        int s = h.indexOf(time[0]);
+		        
+		        root.add(a, s+1, 2, slots/30, 1);
+				
+			}
+			
+			if(!(current_User.newcourse_List.get(i).getWed().equals("-")))
+			{
+				String str = current_User.newcourse_List.get(i).getWed();
+				String[] timevenue = str.split(";");
+				String duration = timevenue[0];
+				String room = timevenue[1];
+				String[] time = duration.split("-");
+				String starttime = time[0];
+				String endtime = time[1];
+				String[] start = starttime.split(":");
+				String[] end = endtime.split(":");
+				
+				if(Integer.parseInt(start[0])!=8 && Integer.parseInt(start[0])!=9 && Integer.parseInt(start[0])!=10 && Integer.parseInt(start[0])!=11)
+				{
+					starttime = starttime + " PM";
+				}
+				else
+				{
+					starttime = starttime + " AM";
+				}
+				
+				if(Integer.parseInt(end[0])!=8 && Integer.parseInt(end[0])!=9 && Integer.parseInt(end[0])!=10 && Integer.parseInt(end[0])!=11)
+				{
+					endtime = endtime + " PM";
+				}
+				else
+				{
+					endtime = endtime + " AM";
+				}
+				
+				DateTimeFormatter format = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
+		        LocalTime time1 = LocalTime.parse(starttime, format);
+		        LocalTime time2 = LocalTime.parse(endtime, format);
+		        Duration duration1 = Duration.between(time1, time2);
+		        int slots = (int) Math.abs(duration1.getSeconds() / 60);
+		        
+		        TextField a = null;
+		        
+		        String[] name = current_User.newcourse_List.get(i).getCoursename().split(";");
+		        
+		        if(name[0].equals("TUT"))
+		        {
+			        a = new TextField("TUT"+" "+current_User.newcourse_List.get(i).getAcronym()+" "+room);
+			        a.setDisable(true);
+		        }
+		        else if(name[0].equals("LAB"))
+		        {
+		        	a = new TextField("LAB"+" "+current_User.newcourse_List.get(i).getAcronym()+" "+room);
+			        a.setDisable(true);
+		        }
+		        else
+		        {
+		        	a = new TextField(current_User.newcourse_List.get(i).getAcronym()+" "+room);
+			        a.setDisable(true);
+		        }
+		        
+		        int s = h.indexOf(time[0]);
+		        
+		        root.add(a, s+1, 3, slots/30, 1);
+				
+			}
+			
+			if(!(current_User.newcourse_List.get(i).getThurs().equals("-")))
+			{
+				String str = current_User.newcourse_List.get(i).getThurs();
+				String[] timevenue = str.split(";");
+				String duration = timevenue[0];
+				String room = timevenue[1];
+				String[] time = duration.split("-");
+				String starttime = time[0];
+				String endtime = time[1];
+				String[] start = starttime.split(":");
+				String[] end = endtime.split(":");
+				
+				if(Integer.parseInt(start[0])!=8 && Integer.parseInt(start[0])!=9 && Integer.parseInt(start[0])!=10 && Integer.parseInt(start[0])!=11)
+				{
+					starttime = starttime + " PM";
+				}
+				else
+				{
+					starttime = starttime + " AM";
+				}
+				
+				if(Integer.parseInt(end[0])!=8 && Integer.parseInt(end[0])!=9 && Integer.parseInt(end[0])!=10 && Integer.parseInt(end[0])!=11)
+				{
+					endtime = endtime + " PM";
+				}
+				else
+				{
+					endtime = endtime + " AM";
+				}
+				
+				DateTimeFormatter format = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
+		        LocalTime time1 = LocalTime.parse(starttime, format);
+		        LocalTime time2 = LocalTime.parse(endtime, format);
+		        Duration duration1 = Duration.between(time1, time2);
+		        int slots = (int) Math.abs(duration1.getSeconds() / 60);
+		        
+		        TextField a = null;
+		        
+		        String[] name = current_User.newcourse_List.get(i).getCoursename().split(";");
+		        
+		        if(name[0].equals("TUT"))
+		        {
+			        a = new TextField("TUT"+" "+current_User.newcourse_List.get(i).getAcronym()+" "+room);
+			        a.setDisable(true);
+		        }
+		        else if(name[0].equals("LAB"))
+		        {
+		        	a = new TextField("LAB"+" "+current_User.newcourse_List.get(i).getAcronym()+" "+room);
+			        a.setDisable(true);
+		        }
+		        else
+		        {
+		        	a = new TextField(current_User.newcourse_List.get(i).getAcronym()+" "+room);
+			        a.setDisable(true);
+		        }
+		        
+		        int s = h.indexOf(time[0]);
+		        
+		        root.add(a, s+1, 4, slots/30, 1);
+				
+			}
+			
+			if(!(current_User.newcourse_List.get(i).getFri().equals("-")))
+			{
+				String str = current_User.newcourse_List.get(i).getFri();
+				String[] timevenue = str.split(";");
+				String duration = timevenue[0];
+				String room = timevenue[1];
+				String[] time = duration.split("-");
+				String starttime = time[0];
+				String endtime = time[1];
+				String[] start = starttime.split(":");
+				String[] end = endtime.split(":");
+				
+				if(Integer.parseInt(start[0])!=8 && Integer.parseInt(start[0])!=9 && Integer.parseInt(start[0])!=10 && Integer.parseInt(start[0])!=11)
+				{
+					starttime = starttime + " PM";
+				}
+				else
+				{
+					starttime = starttime + " AM";
+				}
+				
+				if(Integer.parseInt(end[0])!=8 && Integer.parseInt(end[0])!=9 && Integer.parseInt(end[0])!=10 && Integer.parseInt(end[0])!=11)
+				{
+					endtime = endtime + " PM";
+				}
+				else
+				{
+					endtime = endtime + " AM";
+				}
+				
+				DateTimeFormatter format = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
+		        LocalTime time1 = LocalTime.parse(starttime, format);
+		        LocalTime time2 = LocalTime.parse(endtime, format);
+		        Duration duration1 = Duration.between(time1, time2);
+		        int slots = (int) Math.abs(duration1.getSeconds() / 60);
+		        
+		        TextField a = null;
+		        
+		        String[] name = current_User.newcourse_List.get(i).getCoursename().split(";");
+		        
+		        if(name[0].equals("TUT"))
+		        {
+			        a = new TextField("TUT"+" "+current_User.newcourse_List.get(i).getAcronym()+" "+room);
+			        a.setDisable(true);
+		        }
+		        else if(name[0].equals("LAB"))
+		        {
+		        	a = new TextField("LAB"+" "+current_User.newcourse_List.get(i).getAcronym()+" "+room);
+			        a.setDisable(true);
+		        }
+		        else
+		        {
+		        	a = new TextField(current_User.newcourse_List.get(i).getAcronym()+" "+room);
+			        a.setDisable(true);
+		        }
+		        
+		        int s = h.indexOf(time[0]);
+		        
+		        root.add(a, s+1, 5, slots/30, 1);
+				
+			}
+			
+			
+		}
+		
+		
+		try {
+			if(current_User.newcourse_List.size()>0)
+			{
+				App.serialize(current_User.getEmail_id()+"new", "register");
+				System.out.println("A");
+			}
+		} catch (IOException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		
 		root.add(t11, 0, 0, 1, 1);
 		root.add(t12, 1, 0, 1, 1);
 		root.add(t13, 2, 0, 1, 1);
@@ -477,6 +821,9 @@ public class time_Table_GUI extends Application
 		x.setSpacing(550);
 		
 		Button btn6 = new Button("Back");
+		
+		btn6.setOnAction(e -> {new student_Page(current_User).start(primaryStage);});
+		
 		HBox x2 = new HBox();
 		x2.setSpacing(300);
 		x2.getChildren().addAll(btn6);

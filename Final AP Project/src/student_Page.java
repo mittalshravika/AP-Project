@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javafx.application.Application;
@@ -66,7 +67,12 @@ public class student_Page extends Application
 			e1.printStackTrace();
 		}});
 		
-		btn10.setOnAction(e -> {new personalised_Time_Table(student_User).start(primaryStage);});
+		btn10.setOnAction(e -> {try {
+			new time_Table_GUI(student_User).start(primaryStage);
+		} catch (ClassNotFoundException | IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}});
 		
 		btn.setPrefHeight(80);
 		btn.setPrefWidth(200);

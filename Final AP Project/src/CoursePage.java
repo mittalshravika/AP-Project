@@ -170,6 +170,15 @@ public class CoursePage extends Application
 								current_User.newcourse_List.add(obj);
 								System.out.println("A");
 							}
+							if(App.course_List.get(i).getCoursename().split(";")[0].equals("TUT"))
+							{
+								if(App.course_List.get(i).getCoursename().split(";")[1].equals(course_Name))
+								{
+									Course obj = App.course_List.get(i);
+									current_User.newcourse_List.add(obj);
+									System.out.println("A");
+								}
+							}
 						}
 						
 						try {
