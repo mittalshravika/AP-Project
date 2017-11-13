@@ -4,6 +4,7 @@ import java.lang.*;
 
 public class Request implements Serializable
 {
+	User RequestUser;
 	String purpose;
 	String preferred_Room;
 	int capacity;
@@ -13,8 +14,9 @@ public class Request implements Serializable
 	String time;
 	String currentTime;
 	
-	public Request(String a, String b, int c, String d, String t, int duration, String c_t)
+	public Request(User User1, String a, String b, int c, String d, String t, int duration, String c_t)
 	{
+		this.RequestUser = User1;
 		this.purpose = new String(a);
 		this.preferred_Room = new String(b);
 		this.capacity = c;
