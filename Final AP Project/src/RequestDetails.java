@@ -20,7 +20,9 @@ public class RequestDetails extends Application
 	private Request object;
 	private User current_User;
 	
-	public void RequestDetails(Request obj, User a)
+
+
+	public RequestDetails(Request obj, User a)
 	{
 		this.object = obj;
 		this.current_User = a;
