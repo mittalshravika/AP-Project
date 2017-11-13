@@ -1,3 +1,9 @@
+import java.io.IOException;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+
 import javafx.application.Application;
 import javafx.scene.Scene;
 //import javafx.scene.layout.StackPane;
@@ -96,6 +102,57 @@ public class RequestPage extends Application
 		//Submit
 		Button Submit = new Button("Submit");
 		GridPane.setConstraints(Submit, 3, 7);
+		
+		Submit.setOnAction(e ->{
+			String Purpose1, Room1,Date1, Time1, Duration1; 
+			String Capacity1;
+			String current;
+			Purpose1 = new String(Purpose.getText());
+			Room1 = new String(Preferred.getText());
+			Capacity1 = new String(Capacity.getText());
+			Duration1 = new String(Duration.getText());
+			
+			Date1 = checkInDatePicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+			if(Date1 == null)
+			{
+				Date1 = new String ("Null");
+			}
+			
+			Time1 = new String(Hours.getValue() + " " + Minutes.getValue());
+			if(M.getValue().equals("p.m."))
+			{
+				int change = Integer.parseInt(Hours.getValue())+ 12;
+				Time1 = new String(change + " " + Minutes.getValue());
+			}
+			
+			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			Date date = new Date(0);
+			current = new String(dateFormat.format(date));
+			System.out.println(current); //2016/11/16 12:08:43
+			
+			try {
+				App.deserialize("adminrequestlist");
+			} catch (ClassNotFoundException | IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			//add to admin List
+			
+			App.getAdmin_List().add(new Request(Purpose1, Room1, Integer.parseInt(Capacity1), Date1, Time1, Integer.parseInt(Duration1), current));
+			//add to user List
+			current_User.getMyRequests().add(new Request(Purpose1, Room1, Integer.parseInt(Capacity1), Date1, Time1, Integer.parseInt(Duration1), current));
+			
+			try {
+				App.serialize("adminrequestlist", "adminrequest");
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			
+			
+			
+		});
 		
 		Button btn3 = new Button("Back");
 		GridPane.setConstraints(btn3, 0, 30);

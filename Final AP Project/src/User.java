@@ -13,6 +13,7 @@ public class User implements Serializable
 	private user_Page page;
 	public time_Table obj;
 	ArrayList<cancel_Booking> bookings = new ArrayList<cancel_Booking>();
+	ArrayList<Request> MyRequests = new ArrayList<Request>();
 	
 	public String getName() {
 		return name;
@@ -28,6 +29,11 @@ public class User implements Serializable
 
 	public String getEmail_id() {
 		return email_id;
+	}
+	
+	public List<Request> getMyRequests()
+	{
+		return MyRequests;
 	}
 	
 	public User(String A, String B, String C, String D)
