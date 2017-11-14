@@ -167,7 +167,7 @@ public class App {
 	public static void serializeRequests(User current) throws FileNotFoundException, IOException
 	{
 		current.MyRequests = new ArrayList<>();
-		ObjectInputStream in = new ObjectInputStream(new FileInputStream("./Requests" + current.getEmail_id() +".ser"));
+		ObjectInputStream in = new ObjectInputStream(new FileInputStream("./" + current.getEmail_id() + "Requests" +".ser"));
 		while(true)
 		{	try
 			{	
@@ -185,7 +185,7 @@ public class App {
 	public static void deserializeRequests(User current) throws FileNotFoundException, IOException
 	{
 		Request Output5;
-		ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("./Requests" + current.getEmail_id()  + ".ser"));
+		ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("./" + current.getEmail_id() + "Requests" + ".ser"));
 		for(int i = 0; i < current.MyRequests.size(); i++)
 		{
 			Output5 = current.MyRequests.get(i);

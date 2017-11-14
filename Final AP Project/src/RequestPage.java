@@ -110,8 +110,8 @@ public class RequestPage extends Application
 			String current;
 			Purpose1 = new String(Purpose.getText());
 			Room1 = new String(Preferred.getText());
-			Capacity1 = new String(Capacity.getText());
-			Duration1 = new String(Duration.getText());
+			Capacity1 = new String(Capacity_input.getText());
+			Duration1 = new String(Duration_input.getText());
 			
 			Date1 = checkInDatePicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 			if(Date1 == null)
@@ -129,14 +129,14 @@ public class RequestPage extends Application
 			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			Date date = new Date(0);
 			current = new String(dateFormat.format(date));
-			System.out.println(current); //2016/11/16 12:08:43
+			//System.out.println(current); //2016/11/16 12:08:43
 			
 			try {
 				App.deserialize("adminrequestlist");
 				App.deserializeRequests(current_User);
-			} catch (ClassNotFoundException | IOException e1) {
+			} catch (NullPointerException | IOException | ClassNotFoundException e1) {
 				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				System.out.println("Nw File");
 			}
 			//add to admin List
 			
@@ -146,6 +146,7 @@ public class RequestPage extends Application
 			System.out.println(current_User.MyRequests.size());
 			System.out.println(App.getAdmin_List().size());
 			try {
+				
 				App.serialize("adminrequestlist", "adminrequest");
 				App.serializeRequests(current_User);
 			} catch (IOException e1) {
