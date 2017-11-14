@@ -1,34 +1,27 @@
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
-//import javafx.scene.layout.StackPane;
-import javafx.scene.control.*;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox.*;
-import javafx.scene.layout.VBox.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.geometry.Pos;
-import javafx.geometry.Insets;
+import javafx.stage.Stage;
 
-public class RequestDetails extends Application
+public class AdminRequestPage extends Application
 {
-	
 	private Request object;
-	private User current_User;
+	User admin;
 	
-
-
-	public RequestDetails(Request obj, User a)
+	AdminRequestPage(Request a, User b)
 	{
-		this.object = obj;
-		this.current_User = a;
-		
+		this.object = a;
+		this.admin = b;
 	}
-	
+
 	public static void main(String[] args)
 	{
 		launch(args);
@@ -99,7 +92,7 @@ public class RequestDetails extends Application
 			public void handle(ActionEvent event) {
 				
 				try {
-					new StudentRequest(current_User).start(primaryStage);
+					new AdminRequestList(admin).start(primaryStage);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -108,7 +101,7 @@ public class RequestDetails extends Application
 			
 		});
 		
-		Button Book = new Button("Cancel");
+		Button Book = new Button("Book");
 
 		Label l = new Label("IIIT-D");
 		l.setAlignment(Pos.TOP_LEFT);
@@ -135,4 +128,5 @@ public class RequestDetails extends Application
 
 
 	}
+
 }

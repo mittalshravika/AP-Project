@@ -54,7 +54,12 @@ public class admin_Page extends Application
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}});
-		btn5.setOnAction(e -> {new RequestList(admin_User).start(primaryStage);});
+		btn5.setOnAction(e -> {try {
+			new AdminRequestList(admin_User).start(primaryStage);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}});
 		
 		btn.setPrefHeight(80);
 		btn.setPrefWidth(200);
