@@ -1,6 +1,10 @@
+import java.io.IOException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.WeekFields;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -40,6 +44,15 @@ public class ViewRoomStudent extends Application
 		Button btn = new Button("Submit details");
 		Button btn2 = new Button("Submit Room Bookings");
 		Button btn3 = new Button("Back");
+		
+		Map<String, Integer> DayOfWeek = new HashMap<>();
+		DayOfWeek.put("MONDAY", 0);
+		DayOfWeek.put("TUESDAY", 1);
+		DayOfWeek.put("WEDNESDAY", 2);
+		DayOfWeek.put("THURSDAY", 3);
+		DayOfWeek.put("FRIDAY", 4);
+		DayOfWeek.put("SATURDAY", 5);
+		DayOfWeek.put("SUNDAY", 6);
 		
 		btn3.setOnAction(e -> {new student_Page(current_User).start(primaryStage);});
 		
@@ -187,21 +200,14 @@ public class ViewRoomStudent extends Application
 		root.add(tj, 0, 19, 1, 1);
 		root.add(tk, 0, 20, 1, 1);
 		
+		
 		for(int j = 1 ; j<=20 ; j++)
 		{
 			for(int i = 1 ; i<=20 ; i++)
 			{
-				if((i%2==0 && i>0) && (j%2==0 && j>0))
-				{
-					root.add(new Label("Available"), i, j, 1, 1);
-				}
-				else
-				{
-					root.add(new Label("Booked"), i, j, 1, 1);
-				}
+				root.add(new Label("Available"), i, j, 1, 1);
 			}
 		}
-		
 		
 			
 		ScrollPane sp = new ScrollPane();
@@ -212,14 +218,58 @@ public class ViewRoomStudent extends Application
 		btn3.setVisible(false);
 		
 		btn.setOnAction(e	->	{	
+			
+			for (Node node : root.getChildren()) {
+		        if ((GridPane.getColumnIndex(node)>0) && (GridPane.getRowIndex(node)>0)) {
+		        	((Label)node).setText("");
+		        	((Label)node).setText("Available");
+		        }
+		    }
+			
 			sp.setVisible(true);
-			btn2.setVisible(true);
+		//	btn2.setVisible(true);
 			btn3.setVisible(true);
 			LocalDate date = cal.getValue(); // input from your date picker
 			Locale locale = Locale.US;
 			int weekOfYear = date.get(WeekFields.of(locale).weekOfWeekBasedYear());
 			String Day = new String(date.getDayOfWeek().toString());
 			System.out.println("WEEK: " + weekOfYear  +" DAY: " + Day);
+			int day = DayOfWeek.get(new String(date.getDayOfWeek().toString()));
+			System.out.println(weekOfYear);
+			
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+			
+			try {
+				App.deserialize("roomlist");
+				Day obj = new Day();
+				//obj.book_Slots();
+			} catch (ClassNotFoundException | IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			System.out.println();
+			
+			for(int i = 0; i < App.actual_Room_List.size(); i++)
+			{
+				for(int j = 0 ; j<20 ; j++)
+				{
+					if(App.actual_Room_List.get(i).getList_Of_Weeks().get(weekOfYear - 31).getWeek_List().get(day).getday_List().get(j))
+					{
+						for (Node node : root.getChildren()) {
+					        if ((GridPane.getColumnIndex(node)==(j+1) && GridPane.getColumnIndex(node)>0) && (GridPane.getRowIndex(node)==(i+1) && GridPane.getRowIndex(node)>0)) {
+					        	((Label)node).setText("");
+					        	((Label)node).setText("Not Available");
+					        }
+					    }
+					}
+				}
+			}
+			
+			
+			
+			
+			
 		});	
 		
 		VBox y = new VBox();
