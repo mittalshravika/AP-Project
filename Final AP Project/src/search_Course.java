@@ -364,7 +364,25 @@ public class search_Course {
 	{
 		if(check_Course(c, current_User.obj.student_Time_Table))
 		{
-			course_Search_List.add(c);	
+			Course check = null;
+			for(int i = 0 ; i<App.course_List.size() ; i++)
+			{
+				if(App.course_List.get(i).getCoursename().equals("TUT;"+c.getCoursename()))
+				{
+					check = App.course_List.get(i);
+					break;
+				}
+			}if(check!=null)
+			{
+				if(check_Course(check, current_User.obj.student_Time_Table))
+				{
+					course_Search_List.add(c);	
+				}
+			}
+			else if(check==null)
+			{
+				course_Search_List.add(c);
+			}
 		}
 	}
 	

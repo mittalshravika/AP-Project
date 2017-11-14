@@ -44,7 +44,12 @@ public class student_Page extends Application
 		
 		btn.setOnAction(e -> {new ViewRoomStudent(student_User).start(primaryStage);});
 		
-		btn5.setOnAction(e -> {new StudentRequest(student_User).start(primaryStage);});
+		btn5.setOnAction(e -> {try {
+			new StudentRequest(student_User).start(primaryStage);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}});
 		
 		btn4.setOnAction(e -> {try {
 			new Login().start(primaryStage);
