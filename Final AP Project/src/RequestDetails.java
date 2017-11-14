@@ -64,7 +64,7 @@ public class RequestDetails extends Application
 		Label Purpose = new Label("Purpose:");
 		GridPane.setConstraints(Purpose, 0, 1);
 		Label Purpose_D = new Label();
-		Purpose.setText(object.purpose);
+		Purpose_D.setText(object.purpose);
 		GridPane.setConstraints(Purpose_D, 1, 1);
 
 		Label Preferred = new Label("Preferred Room:");
@@ -76,7 +76,7 @@ public class RequestDetails extends Application
 		Label Date = new Label("Date:");
 		GridPane.setConstraints(Date, 0, 3);
 		Label Date_D = new Label();
-		Date.setText(object.date);
+		Date_D.setText(object.date);
 		GridPane.setConstraints(Date_D, 1, 3);
 
 		Label Time = new Label("Time:");

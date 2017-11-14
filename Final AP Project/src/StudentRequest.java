@@ -116,7 +116,7 @@ public class StudentRequest extends Application
 				}
 				
 			});
-			Table.add(B, 8, 1, 1, 1);
+			Table.add(B, 8, i+1, 1, 1);
 		
 			Table.add(t1, 0, i+1, 1, 1);
 			Table.add(t2, 1, i+1, 1, 1);
