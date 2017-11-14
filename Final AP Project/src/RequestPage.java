@@ -108,8 +108,8 @@ public class RequestPage extends Application
 			String Purpose1, Room1,Date1, Time1, Duration1; 
 			String Capacity1;
 			String current;
-			Purpose1 = new String(Purpose.getText());
-			Room1 = new String(Preferred.getText());
+			Purpose1 = new String(Purpose_input.getText());
+			Room1 = new String(Preferred_input.getText());
 			Capacity1 = new String(Capacity_input.getText());
 			Duration1 = new String(Duration_input.getText());
 			

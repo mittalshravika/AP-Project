@@ -79,6 +79,7 @@ public class StudentRequest extends Application
 		T8.setDisable(true);
 		T9.setDisable(true);
 		App.deserializeRequests(current_User);
+		System.out.println(current_User.MyRequests.size());
 		//example
 		for(int i = 0; i < current_User.MyRequests.size(); i++)
 		{
@@ -137,6 +138,9 @@ public class StudentRequest extends Application
 		//Approval.setValue("Pending");
 		Table.setAlignment(Pos.CENTER);
 		}
+		
+		App.serializeRequests(current_User);
+
 
 		sp = new ScrollPane();
 		sp.setContent(Table);
