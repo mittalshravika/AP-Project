@@ -99,13 +99,16 @@ public class StudentRequest extends Application
 				else
 					t9 = new TextField("Pending");
 			}
+			
+			Request object = current_User.MyRequests.get(i);
+			
 			Button B = new Button("Show");
 	
 			B.setOnAction(e -> {
 				try {
 					
 					
-					new RequestDetails(current_User.MyRequests.get(j ) ,current_User).start(primaryStage);
+					new RequestDetails(object ,current_User).start(primaryStage);
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
