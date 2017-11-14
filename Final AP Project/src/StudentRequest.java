@@ -78,7 +78,13 @@ public class StudentRequest extends Application
 		T7.setDisable(true);
 		T8.setDisable(true);
 		T9.setDisable(true);
-		App.deserializeRequests(current_User);
+		try{
+			App.deserializeRequests(current_User);
+		}
+		catch(FileNotFoundException e)
+		{
+			System.out.println("new file");
+		}
 		System.out.println(current_User.MyRequests.size());
 		//example
 		for(int i = 0; i < current_User.MyRequests.size(); i++)
