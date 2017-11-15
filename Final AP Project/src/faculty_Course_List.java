@@ -74,7 +74,7 @@ public static void main(String[] args)
 		App.deserialize("courselist");
 		for(int i = 0 ; i<App.course_List.size() ; i++)
 		{
-			if(App.course_List.get(i).getInstructorname().equals(current_User.getName()) && !(App.course_List.get(i).getCoursename().split(";")[0].equals("TUT") || App.course_List.get(i).getCoursename().split(";")[0].equals("LAB")))
+			if(App.course_List.get(i).getInstructorname().equals(current_User.getName()) && !(App.course_List.get(i).getCoursename().split(";")[0].equals("TUT") || App.course_List.get(i).getCoursename().split(";")[0].equals("LAB") || App.course_List.get(i).getCoursename().split(";")[0].equals("TUT2")))
 			{
 				data.add(App.course_List.get(i).getCoursename());
 			}

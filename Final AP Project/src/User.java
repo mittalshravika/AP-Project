@@ -2,7 +2,32 @@ import java.io.IOException;
 import java.io.Serializable;
 
 import java.util.*;
+
 import java.lang.*;
+
+class EnterValidNameException extends Exception {
+	EnterValidNameException(String message) {
+		super(message);
+	}
+}
+
+class EnterValidEmailIDException extends Exception {
+	EnterValidEmailIDException(String message) {
+		super(message);
+	}
+}
+
+class EnterPasswordException extends Exception {
+	EnterPasswordException(String message) {
+		super(message);
+	}
+}
+
+class PasswordsDontMatchException extends Exception {
+	PasswordsDontMatchException(String message) {
+		super(message);
+	}
+}
 
 public class User implements Serializable
 {
@@ -57,14 +82,21 @@ public class User implements Serializable
 		boolean check = true;
 		if(Name == null || Name.equals(""))
 		{
-			
-			System.out.println("Enter a valid name");
+			try {
+				throw new EnterValidNameException("EnterValidNameException: Please do not leave the Name field blank");
+			} catch (EnterValidNameException e) {
+				System.out.println(e.getMessage());
+			}
 			check = false;
 			
 		}
 		if(Email == null || Email.equals(""))
 		{
-			System.out.println("Enter a valid Email ID");
+			try {
+				throw new EnterValidEmailIDException("EnterValidEmailIDException: Enter a valid EmailID in the required field");
+			} catch (EnterValidEmailIDException e) {
+				System.out.println(e.getMessage());
+			}
 			check = false;
 			
 		}
@@ -75,7 +107,11 @@ public class User implements Serializable
 		}
 		if(Pass1 == null || Pass1.equals(""))
 		{
-			System.out.println("Enter the password");
+			try {
+				throw new EnterPasswordException("EnterPasswordException: Please do not leave the required Password field blank");
+			} catch (EnterPasswordException e) {
+				System.out.println(e.getMessage());
+			}
 			check = false;
 		}
 		if(check)
@@ -100,7 +136,11 @@ public class User implements Serializable
 			
 			if(A.charAt(size-12 + i) != check.charAt(i))
 			{
-				System.out.println("Enter a valid Email ID (@iiitd.ac.in)");
+				try {
+					throw new EnterValidEmailIDException("EnterValidEmailIDException: Enter a valid EmailID (@iiitd.ac.in) in the required field");
+				} catch (EnterValidEmailIDException e) {
+					System.out.println(e.getMessage());
+				}
 				return false;
 			}
 		}
@@ -114,6 +154,11 @@ public class User implements Serializable
 			return true;
 		}
 		System.out.println("Passwords don't match");
+		try {
+			throw new PasswordsDontMatchException("PasswordsDontMatchException: Enter a valid EmailID (@iiitd.ac.in) in the required field");
+		} catch (PasswordsDontMatchException e) {
+			System.out.println(e.getMessage());
+		}
 		
 		return false;
 		
@@ -130,6 +175,11 @@ public class User implements Serializable
 		if(Email == null || Email.equals(""))
 		{
 			System.out.println("Enter a valid Email ID");
+			try {
+				throw new EnterValidEmailIDException("EnterValidEmailIDException: Enter a valid EmailID (@iiitd.ac.in) in the required field");
+			} catch (EnterValidEmailIDException e) {
+				System.out.println(e.getMessage());
+			}
 			check = false;
 			
 		}

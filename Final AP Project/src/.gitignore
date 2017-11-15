@@ -58,3 +58,8 @@
 /faculty_Course_List$1.class
 /course_Page_Faculty.class
 /course_Page_Faculty$1.class
+/NoSuchSongExistsException.class
+/EnterValidNameException.class
+/EnterValidEmailIDException.class
+/EnterPasswordException.class
+/PasswordsDontMatchException.class
