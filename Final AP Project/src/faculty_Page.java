@@ -35,10 +35,11 @@ public	class faculty_Page extends Application
 		btn2.getStyleClass().add("button");
 		Button btn3 = new Button("Cancel Booking");	
 		btn3.getStyleClass().add("button");
+		Button btn5 = new Button("Courses");	
+		btn5.getStyleClass().add("button");
 		Button btn4 = new Button("Logout");
 		Label l1 = new Label("Name:" + faculty_User.getName());
 		Label l2 = new Label("Type:");
-		Label l3 = new Label("Courses:");
 		
 		btn.setOnAction(e -> {new book_Room(1, faculty_User).start(primaryStage);});
 		btn2.setOnAction(e -> {new book_Room(1, faculty_User).start(primaryStage);});
@@ -57,6 +58,14 @@ public	class faculty_Page extends Application
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}});
+		btn5.setOnAction(e -> {
+			try {
+				new faculty_Course_List(faculty_User).start(primaryStage);
+			} catch (ClassNotFoundException | IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		});
 		
 		
 		btn.setPrefHeight(80);
@@ -65,6 +74,8 @@ public	class faculty_Page extends Application
 		btn2.setPrefWidth(200);
 		btn3.setPrefHeight(80);
 		btn3.setPrefWidth(200);
+		btn5.setPrefHeight(80);
+		btn5.setPrefWidth(200);
 		btn4.setPrefHeight(80);
 		btn4.setPrefWidth(100);
 		
@@ -86,7 +97,7 @@ public	class faculty_Page extends Application
 		root.add(btn, 2, 3, 1, 1);
 		root.add(btn2, 2, 4, 1, 1);
 		root.add(btn3, 2, 5, 1, 1);
-		root.add(l3, 0, 6, 1, 1);
+		root.add(btn5, 2, 6, 1, 1);
 		
 		Label l = new Label("IIIT-D");
 		l.setAlignment(Pos.TOP_LEFT);
