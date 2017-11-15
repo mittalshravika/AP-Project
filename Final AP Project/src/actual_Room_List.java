@@ -3,13 +3,33 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * 
+ * actual_Room_List.java is used for reading reading the .csv for Room Details and storing them
+ * 
+ * @author Yajur Ahuja - 2016121
+ * @author Shravika Mittal - 2016093
+ *
+ */
 public class actual_Room_List {
 	
+	/**
+	 * Adds an actual_Room object to the static list for room database
+	 * 
+	 * @param global_Room_List - static list that contains actual_Room objects which have the room details
+	 * @param obj - actual_Room object to be added to the list
+	 */
 	static void add_Room(List<actual_Room> global_Room_List, actual_Room obj)
 	{
 		global_Room_List.add(obj);
 	}
 	
+	/**
+	 * This is the main method which makes the use of add_Room method to make the static App.actual_Room_List
+	 * 
+	 * @param args - unused
+	 * @throws IOException
+	 */
 	public static void main(String args[]) throws IOException
     {
         BufferedReader br = null;
