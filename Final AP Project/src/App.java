@@ -1,3 +1,13 @@
+/**
+ * <h1> IIITD Classroom Booking System </h1>
+ * The App class initialises all the static lists for database of courses, core courses, userlist, roomlist, adminrequestlist
+ * 
+ * <b>It contains the serialise and deserialise methods also for the above mentioned lists</b>
+ * 
+ * @author Yajur Ahuja - 2016121
+ * @author Shravika Mittal - 2016093
+ */
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -15,23 +25,43 @@ public class App {
 	static User obj;
 	static List<Request> admin_List = new ArrayList<>();
 	
+	/**
+	 * 
+	 * This is a getter function for user_List
+	 * @param unused
+	 * @return user_List that contains all the users signed up in the system
+	 */
 	public static List<User> getUser_List() {
 		return user_List;
 	}
 
+	/**
+	 * This is a getter function for course_List
+	 * @param unused
+	 * @return course_List that contains information about all the CSE courses offered to second year students in monsoon semester
+	 */
 	public static List<Course> getCourse_List() {
 		return course_List;
 	}
 	
+	/**
+	 * This is a getter function for admin_List
+	 * @param unused
+	 * @return admin_List that contains the requests made by students to the admin for room booking
+	 */
 	public static List<Request> getAdmin_List(){
 		return admin_List;
 	}
-	
 
+	/**
+	 * 
+	 * @param A describing which list to deserialize
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	public static void deserialize(String A) 
 	throws IOException, ClassNotFoundException
 	{
-		//System.out.println(A);
 		ObjectInputStream in = null;
 		try
 		{
@@ -39,7 +69,6 @@ public class App {
 			{
 				user_List = new ArrayList<>();
 				in = new ObjectInputStream(new FileInputStream("./"+ A + ".ser"));
-				//System.out.println("Check2");
 				while(true)
 				{	try
 					{	
@@ -56,7 +85,6 @@ public class App {
 			{
 				course_List = new ArrayList<>();
 				in = new ObjectInputStream(new FileInputStream("./"+ A + ".ser"));
-				//System.out.println("Check2");
 				while(true)
 				{	try
 					{	
@@ -73,7 +101,6 @@ public class App {
 			{
 				core_Course_List = new ArrayList<>();
 				in = new ObjectInputStream(new FileInputStream("./"+ A + ".ser"));
-				//System.out.println("Check2");
 				while(true)
 				{	try
 					{	
@@ -90,7 +117,6 @@ public class App {
 			{
 				actual_Room_List = new ArrayList<>();
 				in = new ObjectInputStream(new FileInputStream("./"+ A + ".ser"));
-				//System.out.println("Check2");
 				while(true)
 				{	try
 					{	
@@ -108,7 +134,6 @@ public class App {
 			{
 				obj.bookings = new ArrayList<>();
 				in = new ObjectInputStream(new FileInputStream("./"+ A + ".ser"));
-				//System.out.println("Check2");
 				while(true)
 				{	try
 					{	
@@ -125,7 +150,6 @@ public class App {
 			{
 				admin_List = new ArrayList<>();
 				in = new ObjectInputStream(new FileInputStream("./"+ A + ".ser"));
-				//System.out.println("Check2");
 				while(true)
 				{	try
 					{	
@@ -142,7 +166,6 @@ public class App {
 			{
 				obj.newcourse_List = new ArrayList<>();
 				in = new ObjectInputStream(new FileInputStream("./"+ A + ".ser"));
-				//System.out.println("Check2");
 				while(true)
 				{	try
 					{	
@@ -164,6 +187,12 @@ public class App {
 		}
 	}	
 	
+	/**
+	 * 
+	 * @param current - which is the student user whose request list has to be deserialized
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	public static void deserializeRequests(User current) throws FileNotFoundException, IOException
 	{
 		current.MyRequests = new ArrayList<>();
@@ -182,6 +211,12 @@ public class App {
 		
 	}
 	
+	/**
+	 * 
+	 * @param current - which is the student user whose request list has to be serialized
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	public static void serializeRequests(User current) throws FileNotFoundException, IOException
 	{
 		System.out.println("gaya");
@@ -194,6 +229,12 @@ public class App {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param A which is the name of the list to be serialised
+	 * @param B tells which list has to be serialized
+	 * @throws IOException
+	 */
 	public static void serialize(String A, String B)
 	throws IOException
 	{
