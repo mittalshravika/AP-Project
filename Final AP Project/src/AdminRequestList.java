@@ -2,12 +2,15 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Separator;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -92,16 +95,9 @@ public class AdminRequestList extends Application
 			TextField t6 = new TextField(App.getAdmin_List().get(i).purpose);
 			TextField t7 = new TextField(App.getAdmin_List().get(i).preferred_Room);
 			TextField t8 = new TextField(String.valueOf(App.getAdmin_List().get(i).capacity));
-			TextField t9;
-			if(App.getAdmin_List().get(i).Approved)
-				t9 = new TextField("Approved");
-			else
-			{
-				if(App.getAdmin_List().get(i).Cancel)
-					t9 = new TextField("Cancelled");
-				else
-					t9 = new TextField("Pending");
-			}
+			ChoiceBox t9 = new ChoiceBox();
+			t9.setItems(FXCollections.observableArrayList("Pending", "Approve", "Cancel"));
+			t9.setValue("Pending");
 			
 			Request object = App.getAdmin_List().get(i);
 			
@@ -137,7 +133,7 @@ public class AdminRequestList extends Application
 			t6.setDisable(true);
 			t7.setDisable(true);
 			t8.setDisable(true);
-			t9.setDisable(true);
+			//t9.setDisable(true);
 			
 
 		
@@ -166,7 +162,7 @@ public class AdminRequestList extends Application
 		
 		VBox elements = new VBox();
 		HBox x = new HBox();
-		Button Cancel = new Button("Cancel");
+		Button Book = new Button("Book");
 		
 		elements.setSpacing(20);
 		elements.setPadding(new Insets(20));
@@ -174,7 +170,7 @@ public class AdminRequestList extends Application
 		elements.setStyle("-fx-background-color: #00DDDD");
 		
 		Button Home = new Button("Back");
-		x.getChildren().addAll(Home, Cancel);
+		x.getChildren().addAll(Home, Book);
 		x.setSpacing(760);
 		
 		Home.setOnAction(e -> {new admin_Page(admin).start(primaryStage);});

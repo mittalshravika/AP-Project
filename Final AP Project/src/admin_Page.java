@@ -34,8 +34,8 @@ public class admin_Page extends Application
 		Button btn3 = new Button("Cancel Booking");
 		Button btn4 = new Button("Logout");
 		Button btn5 = new Button("Show Request");
-		Label l1 = new Label("Name:");
-		Label l2 = new Label("Type:");
+		Label l1 = new Label("Name: Admin");
+		Label l2 = new Label("");
 		
 		btn.setOnAction(e -> {new book_Room(2, admin_User).start(primaryStage);});
 		btn2.setOnAction(e -> {new book_Room(2, admin_User).start(primaryStage);});
