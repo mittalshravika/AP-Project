@@ -63,3 +63,4 @@
 /EnterValidEmailIDException.class
 /EnterPasswordException.class
 /PasswordsDontMatchException.class
+/LoginFailException.class

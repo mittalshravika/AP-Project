@@ -3,29 +3,53 @@ import java.io.Serializable;
 
 import java.util.*;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+
 import java.lang.*;
 
 class EnterValidNameException extends Exception {
 	EnterValidNameException(String message) {
 		super(message);
+
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Information Dialog");
+		alert.setHeaderText(null);
+		alert.setContentText("Please do not leave the required Name Field blank");
+		alert.showAndWait();
 	}
 }
 
 class EnterValidEmailIDException extends Exception {
 	EnterValidEmailIDException(String message) {
 		super(message);
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Information Dialog");
+		alert.setHeaderText(null);
+		alert.setContentText("Enter a valid EmailID in the required field");
+		alert.showAndWait();
 	}
 }
 
 class EnterPasswordException extends Exception {
 	EnterPasswordException(String message) {
 		super(message);
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Information Dialog");
+		alert.setHeaderText(null);
+		alert.setContentText("Please do not leave the required Password Field blank");
+		alert.showAndWait();
 	}
 }
 
 class PasswordsDontMatchException extends Exception {
 	PasswordsDontMatchException(String message) {
 		super(message);
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Information Dialog");
+		alert.setHeaderText(null);
+		alert.setContentText("Password and confirmed password do not match");
+		alert.showAndWait();
 	}
 }
 
@@ -130,7 +154,14 @@ public class User implements Serializable
 		boolean flag = true;
 		String check = new String("@iiitd.ac.in");
 		if(size < 13)
+		{
+			try {
+				throw new EnterValidEmailIDException("EnterValidEmailIDException: Enter a valid EmailID (@iiitd.ac.in) in the required field");
+			} catch (EnterValidEmailIDException e) {
+				System.out.println(e.getMessage());
+			}
 			return false;
+		}
 		for(int i = 0; i < 12; i++)
 		{
 			

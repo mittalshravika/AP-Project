@@ -4,6 +4,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 //import javafx.scene.layout.StackPane;
 import javafx.scene.control.*;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -15,8 +16,17 @@ import java.io.IOException;
 import java.util.*;
 
 
+class LoginFailException extends Exception {
+	LoginFailException(String message) {
+		super(message);
 
-//
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Information Dialog");
+		alert.setHeaderText(null);
+		alert.setContentText("The Email Id or Password may be incorrect!!");
+		alert.showAndWait();
+	}
+}
 
 public class Login extends Application
 {
@@ -196,7 +206,7 @@ public class Login extends Application
 		Label Password = new Label("Password:");
 		Password.setStyle("-fx-font: normal 20px 'sans-serif' ");
 		GridPane.setConstraints(Password, 0, 1);
-		TextField Password_input = new TextField();
+		PasswordField Password_input = new PasswordField();
 		Password_input.setStyle("-fx-border-color: #00DDDD ");
 		GridPane.setConstraints(Password_input, 1, 1);
 
@@ -240,6 +250,11 @@ public class Login extends Application
 				else
 				{
 					System.out.println("Fail");
+					try {
+						throw new LoginFailException("EnterValidEmailIDException: The Email Id or Password may be incorrect!!");
+					} catch (LoginFailException e) {
+						System.out.println(e.getMessage());
+					}
 				}
 				
 				{
