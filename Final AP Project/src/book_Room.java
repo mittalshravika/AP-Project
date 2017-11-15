@@ -331,6 +331,8 @@ public class book_Room extends Application
 			{
 				if(check_Box_List.get(i).isSelected())
 				{
+					check_Box_List.get(i).setSelected(false);
+					check_Box_List.get(i).setDisable(true);
 					h.get(GridPane.getRowIndex((Node)check_Box_List.get(i)) - 1).add((GridPane.getColumnIndex((Node)check_Box_List.get(i)) - 1));
 				}
 			}
