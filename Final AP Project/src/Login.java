@@ -23,7 +23,7 @@ class LoginFailException extends Exception {
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Information Dialog");
 		alert.setHeaderText(null);
-		alert.setContentText("The Email Id or Password may be incorrect!!");
+		alert.setContentText("Your Email ID or Password is Invalid");
 		alert.showAndWait();
 	}
 }
@@ -249,9 +249,8 @@ public class Login extends Application
 				}
 				else
 				{
-					System.out.println("Fail");
 					try {
-						throw new LoginFailException("EnterValidEmailIDException: The Email Id or Password may be incorrect!!");
+						throw new LoginFailException("EnterValidEmailIDException: Your Email ID or Password is Invalid");
 					} catch (LoginFailException e) {
 						System.out.println(e.getMessage());
 					}

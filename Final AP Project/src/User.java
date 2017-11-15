@@ -127,6 +127,14 @@ public class User implements Serializable
 		else
 		{
 			check = enter_Email_Id(Email);
+			if(check == false)
+			{
+				try {
+					throw new EnterValidEmailIDException("EnterValidEmailIDException: Enter a valid EmailID in the required field");
+				} catch (EnterValidEmailIDException e) {
+					System.out.println(e.getMessage());
+				}
+			}
 			
 		}
 		if(Pass1 == null || Pass1.equals(""))
@@ -155,11 +163,6 @@ public class User implements Serializable
 		String check = new String("@iiitd.ac.in");
 		if(size < 13)
 		{
-			try {
-				throw new EnterValidEmailIDException("EnterValidEmailIDException: Enter a valid EmailID (@iiitd.ac.in) in the required field");
-			} catch (EnterValidEmailIDException e) {
-				System.out.println(e.getMessage());
-			}
 			return false;
 		}
 		for(int i = 0; i < 12; i++)
@@ -167,11 +170,6 @@ public class User implements Serializable
 			
 			if(A.charAt(size-12 + i) != check.charAt(i))
 			{
-				try {
-					throw new EnterValidEmailIDException("EnterValidEmailIDException: Enter a valid EmailID (@iiitd.ac.in) in the required field");
-				} catch (EnterValidEmailIDException e) {
-					System.out.println(e.getMessage());
-				}
 				return false;
 			}
 		}
@@ -206,11 +204,6 @@ public class User implements Serializable
 		if(Email == null || Email.equals(""))
 		{
 			System.out.println("Enter a valid Email ID");
-			try {
-				throw new EnterValidEmailIDException("EnterValidEmailIDException: Enter a valid EmailID (@iiitd.ac.in) in the required field");
-			} catch (EnterValidEmailIDException e) {
-				System.out.println(e.getMessage());
-			}
 			check = false;
 			
 		}
