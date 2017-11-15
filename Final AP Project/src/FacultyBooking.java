@@ -80,54 +80,110 @@ public class FacultyBooking extends Application
 		T8.setDisable(true);
 		T9.setDisable(true);
 		
-		System.out.println(current_User.getEmail_id());
-		
-		try{
-			App.deserialize(current_User.getEmail_id());
-		}
-		catch(NullPointerException e)
+		if(type==1)
 		{
-			System.out.println("New File");
-		}
-		finally{
+
+			System.out.println(current_User.getEmail_id());
 			
+			try{
+				App.deserialize(current_User.getEmail_id());
+			}
+			catch(NullPointerException e)
+			{
+				System.out.println("New File");
+			}
+			finally{
+				
+			}
+			System.out.println(current_User.bookings.size());
+			
+			System.out.println(current_User.bookings.size());
+			
+			for(int i = 0 ; i<current_User.bookings.size() ; i++)
+			{
+				cancel_Booking obj = current_User.bookings.get(i);
+				TextField t1 = new TextField(Integer.toString(i+1));
+				TextField t2 = new TextField(obj.date);
+				TextField t3 = new TextField(obj.time);
+				TextField t4 = new TextField(Integer.toString(obj.duration));
+				TextField t7 = new TextField(obj.room);
+				TextField t8 = new TextField(Integer.toString(obj.capacity));
+				TextField t9 = new TextField("Cancel");
+				
+				CheckBox Approval = new CheckBox("Select");
+				
+				Table.add(t1, 0, i+1, 1, 1);
+				Table.add(t2, 1, i+1, 1, 1);
+				Table.add(t3, 2, i+1, 1, 1);
+				Table.add(t4, 3, i+1, 1, 1);
+				Table.add(t7, 4, i+1, 1, 1);
+				Table.add(t8, 5, i+1, 1, 1);
+				Table.add(Approval, 6, i+1, 1, 1);
+				
+				t1.setDisable(true);
+				t2.setDisable(true);
+				t3.setDisable(true);
+				t4.setDisable(true);
+				t7.setDisable(true);
+				t8.setDisable(true);
+				t9.setDisable(true);
+				
+			}
+			
+			App.serialize(current_User.getEmail_id(), "book");
 		}
-		System.out.println(current_User.bookings.size());
 		
-		System.out.println(current_User.bookings.size());
-		
-		for(int i = 0 ; i<current_User.bookings.size() ; i++)
+		else if(type==2)
 		{
-			cancel_Booking obj = current_User.bookings.get(i);
-			TextField t1 = new TextField(Integer.toString(i));
-			TextField t2 = new TextField(obj.date);
-			TextField t3 = new TextField(obj.time);
-			TextField t4 = new TextField(Integer.toString(obj.duration));
-			TextField t7 = new TextField(obj.room);
-			TextField t8 = new TextField(Integer.toString(obj.capacity));
-			TextField t9 = new TextField("Cancel");
+
+			System.out.println(current_User.getEmail_id());
 			
-			CheckBox Approval = new CheckBox("Select");
+			try{
+				App.deserialize("adminrequestlist");
+			}
+			catch(NullPointerException e)
+			{
+				System.out.println("New File");
+			}
+			finally{
+				
+			}
+			System.out.println(App.admin_List.size());
 			
-			Table.add(t1, 0, i+1, 1, 1);
-			Table.add(t2, 1, i+1, 1, 1);
-			Table.add(t3, 2, i+1, 1, 1);
-			Table.add(t4, 3, i+1, 1, 1);
-			Table.add(t7, 4, i+1, 1, 1);
-			Table.add(t8, 5, i+1, 1, 1);
-			Table.add(Approval, 6, i+1, 1, 1);
+			for(int i = 0 ; i<App.admin_List.size() ; i++)
+			{
+				Request obj = App.admin_List.get(i);
+				TextField t1 = new TextField(Integer.toString(i+1));
+				TextField t2 = new TextField(obj.date);
+				TextField t3 = new TextField(obj.time);
+				TextField t4 = new TextField(Integer.toString(obj.duration));
+				TextField t7 = new TextField(obj.preferred_Room);
+				TextField t8 = new TextField(Integer.toString(obj.capacity));
+				TextField t9 = new TextField("Cancel");
+				
+				CheckBox Approval = new CheckBox("Select");
+				
+				Table.add(t1, 0, i+1, 1, 1);
+				Table.add(t2, 1, i+1, 1, 1);
+				Table.add(t3, 2, i+1, 1, 1);
+				Table.add(t4, 3, i+1, 1, 1);
+				Table.add(t7, 4, i+1, 1, 1);
+				Table.add(t8, 5, i+1, 1, 1);
+				Table.add(Approval, 6, i+1, 1, 1);
+				
+				t1.setDisable(true);
+				t2.setDisable(true);
+				t3.setDisable(true);
+				t4.setDisable(true);
+				t7.setDisable(true);
+				t8.setDisable(true);
+				t9.setDisable(true);
+				
+			}
 			
-			t1.setDisable(true);
-			t2.setDisable(true);
-			t3.setDisable(true);
-			t4.setDisable(true);
-			t7.setDisable(true);
-			t8.setDisable(true);
-			t9.setDisable(true);
-			
+			App.serialize("adminrequestlist", "adminrequest");
 		}
 		
-		App.serialize(current_User.getEmail_id(), "book");
 
 		Table.setAlignment(Pos.CENTER);
 
@@ -142,46 +198,95 @@ public class FacultyBooking extends Application
 		HBox x = new HBox();
 		Button Cancel = new Button("Cancel");
 		
-		Cancel.setOnAction(new EventHandler<ActionEvent>(){
+		if(type==1)
+		{
+			Cancel.setOnAction(new EventHandler<ActionEvent>(){
 
-			@Override
-			public void handle(ActionEvent arg0) {
+				@Override
+				public void handle(ActionEvent arg0) {
 
-				List<CheckBox> check_Box_List = new ArrayList<>();
-				ArrayList<Integer> h = new ArrayList<Integer>();
+					List<CheckBox> check_Box_List = new ArrayList<>();
+					ArrayList<Integer> h = new ArrayList<Integer>();
 
-				for(Node node : Table.getChildren())
-				{
-					if(node instanceof CheckBox)
+					for(Node node : Table.getChildren())
 					{
-						check_Box_List.add((CheckBox)node);
-					}
-				}
-				for(int i = 0 ; i<check_Box_List.size() ; i++)
-				{
-					if(check_Box_List.get(i).isSelected())
-					{
-						h.add(GridPane.getRowIndex((Node)check_Box_List.get(i)));
-						int index = GridPane.getRowIndex((Node)check_Box_List.get(i));
-						try {
-							App.deserialize(current_User.getEmail_id());
-						} catch (ClassNotFoundException | IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-						current_User.bookings.remove(current_User.bookings.get(index - 1));
-						
-						try {
-							App.serialize(current_User.getEmail_id(), "book");
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
+						if(node instanceof CheckBox)
+						{
+							check_Box_List.add((CheckBox)node);
 						}
 					}
+					for(int i = 0 ; i<check_Box_List.size() ; i++)
+					{
+						if(check_Box_List.get(i).isSelected())
+						{
+							h.add(GridPane.getRowIndex((Node)check_Box_List.get(i)));
+							int index = GridPane.getRowIndex((Node)check_Box_List.get(i));
+							try {
+								App.deserialize(current_User.getEmail_id());
+							} catch (ClassNotFoundException | IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							current_User.bookings.remove(current_User.bookings.get(index - 1));
+							
+							try {
+								App.serialize(current_User.getEmail_id(), "book");
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						}
+					}
 				}
-			}
-			
-		});
+				
+			});
+		}
+		
+		else if(type==2)
+		{
+			Cancel.setOnAction(new EventHandler<ActionEvent>(){
+
+				@Override
+				public void handle(ActionEvent arg0) {
+
+					List<CheckBox> check_Box_List = new ArrayList<>();
+					ArrayList<Integer> h = new ArrayList<Integer>();
+
+					for(Node node : Table.getChildren())
+					{
+						if(node instanceof CheckBox)
+						{
+							check_Box_List.add((CheckBox)node);
+						}
+					}
+					for(int i = 0 ; i<check_Box_List.size() ; i++)
+					{
+						if(check_Box_List.get(i).isSelected())
+						{
+							h.add(GridPane.getRowIndex((Node)check_Box_List.get(i)));
+							int index = GridPane.getRowIndex((Node)check_Box_List.get(i));
+							try {
+								App.deserialize("adminrequestlist");
+							} catch (ClassNotFoundException | IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							App.admin_List.remove(App.admin_List.get(index - 1));
+							
+							try {
+								App.serialize("adminrequestlist", "adminrequest");
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						}
+					}
+				}
+				
+			});
+		}
+		
+		
 		
 		elements.setPadding(new Insets(20));
 		x.setSpacing(350);
