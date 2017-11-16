@@ -11,7 +11,9 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox.*;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox.*;
+import javafx.scene.text.TextAlignment;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.geometry.Pos;
@@ -46,8 +48,11 @@ public class CoursePage extends Application
 		Course.setPadding(new Insets(20, 20, 20, 20));
 		Course.setVgap(8);
 		Course.setHgap(10);
+		
+		//Course.setGridLinesVisible(true);
 
 		Label title = new Label("Course Page");
+		title.getStyleClass().add("admin_page_heading");
 		
 
 		HBox x = new HBox();
@@ -56,32 +61,54 @@ public class CoursePage extends Application
 		VBox y = new VBox();
 
 		Label Name = new Label("Course Name:");
+		Name.setMinWidth(Region.USE_PREF_SIZE);
+		Name.getStyleClass().add("Course");
+		//Name.setWrapText(true);
+		
 		GridPane.setConstraints(Name, 0, 0);
 		Label Name_D = new Label();
 		Name_D.setText(object.getCoursename());
+		Name_D.getStyleClass().add("Course");
+		//Name_D.setMinWidth(Region.USE_PREF_SIZE);
 		GridPane.setConstraints(Name_D, 1, 0);
 
 		Label Number = new Label("Course Number:");
+		Number.setMinWidth(Region.USE_PREF_SIZE);
+		Number.getStyleClass().add("Course");
 		GridPane.setConstraints(Number, 0, 1);
 		Label Number_D = new Label();
+		Number_D.getStyleClass().add("Course");
 		Number_D.setText(object.getCoursecode());
+		//Number_D.setMinWidth(Region.USE_PREF_SIZE);
 		GridPane.setConstraints(Number_D, 1, 1);
 
 		Label Instructor = new Label("Instructor:");
+		Instructor.setMinWidth(Region.USE_PREF_SIZE);
+		Instructor.getStyleClass().add("Course");
 		GridPane.setConstraints(Instructor, 0, 2);
 		Label Instructor_D = new Label();
 		Instructor_D.setText(object.getInstructorname());
+		Instructor_D.getStyleClass().add("Course");
+		//Instructor_D.setMinWidth(Region.USE_PREF_SIZE);
 		GridPane.setConstraints(Instructor_D, 1, 2);
 
 		Label Type = new Label("Type of Course:");
+		Type.setMinWidth(Region.USE_PREF_SIZE);
+		Type.getStyleClass().add("Course");
 		GridPane.setConstraints(Type, 0, 3);
 		Label Type_D = new Label();
 		Type_D.setText(object.getCoursetype());
+		Type_D.getStyleClass().add("Course");
+		//Type_D.setMinWidth(Region.USE_PREF_SIZE);
 		GridPane.setConstraints(Type_D, 1, 3);
 
 		Label PCond = new Label("Post Conditions:");
+		PCond.setMinWidth(Region.USE_PREF_SIZE);
+		PCond.getStyleClass().add("Course");
 		GridPane.setConstraints(PCond, 0, 4);
 		Label PCond_D = new Label();
+		
+		//PCond_D.setMinWidth(Region.USE_PREF_SIZE);
 		String postarr[] = object.getPostconditions().split(";");
 		String postconditions = "";
 		for(int i = 0 ; i<postarr.length ; i++)
@@ -90,9 +117,14 @@ public class CoursePage extends Application
 			postconditions = postconditions + str + "\n";
 		}
 		PCond_D.setText(postconditions);
+		PCond_D.setWrapText(true);
+		PCond_D.setMinHeight(200);
+		PCond_D.getStyleClass().add("Course");
 		GridPane.setConstraints(PCond_D, 1, 4);
 
 		Label Timings = new Label("Timings:");
+		Timings.setMinWidth(Region.USE_PREF_SIZE);
+		Timings.getStyleClass().add("Course");
 		GridPane.setConstraints(Timings, 0, 5);
 		Label Timings_D = new Label();
 		String timings = "";
@@ -122,7 +154,12 @@ public class CoursePage extends Application
 			timings = timings + "Friday " + arr[0] + "\n";
 		}
 		Timings_D.setText(timings);
+		//Timings_D.setMinHeight(Region.USE_PREF_SIZE);
+		Timings_D.setWrapText(true);
+		Timings_D.getStyleClass().add("Course");
+		Timings_D.setPrefHeight(150);
 		GridPane.setConstraints(Timings_D, 1, 5);
+
 
 		Button Back = new Button("Back");
 		Back.setOnAction(new EventHandler<ActionEvent>(){
@@ -203,17 +240,18 @@ public class CoursePage extends Application
 		l.getStyleClass().add("labelIIITD");
 		
 		HBox x1 = new HBox();
-		x1.getChildren().addAll(Register, Back);
+		x1.getChildren().addAll(Back, Register);
 		x1.setAlignment(Pos.BOTTOM_LEFT);
-		x1.setSpacing(710);
+		x1.setSpacing(600);
 		
 		Course.getChildren().addAll(Name, Name_D, Number, Number_D, Instructor, Instructor_D, Type, Type_D, PCond, PCond_D, Timings, Timings_D);
+		Course.getStyleClass().add("gridCourse");
 		y.getChildren().addAll(l, x, Course, x1); 
 		y.setSpacing(30);
 		y.setPadding(new Insets(20));
 		y.setAlignment(Pos.TOP_CENTER);
 		
-		y.setStyle("-fx-background-color: #00DDDD");
+		y.getStyleClass().add("background");
 
 		CourseView = new Scene(y, 1000, 600);	
 		CourseView.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());

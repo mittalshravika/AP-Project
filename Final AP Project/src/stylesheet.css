@@ -51,6 +51,12 @@
 
 }
 
+.Course{
+	
+	-fx-font: normal 15px 'sans-serif';
+}
+
+
 .grid_pane{
 	-fx-background-color:#ffffff;
 	-fx-color:#FFFFFF;
