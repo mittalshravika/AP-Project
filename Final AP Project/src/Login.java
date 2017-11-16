@@ -15,19 +15,6 @@ import javafx.geometry.Pos;
 import java.io.IOException;
 import java.util.*;
 
-
-class LoginFailException extends Exception {
-	LoginFailException(String message) {
-		super(message);
-
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Information Dialog");
-		alert.setHeaderText(null);
-		alert.setContentText("Your Email ID or Password is Invalid");
-		alert.showAndWait();
-	}
-}
-
 public class Login extends Application
 {
 	
@@ -250,8 +237,8 @@ public class Login extends Application
 				else
 				{
 					try {
-						throw new LoginFailException("EnterValidEmailIDException: Your Email ID or Password is Invalid");
-					} catch (LoginFailException e) {
+						throw new InvalidCredentialsException("EnterValidEmailIDException: Your Email ID or Password is Invalid");
+					} catch (InvalidCredentialsException e) {
 						System.out.println(e.getMessage());
 					}
 				}
