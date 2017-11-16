@@ -1,13 +1,29 @@
 .background{
--fx-background-color: #00DDDD;
+-fx-background-color: #d1c9be;
 }
 
 .button{
--fx-color: #FFFFFF ;
--fx-font: normal bold 15px 'sans-serif' ;
--fx-padding: 5 22 5 22 ;
--fx-border-color: #00DDDD ;
+	-fx-background-color:#656666;
+	-fx--moz-border-radius:42px;
+	-fx--webkit-border-radius:42px;
+	-fx-border-radius:50%;
+	-fx-display:inline-block;
+	-fx-cursor:pointer;
+	-fx-color:#000000;
+	-fx-font-family: Arial;
+	-fx-font-size: 18px;
+	-fx-padding:14px 44px;
+	-fx-text-decoration:none;
+	-fx-text-shadow:0px 1px 27px #000000;
 }
+.button:hover {
+	-fx-background-color:#000000;
+}
+.button:active {
+	-fx-position:relative;
+	-fx-top:5px;
+}
+
 
 .text-field{
 -fx-border-color: #00DDDD;
@@ -30,3 +46,8 @@
 -fx-border-color: #00DDDD ;
 }
 
+.admin_Page_Heading{
+
+-fx-font: normal 40px 'sans-serif'
+
+}
