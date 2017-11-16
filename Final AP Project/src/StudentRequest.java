@@ -104,6 +104,7 @@ public class StudentRequest extends Application
 			TextField t8 = new TextField(String.valueOf(current_User.MyRequests.get(i).capacity));
 			TextField t9;
 			CheckBox Approval = new CheckBox("Select");
+			System.out.println(current_User.MyRequests.get(0).toString());
 			if(current_User.MyRequests.get(i).Approved)
 				t9 = new TextField("Approved");
 			else

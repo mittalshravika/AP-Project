@@ -1,5 +1,7 @@
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import javafx.application.Application;
@@ -8,8 +10,10 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -142,12 +146,6 @@ public class AdminRequestList extends Application
 			t6.setDisable(true);
 			t7.setDisable(true);
 			t8.setDisable(true);
-			//t9.setDisable(true);
-			
-
-		
-		//Approval.getItems().addAll("Pending", "Approve", "Cancel");
-		//Approval.setValue("Pending");
 		Table.setAlignment(Pos.CENTER);
 		}
 		
@@ -179,7 +177,9 @@ public class AdminRequestList extends Application
 		elements.setStyle("-fx-background-color: #00DDDD");
 		
 		Button Home = new Button("Back");
-		x.getChildren().addAll(Home, Book);
+		
+		Button Submit = new Button("Submit");
+		x.getChildren().addAll(Home, Book, Submit);
 		AdminRequestList obj = new AdminRequestList();
 		
 		Book.setOnAction(new EventHandler<ActionEvent>(){
@@ -201,6 +201,93 @@ public class AdminRequestList extends Application
 			}
 			
 			
+			
+		});
+		
+		Submit.setOnAction(new EventHandler<ActionEvent>(){
+
+			@Override
+			public void handle(ActionEvent arg0) {
+				
+				try {
+					App.deserialize("adminrequestlist");
+				} catch (ClassNotFoundException | IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				List<ChoiceBox> choice_Box_List = new ArrayList<>();
+				ArrayList<Integer> h = new ArrayList<Integer>();
+
+				for(Node node : Table.getChildren())
+				{
+					if(node instanceof ChoiceBox)
+					{
+						choice_Box_List.add((ChoiceBox)node);
+					}
+				}
+				for(int i = 0 ; i<choice_Box_List.size() ; i++)
+				{
+					if(choice_Box_List.get(i).getValue().equals("Approve"))
+					{
+						for(int j = 0 ; j<App.admin_List.get(i).RequestUser.MyRequests.size() ; j++)
+						{
+							if(App.admin_List.get(i).ref == App.admin_List.get(i).RequestUser.MyRequests.get(j).ref)
+							{
+								try {
+									App.deserializeRequests(App.admin_List.get(i).RequestUser);
+								} catch (IOException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+								App.admin_List.get(i).RequestUser.MyRequests.get(j).Approved = true;
+								App.admin_List.get(i).RequestUser.MyRequests.get(j).Cancel = false;
+								System.out.println(App.admin_List.get(i).RequestUser.MyRequests.get(j).toString());
+								try {
+									App.serializeRequests(App.admin_List.get(i).RequestUser);
+								} catch (IOException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+								break;
+							}
+						}
+					}
+					if(choice_Box_List.get(i).getValue().equals("Cancel"))
+					{
+						for(int j = 0 ; j<App.admin_List.get(i).RequestUser.MyRequests.size() ; j++)
+						{
+							if(App.admin_List.get(i).ref == App.admin_List.get(i).RequestUser.MyRequests.get(j).ref)
+							{
+								try {
+									App.deserializeRequests(App.admin_List.get(i).RequestUser);
+								} catch (IOException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+								App.admin_List.get(i).RequestUser.MyRequests.get(j).Cancel = true;
+								App.admin_List.get(i).RequestUser.MyRequests.get(j).Approved = false;
+								System.out.println(App.admin_List.get(i).RequestUser.MyRequests.get(j).toString());
+								try {
+									App.serializeRequests(App.admin_List.get(i).RequestUser);
+								} catch (IOException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+								break;
+							}
+						}
+					}
+				}
+				
+				try {
+					App.serialize("adminrequestlist", "adminrequest");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}
 			
 		});
 		

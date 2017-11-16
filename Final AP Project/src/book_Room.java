@@ -371,7 +371,14 @@ public static void main(String[] args)
 						String name = "";
 						if(type==2)
 						{
-							name = object.name;
+							if(object == null)
+							{
+								name = "Admin";
+							}
+							else
+							{
+								name = object.name;
+							}
 						}
 						
 						cancel_Booking booking = new cancel_Booking(obj1.date, h1.get(h.get(i).get(j)), 30, App.actual_Room_List.get(i).get_Name(), App.actual_Room_List.get(i).get_Capacity(), obj1.week, obj1.day, name);
