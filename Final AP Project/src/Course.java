@@ -6,12 +6,15 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Course.java creates the course objects for all the courses offered to CSE 2nd year students
+ * static list for course list created using serialisation
+ * 
+ * @author Yajur Ahuja - 2016121
+ * @author Shravika Mittal - 2016093
+ *
+ */
 public class Course implements Serializable{
-	 
-	/* private List<String> post_Conditions;
-	private User faculty; 
-	private String type_Of_Course;
-	private List<Lecture> timings;  */
 	
 	/* Database variables */
 	private String coursetype;
@@ -29,58 +32,22 @@ public class Course implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
-	public String getCoursetype() {
-		return coursetype;
-	}
-
-	public String getCoursename() {
-		return coursename;
-	}
-
-	public String getCoursecode() {
-		return coursecode;
-	}
-
-	public String getInstructorname() {
-		return instructorname;
-	}
-
-	public String getCredits() {
-		return credits;
-	}
-
-	public String getAcronym() {
-		return acronym;
-	}
-
-	public String getMon() {
-		return mon;
-	}
-
-	public String getTue() {
-		return tue;
-	}
-
-	public String getWed() {
-		return wed;
-	}
-
-	public String getThurs() {
-		return thurs;
-	}
-
-	public String getFri() {
-		return fri;
-	}
-
-	public String getPostconditions() {
-		return postconditions;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-	
+	/**
+	 * Constructor for Course.java
+	 * 
+	 * @param coursetype
+	 * @param coursename
+	 * @param coursecode
+	 * @param instructorname
+	 * @param credits
+	 * @param acronym
+	 * @param mon
+	 * @param tue
+	 * @param wed
+	 * @param thurs
+	 * @param fri
+	 * @param postconditions
+	 */
 	public Course(String coursetype, String coursename, String coursecode, String instructorname, String credits, String acronym, String mon, String tue, String wed, String thurs, String fri, String postconditions) 
 	{
 		this.coursetype = coursetype;
@@ -97,8 +64,128 @@ public class Course implements Serializable{
 		this.postconditions = postconditions;
 	}
 	
-	
+	/**
+	 * Getter function for Course Type
+	 * 
+	 * @return coursetype(String) - Mandatory or Elective
+	 */
+	public String getCoursetype() {
+		return coursetype;
+	}
 
+	/**
+	 * Getter function for course name
+	 * 
+	 * @return coursename(String) - Name of the course
+	 */
+	public String getCoursename() {
+		return coursename;
+	}
+
+	/**
+	 * Getter function for Course Code
+	 * 
+	 * @return coursecode(String) - Course Number
+	 */
+	public String getCoursecode() {
+		return coursecode;
+	}
+
+	/**
+	 * Getter function for Instructor of the course
+	 * 
+	 * @return instructorname(String) - Name of the instructor
+	 */
+	public String getInstructorname() {
+		return instructorname;
+	}
+
+	/**
+	 * Getter function for course credits
+	 * 
+	 * @return credits(String) - Course credits
+	 */
+	public String getCredits() {
+		return credits;
+	}
+
+	/**
+	 * Getter function for course acronym
+	 * 
+	 * @return acronym(String)
+	 */
+	public String getAcronym() {
+		return acronym;
+	}
+
+	/**
+	 * Getter function for course time and venue on monday
+	 * 
+	 * @return mon(String)
+	 */
+	public String getMon() {
+		return mon;
+	}
+
+	/**
+	 * Getter function for course time and venue on tuesday
+	 * 
+	 * @return tue(String)
+	 */
+	public String getTue() {
+		return tue;
+	}
+
+	/**
+	 * Getter function for course time and venue on wednesday
+	 * 
+	 * @return wed(String)
+	 */
+	public String getWed() {
+		return wed;
+	}
+
+	/**
+	 * Getter function for course time and venue on thursday
+	 * 
+	 * @return thurs(String)
+	 */
+	public String getThurs() {
+		return thurs;
+	}
+
+	/**
+	 * Getter function for course time and venue on friday
+	 * 
+	 * @return fri(String)
+	 */
+	public String getFri() {
+		return fri;
+	}
+
+	/**
+	 * Getter function for course post-condtions
+	 * 
+	 * @return postconditions(String)
+	 */
+	public String getPostconditions() {
+		return postconditions;
+	}
+
+	/**
+	 * Getter function for SerialVersionUID
+	 * 
+	 * @return serialVersionUID(long)
+	 */
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
+	/**
+	 * toString() method for printing the contents of Course objects
+	 * 
+	 * @return string for course details
+	 */
 	@Override
 	public String toString() {
 		return "Course [coursetype=" + coursetype + ", coursename=" + coursename + ", coursecode=" + coursecode + ", instructorname=" + instructorname + ", credits=" + credits + ", acronym=" + acronym + ", mon=" + mon + ", tue=" + tue + ", wed=" + wed + ", thurs=" + thurs + ", fri=" + fri + ", postconditions=" + postconditions + "]";
@@ -114,11 +201,22 @@ public class Course implements Serializable{
 		return false;
 	}
 	
+	/**
+	 * Adds an Course object to the static list for Course list database
+	 * 
+	 * @param global_Course_List - static list that contains Course objects which have the course details
+	 * @param obj - Course object to be added to the list
+	 */
 	static void add_Course(List<Course> global_Course_List, Course obj)
 	{
 		global_Course_List.add(obj);
 	}	
 	
+	/**
+	 * Prints the course details for all the courses
+	 * 
+	 * @param global_Course_List - static list that contains Course objects which have the course details
+	 */
 	static void print_Course(List<Course> global_Course_List)
 	{
 		for(int i = 0 ; i<global_Course_List.size() ; i++)
@@ -127,6 +225,12 @@ public class Course implements Serializable{
 		}
 	}
 	
+	/**
+	 * This is the main method which makes the use of add_Course method to make the static App.course_List
+	 * 
+	 * @param unused
+	 * @throws IOException
+	 */
 	 public static void main(String args[]) throws IOException
 	    {
 	        BufferedReader br = null;
