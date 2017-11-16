@@ -125,7 +125,7 @@ public class RequestDetails extends Application
 		y.setPadding(new Insets(20));
 		y.setAlignment(Pos.TOP_CENTER);
 		
-		y.setStyle("-fx-background-color: #00DDDD");
+		y.getStyleClass().add("background");
 
 		CourseView = new Scene(y, 1000, 600);	
 		CourseView.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());
