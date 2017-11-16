@@ -53,19 +53,32 @@ public static void main(String[] args)
 		HBox x = new HBox();
 		x.getChildren().addAll(title);
 
+
 		x.setAlignment(Pos.CENTER);
 		VBox y = new VBox();
 		HBox s = new HBox();
+		VBox[] A = new VBox[2];
+		
+		for(int i = 0 ; i < 2; i++)
+		{
+			A[i] = new VBox();
+			A[i].setSpacing(150);
+			
+		}
 		Button Submit = new Button("Submit");
-		Button home = new Button("Back");
-		s.getChildren().addAll(home, Submit);
-		s.setAlignment(Pos.CENTER_RIGHT);
-		s.setSpacing(770);
+		A[0].setAlignment(Pos.CENTER_RIGHT);
+		
+		Button back = new Button("Back");
+		A[0].getChildren().addAll(back);
+		A[1].getChildren().addAll(Submit);
+		A[1].setAlignment(Pos.CENTER_LEFT);
+		s.getChildren().addAll(A[0], A[1]);
+		s.setAlignment(Pos.CENTER);
+		s.setSpacing(400);
 
 		Label l = new Label("IIIT-D");
 		l.setAlignment(Pos.TOP_LEFT);
 		l.getStyleClass().add("labelIIITD");
-
 		ListView<String> list = new ListView<String>();
 		ObservableList<String> data = FXCollections.observableArrayList("Advanced Programing", "Discrete Maths", "DSA", "Introduction to Programing", "Linear Algebra", "Probability and Statistics", "Computer Organistation", "Operating Systems", "System Management", "Digital Circuits", "Basic Electronics", "Real Analysis", "Calculus", "Differential Equations", "Advanced Design of Algorithms", "Number Theory", "DBMS", "Signals and Systems", "Circuit Theory and Devices");
 		list.setItems(data);
@@ -120,7 +133,7 @@ public static void main(String[] args)
 			}
 		});
 		
-		home.setOnAction( e -> {try {
+		back.setOnAction( e -> {try {
 			new faculty_Page(current_User).start(primaryStage);
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
@@ -136,7 +149,7 @@ public static void main(String[] args)
 		
 		y.setAlignment(Pos.CENTER);
 		
-		y.setStyle("-fx-background-color: #00DDDD");
+		y.getStyleClass().add("background");
 		y.setSpacing(30);
 		y.setPadding(new Insets(20));
 		
