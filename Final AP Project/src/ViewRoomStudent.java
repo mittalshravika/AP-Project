@@ -41,9 +41,15 @@ public class ViewRoomStudent extends Application
 	{	
 		primaryStage.setTitle("Classroom Booking System");
 		
-		Button btn = new Button("Submit details");
+		Button btn = new Button("Submit");
+		btn.setAlignment(Pos.CENTER);
+		btn.setPrefWidth(200);
+		btn.setPrefHeight(15);
 		Button btn2 = new Button("Submit Room Bookings");
 		Button btn3 = new Button("Back");
+		Label l = new Label("IIIT-D");
+		l.setAlignment(Pos.CENTER_RIGHT);
+		l.getStyleClass().add("labelIIITD");
 		
 		Map<String, Integer> DayOfWeek = new HashMap<>();
 		DayOfWeek.put("MONDAY", 0);
@@ -56,34 +62,41 @@ public class ViewRoomStudent extends Application
 		
 		btn3.setOnAction(e -> {new student_Page(current_User).start(primaryStage);});
 		
-		Label Date = new Label("Date:");
+		Label Date = new Label("Date");
 		DatePicker cal = new DatePicker();
+
 		
 		
 		
 		HBox x = new HBox();
 		x.setSpacing(35);
 		x.getChildren().addAll(Date, cal, btn);
+		HBox x3 = new HBox();
+		x3.getChildren().addAll(x, l);
+		x3.setSpacing(250);
+		
 		
 		HBox x2 = new HBox();
-		x2.setSpacing(300);
+		x2.setSpacing(350);
 		x2.getChildren().addAll(btn3, btn2);
 		x2.setAlignment(Pos.TOP_LEFT);
 		
 		GridPane root = new GridPane();
+		root.setAlignment(Pos.CENTER);
+		root.getStyleClass().add("grid_pane");
 		
-		TextField t11 = new TextField("Day");
-		t11.setDisable(true);
+		TextField t11 = new TextField("Day"); 
+		t11.setDisable(true); t11.setAlignment(Pos.CENTER);
 		TextField t12 = new TextField("8:00 - 8:30");
-		t12.setDisable(true);
+		t12.setDisable(true); t12.setAlignment(Pos.CENTER);
 		TextField t13 = new TextField("8:30 - 9:00");
-		t13.setDisable(true);
+		t13.setDisable(true); t13.setAlignment(Pos.CENTER);
 		TextField t14 = new TextField("9:00 - 9:30");
-		t14.setDisable(true);
+		t14.setDisable(true); t14.setAlignment(Pos.CENTER);
 		TextField t15 = new TextField("9:30 - 10:00");
-		t15.setDisable(true);
+		t15.setDisable(true); t15.setAlignment(Pos.CENTER);
 		TextField t16 = new TextField("10:00 - 10:30");
-		t16.setDisable(true);
+		t16.setDisable(true); t16.setAlignment(Pos.CENTER);
 		TextField t17 = new TextField("10:30 - 11:00");
 		TextField t18 = new TextField("11:00 - 11:30");
 		TextField t19 = new TextField("11:30 - 12:00");
@@ -99,21 +112,21 @@ public class ViewRoomStudent extends Application
 		TextField t29 = new TextField("4:30 - 5:00");
 		TextField t30 = new TextField("5:00 - 5:30");
 		TextField t31 = new TextField("5:30 - 6:00");
-		t17.setDisable(true);
-		t18.setDisable(true);
-		t19.setDisable(true);
-		t20.setDisable(true);
-		t21.setDisable(true);
-		t22.setDisable(true);
-		t23.setDisable(true);
-		t24.setDisable(true);
-		t25.setDisable(true);
-		t26.setDisable(true);
-		t27.setDisable(true);
-		t28.setDisable(true);
-		t29.setDisable(true);
-		t30.setDisable(true);
-		t31.setDisable(true);
+		t17.setDisable(true); t17.setAlignment(Pos.CENTER);
+		t18.setDisable(true); t18.setAlignment(Pos.CENTER);
+		t19.setDisable(true); t19.setAlignment(Pos.CENTER);
+		t20.setDisable(true); t20.setAlignment(Pos.CENTER);
+		t21.setDisable(true); t21.setAlignment(Pos.CENTER);
+		t22.setDisable(true); t22.setAlignment(Pos.CENTER);
+		t23.setDisable(true); t23.setAlignment(Pos.CENTER);
+		t24.setDisable(true); t24.setAlignment(Pos.CENTER);
+		t25.setDisable(true); t25.setAlignment(Pos.CENTER);
+		t26.setDisable(true); t26.setAlignment(Pos.CENTER);
+		t27.setDisable(true); t27.setAlignment(Pos.CENTER);
+		t28.setDisable(true); t28.setAlignment(Pos.CENTER);
+		t29.setDisable(true); t29.setAlignment(Pos.CENTER);
+		t30.setDisable(true); t30.setAlignment(Pos.CENTER);
+		t31.setDisable(true); t31.setAlignment(Pos.CENTER);
 		
 		TextField t1 = new TextField("C01");
 		TextField t2 = new TextField("C02");
@@ -135,26 +148,26 @@ public class ViewRoomStudent extends Application
 		TextField ti = new TextField("L21");
 		TextField tj = new TextField("L22");
 		TextField tk = new TextField("L23");
-		t1.setDisable(true);
-		t2.setDisable(true);
-		t3.setDisable(true);
-		t4.setDisable(true);
-		t5.setDisable(true);
-		t6.setDisable(true);
-		t7.setDisable(true);
-		t8.setDisable(true);
-		t9.setDisable(true);
-		ta.setDisable(true);
-		tb.setDisable(true);
-		tc.setDisable(true);
-		td.setDisable(true);
-		te.setDisable(true);
-		tf.setDisable(true);
-		tg.setDisable(true);
-		th.setDisable(true);
-		ti.setDisable(true);
-		tj.setDisable(true);
-		tk.setDisable(true);
+		t1.setDisable(true); t1.setAlignment(Pos.CENTER);
+		t2.setDisable(true); t2.setAlignment(Pos.CENTER);
+		t3.setDisable(true); t3.setAlignment(Pos.CENTER);
+		t4.setDisable(true); t4.setAlignment(Pos.CENTER);
+		t5.setDisable(true); t5.setAlignment(Pos.CENTER);
+		t6.setDisable(true); t6.setAlignment(Pos.CENTER);
+		t7.setDisable(true); t7.setAlignment(Pos.CENTER);
+		t8.setDisable(true); t8.setAlignment(Pos.CENTER);
+		t9.setDisable(true); t9.setAlignment(Pos.CENTER);
+		ta.setDisable(true); ta.setAlignment(Pos.CENTER);
+		tb.setDisable(true); tb.setAlignment(Pos.CENTER);
+		tc.setDisable(true); tc.setAlignment(Pos.CENTER);
+		td.setDisable(true); td.setAlignment(Pos.CENTER);
+		te.setDisable(true); te.setAlignment(Pos.CENTER);
+		tf.setDisable(true); tf.setAlignment(Pos.CENTER);
+		tg.setDisable(true); tg.setAlignment(Pos.CENTER);
+		th.setDisable(true); th.setAlignment(Pos.CENTER);
+		ti.setDisable(true); ti.setAlignment(Pos.CENTER);
+		tj.setDisable(true); tj.setAlignment(Pos.CENTER);
+		tk.setDisable(true); tk.setAlignment(Pos.CENTER);
 		
 		root.add(t11, 0, 0, 1, 1);
 		root.add(t12, 1, 0, 1, 1);
@@ -205,13 +218,20 @@ public class ViewRoomStudent extends Application
 		{
 			for(int i = 1 ; i<=20 ; i++)
 			{
-				root.add(new Label("Available"), i, j, 1, 1);
+				TextField Availability = new TextField("Available");
+				Availability.setDisable(true);
+				Availability.getStyleClass().add("available");
+				Availability.setAlignment(Pos.CENTER);
+				
+				
+				root.add(Availability, i, j, 1, 1);
 			}
 		}
 		
-			
+		//root.setGridLinesVisible(true);
 		ScrollPane sp = new ScrollPane();
 		sp.setContent(root);
+		
 		
 		sp.setVisible(false);
 		btn2.setVisible(false);
@@ -221,8 +241,10 @@ public class ViewRoomStudent extends Application
 			
 			for (Node node : root.getChildren()) {
 		        if ((GridPane.getColumnIndex(node)>0) && (GridPane.getRowIndex(node)>0)) {
-		        	((Label)node).setText("");
-		        	((Label)node).setText("Available");
+		        	((TextField)node).setText("");
+		        	((TextField)node).setText("Available");
+		        	((TextField)node).setStyle("-fx-text-fill: #000000;");
+		        	
 		        }
 		    }
 			
@@ -258,8 +280,9 @@ public class ViewRoomStudent extends Application
 					{
 						for (Node node : root.getChildren()) {
 					        if ((GridPane.getColumnIndex(node)==(j+1) && GridPane.getColumnIndex(node)>0) && (GridPane.getRowIndex(node)==(i+1) && GridPane.getRowIndex(node)>0)) {
-					        	((Label)node).setText("");
-					        	((Label)node).setText("Not Available");
+					        	((TextField)node).setText("");
+					        	((TextField)node).setText("Not Available");
+					        	((TextField)node).getStyleClass().add("not_available");	
 					        }
 					    }
 					}
@@ -274,10 +297,10 @@ public class ViewRoomStudent extends Application
 		
 		VBox y = new VBox();
 		y.setSpacing(30);
-		y.getChildren().addAll(x, sp, x2);
+		y.getChildren().addAll(x3, sp, x2);
 		y.setPadding(new Insets(20));
 		
-		y.setStyle("-fx-background-color: #00DDDD");
+		y.getStyleClass().add("background");
 		
 		Scene scene	= new Scene(y, 1000, 600);					
 		scene.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());	

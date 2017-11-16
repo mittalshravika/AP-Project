@@ -50,3 +50,28 @@
 -fx-font: normal 40px 'sans-serif'
 
 }
+
+.grid_pane{
+	-fx-background-color:#ffffff;
+	-fx-color:#FFFFFF;
+	-fx-font-family: Arial;
+	-fx-font-size: 15px;
+	-fx-text-decoration:none
+}
+
+.available
+{
+	-fx-background-color: #33cc00;
+    -fx-font-family: Arial;
+	-fx-font-size: 15px;
+	-fx-text-decoration:none
+	-fx-color:#FFFFFF;
+}
+.not_available
+{
+	-fx-background-color: #ff1a1a;
+    -fx-font-family: Arial;
+	-fx-font-size: 15px;
+	-fx-text-decoration:none
+	-fx-color:#FFFFFF;
+}
