@@ -189,6 +189,19 @@ public class StudentRequest extends Application
 						check_Box_List.add((CheckBox)node);
 					}
 				}
+				
+
+				try {
+					App.deserialize("adminrequestlist");
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				
 				for(int i = 0 ; i<check_Box_List.size() ; i++)
 				{
 					if(check_Box_List.get(i).isSelected())
@@ -201,24 +214,16 @@ public class StudentRequest extends Application
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-						try {
-							App.deserialize("adminrequestlist");
-						} catch (ClassNotFoundException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-						
 						Request toremove = current_User.MyRequests.get(index - 1);
+						System.out.println(toremove.toString());
 						current_User.MyRequests.remove(toremove);
 						int sno = 0;
 						for(int j = 0 ; j<App.admin_List.size() ; j++)
 						{
-							if(App.admin_List.get(j).ref == toremove.ref)
+							if(App.admin_List.get(j).identify == toremove.identify)
 							{
 								sno = j;
+								break;
 							}
 						}
 						App.admin_List.remove(App.admin_List.get(sno));
@@ -230,15 +235,15 @@ public class StudentRequest extends Application
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-						try {
-							App.serialize("adminrequestlist", "adminrequest");
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
+						
 					}
 				}
-			
+				try {
+					App.serialize("adminrequestlist", "adminrequest");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			
 		});

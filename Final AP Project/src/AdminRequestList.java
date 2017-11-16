@@ -17,6 +17,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -104,6 +105,7 @@ public class AdminRequestList extends Application
 		System.out.println(java.time.LocalDate.now()); 
 		System.out.println(java.time.LocalTime.now());  
 		
+		ArrayList<Request> h = new ArrayList<Request>();
 		for(int i = 0 ; i<App.admin_List.size() ; i++)
 		{
 			Date d1 = new SimpleDateFormat("MM/dd/yyyy").parse((String)App.admin_List.get(i).currentTime);
@@ -127,7 +129,7 @@ public class AdminRequestList extends Application
 				Request obj = App.admin_List.get(i);
 				for(int j = 0 ; j<App.admin_List.get(i).RequestUser.MyRequests.size() ; j++)
 				{
-					if(obj.ref == App.admin_List.get(i).RequestUser.MyRequests.get(j).ref)
+					if(obj.identify == App.admin_List.get(i).RequestUser.MyRequests.get(j).identify)
 					{
 						App.admin_List.get(i).RequestUser.MyRequests.get(j).Cancel = true;
 						App.admin_List.get(i).RequestUser.MyRequests.get(j).Approved = false;
@@ -143,8 +145,13 @@ public class AdminRequestList extends Application
 					e.printStackTrace();
 				}
 
-				App.admin_List.remove(obj);
+				h.add(obj);
 			}
+		}
+		
+		for(int i = 0 ; i<h.size() ; i++)
+		{
+			App.admin_List.remove(h.get(i));
 		}
 		
 		
@@ -246,9 +253,8 @@ public class AdminRequestList extends Application
 				Optional<String> result = dialog.showAndWait();
 				if (result.isPresent()){
 					obj.name = result.get();
+					new book_Room(2, admin, obj).start(primaryStage);
 				}
-				
-				new book_Room(2, admin, obj).start(primaryStage);
 			}
 			
 			
@@ -277,6 +283,9 @@ public class AdminRequestList extends Application
 						choice_Box_List.add((ChoiceBox)node);
 					}
 				}
+				
+				ArrayList<Request> h1 = new ArrayList<Request>();
+				
 				for(int i = 0 ; i<choice_Box_List.size() ; i++)
 				{
 					try {
@@ -297,6 +306,7 @@ public class AdminRequestList extends Application
 								System.out.println(App.admin_List.get(i).RequestUser.MyRequests.get(j).toString());
 								choice_Box_List.get(i).setDisable(true);
 								
+								h1.add(App.admin_List.get(i));
 								break;
 							}
 						}
@@ -311,6 +321,7 @@ public class AdminRequestList extends Application
 								App.admin_List.get(i).RequestUser.MyRequests.get(j).Approved = false;
 								System.out.println(App.admin_List.get(i).RequestUser.MyRequests.get(j).toString());
 								choice_Box_List.get(i).setDisable(true);
+								h1.add(App.admin_List.get(i));
 								break;
 							}
 						}
@@ -322,6 +333,11 @@ public class AdminRequestList extends Application
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
+				}
+				
+				for(int i = 0 ; i<h1.size() ; i++)
+				{
+					App.admin_List.remove(h1.get(i));
 				}
 				
 				try {
