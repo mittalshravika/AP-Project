@@ -7,6 +7,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * search_Course.java provides a list of courses according to the keywords searched by a student
+ * It also checks whether the searched course clashes with the student's current time table or not
+ * 
+ * @author Yajur Ahuja - 2016121
+ * @author Shravika Mittal - 2016093
+ *
+ */
 public class search_Course {
 	
 	private String search_Keywords;
@@ -16,6 +24,15 @@ public class search_Course {
 	private HashMap<Course, Integer> h = new HashMap<Course, Integer>();
 	private User current_User;
 
+	/**
+	 * Constructor for search_Course.java
+	 *  
+	 * @param search_Keywords
+	 * @param all_Courses
+	 * @param student_User
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	public search_Course(String search_Keywords, List<Course> all_Courses, User student_User) throws ClassNotFoundException, IOException {
 		
 		current_User = student_User;
@@ -27,11 +44,21 @@ public class search_Course {
 		search_Post_Condition(search_Keywords, all_Courses);
 	}
 	
+	/**
+	 * Getter function for searched courses list
+	 * 
+	 * @return course_Search_List - contains all the courses for the searched keyword that do not clash with student's time table
+	 */
 	public List<Course> getCourse_Search_List()
 	{
 		return course_Search_List;
 	}
 
+	/**
+	 * Maps all the courses to 0 in the beginning
+	 * 
+	 * @param all_Courses - serialised list for all the courses offered to the 2nd year CSE students
+	 */
 	public void help_Hash_Map(List<Course> all_Courses)
 	{
 		for(int i = 0 ; i<all_Courses.size() ; i++)
@@ -40,6 +67,12 @@ public class search_Course {
 		}
 	}
 	
+	/**
+	 * gives all the courses that contain one or more of the keywords entered by the student in their post condition
+	 * 
+	 * @param keyword - space separated keywords enterd by the student
+	 * @param all_Courses - serialised list for all the courses offered to the 2nd year CSE students
+	 */
 	void search_Post_Condition(String keyword, List<Course> all_Courses)
 	{
 		help_Hash_Map(all_Courses);
@@ -87,9 +120,15 @@ public class search_Course {
 		}
 	}
 	
+	/**
+	 * returns a boolean indicating whether the course can be added or not checking for clashes
+	 * 
+	 * @param c - Course to be checked
+	 * @param student_Time_Table - personalised time table of the student
+	 * @return - boolean indicating whether the course can be added or not checking for clashes
+	 */
 	boolean check_Course(Course c, ArrayList<ArrayList<Boolean>> student_Time_Table)
 	{
-		
 		ArrayList<String> h = new ArrayList<String>();
 		h.add("8:00");
 		h.add("8:30");
@@ -356,10 +395,14 @@ public class search_Course {
 	        }
 		
 		}
-	
 		return true;
 	}
 	
+	/**
+	 * adds courses after checking to the course_Search_List
+	 * 
+	 * @param c - Course to be added
+	 */
 	void add_Course(Course c)
 	{
 		if(check_Course(c, current_User.obj.student_Time_Table))
@@ -384,10 +427,5 @@ public class search_Course {
 				course_Search_List.add(c);
 			}
 		}
-	}
-	
-	void deserialise()
-	{
-		
 	}
 }
