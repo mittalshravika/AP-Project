@@ -1,6 +1,10 @@
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -97,6 +101,53 @@ public class AdminRequestList extends Application
 			System.out.println("new file");
 		}
 		System.out.println(App.getAdmin_List().size());
+		System.out.println(java.time.LocalDate.now()); 
+		System.out.println(java.time.LocalTime.now());  
+		
+		for(int i = 0 ; i<App.admin_List.size() ; i++)
+		{
+			Date d1 = new SimpleDateFormat("MM/dd/yyyy").parse((String)App.admin_List.get(i).date);
+
+			LocalDate date = java.time.LocalDate.now();
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+			String date2 = date.format(formatter);
+			Date d2 = new SimpleDateFormat("MM/dd/yyyy").parse((String)date2);
+			long diff = Math.abs(d1.getTime() - d2.getTime());
+			long diffDays = diff / (24 * 60 * 60 * 1000);
+			System.out.println(diffDays);
+			if(diffDays>5)
+			{
+				try {
+					App.deserializeRequests(App.admin_List.get(i).RequestUser);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				Request obj = App.admin_List.get(i);
+				for(int j = 0 ; j<App.admin_List.get(i).RequestUser.MyRequests.size() ; j++)
+				{
+					if(obj.ref == App.admin_List.get(i).RequestUser.MyRequests.get(j).ref)
+					{
+						App.admin_List.get(i).RequestUser.MyRequests.get(j).Cancel = true;
+						App.admin_List.get(i).RequestUser.MyRequests.get(j).Approved = false;
+						System.out.println(obj.toString());
+						break;
+					}
+				}
+				
+				try {
+					App.serializeRequests(App.admin_List.get(i).RequestUser);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+				App.admin_List.remove(obj);
+			}
+		}
+		
+		
 		//example
 		for(int i = 0; i < App.getAdmin_List().size(); i++)
 		{
@@ -230,27 +281,29 @@ public class AdminRequestList extends Application
 				{
 					if(choice_Box_List.get(i).getValue().equals("Approve"))
 					{
+						try {
+							App.deserializeRequests(App.admin_List.get(i).RequestUser);
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 						for(int j = 0 ; j<App.admin_List.get(i).RequestUser.MyRequests.size() ; j++)
 						{
 							if(App.admin_List.get(i).ref == App.admin_List.get(i).RequestUser.MyRequests.get(j).ref)
 							{
-								try {
-									App.deserializeRequests(App.admin_List.get(i).RequestUser);
-								} catch (IOException e) {
-									// TODO Auto-generated catch block
-									e.printStackTrace();
-								}
+								
 								App.admin_List.get(i).RequestUser.MyRequests.get(j).Approved = true;
 								App.admin_List.get(i).RequestUser.MyRequests.get(j).Cancel = false;
 								System.out.println(App.admin_List.get(i).RequestUser.MyRequests.get(j).toString());
-								try {
-									App.serializeRequests(App.admin_List.get(i).RequestUser);
-								} catch (IOException e) {
-									// TODO Auto-generated catch block
-									e.printStackTrace();
-								}
+								
 								break;
 							}
+						}
+						try {
+							App.serializeRequests(App.admin_List.get(i).RequestUser);
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
 						}
 					}
 					if(choice_Box_List.get(i).getValue().equals("Cancel"))

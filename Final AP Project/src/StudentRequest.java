@@ -141,7 +141,7 @@ public class StudentRequest extends Application
 			Table.add(t8, 6, i+1, 1, 1);
 			Table.add(t9, 7, i+1, 1, 1);
 			
-			if(t9.getText().equals("Approved"))
+			if(t9.getText().equals("Approved") || (t9.getText().equals("Cancelled")))
 			{
 				Approval.setDisable(true);
 			}

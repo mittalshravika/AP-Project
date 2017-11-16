@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import javafx.application.Application;
@@ -113,7 +114,8 @@ public class RequestPage extends Application
 			Capacity1 = new String(Capacity_input.getText());
 			Duration1 = new String(Duration_input.getText());
 			
-			Date1 = checkInDatePicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+			LocalDate d = checkInDatePicker.getValue();
+			Date1 = checkInDatePicker.getValue().format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
 			if(Date1 == null)
 			{
 				Date1 = new String ("Null");
@@ -140,9 +142,9 @@ public class RequestPage extends Application
 			}
 			//add to admin List
 			
-			App.getAdmin_List().add(new Request(current_User,Purpose1, Room1, Integer.parseInt(Capacity1), Date1, Time1, Integer.parseInt(Duration1), current));
+			App.getAdmin_List().add(new Request(current_User,Purpose1, Room1, Integer.parseInt(Capacity1), Date1, Time1, Integer.parseInt(Duration1), current, d));
 			//add to user List
-			current_User.getMyRequests().add(new Request(current_User, Purpose1, Room1, Integer.parseInt(Capacity1), Date1, Time1, Integer.parseInt(Duration1), current));
+			current_User.getMyRequests().add(new Request(current_User, Purpose1, Room1, Integer.parseInt(Capacity1), Date1, Time1, Integer.parseInt(Duration1), current, d));
 			System.out.println(current_User.MyRequests.size());
 			System.out.println(App.getAdmin_List().size());
 			try {

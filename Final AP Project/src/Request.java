@@ -1,6 +1,7 @@
 import java.util.*;
 import java.io.Serializable;
 import java.lang.*;
+import java.time.LocalDate;
 
 public class Request implements Serializable
 {
@@ -23,8 +24,9 @@ public class Request implements Serializable
 	String currentTime;
 	static int ref = 0;
 	int identify;
+	LocalDate d;
 	
-	public Request(User User1, String a, String b, int c, String d, String t, int duration, String c_t)
+	public Request(User User1, String a, String b, int c, String d, String t, int duration, String c_t, LocalDate date)
 	{
 		this.RequestUser = User1;
 		this.purpose = new String(a);
@@ -38,6 +40,7 @@ public class Request implements Serializable
 		this.Cancel = false;
 		ref = ref+1;
 		this.identify = ref;
+		this.d = date;
 	}
 
 	void setApproval(Boolean A)
