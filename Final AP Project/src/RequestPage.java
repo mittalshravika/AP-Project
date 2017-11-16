@@ -128,10 +128,11 @@ public class RequestPage extends Application
 				Time1 = new String(change + " " + Minutes.getValue());
 			}
 			
-			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			Date date = new Date(0);
-			current = new String(dateFormat.format(date));
-			//System.out.println(current); //2016/11/16 12:08:43
+			LocalDate book_Date = java.time.LocalDate.now();
+			DateTimeFormatter f = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+			current = book_Date.format(f);
+			
+			System.out.println(current);
 			
 			try {
 				App.deserialize("adminrequestlist");
@@ -142,9 +143,10 @@ public class RequestPage extends Application
 			}
 			//add to admin List
 			
-			App.getAdmin_List().add(new Request(current_User,Purpose1, Room1, Integer.parseInt(Capacity1), Date1, Time1, Integer.parseInt(Duration1), current, d));
+			Request obj = new Request(current_User,Purpose1, Room1, Integer.parseInt(Capacity1), Date1, Time1, Integer.parseInt(Duration1), current, d);
+			App.getAdmin_List().add(obj);
 			//add to user List
-			current_User.getMyRequests().add(new Request(current_User, Purpose1, Room1, Integer.parseInt(Capacity1), Date1, Time1, Integer.parseInt(Duration1), current, d));
+			current_User.getMyRequests().add(obj);
 			System.out.println(current_User.MyRequests.size());
 			System.out.println(App.getAdmin_List().size());
 			try {

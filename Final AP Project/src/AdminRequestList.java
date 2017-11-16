@@ -106,7 +106,7 @@ public class AdminRequestList extends Application
 		
 		for(int i = 0 ; i<App.admin_List.size() ; i++)
 		{
-			Date d1 = new SimpleDateFormat("MM/dd/yyyy").parse((String)App.admin_List.get(i).date);
+			Date d1 = new SimpleDateFormat("MM/dd/yyyy").parse((String)App.admin_List.get(i).currentTime);
 
 			LocalDate date = java.time.LocalDate.now();
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
@@ -279,57 +279,48 @@ public class AdminRequestList extends Application
 				}
 				for(int i = 0 ; i<choice_Box_List.size() ; i++)
 				{
+					try {
+						App.deserializeRequests(App.admin_List.get(i).RequestUser);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					if(choice_Box_List.get(i).getValue().equals("Approve"))
 					{
-						try {
-							App.deserializeRequests(App.admin_List.get(i).RequestUser);
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
 						for(int j = 0 ; j<App.admin_List.get(i).RequestUser.MyRequests.size() ; j++)
 						{
-							if(App.admin_List.get(i).ref == App.admin_List.get(i).RequestUser.MyRequests.get(j).ref)
+							if(App.admin_List.get(i).identify == App.admin_List.get(i).RequestUser.MyRequests.get(j).identify)
 							{
 								
 								App.admin_List.get(i).RequestUser.MyRequests.get(j).Approved = true;
 								App.admin_List.get(i).RequestUser.MyRequests.get(j).Cancel = false;
 								System.out.println(App.admin_List.get(i).RequestUser.MyRequests.get(j).toString());
+								choice_Box_List.get(i).setDisable(true);
 								
 								break;
 							}
-						}
-						try {
-							App.serializeRequests(App.admin_List.get(i).RequestUser);
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
 						}
 					}
 					if(choice_Box_List.get(i).getValue().equals("Cancel"))
 					{
 						for(int j = 0 ; j<App.admin_List.get(i).RequestUser.MyRequests.size() ; j++)
 						{
-							if(App.admin_List.get(i).ref == App.admin_List.get(i).RequestUser.MyRequests.get(j).ref)
+							if(App.admin_List.get(i).identify == App.admin_List.get(i).RequestUser.MyRequests.get(j).identify)
 							{
-								try {
-									App.deserializeRequests(App.admin_List.get(i).RequestUser);
-								} catch (IOException e) {
-									// TODO Auto-generated catch block
-									e.printStackTrace();
-								}
 								App.admin_List.get(i).RequestUser.MyRequests.get(j).Cancel = true;
 								App.admin_List.get(i).RequestUser.MyRequests.get(j).Approved = false;
 								System.out.println(App.admin_List.get(i).RequestUser.MyRequests.get(j).toString());
-								try {
-									App.serializeRequests(App.admin_List.get(i).RequestUser);
-								} catch (IOException e) {
-									// TODO Auto-generated catch block
-									e.printStackTrace();
-								}
+								choice_Box_List.get(i).setDisable(true);
 								break;
 							}
 						}
+					}
+
+					try {
+						App.serializeRequests(App.admin_List.get(i).RequestUser);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
 					}
 				}
 				
