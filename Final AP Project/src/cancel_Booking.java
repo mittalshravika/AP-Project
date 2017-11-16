@@ -16,6 +16,7 @@ public class cancel_Booking implements Serializable{
 	int capacity;
 	int week;
 	int day;
+	String name;
 	
 	/**
 	 * Constructor for cancel_Booking.java
@@ -28,7 +29,7 @@ public class cancel_Booking implements Serializable{
 	 * @param week
 	 * @param day
 	 */
-	public cancel_Booking(String date, String time, int duration, String room, int capacity, int week, int day) 
+	public cancel_Booking(String date, String time, int duration, String room, int capacity, int week, int day, String name) 
 	{
 		this.date = date;
 		this.time = time;
@@ -37,6 +38,7 @@ public class cancel_Booking implements Serializable{
 		this.capacity = capacity;
 		this.week = week;
 		this.day = day;
+		this.name = name;
 	}
 
 	/**

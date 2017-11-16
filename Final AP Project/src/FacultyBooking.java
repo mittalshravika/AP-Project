@@ -96,35 +96,81 @@ public class FacultyBooking extends Application
 			
 			System.out.println(current_User.bookings.size());
 			
-			for(int i = 0 ; i<current_User.bookings.size() ; i++)
+			if(type == 1)
 			{
-				cancel_Booking obj = current_User.bookings.get(i);
-				TextField t1 = new TextField(Integer.toString(i+1));
-				TextField t2 = new TextField(obj.date);
-				TextField t3 = new TextField(obj.time);
-				TextField t4 = new TextField(Integer.toString(obj.duration));
-				TextField t7 = new TextField(obj.room);
-				TextField t8 = new TextField(Integer.toString(obj.capacity));
-				TextField t9 = new TextField("Cancel");
-				
-				CheckBox Approval = new CheckBox("Select");
-				
-				Table.add(t1, 0, i+1, 1, 1);
-				Table.add(t2, 1, i+1, 1, 1);
-				Table.add(t3, 2, i+1, 1, 1);
-				Table.add(t4, 3, i+1, 1, 1);
-				Table.add(t7, 4, i+1, 1, 1);
-				Table.add(t8, 5, i+1, 1, 1);
-				Table.add(Approval, 6, i+1, 1, 1);
-				
-				t1.setDisable(true);
-				t2.setDisable(true);
-				t3.setDisable(true);
-				t4.setDisable(true);
-				t7.setDisable(true);
-				t8.setDisable(true);
-				t9.setDisable(true);
-				
+
+				for(int i = 0 ; i<current_User.bookings.size() ; i++)
+				{
+					cancel_Booking obj = current_User.bookings.get(i);
+					TextField t1 = new TextField(Integer.toString(i+1));
+					TextField t2 = new TextField(obj.date);
+					TextField t3 = new TextField(obj.time);
+					TextField t4 = new TextField(Integer.toString(obj.duration));
+					TextField t7 = new TextField(obj.room);
+					TextField t8 = new TextField(Integer.toString(obj.capacity));
+					TextField t9 = new TextField("Cancel");
+					
+					CheckBox Approval = new CheckBox("Select");
+					
+					Table.add(t1, 0, i+1, 1, 1);
+					Table.add(t2, 1, i+1, 1, 1);
+					Table.add(t3, 2, i+1, 1, 1);
+					Table.add(t4, 3, i+1, 1, 1);
+					Table.add(t7, 4, i+1, 1, 1);
+					Table.add(t8, 5, i+1, 1, 1);
+					Table.add(Approval, 6, i+1, 1, 1);
+					
+					t1.setDisable(true);
+					t2.setDisable(true);
+					t3.setDisable(true);
+					t4.setDisable(true);
+					t7.setDisable(true);
+					t8.setDisable(true);
+					t9.setDisable(true);
+					
+				}
+			}
+			
+			else if(type == 2)
+			{
+
+				for(int i = 0 ; i<current_User.bookings.size() ; i++)
+				{
+					cancel_Booking obj = current_User.bookings.get(i);
+					TextField t1 = new TextField(Integer.toString(i+1));
+					TextField t2 = new TextField(obj.date);
+					TextField t3 = new TextField(obj.time);
+					TextField t4 = new TextField(Integer.toString(obj.duration));
+					TextField t7 = new TextField(obj.room);
+					TextField t8 = new TextField(Integer.toString(obj.capacity));
+					TextField t9 = new TextField("Cancel");
+					TextField t10 = new TextField(obj.name);
+					TextField T10 = new TextField("Booked by");
+					Table.add(T10, 7, 0, 1, 1);
+					T10.setDisable(true);
+					
+					CheckBox Approval = new CheckBox("Select");
+					
+					Table.add(t1, 0, i+1, 1, 1);
+					Table.add(t2, 1, i+1, 1, 1);
+					Table.add(t3, 2, i+1, 1, 1);
+					Table.add(t4, 3, i+1, 1, 1);
+					Table.add(t7, 4, i+1, 1, 1);
+					Table.add(t8, 5, i+1, 1, 1);
+					Table.add(Approval, 6, i+1, 1, 1);
+					Table.add(t10, 7, i+1, 1, 1);
+					
+					
+					t1.setDisable(true);
+					t2.setDisable(true);
+					t3.setDisable(true);
+					t4.setDisable(true);
+					t7.setDisable(true);
+					t8.setDisable(true);
+					t9.setDisable(true);
+					t10.setDisable(true);
+					
+				}
 			}
 			
 			App.serialize(current_User.getEmail_id(), "book");

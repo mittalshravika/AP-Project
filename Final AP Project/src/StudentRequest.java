@@ -5,7 +5,10 @@ import java.util.ArrayList;
 import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -61,6 +64,7 @@ public class StudentRequest extends Application
 		TextField T7 = new TextField("Room");
 		TextField T8 = new TextField("Capacity");
 		TextField T9 = new TextField("Status");
+		TextField T10 = new TextField("Cancel");
 		Table.add(T1, 0, 0, 1, 1);
 		Table.add(T2, 1, 0, 1, 1);
 		Table.add(T3, 2, 0, 1, 1);
@@ -70,6 +74,7 @@ public class StudentRequest extends Application
 		Table.add(T7, 5, 0, 1, 1);
 		Table.add(T8, 6, 0, 1, 1);
 		Table.add(T9, 7, 0, 1, 1);
+		Table.add(T10, 8, 0, 1, 1);
 		T1.setDisable(true);
 		T2.setDisable(true);
 		T3.setDisable(true);
@@ -78,6 +83,7 @@ public class StudentRequest extends Application
 		T7.setDisable(true);
 		T8.setDisable(true);
 		T9.setDisable(true);
+		T10.setDisable(true);
 		try{
 			App.deserializeRequests(current_User);
 		}
@@ -97,6 +103,7 @@ public class StudentRequest extends Application
 			TextField t7 = new TextField(current_User.MyRequests.get(i).preferred_Room);
 			TextField t8 = new TextField(String.valueOf(current_User.MyRequests.get(i).capacity));
 			TextField t9;
+			CheckBox Approval = new CheckBox("Select");
 			if(current_User.MyRequests.get(i).Approved)
 				t9 = new TextField("Approved");
 			else
@@ -122,7 +129,7 @@ public class StudentRequest extends Application
 				}
 				
 			});
-			Table.add(B, 8, i+1, 1, 1);
+			Table.add(B, 9, i+1, 1, 1);
 		
 			Table.add(t1, 0, i+1, 1, 1);
 			Table.add(t2, 1, i+1, 1, 1);
@@ -131,6 +138,13 @@ public class StudentRequest extends Application
 			Table.add(t6, 4, i+1, 1, 1);
 			Table.add(t7, 5, i+1, 1, 1);
 			Table.add(t8, 6, i+1, 1, 1);
+			Table.add(t9, 7, i+1, 1, 1);
+			
+			if(t9.getText().equals("Approved"))
+			{
+				Approval.setDisable(true);
+			}
+			Table.add(Approval, 8, i+1, 1, 1);
 			t1.setDisable(true);
 			t2.setDisable(true);
 			t3.setDisable(true);
@@ -138,15 +152,13 @@ public class StudentRequest extends Application
 			t6.setDisable(true);
 			t7.setDisable(true);
 			t8.setDisable(true);
-
-		
-		//Approval.getItems().addAll("Pending", "Approve", "Cancel");
-		//Approval.setValue("Pending");
+			t9.setDisable(true);
 		Table.setAlignment(Pos.CENTER);
 		}
 		
 		App.serializeRequests(current_User);
 
+		
 
 		sp = new ScrollPane();
 		sp.setContent(Table);
@@ -158,6 +170,77 @@ public class StudentRequest extends Application
 		VBox elements = new VBox();
 		HBox x = new HBox();
 		Button Cancel = new Button("Cancel");
+		
+		Cancel.setOnAction(new EventHandler<ActionEvent>(){
+			
+			@Override
+			public void handle(ActionEvent arg0) {
+				
+				System.out.println("cancel");
+
+				ArrayList<CheckBox> check_Box_List = new ArrayList<>();
+				ArrayList<Integer> h = new ArrayList<Integer>();
+
+				for(Node node : Table.getChildren())
+				{
+					if(node instanceof CheckBox)
+					{
+						check_Box_List.add((CheckBox)node);
+					}
+				}
+				for(int i = 0 ; i<check_Box_List.size() ; i++)
+				{
+					if(check_Box_List.get(i).isSelected())
+					{
+						h.add(GridPane.getRowIndex((Node)check_Box_List.get(i)));
+						int index = GridPane.getRowIndex((Node)check_Box_List.get(i));
+						try {
+							App.deserializeRequests(current_User);
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						try {
+							App.deserialize("adminrequestlist");
+						} catch (ClassNotFoundException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+						Request toremove = current_User.MyRequests.get(index - 1);
+						current_User.MyRequests.remove(toremove);
+						int sno = 0;
+						for(int j = 0 ; j<App.admin_List.size() ; j++)
+						{
+							if(App.admin_List.get(j).ref == toremove.ref)
+							{
+								sno = j;
+							}
+						}
+						App.admin_List.remove(App.admin_List.get(sno));
+						System.out.println(toremove.toString());
+						
+						try {
+							App.serializeRequests(current_User);
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						try {
+							App.serialize("adminrequestlist", "adminrequest");
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+				}
+			
+			}
+			
+		});
 		
 		elements.setSpacing(20);
 		elements.setPadding(new Insets(20));

@@ -64,3 +64,5 @@
 /EnterPasswordException.class
 /PasswordsDontMatchException.class
 /LoginFailException.class
+/StudentRequest$1.class
+/AdminRequestList$1.class

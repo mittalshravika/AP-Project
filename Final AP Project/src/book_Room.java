@@ -43,6 +43,7 @@ public class book_Room extends Application
 {
 	static int type;
 	User current_User;
+	AdminRequestList object;
 
 	public book_Room(int a, User obj)
 	{
@@ -50,7 +51,12 @@ public class book_Room extends Application
 		current_User = obj;
 	}
 	
-	public static void main(String[] args)	
+	public book_Room(int i, User admin, AdminRequestList obj) {
+		type = i;
+		current_User = admin;
+		object = obj;
+	}
+public static void main(String[] args)	
 	{	
 		launch(args);	
 	}	
@@ -361,7 +367,14 @@ public class book_Room extends Application
 							// TODO Auto-generated catch block
 							e2.printStackTrace();
 						}
-						cancel_Booking booking = new cancel_Booking(obj1.date, h1.get(h.get(i).get(j)), 30, App.actual_Room_List.get(i).get_Name(), App.actual_Room_List.get(i).get_Capacity(), obj1.week, obj1.day);
+						
+						String name = "";
+						if(type==2)
+						{
+							name = object.name;
+						}
+						
+						cancel_Booking booking = new cancel_Booking(obj1.date, h1.get(h.get(i).get(j)), 30, App.actual_Room_List.get(i).get_Name(), App.actual_Room_List.get(i).get_Capacity(), obj1.week, obj1.day, name);
 						current_User.bookings.add(booking);
 						System.out.println("size");
 						System.out.println(current_User.bookings.size());

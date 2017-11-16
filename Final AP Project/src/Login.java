@@ -28,6 +28,7 @@ public class Login extends Application
 	@Override
 	public void start(Stage primaryStage) throws Exception
 	{
+		
 		Scene LoginScene, SignUpScene;
 		GridPane grid1, grid2;		
 		primaryStage.setTitle("Classroom Booking System");

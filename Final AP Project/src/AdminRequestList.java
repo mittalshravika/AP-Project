@@ -1,8 +1,11 @@
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Optional;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -12,6 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Separator;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -20,12 +24,17 @@ import javafx.stage.Stage;
 public class AdminRequestList extends Application
 {
 	User admin;
+	String name;
 	
 	public AdminRequestList(User a)
 	{
 		this.admin = a;
 	}
 	
+	public AdminRequestList() {
+		// TODO Auto-generated constructor stub
+	}
+
 	private static void main(String[] args) {
 		// TODO Auto-generated method stub
 		launch(args);
@@ -171,6 +180,30 @@ public class AdminRequestList extends Application
 		
 		Button Home = new Button("Back");
 		x.getChildren().addAll(Home, Book);
+		AdminRequestList obj = new AdminRequestList();
+		
+		Book.setOnAction(new EventHandler<ActionEvent>(){
+
+			@Override
+			public void handle(ActionEvent arg0) {
+				TextInputDialog dialog = new TextInputDialog("");
+				dialog.setTitle("Name Input Dialog");
+				dialog.setHeaderText("Enter the name for whom booking has to be done");
+				dialog.setContentText("Name:");
+
+				// Traditional way to get the response value.
+				Optional<String> result = dialog.showAndWait();
+				if (result.isPresent()){
+					obj.name = result.get();
+				}
+				
+				new book_Room(2, admin, obj).start(primaryStage);
+			}
+			
+			
+			
+		});
+		
 		x.setSpacing(760);
 		
 		Home.setOnAction(e -> {new admin_Page(admin).start(primaryStage);});
