@@ -34,26 +34,33 @@ public class CourseSearch extends Application
 	{
 
 		Scene CourseSearchScene;
-		GridPane grid;
-		primaryStage.setTitle("Classroom Booking System");
-		grid = new GridPane();
 
-		//grid.setPadding(new Insets(10, 10, 10, 10));
-		grid.setVgap(8);
-		grid.setHgap(10);
+		primaryStage.setTitle("Classroom Booking System");
+		
+		
+		HBox[] show = new HBox[5];
+		
+		for(int i = 0; i < 5; i++)
+		{
+			show[i] = new HBox();
+			show[i].setSpacing(150);
+		}
+		
+		
+
+
 
 		//Title
 		Label Title = new Label("SEARCH");
-		GridPane.setHalignment(Title, HPos.CENTER);
-		GridPane.setConstraints(Title, 3, 0, 1, 1);
-		//
+		Title.getStyleClass().add("admin_Page_Heading");
+		
+		//Search Field
 		TextField Search = new TextField();
-		GridPane.setConstraints(Search, 3, 1, 1, 1);
+		
 		Search.setPrefWidth(900);
 
 		Button Search_Button = new Button("Search");
-		GridPane.setHalignment(Search_Button, HPos.CENTER);
-		GridPane.setConstraints(Search_Button, 3, 2);
+	
 		
 		Search_Button.setOnAction(new EventHandler<ActionEvent>(){
 
@@ -80,27 +87,36 @@ public class CourseSearch extends Application
 		
 		Button btn3 = new Button("Back");
 		
-		GridPane.setConstraints(btn3, 0, 30);
 		
 		btn3.setOnAction(e -> {new student_Page(current_User).start(primaryStage);});
 		
-		grid.getChildren().addAll(Title, Search, Search_Button);
 		
 		Label l = new Label("IIIT-D");
-		l.setAlignment(Pos.TOP_LEFT);
+		//l.setAlignment(Pos.TOP_CENTER);
 		l.getStyleClass().add("labelIIITD");
 		
-		HBox x = new HBox();
-		x.getChildren().add(btn3);
-		x.setAlignment(Pos.BOTTOM_LEFT);
+		show[0].getChildren().addAll(l);
+		show[0].setAlignment(Pos.CENTER);
+		show[1].getChildren().addAll(Title);
+		show[1].setAlignment(Pos.CENTER);
+		show[2].getChildren().addAll(Search);
+		show[2].setAlignment(Pos.CENTER);
+		show[3].getChildren().addAll(Search_Button);
+		show[3].setAlignment(Pos.BOTTOM_CENTER);
+		show[4].getChildren().addAll(btn3);
+		show[4].setAlignment(Pos.CENTER_LEFT);
+		
 		
 		VBox y = new VBox();
 		y.setPadding(new Insets(20));
 		y.setSpacing(50);
 		y.setAlignment(Pos.TOP_CENTER);
-		y.getChildren().addAll(l, Title, grid, x);
+		for(int i = 0; i < 5; i++)
+		{
+			y.getChildren().add(show[i]);
+		}
 		
-		y.setStyle("-fx-background-color: #00DDDD");
+		y.getStyleClass().add("background");
 		CourseSearchScene = new Scene(y, 1000, 600);
 		CourseSearchScene.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());
 

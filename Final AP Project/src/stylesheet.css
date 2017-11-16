@@ -14,7 +14,6 @@
 	-fx-font-size: 18px;
 	-fx-padding:14px 44px;
 	-fx-text-decoration:none;
-	-fx-text-shadow:0px 1px 27px #000000;
 }
 .button:hover {
 	-fx-background-color:#000000;
