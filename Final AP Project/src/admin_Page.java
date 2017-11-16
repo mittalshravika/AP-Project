@@ -72,9 +72,7 @@ public class admin_Page extends Application
 		btn4.setPrefWidth(200);
 		btn5.setPrefHeight(80);
 		btn5.setPrefWidth(400);
-		
-		GridPane root = new GridPane();
-		root.setGridLinesVisible(true);
+	
 		
 		
 		Label l = new Label("IIIT-D");
