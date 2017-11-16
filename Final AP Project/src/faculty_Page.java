@@ -112,11 +112,11 @@ public	class faculty_Page extends Application
 		
 	
 		
-		Button btn6 = new Button("Home");
+		
 		
 		HBox x2 = new HBox();
 		x2.setSpacing(300);
-		x2.getChildren().addAll(btn6);
+		//x2.getChildren().addAll(btn6);
 		x2.setAlignment(Pos.CENTER);
 		
 		VBox y = new VBox();
