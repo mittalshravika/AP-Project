@@ -39,6 +39,7 @@ public	class faculty_Page extends Application
 		btn5.getStyleClass().add("button");
 		Button btn4 = new Button("Logout");
 		Label l1 = new Label(faculty_User.getName());
+		l1.getStyleClass().add("admin_Page_Heading");
 		//Label l2 = new Label("Type:");
 		
 		btn.setOnAction(e -> {new book_Room(1, faculty_User).start(primaryStage);});
