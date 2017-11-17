@@ -104,7 +104,7 @@ public static void main(String[] args)
 					try {
 						Alert alert = new Alert(AlertType.INFORMATION);
 						alert.setTitle("Information Dialog");
-						alert.setHeaderText("Look, an Information Dialog");
+						alert.setHeaderText("Student Request Details");
 						alert.setContentText("Name: " + obj.RequestUser.getName() + "\n" + "Purpose: " + obj.purpose + "\n" + "Preferred Room: " + obj.preferred_Room + "\n" + "Date: " + obj.date + "\n" +"Time: " + obj.time + "\n" + "Duration: " + obj.duration);
 
 						alert.showAndWait();
@@ -194,26 +194,26 @@ public static void main(String[] args)
 		t30.setDisable(true);
 		t31.setDisable(true);
 		
-		TextField t1 = new TextField("C01");
-		TextField t2 = new TextField("C02");
-		TextField t3 = new TextField("C03");
-		TextField t4 = new TextField("C04");
-		TextField t5 = new TextField("C11");
-		TextField t6 = new TextField("C12");
-		TextField t7 = new TextField("C13");
-		TextField t8 = new TextField("C14");
-		TextField t9 = new TextField("C21");
-		TextField ta = new TextField("C22");
-		TextField tb = new TextField("C23");
-		TextField tc = new TextField("C24");
-		TextField td = new TextField("LR1");
-		TextField te = new TextField("LR2");
-		TextField tf = new TextField("LR3");
-		TextField tg = new TextField("S01");
-		TextField th = new TextField("S02");
-		TextField ti = new TextField("L21");
-		TextField tj = new TextField("L22");
-		TextField tk = new TextField("L23");
+		TextField t1 = new TextField("C01/180");
+		TextField t2 = new TextField("C02/75");
+		TextField t3 = new TextField("C03/35");
+		TextField t4 = new TextField("C04/35");
+		TextField t5 = new TextField("C11/180");
+		TextField t6 = new TextField("C12/75");
+		TextField t7 = new TextField("C13/35");
+		TextField t8 = new TextField("C14/35");
+		TextField t9 = new TextField("C21/180");
+		TextField ta = new TextField("C22/75");
+		TextField tb = new TextField("C23/35");
+		TextField tc = new TextField("C24/35");
+		TextField td = new TextField("LR1/30");
+		TextField te = new TextField("LR2/30");
+		TextField tf = new TextField("LR3/30");
+		TextField tg = new TextField("S01/35");
+		TextField th = new TextField("S02/35");
+		TextField ti = new TextField("L21/40");
+		TextField tj = new TextField("L22/40");
+		TextField tk = new TextField("L23/40");
 		t1.setDisable(true);
 		t2.setDisable(true);
 		t3.setDisable(true);
