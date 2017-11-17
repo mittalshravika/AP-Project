@@ -26,7 +26,7 @@ public class student_Page extends Application {
 
 	/**
 	 * Constructor
-	 * @param student_User
+	 * @param student_User - student currently logged in
 	 */
 	public student_Page(User student_User) {
 		this.student_User = student_User;

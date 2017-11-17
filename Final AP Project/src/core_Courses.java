@@ -33,7 +33,7 @@ public class core_Courses {
 	 * 
 	 * @param args
 	 *            - unused
-	 * @throws IOException
+	 * @throws IOException for serialising
 	 */
 	public static void main(String args[]) throws IOException {
 		BufferedReader br = null;

@@ -33,8 +33,8 @@ public class course_Page_Faculty extends Application {
 	/**
 	 * Constructor
 	 * 
-	 * @param obj
-	 * @param student_User
+	 * @param obj - course object
+	 * @param student_User - sudent who is currently logged in
 	 */
 	public course_Page_Faculty(Course obj, User student_User) {
 		object = obj;

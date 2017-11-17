@@ -37,8 +37,8 @@ public class FacultyBooking extends Application {
 
 	/**
 	 * Constructor
-	 * @param a
-	 * @param obj
+	 * @param a - type of user
+	 * @param obj - user who is currently logged in
 	 */
 	public FacultyBooking(int a, User obj) {
 		type = a;

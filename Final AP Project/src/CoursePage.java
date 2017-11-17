@@ -27,8 +27,8 @@ public class CoursePage extends Application {
 	/**
 	 * Constructor
 	 * 
-	 * @param obj
-	 * @param student_User
+	 * @param obj - course object
+	 * @param student_User - student who is currently logged in
 	 */
 	public CoursePage(Course obj, User student_User) {
 		object = obj;

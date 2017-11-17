@@ -32,7 +32,6 @@ public class App {
 	 * 
 	 * This is a getter function for user_List
 	 * 
-	 * @param unused
 	 * @return user_List that contains all the users signed up in the system
 	 */
 	public static List<User> getUser_List() {
@@ -42,7 +41,6 @@ public class App {
 	/**
 	 * This is a getter function for course_List
 	 * 
-	 * @param unused
 	 * @return course_List that contains information about all the CSE courses
 	 *         offered to second year students in monsoon semester
 	 */
@@ -53,7 +51,6 @@ public class App {
 	/**
 	 * This is a getter function for admin_List
 	 * 
-	 * @param unused
 	 * @return admin_List that contains the requests made by students to the admin
 	 *         for room booking
 	 */
@@ -65,8 +62,8 @@ public class App {
 	 * 
 	 * @param A
 	 *            describing which list to deserialize
-	 * @throws IOException
-	 * @throws ClassNotFoundException
+	 * @throws IOException for serialising and deserialising
+	 * @throws ClassNotFoundException for serialising and deserialising
 	 */
 	public static void deserialize(String A) throws IOException, ClassNotFoundException {
 		ObjectInputStream in = null;
@@ -188,8 +185,8 @@ public class App {
 	 * @param current
 	 *            - which is the student user whose request list has to be
 	 *            deserialized
-	 * @throws FileNotFoundException
-	 * @throws IOException
+	 * @throws FileNotFoundException for serialising and deserialising
+	 * @throws IOException for serialising and deserialising
 	 */
 	public static void deserializeRequests(User current) throws FileNotFoundException, IOException {
 		current.MyRequests = new ArrayList<>();
@@ -211,8 +208,8 @@ public class App {
 	 * @param current
 	 *            - which is the student user whose request list has to be
 	 *            serialized
-	 * @throws FileNotFoundException
-	 * @throws IOException
+	 * @throws FileNotFoundException for serialising and deserialising
+	 * @throws IOException for serialising and deserialising
 	 */
 	public static void serializeRequests(User current) throws FileNotFoundException, IOException {
 		Request Output5;
@@ -230,7 +227,7 @@ public class App {
 	 *            which is the name of the list to be serialised
 	 * @param B
 	 *            tells which list has to be serialized
-	 * @throws IOException
+	 * @throws IOException for serialising and deserialising
 	 */
 	public static void serialize(String A, String B) throws IOException {
 		User Output;

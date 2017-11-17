@@ -24,7 +24,7 @@ public class faculty_Page extends Application {
 
 	/**
 	 * Constructor
-	 * @param faculty_User
+	 * @param faculty_User - faculty user who is currently logged in
 	 */
 	public faculty_Page(User faculty_User) {
 		this.faculty_User = faculty_User;

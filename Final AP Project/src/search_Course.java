@@ -27,11 +27,11 @@ public class search_Course {
 	/**
 	 * Constructor for search_Course.java
 	 *  
-	 * @param search_Keywords
-	 * @param all_Courses
-	 * @param student_User
-	 * @throws ClassNotFoundException
-	 * @throws IOException
+	 * @param search_Keywords - keywords to be searched for in postconditions
+	 * @param all_Courses - course list for CSE second semester
+	 * @param student_User - student user who is currently logged in
+	 * @throws ClassNotFoundException - Exception for deserialising
+	 * @throws IOException - Exception for serialising
 	 */
 	public search_Course(String search_Keywords, List<Course> all_Courses, User student_User) throws ClassNotFoundException, IOException {
 		

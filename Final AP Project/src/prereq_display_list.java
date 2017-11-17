@@ -44,7 +44,7 @@ public class prereq_display_list extends Application {
 	/**
 	 * Constructor
 	 * 
-	 * @param current_User
+	 * @param current_User - user who is currently logged in
 	 */
 	public prereq_display_list(User current_User) {
 		this.current_User = current_User;

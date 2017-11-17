@@ -74,7 +74,7 @@ public class actual_Room implements Serializable {
 	 * This is for initialising the 20 weeks for each actual_Room object by
 	 * adding new Week() objects
 	 * 
-	 * @param list_Of_Weeks
+	 * @param list_Of_Weeks - week list for every room
 	 */
 	public void add_List_Of_Weeks(List<Week> list_Of_Weeks) {
 		for (int i = 0; i < 20; i++) {
@@ -85,7 +85,7 @@ public class actual_Room implements Serializable {
 	/**
 	 * This is the main method added for object creation testing purposes
 	 * 
-	 * @param unused
+	 * @param args - unused
 	 */
 	public static void main(String[] args) {
 		actual_Room obj = new actual_Room();

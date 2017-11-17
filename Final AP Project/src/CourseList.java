@@ -41,7 +41,7 @@ public class CourseList extends Application {
 
 	/**
 	 * Constructor
-	 * @param current_User
+	 * @param current_User - user who is currently logged in
 	 */
 	public CourseList(User current_User) {
 		this.current_User = current_User;

@@ -33,7 +33,7 @@ public class actual_Room_List {
 	 * 
 	 * @param args
 	 *            - unused
-	 * @throws IOException
+	 * @throws IOException - Input Output Exception for serialising
 	 */
 	public static void main(String args[]) throws IOException {
 		BufferedReader br = null;

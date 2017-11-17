@@ -33,7 +33,7 @@ public class prereq_List {
 	 * 
 	 * @param args
 	 *            - unused
-	 * @throws IOException
+	 * @throws IOException - Exception for serialising
 	 */
 	public static void main(String args[]) throws IOException {
 		BufferedReader br = null;

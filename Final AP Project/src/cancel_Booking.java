@@ -22,13 +22,14 @@ public class cancel_Booking implements Serializable {
 	/**
 	 * Constructor for cancel_Booking.java
 	 * 
-	 * @param date
-	 * @param time
-	 * @param duration
-	 * @param room
-	 * @param capacity
-	 * @param week
-	 * @param day
+	 * @param date - date of booking
+	 * @param time - time of booking
+	 * @param duration - duration of booking
+	 * @param room - room to be booked
+	 * @param capacity - capacity for the room
+	 * @param week - week number 
+	 * @param day - day number
+	 * @param name - name of the user who booked
 	 */
 	public cancel_Booking(String date, String time, int duration, String room, int capacity, int week, int day,
 			String name) {

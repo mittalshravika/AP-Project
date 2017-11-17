@@ -127,7 +127,7 @@ public class User implements Serializable
 	
 	/**
 	 * Getter Functions
-	 * 
+	 * @return name - name of the user
 	 */
 	public String getName() {
 		return name;

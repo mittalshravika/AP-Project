@@ -35,18 +35,18 @@ public class Course implements Serializable {
 	/**
 	 * Constructor for Course.java
 	 * 
-	 * @param coursetype
-	 * @param coursename
-	 * @param coursecode
-	 * @param instructorname
-	 * @param credits
-	 * @param acronym
-	 * @param mon
-	 * @param tue
-	 * @param wed
-	 * @param thurs
-	 * @param fri
-	 * @param postconditions
+	 * @param coursetype - type of course
+	 * @param coursename - name of course
+	 * @param coursecode - code of course
+	 * @param instructorname - instructor for course
+	 * @param credits - credits for course
+	 * @param acronym - scronym for course
+	 * @param mon - monday timing and venue
+	 * @param tue - tuesday timimg and venue
+	 * @param wed - wednesday timimg and venue
+	 * @param thurs - thursday timimg and venue
+	 * @param fri - friday timing and venue
+	 * @param postconditions - postconditions for the course
 	 */
 	public Course(String coursetype, String coursename, String coursecode, String instructorname, String credits,
 			String acronym, String mon, String tue, String wed, String thurs, String fri, String postconditions) {
@@ -232,8 +232,8 @@ public class Course implements Serializable {
 	 * This is the main method which makes the use of add_Course method to make
 	 * the static App.course_List
 	 * 
-	 * @param unused
-	 * @throws IOException
+	 * @param args - unused
+	 * @throws IOException for serialising
 	 */
 	public static void main(String args[]) throws IOException {
 		BufferedReader br = null;

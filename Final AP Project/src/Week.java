@@ -51,7 +51,7 @@ public class Week implements Serializable {
 
 	/**
 	 * Main method for testing booking of slots
-	 * @param args
+	 * @param args - unused
 	 */
 	public static void main(String[] args) {
 		Week obj = new Week();

@@ -21,7 +21,7 @@ public class Day implements Serializable {
 
 	/**
 	 * Constructor
-	 * @param name
+	 * @param name - name of the room
 	 */
 	public Day(String name) {
 		this.name = name;
@@ -29,8 +29,8 @@ public class Day implements Serializable {
 
 	/**
 	 * Constructor
-	 * @param day_List
-	 * @param name
+	 * @param day_List - day list for each week
+	 * @param name - name of the room
 	 */
 	public Day(List<Boolean> day_List, String name) {
 		this.day_List = day_List;
@@ -357,8 +357,8 @@ public class Day implements Serializable {
 	/**
 	 * main method for testing the creation of the booking list
 	 * @param args - unused
-	 * @throws ClassNotFoundException
-	 * @throws IOException
+	 * @throws ClassNotFoundException Exception for deserialising
+	 * @throws IOException Exception for serialising
 	 */
 	public static void main(String[] args) throws ClassNotFoundException, IOException {
 		Day obj = new Day();
