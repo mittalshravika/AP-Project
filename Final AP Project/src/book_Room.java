@@ -427,7 +427,10 @@ public static void main(String[] args)
 						
 						
 						cancel_Booking booking = new cancel_Booking(obj1.date, h1.get(h.get(i).get(j)), 30, App.actual_Room_List.get(i).get_Name(), App.actual_Room_List.get(i).get_Capacity(), obj1.week, obj1.day, name);
-						current_User.bookings.add(booking);
+						if(type!=3)
+						{
+							current_User.bookings.add(booking);
+						}
 						System.out.println("size");
 						System.out.println(current_User.bookings.size());
 						
