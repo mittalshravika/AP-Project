@@ -56,15 +56,15 @@ public class StudentRequest extends Application
 		Table.setPadding(new Insets(20, 20, 20, 20));
 		
 		//Index
-		TextField T1 = new TextField("Serial Number");
-		TextField T2 = new TextField("Date");
-		TextField T3 = new TextField("Time");
-		TextField T4 = new TextField("Duration");
-		TextField T6 = new TextField("Purpose");
-		TextField T7 = new TextField("Room");
-		TextField T8 = new TextField("Capacity");
-		TextField T9 = new TextField("Status");
-		TextField T10 = new TextField("Cancel");
+		TextField T1 = new TextField("S.No."); T1.setPrefWidth(100);
+		TextField T2 = new TextField("Date"); T2.setPrefWidth(100);
+		TextField T3 = new TextField("Time"); T3.setPrefWidth(100);
+		TextField T4 = new TextField("Duration"); T4.setPrefWidth(100);
+		TextField T6 = new TextField("Purpose"); T6.setPrefWidth(100);
+		TextField T7 = new TextField("Room"); T7.setPrefWidth(100);
+		TextField T8 = new TextField("Capacity"); T8.setPrefWidth(100);
+		TextField T9 = new TextField("Status"); T9.setPrefWidth(100);
+		TextField T10 = new TextField("Cancel"); T10.setPrefWidth(100);
 		Table.add(T1, 0, 0, 1, 1);
 		Table.add(T2, 1, 0, 1, 1);
 		Table.add(T3, 2, 0, 1, 1);
@@ -95,7 +95,7 @@ public class StudentRequest extends Application
 		//example
 		for(int i = 0; i < current_User.MyRequests.size(); i++)
 		{
-			TextField t1 = new TextField(String.valueOf(i + 1));
+			TextField t1 = new TextField(String.valueOf(i + 1)); 
 			TextField t2 = new TextField(current_User.MyRequests.get(i).date);
 			TextField t3 = new TextField(current_User.MyRequests.get(i).time);
 			TextField t4 = new TextField(String.valueOf(current_User.MyRequests.get(i).duration));
@@ -130,6 +130,15 @@ public class StudentRequest extends Application
 				}
 				
 			});
+			 t1.setPrefWidth(100);
+			 t2.setPrefWidth(100);
+			 t3.setPrefWidth(100);
+			 t4.setPrefWidth(100);
+			 t6.setPrefWidth(100);
+			 t7.setPrefWidth(100);
+			 t8.setPrefWidth(100);
+			 t9.setPrefWidth(100);
+			 
 			Table.add(B, 9, i+1, 1, 1);
 		
 			Table.add(t1, 0, i+1, 1, 1);
@@ -244,6 +253,13 @@ public class StudentRequest extends Application
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+				
+				try {
+					new StudentRequest(current_User).start(primaryStage);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			
 		});
@@ -251,15 +267,20 @@ public class StudentRequest extends Application
 		elements.setSpacing(20);
 		elements.setPadding(new Insets(20));
 		elements.setAlignment(Pos.TOP_CENTER);
-		elements.setStyle("-fx-background-color: #00DDDD");
+		elements.getStyleClass().add("background");
+		
+		ScrollPane T = new ScrollPane();
+		T.setContent(Table);
+		T.setPrefHeight(500);
+		T.getStyleClass().add("background");
 		
 		Button Home = new Button("Back");
 		x.getChildren().addAll(Home, Cancel);
-		x.setSpacing(760);
+		x.setSpacing(600);
 		
 		Home.setOnAction(e -> {new student_Page(current_User).start(primaryStage);});
 		
-		elements.getChildren().addAll(l, Title, Table, x);
+		elements.getChildren().addAll(l, Title, T, x);
 		RequestScene = new Scene(elements, 1000, 600);
 		RequestScene.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());
 		primaryStage.setScene(RequestScene);

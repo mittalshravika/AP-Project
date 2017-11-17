@@ -53,13 +53,21 @@ public class RequestPage extends Application
 		//Purpose
 		Label Purpose = new Label("Purpose:");
 		GridPane.setConstraints(Purpose, 0, 2);
-		TextField Purpose_input = new TextField();
+		TextArea Purpose_input = new TextArea();
+		//Purpose_input.setPrefHeight(100);
+		Purpose_input.setPrefWidth(750);
+		//Purpose_input.setAlignment(Pos.TOP_LEFT);
 		GridPane.setConstraints(Purpose_input, 1, 2, 4, 1);
 
 		//Preferred Room
 		Label Preferred = new Label("Preferred Room:");
 		GridPane.setConstraints(Preferred, 0, 3);
-		TextField Preferred_input = new TextField();
+		ChoiceBox<String> Preferred_input = new ChoiceBox<>();
+		Preferred_input.getItems().addAll("C01", "C02", "C03", "C04", "C11", "C12", "C13", "C14", "C21", "C22", "C23", "C24", "LR1", "LR2", "LR3", "S01", "S02", "L21", "L22", "L23");
+		Preferred_input.setValue("C01");
+		Preferred_input.getStyleClass().add("dropdown");
+		Preferred_input.prefHeight(15);
+		
 		GridPane.setConstraints(Preferred_input, 1, 3);
 
 		//Capacity
@@ -81,17 +89,20 @@ public class RequestPage extends Application
 		Hours.setPrefWidth(100);
 		Hours.getItems().addAll("1" , "2" , "3" , "4", "5", "6" ,"7" ,"8", "9", "11", "12");
 		Hours.setValue("1");
+		Hours.getStyleClass().add("dropdown");
 		GridPane.setConstraints(Hours, 3, 5);
 
 		ChoiceBox<String> Minutes = new ChoiceBox<>();
-		Minutes.getItems().addAll("00", "15", "30", "45");
+		Minutes.getItems().addAll("00", "30");
 		Minutes.setValue("00");
+		Minutes.getStyleClass().add("dropdown");
 		GridPane.setConstraints(Minutes, 4, 5);
 		
 
 		ChoiceBox<String> M = new ChoiceBox<>();
 		M.getItems().addAll("a.m.", "p.m.");
 		M.setValue("p.m.");
+		M.getStyleClass().add("dropdown");
 		GridPane.setConstraints(M, 5, 5);
 
 		//Duration
@@ -110,7 +121,7 @@ public class RequestPage extends Application
 			String Capacity1;
 			String current;
 			Purpose1 = new String(Purpose_input.getText());
-			Room1 = new String(Preferred_input.getText());
+			Room1 = new String(Preferred_input.getValue());
 			Capacity1 = new String(Capacity_input.getText());
 			Duration1 = new String(Duration_input.getText());
 			
@@ -124,8 +135,12 @@ public class RequestPage extends Application
 			Time1 = new String(Hours.getValue() + " " + Minutes.getValue());
 			if(M.getValue().equals("p.m."))
 			{
-				int change = Integer.parseInt(Hours.getValue())+ 12;
-				Time1 = new String(change + " " + Minutes.getValue());
+				
+				Time1 = new String( Hours.getValue() + ":" + Minutes.getValue() + " p.m.");
+			}
+			else
+			{
+				Time1 = new String( Hours.getValue() + ":" + Minutes.getValue() + " a.m.");
 			}
 			
 			LocalDate book_Date = java.time.LocalDate.now();
@@ -159,6 +174,16 @@ public class RequestPage extends Application
 			}
 			
 			
+			Purpose_input.setText("");
+			Preferred_input.setValue("C01");
+			Capacity_input.setText("");
+			Duration_input.setText("");
+			Hours.setValue("1");
+			Minutes.setValue("00");
+			
+			
+			
+			
 			
 			
 			
@@ -166,7 +191,7 @@ public class RequestPage extends Application
 		});
 		
 		Button btn3 = new Button("Back");
-		GridPane.setConstraints(btn3, 0, 30);
+		GridPane.setConstraints(btn3, 0, 20);
 		
 		btn3.setOnAction(e -> {new student_Page(current_User).start(primaryStage);});
 
@@ -181,7 +206,7 @@ public class RequestPage extends Application
 		y.setAlignment(Pos.TOP_CENTER);
 		y.getChildren().addAll(l, Title, grid);
 		
-		y.setStyle("-fx-background-color: #00DDDD");
+		y.getStyleClass().add("background");
 
 		RequestScene = new Scene(y, 1000, 600);			
 		RequestScene.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());

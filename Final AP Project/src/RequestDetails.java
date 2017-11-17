@@ -88,7 +88,7 @@ public class RequestDetails extends Application
 		Label Duration = new Label("Duration: ");
 		GridPane.setConstraints(Duration, 0, 5);
 		Label Duration_D = new Label();
-		Duration_D.setText(String.valueOf(object.duration));
+		Duration_D.setText(String.valueOf(object.duration) + " Min");
 		GridPane.setConstraints(Duration_D, 1, 5);
 		
 
