@@ -41,6 +41,7 @@ public class FacultyBooking extends Application
 	@Override
 	public void start(Stage primaryStage) throws ClassNotFoundException, IOException
 	{
+		int s = 125;
 		ScrollPane sp = null;
 		GridPane Table;
 		Scene BookingScene;
@@ -54,15 +55,15 @@ public class FacultyBooking extends Application
 		Table.setPadding(new Insets(20, 20, 20, 20));
 		
 		//Index
-		TextField T1 = new TextField("Serial Number");
-		TextField T2 = new TextField("Date");
-		TextField T3 = new TextField("Time");
-		TextField T4 = new TextField("Duration");
+		TextField T1 = new TextField("S.No."); T1.setPrefWidth(150);
+		TextField T2 = new TextField("Date"); T2.setPrefWidth(150);
+		TextField T3 = new TextField("Time");T3.setPrefWidth(150);
+		TextField T4 = new TextField("Duration");T4.setPrefWidth(150);
 		//TextField T5 = new TextField("Name");
 		//TextField T6 = new TextField("Purpose");
-		TextField T7 = new TextField("Room");
-		TextField T8 = new TextField("Capacity");
-		TextField T9 = new TextField("Cancel");
+		TextField T7 = new TextField("Room");T7.setPrefWidth(150);
+		TextField T8 = new TextField("Capacity");T8.setPrefWidth(150);
+		TextField T9 = new TextField("Cancel");T9.setPrefWidth(150);
 		Table.add(T1, 0, 0, 1, 1);
 		Table.add(T2, 1, 0, 1, 1);
 		Table.add(T3, 2, 0, 1, 1);
@@ -102,13 +103,13 @@ public class FacultyBooking extends Application
 				for(int i = 0 ; i<current_User.bookings.size() ; i++)
 				{
 					cancel_Booking obj = current_User.bookings.get(i);
-					TextField t1 = new TextField(Integer.toString(i+1));
-					TextField t2 = new TextField(obj.date);
-					TextField t3 = new TextField(obj.time);
-					TextField t4 = new TextField(Integer.toString(obj.duration));
-					TextField t7 = new TextField(obj.room);
-					TextField t8 = new TextField(Integer.toString(obj.capacity));
-					TextField t9 = new TextField("Cancel");
+					TextField t1 = new TextField(Integer.toString(i+1)); t1.setPrefWidth(s);
+					TextField t2 = new TextField(obj.date); t2.setPrefWidth(s);
+					TextField t3 = new TextField(obj.time); t3.setPrefWidth(s);
+					TextField t4 = new TextField(Integer.toString(obj.duration)); t4.setPrefWidth(s);
+					TextField t7 = new TextField(obj.room); t7.setPrefWidth(s);
+					TextField t8 = new TextField(Integer.toString(obj.capacity));t8.setPrefWidth(s);
+					TextField t9 = new TextField("Cancel"); t9.setPrefWidth(s);
 					
 					CheckBox Approval = new CheckBox("Select");
 					
@@ -137,13 +138,13 @@ public class FacultyBooking extends Application
 				for(int i = 0 ; i<current_User.bookings.size() ; i++)
 				{
 					cancel_Booking obj = current_User.bookings.get(i);
-					TextField t1 = new TextField(Integer.toString(i+1));
-					TextField t2 = new TextField(obj.date);
-					TextField t3 = new TextField(obj.time);
-					TextField t4 = new TextField(Integer.toString(obj.duration));
-					TextField t7 = new TextField(obj.room);
-					TextField t8 = new TextField(Integer.toString(obj.capacity));
-					TextField t9 = new TextField("Cancel");
+					TextField t1 = new TextField(Integer.toString(i+1)); t1.setPrefWidth(150);
+					TextField t2 = new TextField(obj.date); t2.setPrefWidth(150);
+					TextField t3 = new TextField(obj.time); t3.setPrefWidth(150);
+					TextField t4 = new TextField(Integer.toString(obj.duration)); t4.setPrefWidth(150);
+					TextField t7 = new TextField(obj.room); t7.setPrefWidth(150);
+					TextField t8 = new TextField(Integer.toString(obj.capacity)); t8.setPrefWidth(150);
+					TextField t9 = new TextField("Cancel"); t9.setPrefWidth(125);
 					
 					CheckBox Approval = new CheckBox("Select");
 					
@@ -263,6 +264,8 @@ public class FacultyBooking extends Application
 							}
 							
 							help.add(current_User.bookings.get(index - 1));
+							
+							
 						}
 					}
 					
@@ -277,6 +280,14 @@ public class FacultyBooking extends Application
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
+					
+					try {
+						new FacultyBooking(type, current_User).start(primaryStage);
+					} catch (ClassNotFoundException | IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
 				}
 				
 			});
@@ -285,6 +296,11 @@ public class FacultyBooking extends Application
 		
 		elements.setPadding(new Insets(20));
 		x.setSpacing(350);
+		
+		ScrollPane T = new ScrollPane();
+		T.setContent(Table);
+		T.setPrefHeight(500);
+		T.getStyleClass().add("background");
 		
 		Button Home = new Button("Back");
 		
@@ -298,7 +314,7 @@ public class FacultyBooking extends Application
 		}
 		
 		x.getChildren().addAll(Home, Cancel);
-		elements.getChildren().addAll(l, Title, Table, x);
+		elements.getChildren().addAll(l, Title, T, x);
 		elements.setSpacing(20);
 		
 		elements.setAlignment(Pos.TOP_CENTER);
