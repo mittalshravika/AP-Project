@@ -104,14 +104,12 @@ public class Login extends Application {
 		SignUpButton.setStyle(
 				"-fx-color: #FFFFFF ; -fx-font: normal bold 15px 'sans-serif' ; -fx-padding: 5 22 5 22 ; -fx-border-color: #00DDDD ; ");
 		GridPane.setConstraints(SignUpButton, 1, 4);
-		
+
 		/**
-		 * Sign Up Button
-		 * Signs Up a user
-		 * Sends the details to the Users function for verification
-		 * If details are valid a User is signed Up
+		 * Sign Up Button Signs Up a user Sends the details to the Users
+		 * function for verification If details are valid a User is signed Up
 		 */
-		
+
 		SignUpButton.setOnAction(new EventHandler<ActionEvent>() {
 			public void input() throws ClassNotFoundException, IOException {
 
@@ -124,12 +122,9 @@ public class Login extends Application {
 
 				if (User.Sign_Up(Name, Email, Type, Pass1, Pass2)) {
 
-					System.out.println("Successful Sign Up");
 					User.add_User(App.getUser_List(), new User(Name, Type, Email, Pass1));
-					System.out.println(App.getUser_List().size());
 
 				} else {
-					System.out.println("Fail");
 				}
 
 				{
@@ -148,7 +143,6 @@ public class Login extends Application {
 					App.serialize("UserList", "user");
 
 				} catch (ClassNotFoundException | IOException e) {
-					// System.out.println("LOL");
 					e.printStackTrace();
 
 				}
@@ -207,9 +201,8 @@ public class Login extends Application {
 		Button LoginButton = new Button("Log In");
 
 		/**
-		 * Login Button
-		 * Send the input details to the User static functions for verifications
-		 * If details are valid opens the User's Home Page
+		 * Login Button Send the input details to the User static functions for
+		 * verifications If details are valid opens the User's Home Page
 		 * 
 		 */
 		LoginButton.setStyle(
@@ -235,7 +228,6 @@ public class Login extends Application {
 							}
 						}
 					}
-					System.out.println("Successful Login");
 				} else {
 					try {
 						throw new InvalidCredentialsException(
@@ -261,7 +253,6 @@ public class Login extends Application {
 					App.serialize("UserList", "user");
 
 				} catch (ClassNotFoundException | IOException e) {
-					// System.out.println("LOL");
 					e.printStackTrace();
 
 				}
