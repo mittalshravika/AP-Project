@@ -192,7 +192,6 @@ public class Login extends Application {
 		GridPane.setConstraints(Email_ID, 0, 0);
 		TextField Email_input = new TextField();
 		Email_input.setStyle("-fx-border-color: #00DDDD");
-		// Email_input.setPromtText("eg. abc@iiitd.ac.in");
 		GridPane.setConstraints(Email_input, 1, 0);
 
 		// Password

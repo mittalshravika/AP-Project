@@ -123,8 +123,7 @@ public class RequestPage extends Application {
 		Button Submit = new Button("Submit");
 		GridPane.setConstraints(Submit, 3, 7);
 		/**
-		 * Submit Button Makes an object out of the input given by User Adds to the
-		 * Request list of both user and admin
+		 * Submit Button Makes an object out of the input given by User Adds to the request list of both user and Admin
 		 */
 		Submit.setOnAction(e -> {
 			String Purpose1, Room1, Date1, Time1, Duration1;
