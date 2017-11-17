@@ -45,6 +45,9 @@ public class admin_Page extends Application {
 		l1.getStyleClass().add("admin_Page_Heading");
 		Label l2 = new Label("");
 
+		/**
+		 * View Room -  opens the View Room Page
+		 */
 		btn.setOnAction(e -> {
 			try {
 				new book_Room(2, admin_User).start(primaryStage);
@@ -53,6 +56,9 @@ public class admin_Page extends Application {
 				e1.printStackTrace();
 			}
 		});
+		/**
+		 * Book Room - opens the Book Room Page
+		 */
 		btn2.setOnAction(e -> {
 			try {
 				new book_Room(2, admin_User).start(primaryStage);
@@ -61,6 +67,10 @@ public class admin_Page extends Application {
 				e1.printStackTrace();
 			}
 		});
+		/**
+		 * Logout Button
+		 * Logout of the Application
+		 */
 		btn4.setOnAction(e -> {
 			try {
 				new Login().start(primaryStage);
@@ -69,6 +79,10 @@ public class admin_Page extends Application {
 				e1.printStackTrace();
 			}
 		});
+		/**
+		 * Cancel Booking
+		 * Opens the booking list for canceling purposes
+		 */
 		btn3.setOnAction(e -> {
 			try {
 				new FacultyBooking(2, admin_User).start(primaryStage);
@@ -80,6 +94,10 @@ public class admin_Page extends Application {
 				e1.printStackTrace();
 			}
 		});
+		/**
+		 * Show Request
+		 * Shows all the requests made by the students
+		 */
 		btn5.setOnAction(e -> {
 			try {
 				new AdminRequestList(admin_User).start(primaryStage);
