@@ -86,7 +86,7 @@ public static void main(String[] args)
 		DayOfWeek.put("SATURDAY", 5);
 		DayOfWeek.put("SUNDAY", 6);
 		
-		Button btn = new Button("Submit details");
+		Button btn = new Button("View details");
 		Button btn2 = new Button("Submit Room Bookings");
 		Button btn3 = new Button("Back");
 		Button btn4 = new Button("Student Request Details");
@@ -348,6 +348,7 @@ public static void main(String[] args)
 					}
 				}
 			}
+			btn.setDisable(true);
 		});	
 		
 		btn2.setOnAction(e -> {

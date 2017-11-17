@@ -103,7 +103,7 @@ public class Login extends Application
 		GridPane.setConstraints(SignUpButton, 1, 4);
 		SignUpButton.setOnAction(new EventHandler<ActionEvent>() 
 		{
-			 public void input()
+			 public void input() throws ClassNotFoundException, IOException
 			 {
 	            
 							String Name, Email, Type, Pass1, Pass2 ;

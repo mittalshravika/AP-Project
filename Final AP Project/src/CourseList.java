@@ -48,7 +48,7 @@ public static void main(String[] args)
 		primaryStage.setTitle("Classroom Booking System");
 		Scene ListV;
 
-		Label title = new Label("Course Page");
+		Label title = new Label("Course List");
 		
 		HBox x = new HBox();
 		x.getChildren().addAll(title);
@@ -64,7 +64,7 @@ public static void main(String[] args)
 			A[i].setSpacing(150);
 			
 		}
-		Button Submit = new Button("Submit");
+		Button Submit = new Button("View Course Page");
 		A[0].setAlignment(Pos.CENTER_RIGHT);
 		
 		Button back = new Button("Back");

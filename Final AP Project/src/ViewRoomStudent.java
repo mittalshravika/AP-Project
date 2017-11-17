@@ -41,7 +41,7 @@ public class ViewRoomStudent extends Application
 	{	
 		primaryStage.setTitle("Classroom Booking System");
 		
-		Button btn = new Button("Submit");
+		Button btn = new Button("View Details");
 		btn.setAlignment(Pos.CENTER);
 		btn.setPrefWidth(200);
 		btn.setPrefHeight(15);

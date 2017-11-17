@@ -20,6 +20,18 @@ class EnterValidNameException extends Exception {
 	}
 }
 
+class AlreadyAUserException extends Exception {
+	AlreadyAUserException(String message) {
+		super(message);
+
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Information Dialog");
+		alert.setHeaderText(null);
+		alert.setContentText("You are already a User");
+		alert.showAndWait();
+	}
+}
+
 class EnterValidEmailIDException extends Exception {
 	EnterValidEmailIDException(String message) {
 		super(message);
@@ -99,7 +111,7 @@ public class User implements Serializable
 		
 	}
 
-	static boolean Sign_Up(String Name, String Email, String Type, String Pass1, String Pass2) 
+	static boolean Sign_Up(String Name, String Email, String Type, String Pass1, String Pass2) throws ClassNotFoundException, IOException 
 	{
 		
 		
@@ -137,6 +149,25 @@ public class User implements Serializable
 			}
 			
 		}
+		
+		App.deserialize("UserList");
+		
+		for(int j = 0 ; j<App.user_List.size() ; j++)
+		{
+			if(App.user_List.get(j).email_id.equals(Email))
+			{
+				check = false;
+				try {
+					throw new AlreadyAUserException("AlreadyAUserException: You are already a user");
+				} catch (AlreadyAUserException e) {
+					System.out.println(e.getMessage());
+				}
+				break;
+			}
+		}
+		
+		App.serialize("UserList", "user");
+		
 		if(Pass1 == null || Pass1.equals(""))
 		{
 			try {
