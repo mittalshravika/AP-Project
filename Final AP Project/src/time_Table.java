@@ -7,20 +7,36 @@ import java.time.format.FormatStyle;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Forms the time table of the student for his core courses as well as the
+ * electives chosen by him
+ * 
+ * @author Yajur
+ * @author Shravika
+ *
+ */
 public class time_Table implements Serializable {
 
 	private List<Course> courses;
 	ArrayList<ArrayList<Boolean>> student_Time_Table = new ArrayList<ArrayList<Boolean>>(5);
 	User current_User;
 
+	/**
+	 * Constructor
+	 * 
+	 * @param current_User
+	 *            - student user whose time table is being made
+	 */
 	public time_Table(User current_User) {
 		this.current_User = current_User;
 	}
 
-	void deserialise() {
-
-	}
-
+	/**
+	 * Method used for populating the time table of the user
+	 * 
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	void core_Courses() throws ClassNotFoundException, IOException {
 		ArrayList<String> h = new ArrayList<String>();
 		h.add("8:00");
@@ -461,7 +477,6 @@ public class time_Table implements Serializable {
 		try {
 			if (current_User.newcourse_List.size() > 0) {
 				App.serialize(current_User.getEmail_id() + "new", "register");
-				System.out.println("A");
 			}
 		} catch (IOException e2) {
 			// TODO Auto-generated catch block
@@ -470,23 +485,4 @@ public class time_Table implements Serializable {
 
 		App.serialize("courselist", "course");
 	}
-
-	boolean add(Course add_Course) {
-		return false;
-	}
-
-	boolean delete(Course delete_Course) {
-		return false;
-	}
-
-	void show() {
-
-	}
-
-	// public static void main(String[] args) throws ClassNotFoundException,
-	// IOException
-	// {
-	// time_Table obj = new time_Table();
-	// obj.core_Courses();
-	// }
 }
