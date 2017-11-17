@@ -6,9 +6,9 @@ import java.time.LocalDate;
  * Request Class defined here
  * Cantains all details of the User's Request
  * 
- * 
- * @author Yajur
- * @author Shravika
+ *  
+ * @author Yajur - 2016121
+ * @author Shravika - 2016093 
  * 
  */
 public class Request implements Serializable

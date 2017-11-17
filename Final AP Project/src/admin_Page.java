@@ -14,12 +14,17 @@ import javafx.stage.Stage;
 
 /**
  * GUI for the ADMIN
- * @author Yajur
- * @author Shravika
+ * @author Yajur - 2016121
+ * @author Shravika - 2016093
  */
 public class admin_Page extends Application {
 	User admin_User;
 
+	/**
+	 * Constructor for The Admin Page
+	 * 
+	 * @param admin_User - the Admin User
+	 */
 	public admin_Page(User admin_User) {
 		this.admin_User = admin_User;
 	}

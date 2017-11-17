@@ -32,8 +32,8 @@ import javafx.geometry.Pos;
 /**
  * GUI to display the searched courses according to the keywords enterd by the student
  * 
- * @author Yajur
- * @author Shravika
+ * @author Yajur - 2016121
+ * @author Shravika - 2016093
  *
  */
 public class CourseList extends Application {

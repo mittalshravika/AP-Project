@@ -21,13 +21,18 @@ import javafx.geometry.Pos;
  * GUI for the student making the request Creates a request object and adds it
  * the admin request list and students request list
  * 
- * @author Yajur
- * @author Shravika
+ * @author Yajur - 2016121
+ * @author Shravika - 2016093
  */
 public class RequestPage extends Application {
 
 	User current_User;
 
+	/**
+	 * 
+	 * @param current_User
+	 *            Current User
+	 */
 	public RequestPage(User current_User) {
 		this.current_User = current_User;
 	}
@@ -206,7 +211,7 @@ public class RequestPage extends Application {
 		Button btn3 = new Button("Back");
 		GridPane.setConstraints(btn3, 0, 20);
 		/**
-		 * Back Button Goes to the previous page
+		 * Back Button goes to the previous page
 		 */
 		btn3.setOnAction(e -> {
 			new student_Page(current_User).start(primaryStage);

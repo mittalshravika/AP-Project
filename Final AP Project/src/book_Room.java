@@ -31,8 +31,8 @@ import javafx.stage.Stage;
 /**
  * GUI for Rooom Booking
  * All Booking Fuctionality for admin and faculty
- * @author Yajur
- * @author Shravika
+ * @author Yajur - 2016121
+ * @author Shravika - 2016031
  */
 
 /**

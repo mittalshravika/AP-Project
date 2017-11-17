@@ -18,8 +18,8 @@ import javafx.geometry.HPos;
 /**
  * GUI for search course
  * 
- * @author Yajur
- * @author Shravika
+ * @author Yajur - 2016121
+ * @author Shravika - 2016093
  *
  */
 public class CourseSearch extends Application {

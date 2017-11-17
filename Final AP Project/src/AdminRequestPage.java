@@ -17,8 +17,8 @@ import javafx.geometry.Insets;
 /**
  * Diasplays the request details made by the students
  * 
- * @author Yajur
- * @author Shravika
+ * @author Yajur - 2016121
+ * @author Shravika - 2016093
  */
 public class AdminRequestPage extends Application {
 

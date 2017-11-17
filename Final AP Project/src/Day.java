@@ -10,8 +10,8 @@ import java.util.List;
 /**
  * Class used for booking the time slots for each day of every week for all the rooms depending on their room availability
  * 
- * @author Yajur
- * @author Shravika
+ * @author Yajur - 2016121
+ * @author Shravika - 2016093
  *
  */
 public class Day implements Serializable {

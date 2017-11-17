@@ -15,8 +15,8 @@ import javafx.geometry.Insets;
 /**
  * GUI displaying the course details of a course
  * 
- * @author Yajur
- * @author Shravika
+ * @author Yajur - 2016121
+ * @author Shravika - 2016093
  *
  */
 public class CoursePage extends Application {

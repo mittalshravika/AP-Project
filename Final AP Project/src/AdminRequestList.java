@@ -33,8 +33,8 @@ import javafx.stage.Stage;
 /**
  * Request List for admin made by the student handled in this class
  * 
- * @author Yajur
- * @author Shravika
+ * @author Yajur - 2016121
+ * @author Shravika - 2016093
  *
  */
 public class AdminRequestList extends Application {

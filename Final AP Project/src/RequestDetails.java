@@ -17,8 +17,8 @@ import javafx.geometry.Insets;
 /**
  * GUI to display details of a particular made request
  * 
- * @author Yajur
- * @author Shravika
+ * @author Yajur - 2016121
+ * @author Shravika - 2016093
  * 
  * 
  */
@@ -27,6 +27,11 @@ public class RequestDetails extends Application {
 	private Request object;
 	private User current_User;
 
+	/**
+	 * 
+	 * @param obj Request 
+	 * @param a CurrentUser
+	 */
 	public RequestDetails(Request obj, User a) {
 		this.object = obj;
 		this.current_User = a;
