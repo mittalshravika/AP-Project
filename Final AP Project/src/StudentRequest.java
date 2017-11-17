@@ -29,8 +29,8 @@ import javafx.geometry.Pos;
  * GUI to display student's own request list Contains the Students's personal
  * Request list
  * 
- * @author Yajur
- * @author Shravika
+ * @author Yajur - 2016121
+ * @author Shravika - 2016093
  */
 
 public class StudentRequest extends Application {
