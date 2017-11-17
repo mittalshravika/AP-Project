@@ -10,15 +10,22 @@ import javafx.scene.layout.GridPane;
 //import javafx.geometry.Pos;
 import javafx.geometry.Insets;
 
-
+/**
+ * Login and SignUp functionality 
+ * @author Yajur
+ * @author Shravika
+ */
 public class Login extends Application
 {
-	
+	/**
+	 * starts the GUI
+	 */
 	public static void main(String[] args)
 	{
 		launch(args);
 	}
 
+	
 	@Override
 	public void start(Stage primaryStage) throws Exception
 	{
@@ -74,7 +81,6 @@ public class Login extends Application
 		Label LoginPage = new Label("Already a User?");
 		GridPane.setConstraints(LoginPage, 0, 5);
 		Button LoginPageButton = new Button("Login");
-		//LoginPageButton.setOnAction(e -> primaryStage.setScene(LoginScene));
 		GridPane.setConstraints(LoginPageButton, 1, 5);
 
 
@@ -91,7 +97,6 @@ public class Login extends Application
 		Label Email_ID = new Label("Email ID:");
 		GridPane.setConstraints(Email_ID, 0, 0);
 		TextField Email_input = new TextField();
-		//Email_input.setPromtText("eg. abc@iiitd.ac.in");
 		GridPane.setConstraints(Email_input, 1, 0);
 
 		//Password
