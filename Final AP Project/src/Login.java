@@ -5,6 +5,8 @@ import javafx.scene.Scene;
 //import javafx.scene.layout.StackPane;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -34,6 +36,10 @@ public class Login extends Application {
 
 		Scene LoginScene, SignUpScene;
 		GridPane grid1, grid2;
+
+		VBox Display1 = new VBox();
+		Display1.setAlignment(Pos.CENTER);
+
 		primaryStage.setTitle("Classroom Booking System");
 
 		// Sign Up
@@ -61,10 +67,10 @@ public class Login extends Application {
 		Type.setStyle("-fx-font: normal 20px 'sans-serif' ");
 		GridPane.setConstraints(Type, 2, 0);
 		ChoiceBox<String> User_Type = new ChoiceBox<>();
-		User_Type.setStyle(
-				"-fx-color: #FFFFFF ; -fx-font: normal bold 15px 'sans-serif' ; -fx-padding: 5 22 5 22 ; -fx-border-color: #00DDDD ; ");
+
 		User_Type.getItems().addAll("Faculty", "Student", "Admin");
 		User_Type.setValue("Student");
+		User_Type.getStyleClass().add("dropdown");
 		GridPane.setConstraints(User_Type, 3, 0);
 
 		// Name
@@ -72,7 +78,7 @@ public class Login extends Application {
 		User_Name.setStyle("-fx-font: normal 20px 'sans-serif' ");
 		GridPane.setConstraints(User_Name, 0, 0);
 		TextField Name_input = new TextField();
-		Name_input.setStyle("-fx-border-color: #00DDDD ; ");
+
 		GridPane.setConstraints(Name_input, 1, 0);
 
 		// Email ID
@@ -80,7 +86,7 @@ public class Login extends Application {
 		User_Email_ID.setStyle("-fx-font: normal 20px 'sans-serif' ");
 		GridPane.setConstraints(User_Email_ID, 0, 1);
 		TextField User_Email_input = new TextField();
-		User_Email_input.setStyle("-fx-border-color: #00DDDD ");
+
 		GridPane.setConstraints(User_Email_input, 1, 1);
 
 		// Password
@@ -88,7 +94,7 @@ public class Login extends Application {
 		User_Password.setStyle("-fx-font: normal 20px 'sans-serif' ");
 		GridPane.setConstraints(User_Password, 0, 2);
 		PasswordField User_Password_input = new PasswordField();
-		User_Password_input.setStyle("-fx-border-color: #00DDDD ");
+
 		GridPane.setConstraints(User_Password_input, 1, 2);
 
 		// Retype Password
@@ -96,18 +102,17 @@ public class Login extends Application {
 		User_Password_2.setStyle("-fx-font: normal 20px 'sans-serif' ");
 		GridPane.setConstraints(User_Password_2, 0, 3);
 		PasswordField User_Password_input_2 = new PasswordField();
-		User_Password_input_2.setStyle("-fx-border-color: #00DDDD ");
+
 		GridPane.setConstraints(User_Password_input_2, 1, 3);
 
 		// Sign Up Button
 		Button SignUpButton = new Button("Sign Up");
-		SignUpButton.setStyle(
-				"-fx-color: #FFFFFF ; -fx-font: normal bold 15px 'sans-serif' ; -fx-padding: 5 22 5 22 ; -fx-border-color: #00DDDD ; ");
-		GridPane.setConstraints(SignUpButton, 1, 4);
+
+		SignUpButton.setId("button");
 
 		/**
-		 * Sign Up Button Signs Up a user Sends the details to the Users
-		 * function for verification If details are valid a User is signed Up
+		 * Sign Up Button Signs Up a user Sends the details to the Users function for
+		 * verification If details are valid a User is signed Up
 		 */
 
 		SignUpButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -151,29 +156,21 @@ public class Login extends Application {
 
 		});
 
-		// Login Button
-		Label LoginPage = new Label("Already a User?");
-		LoginPage.setStyle("-fx-font: normal 20px 'sans-serif' ");
-		GridPane.setConstraints(LoginPage, 0, 5);
 		Button LoginPageButton = new Button("Login");
-		// LoginPage.setOnAction
-		LoginPageButton.setStyle(
-				"-fx-color: #FFFFFF ; -fx-font: normal bold 15px 'sans-serif' ; -fx-padding: 5 22 5 22 ; -fx-border-color: #00DDDD ; ");
-		// LoginPageButton.setOnAction(e -> primaryStage.setScene(LoginScene));
+
 		GridPane.setConstraints(LoginPageButton, 1, 5);
 
 		grid2.getChildren().addAll(Type, User_Type, User_Name, Name_input, User_Email_ID, User_Email_input,
-				User_Password, User_Password_input, User_Password_2, User_Password_input_2, SignUpButton, LoginPage,
-				LoginPageButton);
+				User_Password, User_Password_input, User_Password_2, User_Password_input_2);
 
 		y2.getChildren().addAll(l, grid2);
-		y2.setAlignment(Pos.TOP_CENTER);
-		y2.setSpacing(30);
+		Display1.getChildren().addAll(y2, SignUpButton, LoginPageButton);
+		y2.setAlignment(Pos.CENTER);
+		Display1.setAlignment(Pos.CENTER);
+		Display1.setSpacing(20);
+		Display1.getStyleClass().add("pane");
 
-		y2.setStyle("-fx-background-color: #00DDDD ; -fx-text-fill: white");
-		y.setStyle("-fx-background-color: #00DDDD ; -fx-text-fill: white");
-
-		SignUpScene = new Scene(y2, 1000, 600);
+		SignUpScene = new Scene(Display1, 1100, 800);
 		// Login
 		grid1 = new GridPane();
 
@@ -185,7 +182,7 @@ public class Login extends Application {
 		Email_ID.setStyle("-fx-font: normal 20px 'sans-serif' ");
 		GridPane.setConstraints(Email_ID, 0, 0);
 		TextField Email_input = new TextField();
-		Email_input.setStyle("-fx-border-color: #00DDDD");
+
 		GridPane.setConstraints(Email_input, 1, 0);
 
 		// Password
@@ -193,19 +190,19 @@ public class Login extends Application {
 		Password.setStyle("-fx-font: normal 20px 'sans-serif' ");
 		GridPane.setConstraints(Password, 0, 1);
 		PasswordField Password_input = new PasswordField();
-		Password_input.setStyle("-fx-border-color: #00DDDD ");
+
 		GridPane.setConstraints(Password_input, 1, 1);
 
 		// Login button
 		Button LoginButton = new Button("Log In");
+		LoginButton.setId("button");
 
 		/**
 		 * Login Button Send the input details to the User static functions for
 		 * verifications If details are valid opens the User's Home Page
 		 * 
 		 */
-		LoginButton.setStyle(
-				"-fx-color: #FFFFFF ; -fx-font: normal bold 15px 'sans-serif' ; -fx-padding: 5 22 5 22 ; -fx-border-color: #00DDDD ; ");
+
 		GridPane.setConstraints(LoginButton, 1, 3);
 		LoginButton.setOnAction(new EventHandler<ActionEvent>() {
 			public void input() {
@@ -259,24 +256,29 @@ public class Login extends Application {
 		});
 
 		SignUpScene.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());
-		// SignUp button
-		Label SignUpPage = new Label("Not Registered yet? Sign Up for free!");
-		SignUpPage.setStyle("-fx-font: normal 20px 'sans-serif' ");
-		Button SignUpPageButton = new Button("Sign Up");
-		SignUpPageButton.setStyle(
-				"-fx-color: #FFFFFF ; -fx-font: normal bold 15px 'sans-serif' ; -fx-padding: 5 22 5 22 ; -fx-border-color: #00DDDD ; ");
-		SignUpPageButton.setOnAction(e -> primaryStage.setScene(SignUpScene));
-		GridPane.setConstraints(SignUpPage, 0, 4);
-		GridPane.setConstraints(SignUpPageButton, 1, 4);
 
-		grid1.getChildren().addAll(Email_ID, Email_input, Password, Password_input, LoginButton, SignUpPage,
-				SignUpPageButton);
+		Button SignUpPageButton = new Button("Sign Up");
+		SignUpPageButton.setId("button");
+
+		SignUpPageButton.setOnAction(e -> primaryStage.setScene(SignUpScene));
+
+		grid1.getChildren().addAll(Email_ID, Email_input, Password, Password_input);
+		grid1.setAlignment(Pos.TOP_CENTER);
+		grid2.setAlignment(Pos.TOP_CENTER);
 
 		y.getChildren().addAll(name, grid1);
-		y.setAlignment(Pos.TOP_CENTER);
-		y.setSpacing(30);
+		VBox Display = new VBox();
+		Display.getChildren().addAll(y, LoginButton, SignUpPageButton);
 
-		LoginScene = new Scene(y, 1100, 800);
+		y.setSpacing(50);
+		y2.setSpacing(50);
+		y.setAlignment(Pos.TOP_CENTER);
+		Display.setSpacing(20);
+
+		Display.getStyleClass().add("pane");
+		Display.setAlignment(Pos.CENTER);
+
+		LoginScene = new Scene(Display, 1100, 800);
 		LoginScene.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());
 		LoginPageButton.setOnAction(e -> primaryStage.setScene(LoginScene));
 
