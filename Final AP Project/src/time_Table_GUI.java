@@ -4,6 +4,9 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.ArrayList;
+import java.util.HashMap;
+
+import com.sun.javafx.collections.MappingChange.Map;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -22,6 +25,27 @@ public class time_Table_GUI extends Application
 {
 	
 	User current_User;
+	
+	HashMap<Integer,String> Colours =new HashMap<Integer, String>(){{
+		put(0, "#CD6155" );
+		put(1, "#9B59B6");
+		put(2, "#2980B9");
+		put(3, "#117A65");
+		put(4, "#F7DC6F" );
+		put(5, "#ECF0F1");
+		put(6, "#DAF7A6");
+		put(8, "#ff3399");
+		put(9, "#ccffff");
+		put(10, "#66ffff");
+		put(11, "#009900");
+		put(12, "#ffff00");
+		put(13, "#ff9933");
+		put(14, "#cc6600");
+		put(15, "#6699ff");
+		put(16, "#33cccc");
+		
+	}};
+	
 	
 	public time_Table_GUI(User current_User) 
 	{
@@ -60,7 +84,7 @@ public class time_Table_GUI extends Application
 		
 		primaryStage.setTitle("Time Table");
 		
-		Label l1 = new Label("Time Table for Core Courses");
+		Label l1 = new Label("Time Table");
 		
 		GridPane root = new GridPane();
 		
@@ -68,17 +92,24 @@ public class time_Table_GUI extends Application
 		x.setAlignment(Pos.BOTTOM_RIGHT);
 		
 		TextField t11 = new TextField("Day");
+		t11.setPrefHeight(60);
 		t11.setDisable(true);
 		TextField t12 = new TextField("8:00 - 8:30");
+		t12.setPrefHeight(60);
 		t12.setDisable(true);
 		TextField t13 = new TextField("8:30 - 9:00");
+		t13.setPrefHeight(60);
 		t13.setDisable(true);
 		TextField t14 = new TextField("9:00 - 9:30");
+		t14.setPrefHeight(60);
 		t14.setDisable(true);
 		TextField t15 = new TextField("9:30 - 10:00");
+		t15.setPrefHeight(60);
 		t15.setDisable(true);
 		TextField t16 = new TextField("10:00 - 10:30");
+		t16.setPrefHeight(60);
 		t16.setDisable(true);
+		
 		TextField t17 = new TextField("10:30 - 11:00");
 		TextField t18 = new TextField("11:00 - 11:30");
 		TextField t19 = new TextField("11:30 - 12:00");
@@ -94,40 +125,46 @@ public class time_Table_GUI extends Application
 		TextField t29 = new TextField("4:30 - 5:00");
 		TextField t30 = new TextField("5:00 - 5:30");
 		TextField t31 = new TextField("5:30 - 6:00");
-		t17.setDisable(true);
-		t18.setDisable(true);
-		t19.setDisable(true);
-		t20.setDisable(true);
-		t21.setDisable(true);
-		t22.setDisable(true);
-		t23.setDisable(true);
-		t24.setDisable(true);
-		t25.setDisable(true);
-		t26.setDisable(true);
-		t27.setDisable(true);
-		t28.setDisable(true);
-		t29.setDisable(true);
-		t30.setDisable(true);
-		t31.setDisable(true);
+		t17.setDisable(true); t17.setPrefHeight(60);
+		t18.setDisable(true); t18.setPrefHeight(60);
+		t19.setDisable(true); t19.setPrefHeight(60);
+		t20.setDisable(true); t20.setPrefHeight(60);
+		t21.setDisable(true); t21.setPrefHeight(60);
+		t22.setDisable(true); t22.setPrefHeight(60);
+		t23.setDisable(true); t23.setPrefHeight(60);
+		t24.setDisable(true); t24.setPrefHeight(60);
+		t25.setDisable(true); t25.setPrefHeight(60);
+		t26.setDisable(true); t26.setPrefHeight(60);
+		t27.setDisable(true); t27.setPrefHeight(60);
+		t28.setDisable(true); t28.setPrefHeight(60);
+		t29.setDisable(true); t29.setPrefHeight(60);
+		t30.setDisable(true); t30.setPrefHeight(60);
+		t31.setDisable(true); t31.setPrefHeight(60);
 		
 		TextField t1 = new TextField("Mon");
+		t1.setPrefHeight(60);
 		t1.setDisable(true);
 		
 		TextField ta = new TextField("Tue");
+		ta.setPrefHeight(60);
 		ta.setDisable(true);
 		
 		TextField w1 = new TextField("Wed");
+		w1.setPrefHeight(60);
 		w1.setDisable(true);
 		
 		TextField th1 = new TextField("Thurs");
+		th1.setPrefHeight(60);
 		th1.setDisable(true);
 		
 		TextField f1 = new TextField("Fri");
+		f1.setPrefHeight(60);
 		f1.setDisable(true);
 		
 		App.deserialize("corecourselist");
+		int j = 0;
 		
-		for(int i = 0 ; i<App.core_Course_List.size() ; i++)
+		for(int i = 0; i<App.core_Course_List.size() ; i++)
 		{
 			if(!(App.core_Course_List.get(i).getMon().equals("-")))
 			{
@@ -172,21 +209,28 @@ public class time_Table_GUI extends Application
 		        if(name[0].equals("TUT"))
 		        {
 			        a = new TextField("TUT"+" "+App.core_Course_List.get(i).getAcronym()+" "+room);
+			        a.setStyle("-fx-background-color:" + Colours.get(j));
+			        a.setPrefHeight(60);
 			        a.setDisable(true);
 		        }
 		        else if(name[0].equals("LAB"))
 		        {
 		        	a = new TextField("LAB"+" "+App.core_Course_List.get(i).getAcronym()+" "+room);
-			        a.setDisable(true);
+		        		a.setStyle("-fx-background-color:" + Colours.get(j));
+		        		 a.setPrefHeight(60);
+		        		a.setDisable(true);
+			        
 		        }
 		        else
 		        {
-		        	a = new TextField(App.core_Course_List.get(i).getAcronym()+" "+room);
+		        		a = new TextField(App.core_Course_List.get(i).getAcronym()+" "+room);
+		        		a.setStyle("-fx-background-color:" + Colours.get(j));
+		        		 a.setPrefHeight(60);
 			        a.setDisable(true);
 		        }
 		        
 		        int s = h.indexOf(time[0]);
-		        
+		        a.setPrefHeight(60);
 		        root.add(a, s+1, 1, slots/30, 1);
 				
 			}
@@ -234,21 +278,24 @@ public class time_Table_GUI extends Application
 		        if(name[0].equals("TUT"))
 		        {
 			        a = new TextField("TUT"+" "+App.core_Course_List.get(i).getAcronym()+" "+room);
+			        a.setStyle("-fx-background-color:" + Colours.get(j));
 			        a.setDisable(true);
 		        }
 		        else if(name[0].equals("LAB"))
 		        {
 		        	a = new TextField("LAB"+" "+App.core_Course_List.get(i).getAcronym()+" "+room);
+		        	a.setStyle("-fx-background-color:" + Colours.get(j));
 			        a.setDisable(true);
 		        }
 		        else
 		        {
 		        	a = new TextField(App.core_Course_List.get(i).getAcronym()+" "+room);
+		        	a.setStyle("-fx-background-color:" + Colours.get(j));
 			        a.setDisable(true);
 		        }
 		        
 		        int s = h.indexOf(time[0]);
-		        
+		        a.setPrefHeight(60);
 		        root.add(a, s+1, 2, slots/30, 1);
 				
 			}
@@ -296,21 +343,24 @@ public class time_Table_GUI extends Application
 		        if(name[0].equals("TUT"))
 		        {
 			        a = new TextField("TUT"+" "+App.core_Course_List.get(i).getAcronym()+" "+room);
+			        a.setStyle("-fx-background-color:" + Colours.get(j));
 			        a.setDisable(true);
 		        }
 		        else if(name[0].equals("LAB"))
 		        {
 		        	a = new TextField("LAB"+" "+App.core_Course_List.get(i).getAcronym()+" "+room);
+		        	a.setStyle("-fx-background-color:" + Colours.get(j));
 			        a.setDisable(true);
 		        }
 		        else
 		        {
 		        	a = new TextField(App.core_Course_List.get(i).getAcronym()+" "+room);
+		        	a.setStyle("-fx-background-color:" + Colours.get(j));
 			        a.setDisable(true);
 		        }
 		        
 		        int s = h.indexOf(time[0]);
-		        
+		        a.setPrefHeight(60);
 		        root.add(a, s+1, 3, slots/30, 1);
 				
 			}
@@ -358,21 +408,24 @@ public class time_Table_GUI extends Application
 		        if(name[0].equals("TUT"))
 		        {
 			        a = new TextField("TUT"+" "+App.core_Course_List.get(i).getAcronym()+" "+room);
+			        a.setStyle("-fx-background-color:" + Colours.get(j));
 			        a.setDisable(true);
 		        }
 		        else if(name[0].equals("LAB"))
 		        {
 		        	a = new TextField("LAB"+" "+App.core_Course_List.get(i).getAcronym()+" "+room);
+		        	a.setStyle("-fx-background-color:" + Colours.get(j));
 			        a.setDisable(true);
 		        }
 		        else
 		        {
 		        	a = new TextField(App.core_Course_List.get(i).getAcronym()+" "+room);
+		        	a.setStyle("-fx-background-color:" + Colours.get(j));
 			        a.setDisable(true);
 		        }
 		        
 		        int s = h.indexOf(time[0]);
-		        
+		        a.setPrefHeight(60);
 		        root.add(a, s+1, 4, slots/30, 1);
 				
 			}
@@ -420,24 +473,29 @@ public class time_Table_GUI extends Application
 		        if(name[0].equals("TUT"))
 		        {
 			        a = new TextField("TUT"+" "+App.core_Course_List.get(i).getAcronym()+" "+room);
+			        a.setStyle("-fx-background-color:" + Colours.get(j));
 			        a.setDisable(true);
 		        }
 		        else if(name[0].equals("LAB"))
 		        {
 		        	a = new TextField("LAB"+" "+App.core_Course_List.get(i).getAcronym()+" "+room);
+		        	a.setStyle("-fx-background-color:" + Colours.get(j));
 			        a.setDisable(true);
 		        }
 		        else
 		        {
 		        	a = new TextField(App.core_Course_List.get(i).getAcronym()+" "+room);
+		        	a.setStyle("-fx-background-color:" + Colours.get(j));
 			        a.setDisable(true);
 		        }
 		        
 		        int s = h.indexOf(time[0]);
-		        
+		        a.setPrefHeight(60);
 		        root.add(a, s+1, 5, slots/30, 1);
 				
 			}
+			
+			j++;
 			
 			
 		}
@@ -449,7 +507,8 @@ public class time_Table_GUI extends Application
 		System.out.println("New File");
 	}
 		
-		
+		 j++;
+		 
 		for(int i = 0 ; i<current_User.newcourse_List.size() ; i++)
 		{
 			if(!(current_User.newcourse_List.get(i).getMon().equals("-")))
@@ -496,21 +555,24 @@ public class time_Table_GUI extends Application
 		        if(name[0].equals("TUT"))
 		        {
 			        a = new TextField("TUT"+" "+current_User.newcourse_List.get(i).getAcronym()+" "+room);
+			        a.setStyle("-fx-background-color:" + Colours.get(j));
 			        a.setDisable(true);
 		        }
 		        else if(name[0].equals("LAB"))
 		        {
 		        	a = new TextField("LAB"+" "+current_User.newcourse_List.get(i).getAcronym()+" "+room);
+		        	a.setStyle("-fx-background-color:" + Colours.get(j));
 			        a.setDisable(true);
 		        }
 		        else
 		        {
 		        	a = new TextField(current_User.newcourse_List.get(i).getAcronym()+" "+room);
+		        	a.setStyle("-fx-background-color:" + Colours.get(j));
 			        a.setDisable(true);
 		        }
 		        
 		        int s = h.indexOf(time[0]);
-		        
+		        a.setPrefHeight(60);
 		        root.add(a, s+1, 1, slots/30, 1);
 				
 			}
@@ -558,21 +620,24 @@ public class time_Table_GUI extends Application
 		        if(name[0].equals("TUT"))
 		        {
 			        a = new TextField("TUT"+" "+current_User.newcourse_List.get(i).getAcronym()+" "+room);
+			        a.setStyle("-fx-background-color:" + Colours.get(j));
 			        a.setDisable(true);
 		        }
 		        else if(name[0].equals("LAB"))
 		        {
 		        	a = new TextField("LAB"+" "+current_User.newcourse_List.get(i).getAcronym()+" "+room);
+		        	a.setStyle("-fx-background-color:" + Colours.get(j));
 			        a.setDisable(true);
 		        }
 		        else
 		        {
 		        	a = new TextField(current_User.newcourse_List.get(i).getAcronym()+" "+room);
+		        	a.setStyle("-fx-background-color:" + Colours.get(j));
 			        a.setDisable(true);
 		        }
 		        
 		        int s = h.indexOf(time[0]);
-		        
+		        a.setPrefHeight(60);
 		        root.add(a, s+1, 2, slots/30, 1);
 				
 			}
@@ -620,21 +685,24 @@ public class time_Table_GUI extends Application
 		        if(name[0].equals("TUT"))
 		        {
 			        a = new TextField("TUT"+" "+current_User.newcourse_List.get(i).getAcronym()+" "+room);
+			        a.setStyle("-fx-background-color:" + Colours.get(j));
 			        a.setDisable(true);
 		        }
 		        else if(name[0].equals("LAB"))
 		        {
 		        	a = new TextField("LAB"+" "+current_User.newcourse_List.get(i).getAcronym()+" "+room);
+		        	a.setStyle("-fx-background-color:" + Colours.get(j));
 			        a.setDisable(true);
 		        }
 		        else
 		        {
 		        	a = new TextField(current_User.newcourse_List.get(i).getAcronym()+" "+room);
+		        	a.setStyle("-fx-background-color:" + Colours.get(j));
 			        a.setDisable(true);
 		        }
 		        
 		        int s = h.indexOf(time[0]);
-		        
+		        a.setPrefHeight(60);
 		        root.add(a, s+1, 3, slots/30, 1);
 				
 			}
@@ -682,21 +750,24 @@ public class time_Table_GUI extends Application
 		        if(name[0].equals("TUT"))
 		        {
 			        a = new TextField("TUT"+" "+current_User.newcourse_List.get(i).getAcronym()+" "+room);
+			        a.setStyle("-fx-background-color:" + Colours.get(j));
 			        a.setDisable(true);
 		        }
 		        else if(name[0].equals("LAB"))
 		        {
 		        	a = new TextField("LAB"+" "+current_User.newcourse_List.get(i).getAcronym()+" "+room);
+		        	a.setStyle("-fx-background-color:" + Colours.get(j));
 			        a.setDisable(true);
 		        }
 		        else
 		        {
 		        	a = new TextField(current_User.newcourse_List.get(i).getAcronym()+" "+room);
+		        	a.setStyle("-fx-background-color:" + Colours.get(j));
 			        a.setDisable(true);
 		        }
 		        
 		        int s = h.indexOf(time[0]);
-		        
+		        a.setPrefHeight(60);
 		        root.add(a, s+1, 4, slots/30, 1);
 				
 			}
@@ -744,24 +815,29 @@ public class time_Table_GUI extends Application
 		        if(name[0].equals("TUT"))
 		        {
 			        a = new TextField("TUT"+" "+current_User.newcourse_List.get(i).getAcronym()+" "+room);
+			        a.setStyle("-fx-background-color:" + Colours.get(j));
 			        a.setDisable(true);
 		        }
 		        else if(name[0].equals("LAB"))
 		        {
 		        	a = new TextField("LAB"+" "+current_User.newcourse_List.get(i).getAcronym()+" "+room);
+		        	a.setStyle("-fx-background-color:" + Colours.get(j));
 			        a.setDisable(true);
 		        }
 		        else
 		        {
 		        	a = new TextField(current_User.newcourse_List.get(i).getAcronym()+" "+room);
+		        	a.setStyle("-fx-background-color:" + Colours.get(j));
 			        a.setDisable(true);
 		        }
 		        
 		        int s = h.indexOf(time[0]);
-		        
+		        a.setPrefHeight(60);
 		        root.add(a, s+1, 5, slots/30, 1);
 				
 			}
+			
+			j++;
 			
 			
 		}
@@ -810,8 +886,11 @@ public class time_Table_GUI extends Application
 		
 		root.add(f1, 0, 5, 1, 1);
 		
+				
 		ScrollPane sp = new ScrollPane();
 		sp.setContent(root);
+		
+		sp.setPrefHeight(580);
 		
 		Label l = new Label("IIIT-D");
 		l.setAlignment(Pos.TOP_LEFT);
@@ -836,7 +915,7 @@ public class time_Table_GUI extends Application
 		
 		y.setPadding(new Insets(20));
 
-		y.setStyle("-fx-background-color: #00DDDD");
+		y.getStyleClass().add("background");
 		
 		Scene scene	= new Scene(y, 1000, 600);					
 		scene.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());
