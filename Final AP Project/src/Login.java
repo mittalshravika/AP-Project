@@ -258,6 +258,7 @@ public class Login extends Application {
 			}
 		});
 
+		SignUpScene.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());
 		// SignUp button
 		Label SignUpPage = new Label("Not Registered yet? Sign Up for free!");
 		SignUpPage.setStyle("-fx-font: normal 20px 'sans-serif' ");
@@ -276,7 +277,7 @@ public class Login extends Application {
 		y.setSpacing(30);
 
 		LoginScene = new Scene(y, 1100, 800);
-
+		LoginScene.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());
 		LoginPageButton.setOnAction(e -> primaryStage.setScene(LoginScene));
 
 		primaryStage.setScene(LoginScene);

@@ -123,7 +123,8 @@ public class RequestPage extends Application {
 		Button Submit = new Button("Submit");
 		GridPane.setConstraints(Submit, 3, 7);
 		/**
-		 * Submit Button Makes an object out of the input given by User Adds to the request list of both user and Admin
+		 * Submit Button Makes an object out of the input given by User Adds to the
+		 * request list of both user and Admin
 		 */
 		Submit.setOnAction(e -> {
 			String Purpose1, Room1, Date1, Time1, Duration1;
@@ -151,6 +152,8 @@ public class RequestPage extends Application {
 			LocalDate book_Date = java.time.LocalDate.now();
 			DateTimeFormatter f = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 			current = book_Date.format(f);
+
+			System.out.println(current);
 
 			try {
 				App.deserialize("adminrequestlist");
@@ -185,6 +188,8 @@ public class RequestPage extends Application {
 			App.getAdmin_List().add(obj);
 			// add to user List
 			current_User.getMyRequests().add(obj);
+			System.out.println(current_User.MyRequests.size());
+			System.out.println(App.getAdmin_List().size());
 			try {
 
 				App.serialize("adminrequestlist", "adminrequest");
