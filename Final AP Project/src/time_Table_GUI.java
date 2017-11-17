@@ -764,7 +764,6 @@ public class time_Table_GUI extends Application {
 		try {
 			if (current_User.newcourse_List.size() > 0) {
 				App.serialize(current_User.getEmail_id() + "new", "register");
-				System.out.println("A");
 			}
 		} catch (IOException e2) {
 

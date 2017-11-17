@@ -26,6 +26,7 @@ public class App {
 	static User obj;
 	static List<Request> admin_List = new ArrayList<>();
 	static List<request_Object_Identity> request = new ArrayList<>();
+	static List<Prereq> prereqlist = new ArrayList();
 
 	/**
 	 * 
@@ -163,6 +164,19 @@ public class App {
 					}
 				}
 			}
+			
+			else if (A.equals("prereqlist")) {
+				App.prereqlist = new ArrayList<>();
+				in = new ObjectInputStream(new FileInputStream("./" + A + ".ser"));
+				while (true) {
+					try {
+						Prereq Input = (Prereq) in.readObject();
+						App.prereqlist.add(Input);
+					} catch (Exception e) {
+						break;
+					}
+				}
+			}
 
 		} finally {
 			in.close();
@@ -226,6 +240,7 @@ public class App {
 		Request Output5;
 		Course Output6;
 		request_Object_Identity Output7;
+		Prereq Output8;
 		ObjectOutputStream out = null;
 		try {
 			if (B.equals("user")) {
@@ -279,6 +294,14 @@ public class App {
 				for (int i = 0; i < App.request.size(); i++) {
 					Output7 = App.request.get(i);
 					out.writeObject(Output7);
+				}
+			}
+			
+			else if (B.equals("prereq")) {
+				out = new ObjectOutputStream(new FileOutputStream("./" + A + ".ser"));
+				for (int i = 0; i < App.prereqlist.size(); i++) {
+					Output8 = App.prereqlist.get(i);
+					out.writeObject(Output8);
 				}
 			}
 		} finally {

@@ -45,6 +45,7 @@ public class student_Page extends Application {
 		Button btn3 = new Button("Search Course");
 		Button btn5 = new Button("Request Room");
 		Button btn6 = new Button("Time Table");
+		Button btn7 = new Button("Prerequisite");
 		Label l1 = new Label(student_User.getName());
 		l1.getStyleClass().add("admin_Page_Heading");
 		Label l2 = new Label("Type:");
@@ -116,6 +117,15 @@ public class student_Page extends Application {
 				e1.printStackTrace();
 			}
 		});
+		
+		btn7.setOnAction(e -> {
+			try {
+				new prereq_display_list(student_User).start(primaryStage);
+			} catch (ClassNotFoundException | IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		});
 		btn.setPrefHeight(80);
 		btn.setPrefWidth(400);
 		btn2.setPrefHeight(80);
@@ -128,6 +138,8 @@ public class student_Page extends Application {
 		btn5.setPrefWidth(400);
 		btn6.setPrefHeight(80);
 		btn6.setPrefWidth(400);
+		btn7.setPrefHeight(80);
+		btn7.setPrefWidth(400);
 
 		Label l = new Label("IIIT-D");
 		l.setAlignment(Pos.CENTER_LEFT);
@@ -149,7 +161,7 @@ public class student_Page extends Application {
 		show[2].setAlignment(Pos.CENTER);
 		show[3].getChildren().addAll(l1);
 		show[3].setAlignment(Pos.CENTER);
-		show[4].getChildren().addAll(btn6);
+		show[4].getChildren().addAll(btn6, btn7);
 		show[4].setAlignment(Pos.CENTER);
 
 		HBox x2 = new HBox();
