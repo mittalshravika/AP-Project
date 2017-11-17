@@ -250,7 +250,7 @@ public class AdminRequestList extends Application
 		elements.setSpacing(20);
 		elements.setPadding(new Insets(20));
 		elements.setAlignment(Pos.TOP_CENTER);
-		elements.setStyle("-fx-background-color: #00DDDD");
+		elements.getStyleClass().add("background");
 		
 		Button Home = new Button("Back");
 		
