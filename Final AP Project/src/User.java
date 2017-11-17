@@ -303,6 +303,13 @@ public class User implements Serializable
 		return true;
 	} 
 
+	/**
+	 * Login function
+	 * 
+	 * @param Email takes in the email address
+	 * @param Pass takes in the password
+	 * @return
+	 */
 	static boolean Login(String Email, String Pass)
 	{
 		boolean check = true;
@@ -341,32 +348,17 @@ public class User implements Serializable
 		return check;
 	}
 
-	boolean user_Logout()
-	{
-		return true;
-	}
-
-	boolean user_Signup()
-	{
-		return true;
-	}
-
-	boolean user_Page()
-	{
-		return true;
-	}
-
+	/**
+	 * 
+	 * @param A User List (Database) of all the users(Student, Admin, Faculty) signed up
+	 * @param B New User to be added to the list
+	 * @return returns true if the new user is added to the list succesfully 
+	 */
 	static boolean add_User(List<User> A, User B)
 	{
 		A.add(B);
 		return true;
 	}
 	
-	void check()
-	{
-		for(int i = 0 ; i<bookings.size() ; i++)
-		{
-			System.out.println(bookings.get(i).toString());
-		}
-	}
+	
 }

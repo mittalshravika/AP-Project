@@ -312,7 +312,7 @@ public class book_Room extends Application {
 			btn2.setVisible(true);
 			btn3.setVisible(true);
 
-			LocalDate date = cal.getValue(); 
+			LocalDate date = cal.getValue();
 			Locale locale = Locale.US;
 			int weekOfYear = date.get(WeekFields.of(locale).weekOfWeekBasedYear());
 			int day = DayOfWeek.get(new String(date.getDayOfWeek().toString()));
@@ -347,7 +347,8 @@ public class book_Room extends Application {
 		});
 
 		/**
-		 * Books the slots chosen by the faculty and the admin. Populates their booking lists 
+		 * Books the slots chosen by the faculty and the admin. Populates their booking
+		 * lists
 		 */
 		btn2.setOnAction(e -> {
 			List<CheckBox> check_Box_List = new ArrayList<>();

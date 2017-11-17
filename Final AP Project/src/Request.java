@@ -17,6 +17,10 @@ public class Request implements Serializable
 	String purpose;
 	String preferred_Room;
 	@Override
+	/**
+	 * to String Function
+	 * @return a string 
+	 */
 	public String toString() {
 		return "Request [RequestUser=" + RequestUser + ", purpose=" + purpose + ", preferred_Room=" + preferred_Room
 				+ ", capacity=" + capacity + ", duration=" + duration + ", Approved=" + Approved + ", Cancel=" + Cancel
@@ -33,8 +37,18 @@ public class Request implements Serializable
 	static int ref = 0;
 	int identify;
 	LocalDate d;
+	
 	/**
-	 * Constructor
+	 * Constructor for the Request Details
+	 * @param User1 The User(Student) who made the booking
+	 * @param a Purpose for which the room is required
+	 * @param b preferred room 
+	 * @param c capacity
+	 * @param d date of room requirement
+	 * @param t time of room requirement
+	 * @param duration max duration 
+	 * @param c_t current time
+	 * @param date current date
 	 */
 	public Request(User User1, String a, String b, int c, String d, String t, int duration, String c_t, LocalDate date)
 	{
