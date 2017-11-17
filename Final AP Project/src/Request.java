@@ -2,7 +2,15 @@ import java.util.*;
 import java.io.Serializable;
 import java.lang.*;
 import java.time.LocalDate;
-
+/**
+ * Request Class defined here
+ * Cantains all details of the User's Request
+ * 
+ * 
+ * @author Yajur
+ * @author Shravika
+ * 
+ */
 public class Request implements Serializable
 {
 	User RequestUser;
@@ -25,7 +33,9 @@ public class Request implements Serializable
 	static int ref = 0;
 	int identify;
 	LocalDate d;
-	
+	/**
+	 * Constructor
+	 */
 	public Request(User User1, String a, String b, int c, String d, String t, int duration, String c_t, LocalDate date)
 	{
 		this.RequestUser = User1;
@@ -42,12 +52,21 @@ public class Request implements Serializable
 		this.identify = ref;
 		this.d = date;
 	}
-
-	void setApproval(Boolean A)
+	/**
+	 * setter fuction for approval
+	 * @param A Approving 
+	 * @param B Canceling 
+	 */
+	void setApproval(Boolean A, Boolean B)
 	{
 		Approved = A;
+		Cancel = B;
 	}
 	
+	/**
+	 * Getter function for approval
+	 * @return returns a boolean for approval check
+	 */
 	boolean approved_room()
 	{
 		return Approved;
