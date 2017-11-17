@@ -41,6 +41,12 @@ public class AdminRequestList extends Application {
 	User admin;
 	String name;
 
+	/**
+	 * Constructor for the AdminRequestList
+	 * 
+	 * @param a
+	 *            Admin User - the user object of the admin
+	 */
 	public AdminRequestList(User a) {
 		this.admin = a;
 	}
@@ -268,8 +274,8 @@ public class AdminRequestList extends Application {
 		AdminRequestList obj = new AdminRequestList();
 
 		/**
-		 * Changes the status of requests - whether cancelled or approved by the
-		 * admin
+		 * Changes the status of requests - whether cancelled or approved by the admin
+		 * 
 		 */
 		Submit.setOnAction(new EventHandler<ActionEvent>() {
 

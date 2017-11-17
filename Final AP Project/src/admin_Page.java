@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 
 /**
  * GUI for the ADMIN
+ * 
  * @author Yajur - 2016121
  * @author Shravika - 2016093
  */
@@ -23,7 +24,8 @@ public class admin_Page extends Application {
 	/**
 	 * Constructor for The Admin Page
 	 * 
-	 * @param admin_User - the Admin User
+	 * @param admin_User
+	 *            - the Admin User
 	 */
 	public admin_Page(User admin_User) {
 		this.admin_User = admin_User;
@@ -46,7 +48,7 @@ public class admin_Page extends Application {
 		Label l2 = new Label("");
 
 		/**
-		 * View Room -  opens the View Room Page
+		 * View Room - opens the View Room Page
 		 */
 		btn.setOnAction(e -> {
 			try {
@@ -68,8 +70,7 @@ public class admin_Page extends Application {
 			}
 		});
 		/**
-		 * Logout Button
-		 * Logout of the Application
+		 * Logout Button Logout of the Application
 		 */
 		btn4.setOnAction(e -> {
 			try {
@@ -80,8 +81,7 @@ public class admin_Page extends Application {
 			}
 		});
 		/**
-		 * Cancel Booking
-		 * Opens the booking list for canceling purposes
+		 * Cancel Booking Opens the booking list for canceling purposes
 		 */
 		btn3.setOnAction(e -> {
 			try {
@@ -95,8 +95,7 @@ public class admin_Page extends Application {
 			}
 		});
 		/**
-		 * Show Request
-		 * Shows all the requests made by the students
+		 * Show Request Shows all the requests made by the students
 		 */
 		btn5.setOnAction(e -> {
 			try {
