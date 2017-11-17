@@ -8,6 +8,23 @@ import javafx.scene.control.Alert.AlertType;
 
 import java.lang.*;
 
+/**
+ * User Class 
+ * Contains Details of the attributes and objects of the User
+ * 
+ * 
+ *Also contains the Exception classes
+ * @author Yajur
+ * @author Shravika
+ * 
+ */
+
+/**
+ * 
+ * EnterValidNameException 
+ * Gives a message if the Name Field is Empty or Invalid
+ *
+ */
 class EnterValidNameException extends Exception {
 	EnterValidNameException(String message) {
 		super(message);
@@ -20,6 +37,12 @@ class EnterValidNameException extends Exception {
 	}
 }
 
+/**
+ * 
+ * AlreadyAUserException
+ * Gives a message when Signing Up if is the User already exists
+ *
+ */
 class AlreadyAUserException extends Exception {
 	AlreadyAUserException(String message) {
 		super(message);
@@ -31,6 +54,12 @@ class AlreadyAUserException extends Exception {
 		alert.showAndWait();
 	}
 }
+/**
+ * 
+ * EnterValidEmailIDException 
+ * Gives a message if the Email Id is invalid or not a "@iiitd.ac.in" domain ID 
+ *
+ */
 
 class EnterValidEmailIDException extends Exception {
 	EnterValidEmailIDException(String message) {
@@ -43,6 +72,13 @@ class EnterValidEmailIDException extends Exception {
 	}
 }
 
+/**
+ * 
+ * EnterPasswordException
+ * Gives a message if the password field is blank
+ *
+ */
+
 class EnterPasswordException extends Exception {
 	EnterPasswordException(String message) {
 		super(message);
@@ -54,6 +90,13 @@ class EnterPasswordException extends Exception {
 	}
 }
 
+/**
+ * 
+ * PasswordsDontMatchException
+ * Gives a message if Enter Password and Re Enter Password Fields don't match
+ *
+ */
+
 class PasswordsDontMatchException extends Exception {
 	PasswordsDontMatchException(String message) {
 		super(message);
@@ -64,6 +107,11 @@ class PasswordsDontMatchException extends Exception {
 		alert.showAndWait();
 	}
 }
+
+/**
+ * User Class
+ * 
+ */
 
 public class User implements Serializable
 {
@@ -77,6 +125,10 @@ public class User implements Serializable
 	ArrayList<Request> MyRequests = new ArrayList<Request>();
 	ArrayList<Course> newcourse_List = new ArrayList<Course>();
 	
+	/**
+	 * Getter Functions
+	 * 
+	 */
 	public String getName() {
 		return name;
 	}
@@ -110,7 +162,17 @@ public class User implements Serializable
 	public User() {
 		
 	}
-
+	/**
+	 * 
+	 * @param Name Name of the User
+	 * @param Email His/Her "iiitd" emailId
+	 * @param Type "Student/Faculty"
+	 * @param Pass1 Entered Password
+	 * @param Pass2 ReEntered Password
+	 * @return Boolean - Returns true if Sign Up is Successful
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	static boolean Sign_Up(String Name, String Email, String Type, String Pass1, String Pass2) throws ClassNotFoundException, IOException 
 	{
 		
@@ -186,7 +248,12 @@ public class User implements Serializable
 		
 	}
  
-
+	/**
+	 * 
+	 * @param A Email ID of the User wanting to LogIn
+	 *
+	 * @return Boolean returns True if the Email ID is a valid iiitd ID
+	 */
 	static boolean enter_Email_Id(String A)
 	{
 		int size = A.length();
@@ -206,6 +273,13 @@ public class User implements Serializable
 		}
 		return true;
 	} 
+	
+	/**
+	 * checks if the Entered and ReEntered Password while SignUp match
+	 * @param pass Entered Password
+	 * @param pass2 Reentered Password
+	 * @return Boolean - True if the passwords match
+	 */
 
 	static boolean check_Password(String pass, String pass2)
 	{
@@ -253,10 +327,9 @@ public class User implements Serializable
 				
 				if(App.getUser_List().get(i).getEmail_id().equals(Email))
 				{
-					//System.out.println("YOLO");
+					
 					if(App.getUser_List().get(i).getPassword().equals(Pass))
 					{
-						//System.out.println("YO");
 						check = true;
 						return check;
 					}
