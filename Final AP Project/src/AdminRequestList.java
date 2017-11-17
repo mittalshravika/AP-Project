@@ -185,7 +185,25 @@ public class AdminRequestList extends Application
 				}
 				
 			});
+			
+			Button btn = new Button("Book");
+			
+			btn.setOnAction(new EventHandler<ActionEvent>(){
+
+				@Override
+				public void handle(ActionEvent arg0) {
+					try {
+						new book_Room(3, admin, object).start(primaryStage);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				
+			});
+			
 			Table.add(B, 9, i+1, 1, 1);
+			Table.add(btn, 10, i+1, 1, 1);
 		
 			Table.add(t1, 0, i+1, 1, 1);
 			Table.add(t0, 1, i+1, 1, 1);
@@ -237,29 +255,8 @@ public class AdminRequestList extends Application
 		Button Home = new Button("Back");
 		
 		Button Submit = new Button("Submit");
-		x.getChildren().addAll(Home, Book, Submit);
+		x.getChildren().addAll(Home, Submit);
 		AdminRequestList obj = new AdminRequestList();
-		
-		Book.setOnAction(new EventHandler<ActionEvent>(){
-
-			@Override
-			public void handle(ActionEvent arg0) {
-				TextInputDialog dialog = new TextInputDialog("");
-				dialog.setTitle("Name Input Dialog");
-				dialog.setHeaderText("Enter the name for whom booking has to be done");
-				dialog.setContentText("Name:");
-
-				// Traditional way to get the response value.
-				Optional<String> result = dialog.showAndWait();
-				if (result.isPresent()){
-					obj.name = result.get();
-					new book_Room(2, admin, obj).start(primaryStage);
-				}
-			}
-			
-			
-			
-		});
 		
 		Submit.setOnAction(new EventHandler<ActionEvent>(){
 
@@ -298,6 +295,8 @@ public class AdminRequestList extends Application
 					{
 						for(int j = 0 ; j<App.admin_List.get(i).RequestUser.MyRequests.size() ; j++)
 						{
+							System.out.println(App.admin_List.get(i).toString());
+							System.out.println(App.admin_List.get(i).RequestUser.MyRequests.get(j).toString());
 							if(App.admin_List.get(i).identify == App.admin_List.get(i).RequestUser.MyRequests.get(j).identify)
 							{
 								
@@ -305,7 +304,6 @@ public class AdminRequestList extends Application
 								App.admin_List.get(i).RequestUser.MyRequests.get(j).Cancel = false;
 								System.out.println(App.admin_List.get(i).RequestUser.MyRequests.get(j).toString());
 								choice_Box_List.get(i).setDisable(true);
-								
 								h1.add(App.admin_List.get(i));
 								break;
 							}
@@ -348,6 +346,7 @@ public class AdminRequestList extends Application
 				}
 				
 			}
+			
 			
 		});
 		

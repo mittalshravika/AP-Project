@@ -227,18 +227,21 @@ public class FacultyBooking extends Application
 							check_Box_List.add((CheckBox)node);
 						}
 					}
+					
+					ArrayList<cancel_Booking> help = new ArrayList<cancel_Booking>();
+					try {
+						App.deserialize(current_User.getEmail_id());
+					} catch (ClassNotFoundException | IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
 					for(int i = 0 ; i<check_Box_List.size() ; i++)
 					{
 						if(check_Box_List.get(i).isSelected())
 						{
 							h.add(GridPane.getRowIndex((Node)check_Box_List.get(i)));
 							int index = GridPane.getRowIndex((Node)check_Box_List.get(i));
-							try {
-								App.deserialize(current_User.getEmail_id());
-							} catch (ClassNotFoundException | IOException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
 							
 							String room = current_User.bookings.get(index - 1).room;
 							
@@ -267,15 +270,20 @@ public class FacultyBooking extends Application
 								e1.printStackTrace();
 							}
 							
-							current_User.bookings.remove(current_User.bookings.get(index - 1));
-							
-							try {
-								App.serialize(current_User.getEmail_id(), "book");
-							} catch (IOException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
+							help.add(current_User.bookings.get(index - 1));
 						}
+					}
+					
+					for(int i = 0 ; i<help.size() ; i++)
+					{
+						current_User.bookings.remove(help.get(i));
+					}
+					
+					try {
+						App.serialize(current_User.getEmail_id(), "book");
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
 					}
 				}
 				

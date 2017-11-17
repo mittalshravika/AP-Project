@@ -42,8 +42,18 @@ public	class faculty_Page extends Application
 		l1.getStyleClass().add("admin_Page_Heading");
 		//Label l2 = new Label("Type:");
 		
-		btn.setOnAction(e -> {new book_Room(1, faculty_User).start(primaryStage);});
-		btn2.setOnAction(e -> {new book_Room(1, faculty_User).start(primaryStage);});
+		btn.setOnAction(e -> {try {
+			new book_Room(1, faculty_User).start(primaryStage);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}});
+		btn2.setOnAction(e -> {try {
+			new book_Room(1, faculty_User).start(primaryStage);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}});
 		btn3.setOnAction(e -> {try {
 			new FacultyBooking(1, faculty_User).start(primaryStage);
 		} catch (ClassNotFoundException e1) {

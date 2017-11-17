@@ -38,8 +38,18 @@ public class admin_Page extends Application
 		l1.getStyleClass().add("admin_Page_Heading");
 		Label l2 = new Label("");
 		
-		btn.setOnAction(e -> {new book_Room(2, admin_User).start(primaryStage);});
-		btn2.setOnAction(e -> {new book_Room(2, admin_User).start(primaryStage);});
+		btn.setOnAction(e -> {try {
+			new book_Room(2, admin_User).start(primaryStage);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}});
+		btn2.setOnAction(e -> {try {
+			new book_Room(2, admin_User).start(primaryStage);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}});
 		btn4.setOnAction(e -> {try {
 			new Login().start(primaryStage);
 		} catch (Exception e1) {

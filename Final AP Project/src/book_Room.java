@@ -9,10 +9,14 @@ import java.util.Locale;
 import java.util.Map;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
@@ -44,6 +48,7 @@ public class book_Room extends Application
 	static int type;
 	User current_User;
 	AdminRequestList object;
+	Request obj;
 
 	public book_Room(int a, User obj)
 	{
@@ -56,12 +61,19 @@ public class book_Room extends Application
 		current_User = admin;
 		object = obj;
 	}
+	
+	public book_Room(int i, User admin, Request object2) {
+		type = i;
+		current_User = admin;
+		obj = object2;
+	}
+
 public static void main(String[] args)	
 	{	
 		launch(args);	
 	}	
 	@Override	
-	public void start(Stage	primaryStage)	
+	public void start(Stage	primaryStage) throws Exception	
 	{	
 		primaryStage.setTitle("Classroom Booking System");
 		
@@ -77,6 +89,33 @@ public static void main(String[] args)
 		Button btn = new Button("Submit details");
 		Button btn2 = new Button("Submit Room Bookings");
 		Button btn3 = new Button("Back");
+		Button btn4 = new Button("Student Request Details");
+		
+		btn4.setVisible(false);
+		
+		if(type==3)
+		{
+			
+			btn4.setVisible(true);
+			btn4.setOnAction(new EventHandler<ActionEvent>(){
+
+				@Override
+				public void handle(ActionEvent event) {
+					try {
+						Alert alert = new Alert(AlertType.INFORMATION);
+						alert.setTitle("Information Dialog");
+						alert.setHeaderText("Look, an Information Dialog");
+						alert.setContentText("Name: " + obj.RequestUser.getName() + "\n" + "Purpose: " + obj.purpose + "\n" + "Preferred Room: " + obj.preferred_Room + "\n" + "Date: " + obj.date + "\n" +"Time: " + obj.time + "\n" + "Duration: " + obj.duration);
+
+						alert.showAndWait();
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				
+			});
+		}
 		
 		if(type == 1)
 		{
@@ -86,13 +125,24 @@ public static void main(String[] args)
 		{
 			btn3.setOnAction(e -> {new admin_Page(current_User).start(primaryStage);});
 		}
+		else if(type==3)
+		{
+			btn3.setOnAction(e -> {
+				try {
+					new AdminRequestList(current_User).start(primaryStage);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			});
+		}
 		
 		Label Date = new Label("Date:");
 		DatePicker cal = new DatePicker();
 		
 		HBox x = new HBox();
 		x.setSpacing(35);
-		x.getChildren().addAll(Date, cal, btn);
+		x.getChildren().addAll(Date, cal, btn, btn4);
 		
 		HBox x2 = new HBox();
 		x2.setSpacing(300);
@@ -258,6 +308,10 @@ public static void main(String[] args)
 			sp.setVisible(true);
 			btn2.setVisible(true);
 			btn3.setVisible(true);
+			
+			
+			
+			
 			LocalDate date = cal.getValue(); // input from your date picker
 			Locale locale = Locale.US;
 			int weekOfYear = date.get(WeekFields.of(locale).weekOfWeekBasedYear());
@@ -369,17 +423,7 @@ public static void main(String[] args)
 						}
 						
 						String name = "";
-						if(type==2)
-						{
-							if(object == null)
-							{
-								name = "Admin";
-							}
-							else
-							{
-								name = object.name;
-							}
-						}
+						
 						
 						cancel_Booking booking = new cancel_Booking(obj1.date, h1.get(h.get(i).get(j)), 30, App.actual_Room_List.get(i).get_Name(), App.actual_Room_List.get(i).get_Capacity(), obj1.week, obj1.day, name);
 						current_User.bookings.add(booking);
