@@ -86,6 +86,10 @@ public static void main(String[] args)
 		DayOfWeek.put("SATURDAY", 5);
 		DayOfWeek.put("SUNDAY", 6);
 		
+		Label l = new Label("IIIT-D");
+		l.setAlignment(Pos.CENTER_RIGHT);
+		l.getStyleClass().add("labelIIITD");
+		
 		Button btn = new Button("View details");
 		Button btn2 = new Button("Submit Room Bookings");
 		Button btn3 = new Button("Back");
@@ -142,7 +146,7 @@ public static void main(String[] args)
 		
 		HBox x = new HBox();
 		x.setSpacing(35);
-		x.getChildren().addAll(Date, cal, btn, btn4);
+		x.getChildren().addAll(Date, cal, btn, btn4, l);
 		
 		HBox x2 = new HBox();
 		x2.setSpacing(300);
@@ -464,7 +468,7 @@ public static void main(String[] args)
 		
 		y.getStyleClass().add("background");
 		
-		Scene scene	= new Scene(y, 1000, 600);					
+		Scene scene	= new Scene(y, 1100, 800);					
 		scene.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());	
 		primaryStage.setScene(scene);		
 		primaryStage.show();		

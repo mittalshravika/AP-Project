@@ -917,7 +917,7 @@ public class time_Table_GUI extends Application
 
 		y.getStyleClass().add("background");
 		
-		Scene scene	= new Scene(y, 1000, 600);					
+		Scene scene	= new Scene(y, 1100, 800);					
 		scene.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());
 		primaryStage.setScene(scene);		
 		primaryStage.show();		

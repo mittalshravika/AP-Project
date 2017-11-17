@@ -253,7 +253,7 @@ public class CoursePage extends Application
 		
 		y.getStyleClass().add("background");
 
-		CourseView = new Scene(y, 1000, 600);	
+		CourseView = new Scene(y, 1100, 800);	
 		CourseView.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());
 		primaryStage.setScene(CourseView);
 		primaryStage.show();

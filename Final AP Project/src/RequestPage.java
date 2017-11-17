@@ -54,7 +54,7 @@ public class RequestPage extends Application
 		Label Purpose = new Label("Purpose:");
 		GridPane.setConstraints(Purpose, 0, 2);
 		TextArea Purpose_input = new TextArea();
-		//Purpose_input.setPrefHeight(100);
+		Purpose_input.setPrefHeight(100);
 		Purpose_input.setPrefWidth(750);
 		//Purpose_input.setAlignment(Pos.TOP_LEFT);
 		GridPane.setConstraints(Purpose_input, 1, 2, 4, 1);
@@ -193,6 +193,8 @@ public class RequestPage extends Application
 			}
 			
 			
+			
+			
 			Purpose_input.setText("");
 			Preferred_input.setValue("C01");
 			Capacity_input.setText("");
@@ -200,14 +202,7 @@ public class RequestPage extends Application
 			Hours.setValue("1");
 			Minutes.setValue("00");
 			
-			
-			
-			
-			
-			
-			
-			
-		});
+			});
 		
 		Button btn3 = new Button("Back");
 		GridPane.setConstraints(btn3, 0, 20);
@@ -227,7 +222,7 @@ public class RequestPage extends Application
 		
 		y.getStyleClass().add("background");
 
-		RequestScene = new Scene(y, 1000, 600);			
+		RequestScene = new Scene(y, 1100, 800);			
 		RequestScene.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());
 		primaryStage.setScene(RequestScene);
 		primaryStage.show();

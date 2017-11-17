@@ -1,27 +1,34 @@
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+//import javafx.scene.layout.StackPane;
+import javafx.scene.control.*;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox.*;
+import javafx.scene.layout.VBox.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
+import javafx.geometry.Pos;
+import javafx.geometry.Insets;
 
 public class AdminRequestPage extends Application
 {
-	private Request object;
-	User admin;
 	
-	AdminRequestPage(Request a, User b)
-	{
-		this.object = a;
-		this.admin = b;
-	}
+	private Request object;
+	private User current_User;
+	
 
+
+	public AdminRequestPage(Request obj, User a)
+	{
+		this.object = obj;
+		this.current_User = a;
+		
+	}
+	
 	public static void main(String[] args)
 	{
 		launch(args);
@@ -81,7 +88,7 @@ public class AdminRequestPage extends Application
 		Label Duration = new Label("Duration: ");
 		GridPane.setConstraints(Duration, 0, 5);
 		Label Duration_D = new Label();
-		Duration_D.setText(String.valueOf(object.duration));
+		Duration_D.setText(String.valueOf(object.duration) + " Min");
 		GridPane.setConstraints(Duration_D, 1, 5);
 		
 
@@ -92,7 +99,7 @@ public class AdminRequestPage extends Application
 			public void handle(ActionEvent event) {
 				
 				try {
-					new AdminRequestList(admin).start(primaryStage);
+					new AdminRequestList(current_User).start(primaryStage);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -101,7 +108,7 @@ public class AdminRequestPage extends Application
 			
 		});
 		
-		Button Book = new Button("Book");
+		Button Book = new Button("Cancel");
 
 		Label l = new Label("IIIT-D");
 		l.setAlignment(Pos.TOP_LEFT);
@@ -118,7 +125,7 @@ public class AdminRequestPage extends Application
 		y.setPadding(new Insets(20));
 		y.setAlignment(Pos.TOP_CENTER);
 		
-		y.setStyle("-fx-background-color: #00DDDD");
+		y.getStyleClass().add("background");
 
 		CourseView = new Scene(y, 1000, 600);	
 		CourseView.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());
@@ -128,5 +135,4 @@ public class AdminRequestPage extends Application
 
 
 	}
-
 }

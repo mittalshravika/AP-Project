@@ -130,7 +130,7 @@ public class RequestList extends Application
 		elements.setSpacing(20);
 		elements.setPadding(new Insets(20));
 		
-		RequestScene = new Scene(elements, 1000, 600);
+		RequestScene = new Scene(elements, 1100, 800);
 		RequestScene.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());
 		primaryStage.setScene(RequestScene);
 		primaryStage.show();

@@ -135,7 +135,7 @@ public class admin_Page extends Application
 		final_page.setSpacing(50);
 		final_page.setPadding(new Insets(50, 20, 20, 20));
 		final_page.getChildren().addAll(show[0],show[3], y);
-		Scene scene	= new Scene(final_page, 1000, 600);			
+		Scene scene	= new Scene(final_page, 1100, 800);			
 		scene.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());
 		primaryStage.setScene(scene);		
 		primaryStage.show();		

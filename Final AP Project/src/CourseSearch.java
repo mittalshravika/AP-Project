@@ -117,7 +117,7 @@ public class CourseSearch extends Application
 		}
 		
 		y.getStyleClass().add("background");
-		CourseSearchScene = new Scene(y, 1000, 600);
+		CourseSearchScene = new Scene(y, 1100, 800);
 		CourseSearchScene.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());
 
 		primaryStage.setScene(CourseSearchScene);	

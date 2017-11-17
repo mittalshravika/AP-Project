@@ -153,7 +153,7 @@ public static void main(String[] args)
 		y.setSpacing(30);
 		y.setPadding(new Insets(20));
 		
-		ListV = new Scene(y, 1000, 600);
+		ListV = new Scene(y, 1100, 800);
 		ListV.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());
 		primaryStage.setScene(ListV);
 		primaryStage.show();

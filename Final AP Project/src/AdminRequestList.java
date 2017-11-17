@@ -55,6 +55,7 @@ public class AdminRequestList extends Application
 		ScrollPane sp;
 		GridPane Table;
 		Scene RequestScene;
+		int size = 110;
 		
 		primaryStage.setTitle("Classroom Booking System");
 
@@ -66,15 +67,15 @@ public class AdminRequestList extends Application
 		Table.setPadding(new Insets(20, 20, 20, 20));
 		
 		//Index
-		TextField T1 = new TextField("Serial Number");
-		TextField T0 = new TextField("Name");
-		TextField T2 = new TextField("Date");
-		TextField T3 = new TextField("Time");
-		TextField T4 = new TextField("Duration");
-		TextField T6 = new TextField("Purpose");
-		TextField T7 = new TextField("Room");
-		TextField T8 = new TextField("Capacity");
-		TextField T9 = new TextField("Status");
+		TextField T1 = new TextField("Serial Number"); T1.setPrefWidth(size);
+		TextField T0 = new TextField("Name"); T0.setPrefWidth(size);
+		TextField T2 = new TextField("Date"); T2.setPrefWidth(size);
+		TextField T3 = new TextField("Time"); T3.setPrefWidth(size);
+		TextField T4 = new TextField("Duration"); T4.setPrefWidth(size);
+		TextField T6 = new TextField("Purpose");T6.setPrefWidth(size);
+		TextField T7 = new TextField("Room");T7.setPrefWidth(size);
+		TextField T8 = new TextField("Capacity");T8.setPrefWidth(size);
+		TextField T9 = new TextField("Status");T9.setPrefWidth(size + 30);
 		Table.add(T1, 0, 0, 1, 1);
 		Table.add(T0, 1, 0, 1, 1);
 		Table.add(T2, 2, 0, 1, 1);
@@ -170,9 +171,22 @@ public class AdminRequestList extends Application
 			t9.setItems(FXCollections.observableArrayList("Pending", "Approve", "Cancel"));
 			t9.setValue("Pending");
 			
+			t0.setPrefWidth(size);
+			t1.setPrefWidth(size);
+			t2.setPrefWidth(size);
+			t3.setPrefWidth(size);
+			t4.setPrefWidth(size);
+			t6.setPrefWidth(size);
+			t7.setPrefWidth(size);
+			t8.setPrefWidth(size);
+			t9.setPrefWidth(size);
+			t9.getStyleClass().add("dropdown");	
+			t9.setPrefWidth(size + 20);
+			
 			Request object = App.getAdmin_List().get(i);
 			
 			Button B = new Button("Show");
+			B.getStyleClass().add("dropdown");
 	
 			B.setOnAction(e -> {
 				try {
@@ -187,7 +201,7 @@ public class AdminRequestList extends Application
 			});
 			
 			Button btn = new Button("Book");
-			
+				   btn.getStyleClass().add("dropdown");
 			btn.setOnAction(new EventHandler<ActionEvent>(){
 
 				@Override
@@ -235,9 +249,10 @@ public class AdminRequestList extends Application
 		}
 		
 
-
+		Table.setAlignment(Pos.CENTER);
 		sp = new ScrollPane();
 		sp.setContent(Table);
+		sp.setPrefHeight(600);
 
 		Label l = new Label("IIIT-D");
 		l.setAlignment(Pos.TOP_LEFT);
@@ -352,12 +367,12 @@ public class AdminRequestList extends Application
 			
 		});
 		
-		x.setSpacing(760);
+		x.setSpacing(650);
 		
 		Home.setOnAction(e -> {new admin_Page(admin).start(primaryStage);});
 		
-		elements.getChildren().addAll(l, Title, Table, x);
-		RequestScene = new Scene(elements, 1000, 600);
+		elements.getChildren().addAll(l, Title, sp, x);
+		RequestScene = new Scene(elements, 1100, 800);
 		RequestScene.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());
 		primaryStage.setScene(RequestScene);
 		primaryStage.show();

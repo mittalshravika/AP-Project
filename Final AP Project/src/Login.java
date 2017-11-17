@@ -32,7 +32,7 @@ public class Login extends Application
 		Scene LoginScene, SignUpScene;
 		GridPane grid1, grid2;		
 		primaryStage.setTitle("Classroom Booking System");
-		//
+		
 		
 		//Sign Up
 		grid2 = new GridPane();
@@ -287,7 +287,7 @@ public class Login extends Application
 		y.setAlignment(Pos.TOP_CENTER);
 		y.setSpacing(30);
 
-		LoginScene = new Scene(y, 1000, 600);
+		LoginScene = new Scene(y, 1100, 800);
 
 		LoginPageButton.setOnAction(e -> primaryStage.setScene(LoginScene));
 

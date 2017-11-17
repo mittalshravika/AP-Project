@@ -322,7 +322,7 @@ public class FacultyBooking extends Application
 		
 		elements.setAlignment(Pos.TOP_CENTER);
 		elements.getStyleClass().add("background");
-		BookingScene = new Scene(elements, 1000, 600);		
+		BookingScene = new Scene(elements, 1100, 800);		
 		BookingScene.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());
 		primaryStage.setScene(BookingScene);
 		primaryStage.show();

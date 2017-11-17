@@ -274,7 +274,7 @@ public class personalised_Time_Table extends Application
 
 		y.setStyle("-fx-background-color: #00DDDD");
 		
-		Scene scene	= new Scene(y, 1000, 600);					
+		Scene scene	= new Scene(y, 1100, 800);					
 		scene.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());
 		primaryStage.setScene(scene);		
 		primaryStage.show();		
