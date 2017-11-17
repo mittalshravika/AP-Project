@@ -7,15 +7,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Course.java creates the course objects for all the courses offered to CSE 2nd year students
- * static list for course list created using serialisation
+ * Course.java creates the course objects for all the courses offered to CSE 2nd
+ * year students static list for course list created using serialisation
  * 
  * @author Yajur Ahuja - 2016121
  * @author Shravika Mittal - 2016093
  *
  */
-public class Course implements Serializable{
-	
+public class Course implements Serializable {
+
 	/* Database variables */
 	private String coursetype;
 	private String coursename;
@@ -31,7 +31,7 @@ public class Course implements Serializable{
 	private String postconditions;
 
 	private static final long serialVersionUID = 1L;
-	
+
 	/**
 	 * Constructor for Course.java
 	 * 
@@ -48,8 +48,8 @@ public class Course implements Serializable{
 	 * @param fri
 	 * @param postconditions
 	 */
-	public Course(String coursetype, String coursename, String coursecode, String instructorname, String credits, String acronym, String mon, String tue, String wed, String thurs, String fri, String postconditions) 
-	{
+	public Course(String coursetype, String coursename, String coursecode, String instructorname, String credits,
+			String acronym, String mon, String tue, String wed, String thurs, String fri, String postconditions) {
 		this.coursetype = coursetype;
 		this.coursename = coursename;
 		this.coursecode = coursecode;
@@ -63,7 +63,7 @@ public class Course implements Serializable{
 		this.fri = fri;
 		this.postconditions = postconditions;
 	}
-	
+
 	/**
 	 * Getter function for Course Type
 	 * 
@@ -180,7 +180,7 @@ public class Course implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
+
 	/**
 	 * toString() method for printing the contents of Course objects
 	 * 
@@ -188,88 +188,87 @@ public class Course implements Serializable{
 	 */
 	@Override
 	public String toString() {
-		return "Course [coursetype=" + coursetype + ", coursename=" + coursename + ", coursecode=" + coursecode + ", instructorname=" + instructorname + ", credits=" + credits + ", acronym=" + acronym + ", mon=" + mon + ", tue=" + tue + ", wed=" + wed + ", thurs=" + thurs + ", fri=" + fri + ", postconditions=" + postconditions + "]";
+		return "Course [coursetype=" + coursetype + ", coursename=" + coursename + ", coursecode=" + coursecode
+				+ ", instructorname=" + instructorname + ", credits=" + credits + ", acronym=" + acronym + ", mon="
+				+ mon + ", tue=" + tue + ", wed=" + wed + ", thurs=" + thurs + ", fri=" + fri + ", postconditions="
+				+ postconditions + "]";
 	}
 
-	void show()
-	{
+	void show() {
 		return;
 	}
-	
-	boolean search(String keywords)
-	{
+
+	boolean search(String keywords) {
 		return false;
 	}
-	
+
 	/**
 	 * Adds an Course object to the static list for Course list database
 	 * 
-	 * @param global_Course_List - static list that contains Course objects which have the course details
-	 * @param obj - Course object to be added to the list
+	 * @param global_Course_List
+	 *            - static list that contains Course objects which have the
+	 *            course details
+	 * @param obj
+	 *            - Course object to be added to the list
 	 */
-	static void add_Course(List<Course> global_Course_List, Course obj)
-	{
+	static void add_Course(List<Course> global_Course_List, Course obj) {
 		global_Course_List.add(obj);
-	}	
-	
+	}
+
 	/**
 	 * Prints the course details for all the courses
 	 * 
-	 * @param global_Course_List - static list that contains Course objects which have the course details
+	 * @param global_Course_List
+	 *            - static list that contains Course objects which have the
+	 *            course details
 	 */
-	static void print_Course(List<Course> global_Course_List)
-	{
-		for(int i = 0 ; i<global_Course_List.size() ; i++)
-		{
+	static void print_Course(List<Course> global_Course_List) {
+		for (int i = 0; i < global_Course_List.size(); i++) {
 			System.out.println(global_Course_List.get(i).toString());
 		}
 	}
-	
+
 	/**
-	 * This is the main method which makes the use of add_Course method to make the static App.course_List
+	 * This is the main method which makes the use of add_Course method to make
+	 * the static App.course_List
 	 * 
 	 * @param unused
 	 * @throws IOException
 	 */
-	 public static void main(String args[]) throws IOException
-	    {
-	        BufferedReader br = null;
-	        try
-	        {
-	            br = new BufferedReader(new FileReader("C:\\Users\\sm_06\\Desktop\\Database.csv"));
-	            
-	            String line = "";
-	            br.readLine();
-	            while ((line = br.readLine()) != null) 
-	            {
-	                int a = line.indexOf("\"");
-	                if(a>0)
-	                {
-	                	String str = line.substring(a, line.length());
-	                	String str2 = str.replace(",", "|");
-	                	line = line.substring(0, a) + str2;
-	                }
-	                
-	                String[] courseDetails = line.split(",");
-	                
-	                if(courseDetails.length > 0 )
-	                {
-	                	String str = courseDetails[12].replace("|", ",");
-	                    Course newcourse = new Course(courseDetails[1], courseDetails[2], courseDetails[3], courseDetails[4], courseDetails[5], courseDetails[6], courseDetails[7], courseDetails[8], courseDetails[9], courseDetails[10], courseDetails[11], str);
-	                    add_Course(App.course_List, newcourse);
-	                }
-	            }
-	        }
-	        catch(Exception ee)
-	        {
-	            ee.printStackTrace();
-	        }
-	        App.serialize("courselist", "course");
-	        
-	        request_Object_Identity obj = new request_Object_Identity();
-	        obj.ref = 1;
-	        App.request.add(obj);
-	        App.serialize("requestlist", "request");
-	        
-	    }
+	public static void main(String args[]) throws IOException {
+		BufferedReader br = null;
+		try {
+			br = new BufferedReader(new FileReader("C:\\Users\\sm_06\\Desktop\\Database.csv"));
+
+			String line = "";
+			br.readLine();
+			while ((line = br.readLine()) != null) {
+				int a = line.indexOf("\"");
+				if (a > 0) {
+					String str = line.substring(a, line.length());
+					String str2 = str.replace(",", "|");
+					line = line.substring(0, a) + str2;
+				}
+
+				String[] courseDetails = line.split(",");
+
+				if (courseDetails.length > 0) {
+					String str = courseDetails[12].replace("|", ",");
+					Course newcourse = new Course(courseDetails[1], courseDetails[2], courseDetails[3],
+							courseDetails[4], courseDetails[5], courseDetails[6], courseDetails[7], courseDetails[8],
+							courseDetails[9], courseDetails[10], courseDetails[11], str);
+					add_Course(App.course_List, newcourse);
+				}
+			}
+		} catch (Exception ee) {
+			ee.printStackTrace();
+		}
+		App.serialize("courselist", "course");
+
+		request_Object_Identity obj = new request_Object_Identity();
+		obj.ref = 1;
+		App.request.add(obj);
+		App.serialize("requestlist", "request");
+
+	}
 }

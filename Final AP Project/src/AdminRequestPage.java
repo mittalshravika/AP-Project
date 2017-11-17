@@ -15,6 +15,7 @@ import javafx.geometry.Pos;
 import javafx.geometry.Insets;
 
 /**
+ * Diasplays the request details made by the students
  * 
  * @author Yajur
  * @author Shravika

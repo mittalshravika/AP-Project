@@ -29,27 +29,35 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.geometry.Pos;
 
-public class CourseList extends Application
-{
+/**
+ * GUI to display the searched courses according to the keywords enterd by the student
+ * 
+ * @author Yajur
+ * @author Shravika
+ *
+ */
+public class CourseList extends Application {
 	User current_User;
-	
-	public CourseList(User current_User)
-	{
+
+	/**
+	 * Constructor
+	 * @param current_User
+	 */
+	public CourseList(User current_User) {
 		this.current_User = current_User;
 	}
-public static void main(String[] args)
-	{
+
+	public static void main(String[] args) {
 		launch(args);
 	}
 
 	@Override
-	public void start(Stage primaryStage)
-	{
+	public void start(Stage primaryStage) {
 		primaryStage.setTitle("Classroom Booking System");
 		Scene ListV;
 
 		Label title = new Label("Course List");
-		
+
 		HBox x = new HBox();
 		x.getChildren().addAll(title);
 
@@ -57,16 +65,15 @@ public static void main(String[] args)
 		VBox y = new VBox();
 		HBox s = new HBox();
 		VBox[] A = new VBox[2];
-		
-		for(int i = 0 ; i < 2; i++)
-		{
+
+		for (int i = 0; i < 2; i++) {
 			A[i] = new VBox();
 			A[i].setSpacing(150);
-			
+
 		}
 		Button Submit = new Button("View Course Page");
 		A[0].setAlignment(Pos.CENTER_RIGHT);
-		
+
 		Button back = new Button("Back");
 		A[0].getChildren().addAll(back);
 		A[1].getChildren().addAll(Submit);
@@ -80,59 +87,66 @@ public static void main(String[] args)
 		l.getStyleClass().add("labelIIITD");
 
 		ListView<String> list = new ListView<String>();
-		ObservableList<String> data = FXCollections.observableArrayList("Advanced Programing", "Discrete Maths", "DSA", "Introduction to Programing", "Linear Algebra", "Probability and Statistics", "Computer Organistation", "Operating Systems", "System Management", "Digital Circuits", "Basic Electronics", "Real Analysis", "Calculus", "Differential Equations", "Advanced Design of Algorithms", "Number Theory", "DBMS", "Signals and Systems", "Circuit Theory and Devices");
+		ObservableList<String> data = FXCollections.observableArrayList("Advanced Programing", "Discrete Maths", "DSA",
+				"Introduction to Programing", "Linear Algebra", "Probability and Statistics", "Computer Organistation",
+				"Operating Systems", "System Management", "Digital Circuits", "Basic Electronics", "Real Analysis",
+				"Calculus", "Differential Equations", "Advanced Design of Algorithms", "Number Theory", "DBMS",
+				"Signals and Systems", "Circuit Theory and Devices");
 		list.setItems(data);
 		data.clear();
-		for(int i = 0 ; i<search_Course.course_Search_List.size() ; i++)
-		{
+		for (int i = 0; i < search_Course.course_Search_List.size(); i++) {
 			data.add(search_Course.course_Search_List.get(i).getCoursename());
 		}
-		
-		list.setOnMouseClicked(new EventHandler<MouseEvent>(){
 
-			public Course get_Course(String str)
-			{
+		/**
+		 * Adds the searched course objects to list view
+		 */
+		list.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+			public Course get_Course(String str) {
 				Course obj = null;
-				for(int i = 0 ; i<App.course_List.size() ; i++)
-				{
-					if(str.equals(App.course_List.get(i).getCoursename()))
-					{
+				for (int i = 0; i < App.course_List.size(); i++) {
+					if (str.equals(App.course_List.get(i).getCoursename())) {
 						obj = App.course_List.get(i);
 					}
 				}
 				return obj;
 			}
-			
+
+			/**
+			 * opens up the course page of the course selected
+			 */
 			@Override
 			public void handle(MouseEvent event) {
-				
+
 				String str = list.getSelectionModel().getSelectedItem();
-				
-				Submit.setOnAction(new EventHandler<ActionEvent>(){
+
+				Submit.setOnAction(new EventHandler<ActionEvent>() {
 
 					@Override
 					public void handle(ActionEvent event) {
 						Course object = get_Course(str);
-						try 
-						{
+						try {
 							new CoursePage(object, current_User).start(primaryStage);
-						} 
-						catch (Exception e) 
-						{
+						} catch (Exception e) {
 							e.printStackTrace();
 						}
 					}
 				});
-				
+
 			}
 		});
-		
-		back.setOnAction( e -> {try {
-			new CourseSearch(current_User).start(primaryStage);
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}});
+
+		/**
+		 * Returns back to the Course Search page
+		 */
+		back.setOnAction(e -> {
+			try {
+				new CourseSearch(current_User).start(primaryStage);
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+		});
 
 		ScrollPane pane = new ScrollPane();
 		pane.setContent(list);
@@ -140,13 +154,13 @@ public static void main(String[] args)
 		pane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
 
 		y.getChildren().addAll(l, x, list, s);
-		
+
 		y.setAlignment(Pos.CENTER);
-		
+
 		y.getStyleClass().add("background");
 		y.setSpacing(30);
 		y.setPadding(new Insets(20));
-		
+
 		ListV = new Scene(y, 1100, 800);
 		ListV.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());
 		primaryStage.setScene(ListV);

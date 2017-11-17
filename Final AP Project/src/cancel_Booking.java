@@ -1,14 +1,15 @@
 import java.io.Serializable;
 
 /**
- * cancel_ Booking.java is used for creating the book room objects for faculty and admin
+ * cancel_ Booking.java is used for creating the book room objects for faculty
+ * and admin
  * 
  * @author Yajur Ahuja - 2016121
- * @author Shravika Mittal - 2016093 
+ * @author Shravika Mittal - 2016093
  *
  */
-public class cancel_Booking implements Serializable{
-	
+public class cancel_Booking implements Serializable {
+
 	String date;
 	String time;
 	int duration;
@@ -17,7 +18,7 @@ public class cancel_Booking implements Serializable{
 	int week;
 	int day;
 	String name;
-	
+
 	/**
 	 * Constructor for cancel_Booking.java
 	 * 
@@ -29,8 +30,8 @@ public class cancel_Booking implements Serializable{
 	 * @param week
 	 * @param day
 	 */
-	public cancel_Booking(String date, String time, int duration, String room, int capacity, int week, int day, String name) 
-	{
+	public cancel_Booking(String date, String time, int duration, String room, int capacity, int week, int day,
+			String name) {
 		this.date = date;
 		this.time = time;
 		this.duration = duration;
@@ -50,6 +51,6 @@ public class cancel_Booking implements Serializable{
 	public String toString() {
 		return "cancel_Booking [date=" + date + ", time=" + time + ", duration=" + duration + ", room=" + room
 				+ ", capacity=" + capacity + ", week=" + week + ", day=" + day + "]";
-	} 
-	
+	}
+
 }

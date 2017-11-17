@@ -27,65 +27,54 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
 /**
  * GUI for Rooom Booking
- * All Booking Fuctionality
+ * All Booking Fuctionality for admin and faculty
  * @author Yajur
  * @author Shravika
  */
 
-
 /**
- * 
+ * Helper class for storing the week, day and date of the booking
  */
-class date
-{
+class date {
 	int week;
 	int day;
 	String date;
 }
 
-class help
-{
-	CheckBox cb;
-	int i;
-	int j;
-}
-
-public class book_Room extends Application
-{
+public class book_Room extends Application {
 	static int type;
 	User current_User;
 	AdminRequestList object;
 	Request obj;
 
-	public book_Room(int a, User obj)
-	{
+	public book_Room(int a, User obj) {
 		type = a;
 		current_User = obj;
 	}
-	
+
 	public book_Room(int i, User admin, AdminRequestList obj) {
 		type = i;
 		current_User = admin;
 		object = obj;
 	}
-	
+
 	public book_Room(int i, User admin, Request object2) {
 		type = i;
 		current_User = admin;
 		obj = object2;
 	}
 
-public static void main(String[] args)	
-	{	
-		launch(args);	
-	}	
-	@Override	
-	public void start(Stage	primaryStage) throws Exception	
-	{	
+	public static void main(String[] args) {
+		launch(args);
+	}
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
 		primaryStage.setTitle("Classroom Booking System");
-		
+
 		Map<String, Integer> DayOfWeek = new HashMap<>();
 		DayOfWeek.put("MONDAY", 0);
 		DayOfWeek.put("TUESDAY", 1);
@@ -94,23 +83,25 @@ public static void main(String[] args)
 		DayOfWeek.put("FRIDAY", 4);
 		DayOfWeek.put("SATURDAY", 5);
 		DayOfWeek.put("SUNDAY", 6);
-		
+
 		Label l = new Label("IIIT-D");
 		l.setAlignment(Pos.CENTER_RIGHT);
 		l.getStyleClass().add("labelIIITD");
-		
+
 		Button btn = new Button("View details");
 		Button btn2 = new Button("Submit Room Bookings");
 		Button btn3 = new Button("Back");
 		Button btn4 = new Button("Student Request Details");
-		
+
 		btn4.setVisible(false);
-		
-		if(type==3)
-		{
-			
+
+		/**
+		 * Admin Booking rooms for student requests
+		 */
+		if (type == 3) {
+
 			btn4.setVisible(true);
-			btn4.setOnAction(new EventHandler<ActionEvent>(){
+			btn4.setOnAction(new EventHandler<ActionEvent>() {
 
 				@Override
 				public void handle(ActionEvent event) {
@@ -118,7 +109,9 @@ public static void main(String[] args)
 						Alert alert = new Alert(AlertType.INFORMATION);
 						alert.setTitle("Information Dialog");
 						alert.setHeaderText("Student Request Details");
-						alert.setContentText("Name: " + obj.RequestUser.getName() + "\n" + "Purpose: " + obj.purpose + "\n" + "Preferred Room: " + obj.preferred_Room + "\n" + "Date: " + obj.date + "\n" +"Time: " + obj.time + "\n" + "Duration: " + obj.duration);
+						alert.setContentText("Name: " + obj.RequestUser.getName() + "\n" + "Purpose: " + obj.purpose
+								+ "\n" + "Preferred Room: " + obj.preferred_Room + "\n" + "Date: " + obj.date + "\n"
+								+ "Time: " + obj.time + "\n" + "Duration: " + obj.duration);
 
 						alert.showAndWait();
 					} catch (Exception e) {
@@ -126,20 +119,22 @@ public static void main(String[] args)
 						e.printStackTrace();
 					}
 				}
-				
+
 			});
 		}
-		
-		if(type == 1)
-		{
-			btn3.setOnAction(e -> {new faculty_Page(current_User).start(primaryStage);});
-		}
-		else if(type == 2)
-		{
-			btn3.setOnAction(e -> {new admin_Page(current_User).start(primaryStage);});
-		}
-		else if(type==3)
-		{
+
+		/**
+		 * Back button functioning for admin and faculty
+		 */
+		if (type == 1) {
+			btn3.setOnAction(e -> {
+				new faculty_Page(current_User).start(primaryStage);
+			});
+		} else if (type == 2) {
+			btn3.setOnAction(e -> {
+				new admin_Page(current_User).start(primaryStage);
+			});
+		} else if (type == 3) {
 			btn3.setOnAction(e -> {
 				try {
 					new AdminRequestList(current_User).start(primaryStage);
@@ -149,21 +144,21 @@ public static void main(String[] args)
 				}
 			});
 		}
-		
+
 		Label Date = new Label("Date:");
 		DatePicker cal = new DatePicker();
-		
+
 		HBox x = new HBox();
 		x.setSpacing(35);
 		x.getChildren().addAll(Date, cal, btn, btn4, l);
-		
+
 		HBox x2 = new HBox();
 		x2.setSpacing(300);
 		x2.getChildren().addAll(btn3, btn2);
 		x2.setAlignment(Pos.TOP_LEFT);
-		
+
 		GridPane root = new GridPane();
-		
+
 		TextField t11 = new TextField("Day");
 		t11.setDisable(true);
 		TextField t12 = new TextField("8:00 - 8:30");
@@ -206,8 +201,8 @@ public static void main(String[] args)
 		t29.setDisable(true);
 		t30.setDisable(true);
 		t31.setDisable(true);
-		
-		TextField t1 = new TextField("C01"); 
+
+		TextField t1 = new TextField("C01");
 		TextField t2 = new TextField("C02");
 		TextField t3 = new TextField("C03");
 		TextField t4 = new TextField("C04");
@@ -247,7 +242,7 @@ public static void main(String[] args)
 		ti.setDisable(true);
 		tj.setDisable(true);
 		tk.setDisable(true);
-		
+
 		root.add(t11, 0, 0, 1, 1);
 		root.add(t12, 1, 0, 1, 1);
 		root.add(t13, 2, 0, 1, 1);
@@ -269,9 +264,9 @@ public static void main(String[] args)
 		root.add(t29, 18, 0, 1, 1);
 		root.add(t30, 19, 0, 1, 1);
 		root.add(t31, 20, 0, 1, 1);
-				
+
 		root.add(t1, 0, 1, 1, 1);
-		
+
 		root.add(t2, 0, 2, 1, 1);
 		root.add(t3, 0, 3, 1, 1);
 		root.add(t4, 0, 4, 1, 1);
@@ -291,87 +286,73 @@ public static void main(String[] args)
 		root.add(ti, 0, 18, 1, 1);
 		root.add(tj, 0, 19, 1, 1);
 		root.add(tk, 0, 20, 1, 1);
-		
-		for(int j = 1 ; j<=20 ; j++)
-		{
-			for(int i = 1 ; i<=20 ; i++)
-			{
+
+		for (int j = 1; j <= 20; j++) {
+			for (int i = 1; i <= 20; i++) {
 				CheckBox A = new CheckBox("book");
 				A.setAlignment(Pos.CENTER_LEFT);
 				root.add(A, i, j, 1, 1);
 			}
 		}
-		
-		/*
-		for (Node node : root.getChildren()) {
-	        if ((GridPane.getColumnIndex(node)%2==0 && GridPane.getColumnIndex(node)>0) && (GridPane.getRowIndex(node)%2==0 && GridPane.getRowIndex(node)>0)) {
-	            node.setDisable(true);
-	        }
-	    }
-	    */
-			
+
 		ScrollPane sp = new ScrollPane();
 		sp.setContent(root);
-		
+
 		sp.setVisible(false);
 		btn2.setVisible(false);
 		btn3.setVisible(false);
-		
+
 		date obj1 = new date();
-		
-		btn.setOnAction(e	->	{	
+
+		/**
+		 * Prebooks the slots for the courses offered in the second semester
+		 */
+		btn.setOnAction(e -> {
 			sp.setVisible(true);
 			btn2.setVisible(true);
 			btn3.setVisible(true);
-			
-			
-			
-			
-			LocalDate date = cal.getValue(); // input from your date picker
+
+			LocalDate date = cal.getValue(); 
 			Locale locale = Locale.US;
 			int weekOfYear = date.get(WeekFields.of(locale).weekOfWeekBasedYear());
 			int day = DayOfWeek.get(new String(date.getDayOfWeek().toString()));
-			System.out.println(weekOfYear);
 			obj1.week = weekOfYear;
 			obj1.day = day;
-			
+
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-			
+
 			obj1.date = date.format(formatter);
 			try {
 				App.deserialize("roomlist");
 				Day obj = new Day();
-				//obj.book_Slots();
 			} catch (ClassNotFoundException | IOException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			
-			System.out.println();
-			
-			for(int i = 0; i < App.actual_Room_List.size(); i++)
-			{
-				for(int j = 0 ; j<20 ; j++)
-				{
-					if(App.actual_Room_List.get(i).getList_Of_Weeks().get(weekOfYear - 31).getWeek_List().get(day).getday_List().get(j))
-					{
+
+			for (int i = 0; i < App.actual_Room_List.size(); i++) {
+				for (int j = 0; j < 20; j++) {
+					if (App.actual_Room_List.get(i).getList_Of_Weeks().get(weekOfYear - 31).getWeek_List().get(day)
+							.getday_List().get(j)) {
 						for (Node node : root.getChildren()) {
-					        if ((GridPane.getColumnIndex(node)==(j+1) && GridPane.getColumnIndex(node)>0) && (GridPane.getRowIndex(node)==(i+1) && GridPane.getRowIndex(node)>0)) {
-					        	node.setDisable(true);
-					      
-					        	
-					        }
-					    }
+							if ((GridPane.getColumnIndex(node) == (j + 1) && GridPane.getColumnIndex(node) > 0)
+									&& (GridPane.getRowIndex(node) == (i + 1) && GridPane.getRowIndex(node) > 0)) {
+								node.setDisable(true);
+
+							}
+						}
 					}
 				}
 			}
 			btn.setDisable(true);
-		});	
-		
+		});
+
+		/**
+		 * Books the slots chosen by the faculty and the admin. Populates their booking lists 
+		 */
 		btn2.setOnAction(e -> {
 			List<CheckBox> check_Box_List = new ArrayList<>();
 			ArrayList<ArrayList<Integer>> h = new ArrayList<ArrayList<Integer>>();
-			
+
 			ArrayList<String> h1 = new ArrayList<String>();
 			h1.add("8:00");
 			h1.add("8:30");
@@ -393,98 +374,84 @@ public static void main(String[] args)
 			h1.add("4:30");
 			h1.add("5:00");
 			h1.add("5:30");
-			
-			for(int i = 0 ; i<20 ; i++)
-			{
+
+			for (int i = 0; i < 20; i++) {
 				h.add(new ArrayList<Integer>());
 			}
-			for(Node node : root.getChildren())
-			{
-				if(node instanceof CheckBox)
-				{
-					check_Box_List.add((CheckBox)node);
+			for (Node node : root.getChildren()) {
+				if (node instanceof CheckBox) {
+					check_Box_List.add((CheckBox) node);
 				}
 			}
-			for(int i = 0 ; i<check_Box_List.size() ; i++)
-			{
-				if(check_Box_List.get(i).isSelected())
-				{
+			for (int i = 0; i < check_Box_List.size(); i++) {
+				if (check_Box_List.get(i).isSelected()) {
 					check_Box_List.get(i).setSelected(false);
 					check_Box_List.get(i).setDisable(true);
-					h.get(GridPane.getRowIndex((Node)check_Box_List.get(i)) - 1).add((GridPane.getColumnIndex((Node)check_Box_List.get(i)) - 1));
+					h.get(GridPane.getRowIndex((Node) check_Box_List.get(i)) - 1)
+							.add((GridPane.getColumnIndex((Node) check_Box_List.get(i)) - 1));
 				}
 			}
-			for(int i = 0 ; i<h.size() ; i++)
-			{
-				if(h.get(i).size()>0)
-				{
-					for(int j = 0 ; j<h.get(i).size() ; j++)
-					{
+			for (int i = 0; i < h.size(); i++) {
+				if (h.get(i).size() > 0) {
+					for (int j = 0; j < h.get(i).size(); j++) {
 						try {
 							App.deserialize("roomlist");
 						} catch (ClassNotFoundException | IOException e1) {
 							e1.printStackTrace();
 						}
-						
-						App.actual_Room_List.get(i).getList_Of_Weeks().get(obj1.week - 31).getWeek_List().get(obj1.day).getday_List().set(h.get(i).get(j), true);
-						System.out.println(current_User.getEmail_id());
-						
+
+						App.actual_Room_List.get(i).getList_Of_Weeks().get(obj1.week - 31).getWeek_List().get(obj1.day)
+								.getday_List().set(h.get(i).get(j), true);
+
 						try {
-							if(current_User.bookings.size()>0)
-							{
+							if (current_User.bookings.size() > 0) {
 								App.deserialize(current_User.getEmail_id());
-								System.out.println("A");
 							}
 						} catch (ClassNotFoundException | IOException e2) {
-							// TODO Auto-generated catch block
 							e2.printStackTrace();
 						}
-						
+
 						String name = "";
-						
-						if(type==3)
-						{
+
+						if (type == 3) {
 							name = obj.RequestUser.getName();
-						}
-						else
-						{
+						} else {
 							name = "Admin";
 						}
-						
-						cancel_Booking booking = new cancel_Booking(obj1.date, h1.get(h.get(i).get(j)), 30, App.actual_Room_List.get(i).get_Name(), App.actual_Room_List.get(i).get_Capacity(), obj1.week, obj1.day, name);
+
+						cancel_Booking booking = new cancel_Booking(obj1.date, h1.get(h.get(i).get(j)), 30,
+								App.actual_Room_List.get(i).get_Name(), App.actual_Room_List.get(i).get_Capacity(),
+								obj1.week, obj1.day, name);
 						current_User.bookings.add(booking);
-						System.out.println("size");
-						System.out.println(current_User.bookings.size());
-						
+
 						try {
 							App.serialize(current_User.getEmail_id(), "book");
 						} catch (IOException e2) {
 							// TODO Auto-generated catch block
 							e2.printStackTrace();
 						}
-						
+
 						try {
 							App.serialize("roomlist", "room");
 						} catch (IOException e1) {
 							e1.printStackTrace();
 						}
-						System.out.println("Chal gaya");
 					}
 				}
 			}
-			
+
 		});
-		
+
 		VBox y = new VBox();
 		y.setSpacing(30);
 		y.getChildren().addAll(x, sp, x2);
 		y.setPadding(new Insets(20));
-		
+
 		y.getStyleClass().add("background");
-		
-		Scene scene	= new Scene(y, 1100, 800);					
-		scene.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());	
-		primaryStage.setScene(scene);		
-		primaryStage.show();		
-	}	
+
+		Scene scene = new Scene(y, 1100, 800);
+		scene.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());
+		primaryStage.setScene(scene);
+		primaryStage.show();
+	}
 }
