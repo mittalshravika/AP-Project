@@ -14,29 +14,31 @@ import javafx.scene.layout.VBox;
 import javafx.geometry.Pos;
 import javafx.geometry.Insets;
 
-public class RequestDetails extends Application
-{
-	
+/**
+ * GUI to display details of a particular made request
+ * 
+ * @author Yajur
+ * @author Shravika
+ * 
+ * 
+ */
+public class RequestDetails extends Application {
+
 	private Request object;
 	private User current_User;
-	
 
-
-	public RequestDetails(Request obj, User a)
-	{
+	public RequestDetails(Request obj, User a) {
 		this.object = obj;
 		this.current_User = a;
-		
+
 	}
-	
-	public static void main(String[] args)
-	{
+
+	public static void main(String[] args) {
 		launch(args);
 	}
 
 	@Override
-	public void start(Stage primaryStage) throws Exception
-	{
+	public void start(Stage primaryStage) throws Exception {
 		Scene CourseView;
 		GridPane request;
 
@@ -48,7 +50,6 @@ public class RequestDetails extends Application
 		request.setHgap(10);
 
 		Label title = new Label("Request");
-		
 
 		HBox x = new HBox();
 		x.getChildren().addAll(title);
@@ -90,49 +91,48 @@ public class RequestDetails extends Application
 		Label Duration_D = new Label();
 		Duration_D.setText(String.valueOf(object.duration) + " Min");
 		GridPane.setConstraints(Duration_D, 1, 5);
-		
 
 		Button Back = new Button("Back");
-		Back.setOnAction(new EventHandler<ActionEvent>(){
+		/**
+		 * Back Button Returns back to the Student's Request List
+		 */
+		Back.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
 			public void handle(ActionEvent event) {
-				
+
 				try {
 					new StudentRequest(current_User).start(primaryStage);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				
+
 			}
-			
+
 		});
-		
-		Button Book = new Button("Cancel");
 
 		Label l = new Label("IIIT-D");
 		l.setAlignment(Pos.TOP_LEFT);
 		l.getStyleClass().add("labelIIITD");
-		
+
 		HBox x1 = new HBox();
 		x1.getChildren().addAll(Back);
 		x1.setAlignment(Pos.BOTTOM_LEFT);
 		x1.setSpacing(710);
-		
-		request.getChildren().addAll(Name, Name_D, Purpose, Purpose_D, Preferred, Preferred_D, Date, Date_D, Time, Time_D, Duration, Duration_D);
-		y.getChildren().addAll(l, x, request, x1); 
+
+		request.getChildren().addAll(Name, Name_D, Purpose, Purpose_D, Preferred, Preferred_D, Date, Date_D, Time,
+				Time_D, Duration, Duration_D);
+		y.getChildren().addAll(l, x, request, x1);
 		y.setSpacing(30);
 		y.setPadding(new Insets(20));
 		y.setAlignment(Pos.TOP_CENTER);
-		
+
 		y.getStyleClass().add("background");
 
-		CourseView = new Scene(y, 1100, 800);	
+		CourseView = new Scene(y, 1100, 800);
 		CourseView.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());
 		primaryStage.setScene(CourseView);
 		primaryStage.show();
-
-
 
 	}
 }
