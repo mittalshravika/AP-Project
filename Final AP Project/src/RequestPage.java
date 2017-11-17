@@ -159,6 +159,25 @@ public class RequestPage extends Application
 			//add to admin List
 			
 			Request obj = new Request(current_User,Purpose1, Room1, Integer.parseInt(Capacity1), Date1, Time1, Integer.parseInt(Duration1), current, d);
+			
+			try {
+				App.deserialize("requestlist");
+			} catch (ClassNotFoundException | IOException | NullPointerException e2) {
+				// TODO Auto-generated catch block
+				System.out.println("New File");
+			}
+			
+			App.request.get(0).ref = App.request.get(0).ref + 1;
+			
+			try {
+				App.serialize("requestlist", "request");
+			} catch (IOException e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
+			}
+			
+			obj.identify = App.request.get(0).ref;
+			
 			App.getAdmin_List().add(obj);
 			//add to user List
 			current_User.getMyRequests().add(obj);

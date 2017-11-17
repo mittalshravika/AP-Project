@@ -24,6 +24,7 @@ public class App {
 	static List<actual_Room> actual_Room_List = new ArrayList<>();
 	static User obj;
 	static List<Request> admin_List = new ArrayList<>();
+	static List<request_Object_Identity> request = new ArrayList<>();
 	
 	/**
 	 * 
@@ -178,6 +179,23 @@ public class App {
 					}
 				}
 			}
+			
+			else if(A.equals("requestlist"))
+			{
+				App.request = new ArrayList<>();
+				in = new ObjectInputStream(new FileInputStream("./"+ A + ".ser"));
+				while(true)
+				{	try
+					{	
+						request_Object_Identity Input = (request_Object_Identity)in.readObject();
+						App.request.add(Input);
+					}
+					catch (Exception e)
+					{
+						break;
+					}
+				}
+			}
 
 
 		}
@@ -244,6 +262,7 @@ public class App {
 		cancel_Booking Output4;
 		Request Output5;
 		Course Output6;
+		request_Object_Identity Output7;
 		ObjectOutputStream out = null;
 		try
 		{
@@ -310,6 +329,17 @@ public class App {
 				{
 					Output6 = obj.newcourse_List.get(i);
 					out.writeObject(Output6);
+				}
+			}
+
+			else if(B.equals("request"))
+			{
+				out = new ObjectOutputStream(new FileOutputStream("./" + A + ".ser"));
+				System.out.print(obj);
+				for(int i = 0; i < App.request.size(); i++)
+				{
+					Output7 = App.request.get(i);
+					out.writeObject(Output7);
 				}
 			}
 		}

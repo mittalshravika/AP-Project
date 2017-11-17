@@ -265,5 +265,11 @@ public class Course implements Serializable{
 	            ee.printStackTrace();
 	        }
 	        App.serialize("courselist", "course");
+	        
+	        request_Object_Identity obj = new request_Object_Identity();
+	        obj.ref = 1;
+	        App.request.add(obj);
+	        App.serialize("requestlist", "request");
+	        
 	    }
 }

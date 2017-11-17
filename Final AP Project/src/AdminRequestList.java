@@ -295,8 +295,8 @@ public class AdminRequestList extends Application
 					{
 						for(int j = 0 ; j<App.admin_List.get(i).RequestUser.MyRequests.size() ; j++)
 						{
-							System.out.println(App.admin_List.get(i).toString());
-							System.out.println(App.admin_List.get(i).RequestUser.MyRequests.get(j).toString());
+							System.out.println(App.admin_List.get(i).identify);
+							System.out.println(App.admin_List.get(i).RequestUser.MyRequests.get(j).identify);
 							if(App.admin_List.get(i).identify == App.admin_List.get(i).RequestUser.MyRequests.get(j).identify)
 							{
 								
@@ -335,6 +335,8 @@ public class AdminRequestList extends Application
 				
 				for(int i = 0 ; i<h1.size() ; i++)
 				{
+					System.out.println("check");
+					System.out.println(h1.get(i).toString());
 					App.admin_List.remove(h1.get(i));
 				}
 				
