@@ -146,6 +146,10 @@ public class FacultyBooking extends Application
 					TextField t7 = new TextField(obj.room); t7.setPrefWidth(s);
 					TextField t8 = new TextField(Integer.toString(obj.capacity)); t8.setPrefWidth(s);
 					TextField t9 = new TextField("Cancel"); t9.setPrefWidth(s);
+					TextField t10 = new TextField(obj.name);
+					TextField T10 = new TextField("Booked by");
+					Table.add(T10, 7, 0, 1, 1);
+					T10.setDisable(true);
 					
 					CheckBox Approval = new CheckBox("Select");
 					Approval.setAlignment(Pos.CENTER_LEFT);
@@ -157,6 +161,7 @@ public class FacultyBooking extends Application
 					Table.add(t7, 4, i+1, 1, 1);
 					Table.add(t8, 5, i+1, 1, 1);
 					Table.add(Approval, 6, i+1, 1, 1);
+					Table.add(t10, 7, i+1, 1, 1);
 					
 					t1.setDisable(true);
 					t2.setDisable(true);
@@ -165,6 +170,7 @@ public class FacultyBooking extends Application
 					t7.setDisable(true);
 					t8.setDisable(true);
 					t9.setDisable(true);
+					t10.setDisable(true);
 				}
 			}
 			

@@ -310,14 +310,11 @@ public class AdminRequestList extends Application
 					{
 						for(int j = 0 ; j<App.admin_List.get(i).RequestUser.MyRequests.size() ; j++)
 						{
-							System.out.println(App.admin_List.get(i).identify);
-							System.out.println(App.admin_List.get(i).RequestUser.MyRequests.get(j).identify);
 							if(App.admin_List.get(i).identify == App.admin_List.get(i).RequestUser.MyRequests.get(j).identify)
 							{
 								
 								App.admin_List.get(i).RequestUser.MyRequests.get(j).Approved = true;
 								App.admin_List.get(i).RequestUser.MyRequests.get(j).Cancel = false;
-								System.out.println(App.admin_List.get(i).RequestUser.MyRequests.get(j).toString());
 								choice_Box_List.get(i).setDisable(true);
 								h1.add(App.admin_List.get(i));
 								break;
@@ -332,7 +329,6 @@ public class AdminRequestList extends Application
 							{
 								App.admin_List.get(i).RequestUser.MyRequests.get(j).Cancel = true;
 								App.admin_List.get(i).RequestUser.MyRequests.get(j).Approved = false;
-								System.out.println(App.admin_List.get(i).RequestUser.MyRequests.get(j).toString());
 								choice_Box_List.get(i).setDisable(true);
 								h1.add(App.admin_List.get(i));
 								break;
@@ -350,8 +346,6 @@ public class AdminRequestList extends Application
 				
 				for(int i = 0 ; i<h1.size() ; i++)
 				{
-					System.out.println("check");
-					System.out.println(h1.get(i).toString());
 					App.admin_List.remove(h1.get(i));
 				}
 				

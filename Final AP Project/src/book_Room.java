@@ -433,12 +433,17 @@ public static void main(String[] args)
 						
 						String name = "";
 						
+						if(type==3)
+						{
+							name = obj.RequestUser.getName();
+						}
+						else
+						{
+							name = "Admin";
+						}
 						
 						cancel_Booking booking = new cancel_Booking(obj1.date, h1.get(h.get(i).get(j)), 30, App.actual_Room_List.get(i).get_Name(), App.actual_Room_List.get(i).get_Capacity(), obj1.week, obj1.day, name);
-						if(type!=3)
-						{
-							current_User.bookings.add(booking);
-						}
+						current_User.bookings.add(booking);
 						System.out.println("size");
 						System.out.println(current_User.bookings.size());
 						
