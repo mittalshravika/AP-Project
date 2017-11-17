@@ -15,6 +15,14 @@ import javafx.geometry.Pos;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ * GUI for Login and Sign up of a user
+ * 
+ * @author Yajur - 2016121
+ * @author Shravika - 2016093
+ *
+ */
+
 public class Login extends Application {
 
 	public static void main(String[] args) {
@@ -96,6 +104,14 @@ public class Login extends Application {
 		SignUpButton.setStyle(
 				"-fx-color: #FFFFFF ; -fx-font: normal bold 15px 'sans-serif' ; -fx-padding: 5 22 5 22 ; -fx-border-color: #00DDDD ; ");
 		GridPane.setConstraints(SignUpButton, 1, 4);
+		
+		/**
+		 * Sign Up Button
+		 * Signs Up a user
+		 * Sends the details to the Users function for verification
+		 * If details are valid a User is signed Up
+		 */
+		
 		SignUpButton.setOnAction(new EventHandler<ActionEvent>() {
 			public void input() throws ClassNotFoundException, IOException {
 
@@ -190,6 +206,12 @@ public class Login extends Application {
 		// Login button
 		Button LoginButton = new Button("Log In");
 
+		/**
+		 * Login Button
+		 * Send the input details to the User static functions for verifications
+		 * If details are valid opens the User's Home Page
+		 * 
+		 */
 		LoginButton.setStyle(
 				"-fx-color: #FFFFFF ; -fx-font: normal bold 15px 'sans-serif' ; -fx-padding: 5 22 5 22 ; -fx-border-color: #00DDDD ; ");
 		GridPane.setConstraints(LoginButton, 1, 3);
