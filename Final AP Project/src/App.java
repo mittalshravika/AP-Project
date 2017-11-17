@@ -201,7 +201,6 @@ public class App {
 	 * @throws IOException
 	 */
 	public static void serializeRequests(User current) throws FileNotFoundException, IOException {
-		System.out.println("gaya");
 		Request Output5;
 		ObjectOutputStream out = new ObjectOutputStream(
 				new FileOutputStream("./" + current.getEmail_id() + "Requests" + ".ser"));
@@ -269,7 +268,6 @@ public class App {
 				}
 			} else if (B.equals("register")) {
 				out = new ObjectOutputStream(new FileOutputStream("./" + A + ".ser"));
-				System.out.print(obj);
 				for (int i = 0; i < obj.newcourse_List.size(); i++) {
 					Output6 = obj.newcourse_List.get(i);
 					out.writeObject(Output6);
@@ -278,7 +276,6 @@ public class App {
 
 			else if (B.equals("request")) {
 				out = new ObjectOutputStream(new FileOutputStream("./" + A + ".ser"));
-				System.out.print(obj);
 				for (int i = 0; i < App.request.size(); i++) {
 					Output7 = App.request.get(i);
 					out.writeObject(Output7);
