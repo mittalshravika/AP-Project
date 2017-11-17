@@ -21,11 +21,21 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+/**
+ * 
+ * Displays Student's personalized Timetable 
+ * Displays Core Courses as well as the electives taken by the student
+ * @author Yajur
+ * @author Shravika
+ */
 public class time_Table_GUI extends Application
 {
 	
 	User current_User;
 	
+	/**
+	 * HashMap to store various colour hashcodes
+	 */
 	HashMap<Integer,String> Colours =new HashMap<Integer, String>(){{
 		put(0, "#CD6155" );
 		put(1, "#9B59B6");
@@ -850,7 +860,7 @@ public class time_Table_GUI extends Application
 				System.out.println("A");
 			}
 		} catch (IOException e2) {
-			// TODO Auto-generated catch block
+			
 			e2.printStackTrace();
 		}
 		
@@ -900,7 +910,10 @@ public class time_Table_GUI extends Application
 		x.setSpacing(550);
 		
 		Button btn6 = new Button("Back");
-		
+		/**
+		 * Back Button
+		 * Takes back to the Student's home page
+		 */
 		btn6.setOnAction(e -> {new student_Page(current_User).start(primaryStage);});
 		
 		HBox x2 = new HBox();
