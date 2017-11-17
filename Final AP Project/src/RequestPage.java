@@ -152,8 +152,6 @@ public class RequestPage extends Application {
 			DateTimeFormatter f = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 			current = book_Date.format(f);
 
-			System.out.println(current);
-
 			try {
 				App.deserialize("adminrequestlist");
 				App.deserializeRequests(current_User);
@@ -187,8 +185,6 @@ public class RequestPage extends Application {
 			App.getAdmin_List().add(obj);
 			// add to user List
 			current_User.getMyRequests().add(obj);
-			System.out.println(current_User.MyRequests.size());
-			System.out.println(App.getAdmin_List().size());
 			try {
 
 				App.serialize("adminrequestlist", "adminrequest");

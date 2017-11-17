@@ -103,7 +103,6 @@ public class StudentRequest extends Application {
 		} catch (FileNotFoundException e) {
 			System.out.println("new file");
 		}
-		System.out.println(current_User.MyRequests.size());
 		for (int i = 0; i < current_User.MyRequests.size(); i++) {
 			TextField t1 = new TextField(String.valueOf(i + 1));
 			TextField t2 = new TextField(current_User.MyRequests.get(i).date);
@@ -114,7 +113,6 @@ public class StudentRequest extends Application {
 			TextField t8 = new TextField(String.valueOf(current_User.MyRequests.get(i).capacity));
 			TextField t9;
 			CheckBox Approval = new CheckBox("Select");
-			System.out.println(current_User.MyRequests.get(0).toString());
 			if (current_User.MyRequests.get(i).Approved)
 				t9 = new TextField("Approved");
 			else {
@@ -195,8 +193,6 @@ public class StudentRequest extends Application {
 			@Override
 			public void handle(ActionEvent arg0) {
 
-				System.out.println("cancel");
-
 				ArrayList<CheckBox> check_Box_List = new ArrayList<>();
 				ArrayList<Integer> h = new ArrayList<Integer>();
 
@@ -227,7 +223,6 @@ public class StudentRequest extends Application {
 							e.printStackTrace();
 						}
 						Request toremove = current_User.MyRequests.get(index - 1);
-						System.out.println(toremove.toString());
 						current_User.MyRequests.remove(toremove);
 						int sno = 0;
 						for (int j = 0; j < App.admin_List.size(); j++) {
@@ -237,7 +232,6 @@ public class StudentRequest extends Application {
 							}
 						}
 						App.admin_List.remove(App.admin_List.get(sno));
-						System.out.println(toremove.toString());
 
 						try {
 							App.serializeRequests(current_User);
