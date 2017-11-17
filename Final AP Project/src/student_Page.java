@@ -16,7 +16,8 @@ import javafx.stage.Stage;
 /**
  * GUI for displaying the student_Page
  * 
- * @author sm_06
+ * @author Yajur - 2016121
+ * @author Shravika - 2016093
  *
  */
 public class student_Page extends Application {
