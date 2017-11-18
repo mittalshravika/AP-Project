@@ -57,6 +57,7 @@ public class ViewRoomStudent extends Application {
 		btn.setPrefHeight(15);
 		Button btn2 = new Button("Submit Room Bookings");
 		Button btn3 = new Button("Back");
+		Button btn4 = new Button("Refresh");
 		Label l = new Label("IIIT-D");
 		l.setAlignment(Pos.CENTER_RIGHT);
 		l.getStyleClass().add("labelIIITD");
@@ -88,8 +89,8 @@ public class ViewRoomStudent extends Application {
 		x3.setSpacing(250);
 
 		HBox x2 = new HBox();
-		x2.setSpacing(350);
-		x2.getChildren().addAll(btn3, btn2);
+		x2.setSpacing(230);
+		x2.getChildren().addAll(btn3, btn2, btn4);
 		x2.setAlignment(Pos.TOP_LEFT);
 
 		GridPane root = new GridPane();
@@ -332,6 +333,10 @@ public class ViewRoomStudent extends Application {
 				}
 			}
 
+		});
+		
+		btn4.setOnAction(e -> {
+			new ViewRoomStudent(current_User).start(primaryStage);
 		});
 
 		VBox y = new VBox();

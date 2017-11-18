@@ -270,9 +270,20 @@ public class AdminRequestList extends Application {
 		Button Home = new Button("Back");
 
 		Button Submit = new Button("Submit");
-		x.getChildren().addAll(Home, Submit);
+		
+		Button btn = new Button("Refresh");
+		x.getChildren().addAll(Home, Submit, btn);
 		AdminRequestList obj = new AdminRequestList();
 
+		btn.setOnAction(e -> {
+			try {
+				new AdminRequestList(admin).start(primaryStage);
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		});
+		
 		/**
 		 * Changes the status of requests - whether cancelled or approved by the admin
 		 * 
@@ -352,7 +363,7 @@ public class AdminRequestList extends Application {
 
 		});
 
-		x.setSpacing(650);
+		x.setSpacing(250);
 
 		Home.setOnAction(e -> {
 			new admin_Page(admin).start(primaryStage);

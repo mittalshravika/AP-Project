@@ -92,6 +92,7 @@ public class book_Room extends Application {
 		Button btn2 = new Button("Submit Room Bookings");
 		Button btn3 = new Button("Back");
 		Button btn4 = new Button("Student Request Details");
+		Button btn5 = new Button("Refresh");
 
 		btn4.setVisible(false);
 
@@ -153,8 +154,8 @@ public class book_Room extends Application {
 		x.getChildren().addAll(Date, cal, btn, btn4, l);
 
 		HBox x2 = new HBox();
-		x2.setSpacing(300);
-		x2.getChildren().addAll(btn3, btn2);
+		x2.setSpacing(200);
+		x2.getChildren().addAll(btn3, btn2, btn5);
 		x2.setAlignment(Pos.TOP_LEFT);
 
 		GridPane root = new GridPane();
@@ -441,6 +442,36 @@ public class book_Room extends Application {
 				}
 			}
 
+		});
+		
+		btn5.setOnAction(e -> {
+			if(type==1)
+			{
+				try {
+					new book_Room(1, current_User).start(primaryStage);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+			if(type==2)
+			{
+				try {
+					new book_Room(2, current_User).start(primaryStage);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+			if(type==3)
+			{
+				try {
+					new book_Room(3, current_User, obj).start(primaryStage);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
 		});
 
 		VBox y = new VBox();

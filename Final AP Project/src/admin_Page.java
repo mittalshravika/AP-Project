@@ -43,6 +43,7 @@ public class admin_Page extends Application {
 		Button btn3 = new Button("Cancel Booking");
 		Button btn4 = new Button("Logout");
 		Button btn5 = new Button("Show Request");
+		Button btn6 = new Button("Refresh");
 		Label l1 = new Label("ADMIN");
 		l1.getStyleClass().add("admin_Page_Heading");
 		Label l2 = new Label("");
