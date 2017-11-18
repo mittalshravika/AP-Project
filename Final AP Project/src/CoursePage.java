@@ -161,6 +161,16 @@ public class CoursePage extends Application {
 
 		});
 		Button Register = new Button("Register Course");
+		Button prereq = new Button("Prereq for courses");
+		
+		prereq.setOnAction(e -> {
+			try {
+				new prereq_Bonus(current_User, object).start(primaryStage);
+			} catch (ClassNotFoundException | IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		});
 
 		/**
 		 * Adds the course to the student time table
@@ -218,9 +228,9 @@ public class CoursePage extends Application {
 		l.getStyleClass().add("labelIIITD");
 
 		HBox x1 = new HBox();
-		x1.getChildren().addAll(Back, Register);
+		x1.getChildren().addAll(Back, prereq, Register);
 		x1.setAlignment(Pos.BOTTOM_LEFT);
-		x1.setSpacing(600);
+		x1.setSpacing(200);
 
 		Course.getChildren().addAll(Name, Name_D, Number, Number_D, Instructor, Instructor_D, Type, Type_D, PCond,
 				PCond_D, Timings, Timings_D);

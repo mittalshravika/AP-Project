@@ -45,7 +45,7 @@ public class student_Page extends Application {
 		Button btn3 = new Button("Search Course");
 		Button btn5 = new Button("Request Room");
 		Button btn6 = new Button("Time Table");
-		Button btn7 = new Button("Prerequisite");
+		Button btn7 = new Button("Prerequisite Of");
 		Label l1 = new Label(student_User.getName());
 		l1.getStyleClass().add("admin_Page_Heading");
 		Label l2 = new Label("Type:");
