@@ -331,7 +331,7 @@ public class FacultyBooking extends Application {
 		}
 
 		x.getChildren().addAll(Home, Cancel);
-		x.setSpacing(500);
+		x.setSpacing(780);
 		elements.getChildren().addAll(l, Title, T, x);
 		elements.setSpacing(20);
 

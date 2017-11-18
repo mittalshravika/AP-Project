@@ -27,6 +27,11 @@ public class App {
 	static List<Request> admin_List = new ArrayList<>();
 	static List<request_Object_Identity> request = new ArrayList<>();
 	static List<Prereq> prereqlist = new ArrayList();
+	
+	public App()
+	{
+		Login.main(null);
+	}
 
 	/**
 	 * 
@@ -306,4 +311,10 @@ public class App {
 		}
 
 	}
+	
+	public static void main(String[] args)
+	{
+		new App();
+	}
+	
 }
