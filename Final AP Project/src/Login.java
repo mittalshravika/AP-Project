@@ -128,7 +128,11 @@ public class Login extends Application {
 				if (User.Sign_Up(Name, Email, Type, Pass1, Pass2)) {
 
 					User.add_User(App.getUser_List(), new User(Name, Type, Email, Pass1));
-
+					Alert alert = new Alert(AlertType.INFORMATION);
+					alert.setTitle("Information Dialog");
+					alert.setHeaderText(null);
+					alert.setContentText("You have successfully signed up!!");
+					alert.showAndWait();
 				} else {
 				}
 
